@@ -8,14 +8,13 @@ import {
   StatusBar,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { SafeAreaView } from "react-native-safe-area-context"; // <-- Updated import
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
   const navigation = useNavigation<any>();
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* StatusBar fix for Android 15 */}
       <StatusBar
         backgroundColor="transparent"
         barStyle="dark-content"
@@ -24,29 +23,46 @@ export default function HomeScreen() {
 
       <Text style={styles.title}>📿 Dhikr Collection</Text>
 
-      <View style={styles.grid}>
-        <TouchableOpacity
-          style={styles.card}
-          onPress={() => navigation.navigate("Dhikr", { type: "adhkar" })}
-        >
-          <Image
-            source={require("../assets/adhkar_icon.png")}
-            style={styles.icon}
-          />
-          <Text style={styles.cardText}>Dua Marichavark</Text>
-        </TouchableOpacity>
+      {/* Dua Card with inner grid */}
+      <TouchableOpacity style={styles.card}>
+        <View style={styles.innerGrid}>
+          {/* Dua Marichavark */}
+          <TouchableOpacity
+            style={styles.innerCard}
+            onPress={() => navigation.navigate("Dhikr", { type: "adhkar" })}
+          >
+            <Image
+              source={require("../assets/adhkar_icon.png")}
+              style={styles.icon}
+            />
+            <Text style={styles.cardText}>Dua Marichavark</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.card}
-          onPress={() => navigation.navigate("Dhikr", { type: "haddad" })}
-        >
-          <Image
-            source={require("../assets/haddad_icon.png")}
-            style={styles.icon}
-          />
-          <Text style={styles.cardText}>Ratib al-Haddad</Text>
-        </TouchableOpacity>
-      </View>
+          {/* Dua Qabar */}
+          <TouchableOpacity
+            style={styles.innerCard}
+            onPress={() => navigation.navigate("Dhikr", { type: "duaQabar" })}
+          >
+            <Image
+              source={require("../assets/duaQabar.png")}
+              style={styles.icon}
+            />
+            <Text style={styles.cardText}>Dua Qabar</Text>
+          </TouchableOpacity>
+        </View>
+      </TouchableOpacity>
+
+      {/* Ratib al-Haddad Card */}
+      <TouchableOpacity
+        style={styles.card}
+        onPress={() => navigation.navigate("Dhikr", { type: "haddad" })}
+      >
+        <Image
+          source={require("../assets/haddad_icon.png")}
+          style={styles.icon}
+        />
+        <Text style={styles.cardText}>Ratib al-Haddad</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
@@ -56,26 +72,31 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff7ed",
     alignItems: "center",
+    paddingTop: 20,
   },
   title: {
     fontSize: 26,
     fontWeight: "700",
     color: "#b45309",
-    marginVertical: 20,
-  },
-  grid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    gap: 20,
+    marginBottom: 20,
   },
   card: {
     backgroundColor: "#fef3c7",
     padding: 20,
     borderRadius: 20,
     alignItems: "center",
-    width: 150,
+    width: 320,
+    marginVertical: 10,
     elevation: 3,
+  },
+  innerGrid: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
+  },
+  innerCard: {
+    alignItems: "center",
+    width: 140,
   },
   icon: {
     width: 60,
