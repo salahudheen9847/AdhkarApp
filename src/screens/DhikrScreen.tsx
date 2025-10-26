@@ -4,10 +4,11 @@ import {
   Text,
   FlatList,
   TouchableOpacity,
-  SafeAreaView,
   StyleSheet,
   Linking,
+  StatusBar,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context"; // <-- Updated import
 import Slider from "@react-native-community/slider";
 import Sound from "react-native-sound";
 import { adhkar } from "../data/adhkar";
@@ -15,7 +16,7 @@ import { haddad } from "../data/haddad";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import LinearGradient from "react-native-linear-gradient"; 
 import Icon from "react-native-vector-icons/MaterialIcons"; 
-import FAIcon from "react-native-vector-icons/FontAwesome"; // FontAwesome for WhatsApp
+import FAIcon from "react-native-vector-icons/FontAwesome"; 
 
 Sound.setCategory("Playback");
 
@@ -104,6 +105,13 @@ export default function DhikrScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
+      {/* StatusBar fix for Android 15 */}
+      <StatusBar
+        backgroundColor="transparent"
+        barStyle="light-content"
+        translucent={true}
+      />
+
       <View style={{ flex: 1 }}>
         <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
           <Text style={styles.backText}>← Back</Text>

@@ -4,16 +4,24 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  SafeAreaView,
   Image,
+  StatusBar,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { SafeAreaView } from "react-native-safe-area-context"; // <-- Updated import
 
 export default function HomeScreen() {
   const navigation = useNavigation<any>();
 
   return (
     <SafeAreaView style={styles.container}>
+      {/* StatusBar fix for Android 15 */}
+      <StatusBar
+        backgroundColor="transparent"
+        barStyle="dark-content"
+        translucent={true}
+      />
+
       <Text style={styles.title}>📿 Dhikr Collection</Text>
 
       <View style={styles.grid}>
@@ -44,7 +52,11 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#fff7ed", alignItems: "center" },
+  container: {
+    flex: 1,
+    backgroundColor: "#fff7ed",
+    alignItems: "center",
+  },
   title: {
     fontSize: 26,
     fontWeight: "700",
