@@ -37,13 +37,19 @@ const textStyle = {
 
 // ✅ Language Toggle Styles
 const langStyles = StyleSheet.create({
-  toggleRow: {
+  toggleColumn: {
+    flexDirection: "column",
+    alignItems: "flex-start",
+    marginLeft: 8,
+  },
+  toggleItem: {
     flexDirection: "row",
     alignItems: "center",
+    marginVertical: 2,
   },
   toggleText: {
     fontSize: 16,
-    marginHorizontal: 4,
+    marginLeft: 4,
   },
   activeText: {
     color: "#22c55e",
@@ -64,7 +70,10 @@ export default function DhikrScreen() {
   const navigation = useNavigation();
   const { type } = params;
 
-  const [languageMode, setLanguageMode] = useState<"arabic" | "malayalam">("arabic");
+  // ✅ Default: Arabic
+  const [languageMode, setLanguageMode] = useState<"arabic" | "malayalam">(
+    "arabic"
+  );
 
   const {
     currentIndex,
@@ -175,12 +184,13 @@ export default function DhikrScreen() {
           <WhatsappButton />
           <View style={localStyles.gapStyle} />
 
-          {/* ✅ Clean language toggle */}
-          <View style={langStyles.toggleRow}>
+          {/* ✅ Language Toggle (Vertical list with checkmarks) */}
+          <View style={langStyles.toggleColumn}>
             {["arabic", "malayalam"].map((mode) => (
               <TouchableOpacity
                 key={mode}
                 onPress={() => setLanguageMode(mode as any)}
+                style={langStyles.toggleItem}
               >
                 <Text
                   style={[
@@ -190,6 +200,7 @@ export default function DhikrScreen() {
                       : langStyles.inactiveText,
                   ]}
                 >
+                  {languageMode === mode ? "✅ " : "☐ "}
                   {mode.charAt(0).toUpperCase() + mode.slice(1)}
                 </Text>
               </TouchableOpacity>
@@ -207,8 +218,8 @@ export default function DhikrScreen() {
           >
             <Icon
               name={isPlaying ? "pause-circle-filled" : "play-circle-filled"}
-              size={68}
-              color={isPlaying ? "#e11d48" : "#22c55e"}
+              size={35}
+              color={isPlaying ? "#16d044ff" : "#22c55e"}
             />
           </TouchableOpacity>
         </View>
