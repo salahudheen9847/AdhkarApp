@@ -1,0 +1,177 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/NotoSansMalayalam-VariableFont_wdth,wght.ttf",
+      "sha1": "76e2c75e60616902c6b950b6dc9a0ac1e8ccbfef"
+    },
+    {
+      "path": "src/assets/fonts/OFL.txt",
+      "sha1": "9ee348274eed4cb30df359c6b497862f1cb6ea79"
+    },
+    {
+      "path": "src/assets/fonts/README.txt",
+      "sha1": "ae638d80793cba6fb4cb56ce04ba68a9ae07a0f4"
+    },
+    {
+      "path": "src/assets/fonts/ScheherazadeNew-Bold.ttf",
+      "sha1": "abf1145c0bd481c8728023f3d6854e29a50ebf67"
+    },
+    {
+      "path": "src/assets/fonts/ScheherazadeNew-Medium.ttf",
+      "sha1": "10565ea7f258de1a1d4d3fa667be2346c10552a7"
+    },
+    {
+      "path": "src/assets/fonts/ScheherazadeNew-Regular.ttf",
+      "sha1": "a82d46d415dad0ebc0cbb0125b3944226f67d76d"
+    },
+    {
+      "path": "src/assets/fonts/ScheherazadeNew-SemiBold.ttf",
+      "sha1": "03ce7394da7df809011161073537a08ab3a4697f"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam-Black.ttf",
+      "sha1": "6d7967e451bd752b927ebe223c70b1eb5062448e"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam-Bold.ttf",
+      "sha1": "d380f58cfa53501ba13cfd0c8bcf41a828b1642a"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam-ExtraBold.ttf",
+      "sha1": "42ddd3ae0bb2169cfc9ded875edd45b9330cd2e4"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam-ExtraLight.ttf",
+      "sha1": "7cc957aeccaa76a9114cc17981c5f0d6c233941f"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam-Light.ttf",
+      "sha1": "851c80f83ff2bfcb9038cf79dc2b887d04dc2bb6"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam-Medium.ttf",
+      "sha1": "f8924e5cd9f00cc0935ff6c99635c24dd11df295"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam-Regular.ttf",
+      "sha1": "df8ec1e2df2c77b5487fc89ccde6adc857d94696"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam-SemiBold.ttf",
+      "sha1": "030aba01b58a2ff0529230c4bd907a5ff6577ada"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam-Thin.ttf",
+      "sha1": "d824ef15b431ddb47a368cee14321ddd543507c0"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_Condensed-Black.ttf",
+      "sha1": "bc7c0cf0c222a8404a5e8ebd6ca2896b41881ef5"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_Condensed-Bold.ttf",
+      "sha1": "20cafd08a58b5fe75774f42887e78a82aca6d521"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_Condensed-ExtraBold.ttf",
+      "sha1": "b75644163f6eeb264c303c3da8fd30e40c266e6b"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_Condensed-ExtraLight.ttf",
+      "sha1": "9502b7d55210bfdf56d04c0950abfff3962e7b72"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_Condensed-Light.ttf",
+      "sha1": "f76cc79423266dcd4d21fa84d6b2fc88154aafa9"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_Condensed-Medium.ttf",
+      "sha1": "cfef919527bfb0bbde491193da093a76c7727ff9"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_Condensed-Regular.ttf",
+      "sha1": "4926fc185240d8804ad9c1e4a236c7c43a212a08"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_Condensed-SemiBold.ttf",
+      "sha1": "16d5d0d02b42d5c32741a4936e0b43104c8c23a3"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_Condensed-Thin.ttf",
+      "sha1": "ba3b0fda24c5fd305fee22578136232143a3f87d"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_ExtraCondensed-Black.ttf",
+      "sha1": "f30fae3f9cfdb39acf8bb44da42606bcfa62a0c3"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_ExtraCondensed-Bold.ttf",
+      "sha1": "6373ec5aa48f73ab5cc9e222d379c10cdeaa96d1"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_ExtraCondensed-ExtraBold.ttf",
+      "sha1": "487cbf49292ea0086cc69bbc02cf83d9d06b90a7"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_ExtraCondensed-ExtraLight.ttf",
+      "sha1": "9c0700f90f8edf32a448af25f266d914d0f41ae5"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_ExtraCondensed-Light.ttf",
+      "sha1": "0f38777ec999280f2c44255a4984fcb979fc8d67"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_ExtraCondensed-Medium.ttf",
+      "sha1": "c233f6d1f569c148330490d7daa8e4280f55d0b3"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_ExtraCondensed-Regular.ttf",
+      "sha1": "e492fe6eee585d5678aa80d40e018aaf2036aa6e"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_ExtraCondensed-SemiBold.ttf",
+      "sha1": "c8acd411ed0f40ff4f9e1fe515b102f1378e7205"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_ExtraCondensed-Thin.ttf",
+      "sha1": "f513e43c597ca282aadc439e6f54139c7fc937f1"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_SemiCondensed-Black.ttf",
+      "sha1": "9d9601b933f324a68fc34e9e0da47dbf765b0e37"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_SemiCondensed-Bold.ttf",
+      "sha1": "06a739d73b73e0b97ea1b65e951dc820eb02f12f"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_SemiCondensed-ExtraBold.ttf",
+      "sha1": "fbb55f67739b353c85b6d8a2986bac6adc3f7a55"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_SemiCondensed-ExtraLight.ttf",
+      "sha1": "3a85dc9f2dcec4bad2e598169bfc97788b589660"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_SemiCondensed-Light.ttf",
+      "sha1": "c3b32d7915a8cbfa3942899443ab665ff2d75616"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_SemiCondensed-Medium.ttf",
+      "sha1": "d970114f65f9329d4b10c8f242aadc843972a0c6"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_SemiCondensed-Regular.ttf",
+      "sha1": "5939a915c1a4013585973dc57aa584c29d69d078"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_SemiCondensed-SemiBold.ttf",
+      "sha1": "5573ff1e8a43f4c4dfe947c4ab6e90fc4293619f"
+    },
+    {
+      "path": "src/assets/fonts/static/NotoSansMalayalam_SemiCondensed-Thin.ttf",
+      "sha1": "c101c68bc3277854173a553bb5531991e330adcd"
+    }
+  ]
+}

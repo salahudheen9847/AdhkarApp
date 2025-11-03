@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import Sound from "react-native-sound";
-import { adhkar } from "../../data/duaMarichavark";
+import { duaMarichavark } from "../../data/duaMarichavark";
 import { haddad } from "../../data/haddad";
 import { duaQabar } from "../../data/duaQabar";
 import { Animated } from "react-native";
@@ -22,12 +22,24 @@ export const useDhikrAudio = (type: string) => {
 
   const { currentDuaList, audioFileName, title } = useMemo(() => {
     switch (type) {
-      case "adhkar":
-        return { currentDuaList: adhkar, audioFileName: "adhkar_full.mp3", title: "📿 الدعاء للميت" };
+      case "duaMarichavark": // ✅ changed from adhkar
+        return {
+          currentDuaList: duaMarichavark,
+          audioFileName: "dua_marichavark.mp3",
+          title: "📿 ദുആ മരിച്ചവർക്കായി",
+        };
       case "haddad":
-        return { currentDuaList: haddad, audioFileName: "haddad_full.mp3", title: "📖 راتب الحداد" };
+        return {
+          currentDuaList: haddad,
+          audioFileName: "haddad_full.mp3",
+          title: "📖 راتب الحداد",
+        };
       default:
-        return { currentDuaList: duaQabar, audioFileName: "dua_qabar_full.mp3", title: "🕋 دعاء القبر" };
+        return {
+          currentDuaList: duaQabar,
+          audioFileName: "dua_qabar_full.mp3",
+          title: "🕋 دعاء القبر",
+        };
     }
   }, [type]);
 

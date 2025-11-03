@@ -26,14 +26,13 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-	  <!-- Do not change NSAllowsArbitraryLoads to true, or you will risk app rejection! -->
 		<key>NSAllowsArbitraryLoads</key>
 		<false/>
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -48,5 +47,49 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>ScheherazadeNew-Bold.ttf</string>
+		<string>ScheherazadeNew-Medium.ttf</string>
+		<string>ScheherazadeNew-Regular.ttf</string>
+		<string>ScheherazadeNew-SemiBold.ttf</string>
+		<string>NotoSansMalayalam-VariableFont_wdth,wght.ttf</string>
+		<string>NotoSansMalayalam-Black.ttf</string>
+		<string>NotoSansMalayalam-Bold.ttf</string>
+		<string>NotoSansMalayalam-ExtraBold.ttf</string>
+		<string>NotoSansMalayalam-ExtraLight.ttf</string>
+		<string>NotoSansMalayalam-Light.ttf</string>
+		<string>NotoSansMalayalam-Medium.ttf</string>
+		<string>NotoSansMalayalam-Regular.ttf</string>
+		<string>NotoSansMalayalam-SemiBold.ttf</string>
+		<string>NotoSansMalayalam-Thin.ttf</string>
+		<string>NotoSansMalayalam_Condensed-Black.ttf</string>
+		<string>NotoSansMalayalam_Condensed-Bold.ttf</string>
+		<string>NotoSansMalayalam_Condensed-ExtraBold.ttf</string>
+		<string>NotoSansMalayalam_Condensed-ExtraLight.ttf</string>
+		<string>NotoSansMalayalam_Condensed-Light.ttf</string>
+		<string>NotoSansMalayalam_Condensed-Medium.ttf</string>
+		<string>NotoSansMalayalam_Condensed-Regular.ttf</string>
+		<string>NotoSansMalayalam_Condensed-SemiBold.ttf</string>
+		<string>NotoSansMalayalam_Condensed-Thin.ttf</string>
+		<string>NotoSansMalayalam_ExtraCondensed-Black.ttf</string>
+		<string>NotoSansMalayalam_ExtraCondensed-Bold.ttf</string>
+		<string>NotoSansMalayalam_ExtraCondensed-ExtraBold.ttf</string>
+		<string>NotoSansMalayalam_ExtraCondensed-ExtraLight.ttf</string>
+		<string>NotoSansMalayalam_ExtraCondensed-Light.ttf</string>
+		<string>NotoSansMalayalam_ExtraCondensed-Medium.ttf</string>
+		<string>NotoSansMalayalam_ExtraCondensed-Regular.ttf</string>
+		<string>NotoSansMalayalam_ExtraCondensed-SemiBold.ttf</string>
+		<string>NotoSansMalayalam_ExtraCondensed-Thin.ttf</string>
+		<string>NotoSansMalayalam_SemiCondensed-Black.ttf</string>
+		<string>NotoSansMalayalam_SemiCondensed-Bold.ttf</string>
+		<string>NotoSansMalayalam_SemiCondensed-ExtraBold.ttf</string>
+		<string>NotoSansMalayalam_SemiCondensed-ExtraLight.ttf</string>
+		<string>NotoSansMalayalam_SemiCondensed-Light.ttf</string>
+		<string>NotoSansMalayalam_SemiCondensed-Medium.ttf</string>
+		<string>NotoSansMalayalam_SemiCondensed-Regular.ttf</string>
+		<string>NotoSansMalayalam_SemiCondensed-SemiBold.ttf</string>
+		<string>NotoSansMalayalam_SemiCondensed-Thin.ttf</string>
+	</array>
 </dict>
 </plist>

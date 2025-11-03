@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import { View, Text, TouchableOpacity, StatusBar, Animated } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/MaterialIcons";
@@ -9,6 +9,24 @@ import { YoutubeButton } from "../../component/YoutubeButton";
 import { WhatsappButton } from "../../component/WhatsappButton";
 import { useDhikrAudio } from "./useDhikrAudio";
 import { styles, localStyles } from "../../styles/dhikrscreenstyle";
+
+import { duaMarichavarkMalayalam } from "../../data/duaMarichavarkMalayalam";
+import { duaQabarMalayalam } from "../../data/duaQabarMalayalam";
+import { haddadMalayalam } from "../../data/haddadMalayalam";
+
+// 🔹 Keep textStyle outside component to avoid re-creation
+const textStyle = {
+  arabic: {
+    textAlign: "center" as const,
+    fontFamily: "ScheherazadeNew-Regular",
+  },
+  malayalam: {
+    textAlign: "center" as const,
+    color: "#d1d5db",
+    fontFamily: "NotoSansMalayalam-Regular",
+    marginTop: 6,
+  },
+};
 
 const HeaderTitle = ({ text }: { text: string }) => (
   <View style={localStyles.headerTitleContainer}>
@@ -39,36 +57,69 @@ export default function DhikrScreen() {
     onChangeRate,
   } = useDhikrAudio(type);
 
+  // ✅ Use useMemo to prevent ESLint/react-hooks warnings
+  const malayalamList = useMemo(() => {
+    switch (type) {
+      case "duaMarichavark":
+        return duaMarichavarkMalayalam;
+      case "duaQabar":
+        return duaQabarMalayalam;
+      case "haddad":
+        return haddadMalayalam;
+      default:
+        return [];
+    }
+  }, [type]);
+
+  // 🔹 Render each dua item
   const renderDuaItem = useCallback(
-    ({ item }: { item: typeof currentDuaList[0] }) => (
-      <View
-        style={[
-          styles.textContainer,
-          currentIndex === item.id && styles.activeTextContainer,
-        ]}
-      >
-        <Text
+    ({ item }: { item: typeof currentDuaList[0] }) => {
+      const malItem = malayalamList.find((m) => m.id === item.id);
+
+      return (
+        <View
           style={[
-            styles.text,
-            currentIndex === item.id && styles.activeText,
-            { fontSize, lineHeight: fontSize * 1.5 },
+            styles.textContainer,
+            currentIndex === item.id && styles.activeTextContainer,
           ]}
         >
-          {item.text}
-        </Text>
-      </View>
-    ),
-    [currentIndex, fontSize]
+          {/* Arabic text */}
+          <Text
+            style={[
+              styles.text,
+              currentIndex === item.id && styles.activeText,
+              textStyle.arabic,
+              {
+                fontSize,
+                lineHeight: fontSize * 1.5,
+              },
+            ]}
+          >
+            {item.text}
+          </Text>
+
+          {/* Malayalam translation */}
+          {malItem && (
+            <Text
+              style={[
+                textStyle.malayalam,
+                { fontSize: fontSize * 0.7, lineHeight: fontSize },
+              ]}
+            >
+              {malItem.text}
+            </Text>
+          )}
+        </View>
+      );
+    },
+    [currentIndex, fontSize, malayalamList]
   );
 
   return (
-    <SafeAreaView
-      style={styles.container}
-      edges={["left", "right", "bottom"]} // 🔹 top inset ഒഴിവാക്കി
-    >
+    <SafeAreaView style={styles.container} edges={["left", "right", "bottom"]}>
       <StatusBar backgroundColor="#000" barStyle="light-content" translucent={false} />
 
-      {/* 🔹 Header */}
+      {/* Header */}
       <Animated.View
         style={[
           styles.headerRow,
@@ -90,10 +141,7 @@ export default function DhikrScreen() {
           },
         ]}
       >
-        <TouchableOpacity
-          style={styles.backButton}
-          onPress={() => navigation.goBack()}
-        >
+        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
           <Text style={styles.backText}>← Back</Text>
         </TouchableOpacity>
 
@@ -102,27 +150,23 @@ export default function DhikrScreen() {
           <View style={localStyles.gapStyle} />
           <WhatsappButton />
           <View style={localStyles.gapStyle} />
-
-          {/* 🔹 Play Button (Big & Centered Slightly) */}
- <TouchableOpacity
-  style={localStyles.playButton}
-  onPress={() => {
-    setShowPlayer(true);
-    playAudio();
-  }}
->
-  <Icon
-    name={isPlaying ? "pause-circle-filled" : "play-circle-filled"}
-    size={72}
-    color={isPlaying ? "#e11d48" : "#22c55e"}
-  />
-</TouchableOpacity>
-
-
+          <TouchableOpacity
+            style={localStyles.playButton}
+            onPress={() => {
+              setShowPlayer(true);
+              playAudio();
+            }}
+          >
+            <Icon
+              name={isPlaying ? "pause-circle-filled" : "play-circle-filled"}
+              size={72}
+              color={isPlaying ? "#e11d48" : "#22c55e"}
+            />
+          </TouchableOpacity>
         </View>
       </Animated.View>
 
-      {/* 🔹 Dua List */}
+      {/* Dua List */}
       <Animated.FlatList
         style={styles.fullFlex}
         contentContainerStyle={styles.flatListContent}
@@ -142,7 +186,7 @@ export default function DhikrScreen() {
         scrollEventThrottle={16}
       />
 
-      {/* 🔹 Bottom Player */}
+      {/* Player Controls */}
       {showPlayer && (
         <PlayerControls
           currentTime={currentTime}

@@ -38,6 +38,13 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
   onClose,
   style,
 }) => {
+  // 🔹 Format time (MM:SS)
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  };
+
   return (
     <LinearGradient
       colors={["#1e3a8a", "#0f172a"]}
@@ -63,16 +70,20 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
         minimumTrackTintColor="#facc15"
         maximumTrackTintColor="#475569"
         thumbTintColor="#e11d48"
-        onValueChange={onSeek}
+        onSlidingComplete={onSeek} // smoother seek
       />
 
       {/* 🔹 Time + Play / Pause */}
       <View style={styles.controls}>
         <Text style={styles.timeText}>
-          {Math.floor(currentTime)}s / {Math.floor(duration)}s
+          {formatTime(currentTime)} / {formatTime(duration)}
         </Text>
 
-        <TouchableOpacity onPress={onPlayPause} style={styles.playButton}>
+        <TouchableOpacity
+          onPress={onPlayPause}
+          style={styles.playButton}
+          accessibilityLabel="Play or Pause"
+        >
           <Icon
             name={isPlaying ? "stop-circle" : "play-circle-filled"}
             size={44}

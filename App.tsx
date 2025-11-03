@@ -13,6 +13,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 // Screens
 import HomeScreen from "./src/screens/HomeScreen";
 import DhikrScreen from "./src/screens/DhikrScreen/DhikrScreen";
+import TranslationScreen from "./src/screens/TranslationScreen"; // ✅ പുതിയ Translation page
 
 const Stack = createNativeStackNavigator();
 
@@ -49,6 +50,18 @@ export default function App() {
         >
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Dhikr" component={DhikrScreen} />
+
+          {/* ✅ Translation Screen add ചെയ്യുന്നു */}
+          <Stack.Screen
+            name="Translation"
+            component={TranslationScreen}
+            options={{
+              headerShown: true,
+              title: "മലയാളം വിവർത്തനം",
+              headerStyle: { backgroundColor: "#0f172a" },
+              headerTintColor: "#fff",
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

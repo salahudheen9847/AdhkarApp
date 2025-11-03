@@ -23,9 +23,10 @@ export default function HomeScreen() {
   const navigation = useNavigation<any>();
   const [searchQuery, setSearchQuery] = useState("");
 
+  // 📿 Dua Collection
   const duaItems = [
     {
-      id: "adhkar",
+      id: "duaMarichavark", // ✅ changed from "adhkar"
       title: "Dua Marichavark",
       image: require("../assets/adhkar_icon.png"),
       gradient: ["#fff8e1", "#ffedd5"],
@@ -38,6 +39,7 @@ export default function HomeScreen() {
     },
   ];
 
+  // 📖 Ratib Collection
   const ratibItems = [
     {
       id: "haddad",

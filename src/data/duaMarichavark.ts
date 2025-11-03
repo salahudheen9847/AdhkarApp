@@ -5,7 +5,7 @@ export type AdhkarItem = {
   end: number;
 };
 
-export const adhkar: AdhkarItem[] = [
+export const duaMarichavark: AdhkarItem[] = [
   {
     id: 1,
     text: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ، اللَّهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ وَعَلَى آلِ سَيِّدِنَا مُحَمَّدٍ.",
