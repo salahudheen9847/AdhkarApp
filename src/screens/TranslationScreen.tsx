@@ -16,8 +16,13 @@ export default function TranslationScreen() {
 
         return (
           <View key={arabicItem.id} style={styles.itemContainer}>
+            {/* Arabic Text */}
             <Text style={styles.arabic}>{arabicItem.text}</Text>
-            {malItem && <Text style={styles.malayalam}>{malItem.text}</Text>}
+
+            {/* Malayalam Translation */}
+            {malItem && (
+              <Text style={styles.malayalam}>{malItem.text}</Text>
+            )}
           </View>
         );
       })}
@@ -28,29 +33,32 @@ export default function TranslationScreen() {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: "#0f172a",
+    backgroundColor: "#0f172a", // navy-like dark background
     padding: 16,
-    paddingBottom: 40,
+    paddingBottom: 50,
   },
   itemContainer: {
-    marginBottom: 24,
+    marginBottom: 28,
     borderBottomWidth: 1,
     borderBottomColor: "#1e293b",
-    paddingBottom: 16,
+    paddingBottom: 18,
+    backgroundColor: "rgba(255, 255, 255, 0.03)",
+    borderRadius: 12,
   },
   arabic: {
     fontSize: 28,
     color: "#ffffff",
     textAlign: "center",
     marginBottom: 10,
+    lineHeight: 42,
     fontFamily: "ScheherazadeNew-Regular", // ✅ Arabic-friendly font
-    lineHeight: 40,
+    writingDirection: "rtl",
   },
   malayalam: {
     fontSize: 20,
     color: "#d1d5db",
     textAlign: "center",
-    lineHeight: 32,
-    fontFamily: "NotoSansMalayalam-Regular", // ✅ Optional Malayalam font (if available)
+    lineHeight: 30,
+    fontFamily: "NotoSansMalayalam-Regular", // ✅ Optional Malayalam font (if installed)
   },
 });

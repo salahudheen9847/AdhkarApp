@@ -1,5 +1,12 @@
-import React, { useCallback, useMemo } from "react";
-import { View, Text, TouchableOpacity, StatusBar, Animated } from "react-native";
+import React, { useCallback, useMemo, useState } from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StatusBar,
+  Animated,
+  StyleSheet,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { useRoute, useNavigation } from "@react-navigation/native";
@@ -14,7 +21,7 @@ import { duaMarichavarkMalayalam } from "../../data/duaMarichavarkMalayalam";
 import { duaQabarMalayalam } from "../../data/duaQabarMalayalam";
 import { haddadMalayalam } from "../../data/haddadMalayalam";
 
-// 🔹 Keep textStyle outside component to avoid re-creation
+// ✅ Text Styles
 const textStyle = {
   arabic: {
     textAlign: "center" as const,
@@ -28,6 +35,24 @@ const textStyle = {
   },
 };
 
+// ✅ Language Toggle Styles
+const langStyles = StyleSheet.create({
+  toggleRow: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  toggleText: {
+    fontSize: 16,
+    marginHorizontal: 4,
+  },
+  activeText: {
+    color: "#22c55e",
+  },
+  inactiveText: {
+    color: "#9ca3af",
+  },
+});
+
 const HeaderTitle = ({ text }: { text: string }) => (
   <View style={localStyles.headerTitleContainer}>
     <Text style={styles.title}>{text}</Text>
@@ -38,6 +63,8 @@ export default function DhikrScreen() {
   const { params } = useRoute<any>();
   const navigation = useNavigation();
   const { type } = params;
+
+  const [languageMode, setLanguageMode] = useState<"arabic" | "malayalam">("arabic");
 
   const {
     currentIndex,
@@ -57,7 +84,6 @@ export default function DhikrScreen() {
     onChangeRate,
   } = useDhikrAudio(type);
 
-  // ✅ Use useMemo to prevent ESLint/react-hooks warnings
   const malayalamList = useMemo(() => {
     switch (type) {
       case "duaMarichavark":
@@ -71,11 +97,9 @@ export default function DhikrScreen() {
     }
   }, [type]);
 
-  // 🔹 Render each dua item
   const renderDuaItem = useCallback(
     ({ item }: { item: typeof currentDuaList[0] }) => {
       const malItem = malayalamList.find((m) => m.id === item.id);
-
       return (
         <View
           style={[
@@ -83,27 +107,24 @@ export default function DhikrScreen() {
             currentIndex === item.id && styles.activeTextContainer,
           ]}
         >
-          {/* Arabic text */}
+          {/* ✅ Arabic always visible */}
           <Text
             style={[
               styles.text,
               currentIndex === item.id && styles.activeText,
               textStyle.arabic,
-              {
-                fontSize,
-                lineHeight: fontSize * 1.5,
-              },
+              { fontSize, lineHeight: fontSize * 1.5 },
             ]}
           >
             {item.text}
           </Text>
 
-          {/* Malayalam translation */}
-          {malItem && (
+          {/* ✅ Malayalam visible only when chosen */}
+          {languageMode === "malayalam" && malItem && (
             <Text
               style={[
                 textStyle.malayalam,
-                { fontSize: fontSize * 0.7, lineHeight: fontSize },
+                { fontSize: fontSize * 0.75, lineHeight: fontSize },
               ]}
             >
               {malItem.text}
@@ -112,14 +133,14 @@ export default function DhikrScreen() {
         </View>
       );
     },
-    [currentIndex, fontSize, malayalamList]
+    [currentIndex, fontSize, languageMode, malayalamList]
   );
 
   return (
     <SafeAreaView style={styles.container} edges={["left", "right", "bottom"]}>
-      <StatusBar backgroundColor="#000" barStyle="light-content" translucent={false} />
+      <StatusBar backgroundColor="#000" barStyle="light-content" />
 
-      {/* Header */}
+      {/* ✅ Animated Header */}
       <Animated.View
         style={[
           styles.headerRow,
@@ -141,7 +162,10 @@ export default function DhikrScreen() {
           },
         ]}
       >
-        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
           <Text style={styles.backText}>← Back</Text>
         </TouchableOpacity>
 
@@ -150,6 +174,30 @@ export default function DhikrScreen() {
           <View style={localStyles.gapStyle} />
           <WhatsappButton />
           <View style={localStyles.gapStyle} />
+
+          {/* ✅ Clean language toggle */}
+          <View style={langStyles.toggleRow}>
+            {["arabic", "malayalam"].map((mode) => (
+              <TouchableOpacity
+                key={mode}
+                onPress={() => setLanguageMode(mode as any)}
+              >
+                <Text
+                  style={[
+                    langStyles.toggleText,
+                    languageMode === mode
+                      ? langStyles.activeText
+                      : langStyles.inactiveText,
+                  ]}
+                >
+                  {mode.charAt(0).toUpperCase() + mode.slice(1)}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+
+          <View style={localStyles.gapStyle} />
+
           <TouchableOpacity
             style={localStyles.playButton}
             onPress={() => {
@@ -159,14 +207,14 @@ export default function DhikrScreen() {
           >
             <Icon
               name={isPlaying ? "pause-circle-filled" : "play-circle-filled"}
-              size={72}
+              size={68}
               color={isPlaying ? "#e11d48" : "#22c55e"}
             />
           </TouchableOpacity>
         </View>
       </Animated.View>
 
-      {/* Dua List */}
+      {/* ✅ Animated.FlatList */}
       <Animated.FlatList
         style={styles.fullFlex}
         contentContainerStyle={styles.flatListContent}
@@ -174,11 +222,6 @@ export default function DhikrScreen() {
         keyExtractor={(item) => item.id.toString()}
         renderItem={renderDuaItem}
         ListHeaderComponent={<HeaderTitle text={title} />}
-        getItemLayout={(_, index) => ({
-          length: fontSize * 1.5 + 24,
-          offset: (fontSize * 1.5 + 24) * index,
-          index,
-        })}
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { y: scrollY } } }],
           { useNativeDriver: true }
@@ -186,7 +229,7 @@ export default function DhikrScreen() {
         scrollEventThrottle={16}
       />
 
-      {/* Player Controls */}
+      {/* ✅ Player Controls */}
       {showPlayer && (
         <PlayerControls
           currentTime={currentTime}

@@ -66,4 +66,22 @@ export const localStyles = StyleSheet.create({
   playIcon: {
     color: "#fff",
   },
+  langButton: {
+  backgroundColor: "#334155",
+  paddingHorizontal: 10,
+  paddingVertical: 6,
+  borderRadius: 8,
+},
+langText: {
+  color: "#fff",
+  fontSize: 14,
+},
+langRow: {
+  flexDirection: "row",
+  alignItems: "center",
+},
+tickButton: {
+  marginLeft: 8,
+},
+
 });
