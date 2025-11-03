@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import Sound from "react-native-sound";
-import { duaMarichavark } from "../../data/duaMarichavark";
-import { haddad } from "../../data/haddad";
-import { duaQabar } from "../../data/duaQabar";
+import { duaMarichavark } from "../data/duaMarichavark";
+import { haddad } from "../data/haddad";
+import { duaQabar } from "../data/duaQabar";
 import { Animated } from "react-native";
 
 Sound.setCategory("Playback");

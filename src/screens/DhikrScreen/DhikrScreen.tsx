@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
   StatusBar,
   Animated,
-  StyleSheet,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/MaterialIcons";
@@ -14,66 +13,25 @@ import { useRoute, useNavigation } from "@react-navigation/native";
 import { PlayerControls } from "../../component/PlayerControls";
 import { YoutubeButton } from "../../component/YoutubeButton";
 import { WhatsappButton } from "../../component/WhatsappButton";
-import { useDhikrAudio } from "./useDhikrAudio";
+import { useDhikrAudio } from "../../hooks/useDhikrAudio";
 import { styles, localStyles } from "../../styles/dhikrscreenstyle";
+import { langStyles } from "../../styles/languageStyles";
 
 import { duaMarichavarkMalayalam } from "../../data/duaMarichavarkMalayalam";
 import { duaQabarMalayalam } from "../../data/duaQabarMalayalam";
 import { haddadMalayalam } from "../../data/haddadMalayalam";
 
-// ✅ Text Styles
-const textStyle = {
-  arabic: {
-    textAlign: "center" as const,
-    fontFamily: "ScheherazadeNew-Regular",
-  },
-  malayalam: {
-    textAlign: "center" as const,
-    color: "#d1d5db",
-    fontFamily: "NotoSansMalayalam-Regular",
-    marginTop: 6,
-  },
-};
-
-// ✅ Language Toggle Styles
-const langStyles = StyleSheet.create({
-  toggleColumn: {
-    flexDirection: "column",
-    alignItems: "flex-start",
-    marginLeft: 8,
-  },
-  toggleItem: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginVertical: 2,
-  },
-  toggleText: {
-    fontSize: 16,
-    marginLeft: 4,
-  },
-  activeText: {
-    color: "#22c55e",
-  },
-  inactiveText: {
-    color: "#9ca3af",
-  },
-});
-
-const HeaderTitle = ({ text }: { text: string }) => (
-  <View style={localStyles.headerTitleContainer}>
-    <Text style={styles.title}>{text}</Text>
-  </View>
-);
+import { HeaderTitle } from "./HeaderTitle";
+import { renderDuaItem } from "./renderDuaItem";
 
 export default function DhikrScreen() {
   const { params } = useRoute<any>();
   const navigation = useNavigation();
   const { type } = params;
 
-  // ✅ Default: Arabic
-  const [languageMode, setLanguageMode] = useState<"arabic" | "malayalam">(
-    "arabic"
-  );
+  const [languageMode, setLanguageMode] = useState<
+    "arabic" | "malayalam" | "expanded"
+  >("arabic");
 
   const {
     currentIndex,
@@ -106,42 +64,10 @@ export default function DhikrScreen() {
     }
   }, [type]);
 
-  const renderDuaItem = useCallback(
-    ({ item }: { item: typeof currentDuaList[0] }) => {
-      const malItem = malayalamList.find((m) => m.id === item.id);
-      return (
-        <View
-          style={[
-            styles.textContainer,
-            currentIndex === item.id && styles.activeTextContainer,
-          ]}
-        >
-          {/* ✅ Arabic always visible */}
-          <Text
-            style={[
-              styles.text,
-              currentIndex === item.id && styles.activeText,
-              textStyle.arabic,
-              { fontSize, lineHeight: fontSize * 1.5 },
-            ]}
-          >
-            {item.text}
-          </Text>
-
-          {/* ✅ Malayalam visible only when chosen */}
-          {languageMode === "malayalam" && malItem && (
-            <Text
-              style={[
-                textStyle.malayalam,
-                { fontSize: fontSize * 0.75, lineHeight: fontSize },
-              ]}
-            >
-              {malItem.text}
-            </Text>
-          )}
-        </View>
-      );
-    },
+  const renderItem = useCallback(
+    ({ item }: { item: typeof currentDuaList[0] }) =>
+      renderDuaItem(item, currentIndex ?? 0,
+ fontSize, languageMode, malayalamList),
     [currentIndex, fontSize, languageMode, malayalamList]
   );
 
@@ -149,7 +75,7 @@ export default function DhikrScreen() {
     <SafeAreaView style={styles.container} edges={["left", "right", "bottom"]}>
       <StatusBar backgroundColor="#000" barStyle="light-content" />
 
-      {/* ✅ Animated Header */}
+      {/* Header */}
       <Animated.View
         style={[
           styles.headerRow,
@@ -184,31 +110,49 @@ export default function DhikrScreen() {
           <WhatsappButton />
           <View style={localStyles.gapStyle} />
 
-          {/* ✅ Language Toggle (Vertical list with checkmarks) */}
+          {/* Language Toggle */}
           <View style={langStyles.toggleColumn}>
-            {["arabic", "malayalam"].map((mode) => (
-              <TouchableOpacity
-                key={mode}
-                onPress={() => setLanguageMode(mode as any)}
-                style={langStyles.toggleItem}
+            <TouchableOpacity
+              onPress={() =>
+                setLanguageMode((prev) =>
+                  prev === "expanded"
+                    ? "arabic"
+                    : prev === "malayalam"
+                    ? "arabic"
+                    : "expanded"
+                )
+              }
+              style={langStyles.toggleItem}
+            >
+              <Text
+                style={[
+                  langStyles.toggleText,
+                  languageMode === "arabic"
+                    ? langStyles.activeText
+                    : langStyles.inactiveText,
+                ]}
               >
-                <Text
-                  style={[
-                    langStyles.toggleText,
-                    languageMode === mode
-                      ? langStyles.activeText
-                      : langStyles.inactiveText,
-                  ]}
-                >
-                  {languageMode === mode ? "✅ " : "☐ "}
-                  {mode.charAt(0).toUpperCase() + mode.slice(1)}
+                {languageMode === "malayalam"
+                  ? "✅ Malayalam"
+                  : "☑ Arabic ▼"}
+              </Text>
+            </TouchableOpacity>
+
+            {languageMode === "expanded" && (
+              <TouchableOpacity
+                onPress={() => setLanguageMode("malayalam")}
+                style={[langStyles.toggleItem, langStyles.toggleItemIndented]}
+              >
+                <Text style={[langStyles.toggleText, langStyles.activeText]}>
+                  Malayalam
                 </Text>
               </TouchableOpacity>
-            ))}
+            )}
           </View>
 
           <View style={localStyles.gapStyle} />
 
+          {/* Play Button */}
           <TouchableOpacity
             style={localStyles.playButton}
             onPress={() => {
@@ -225,13 +169,13 @@ export default function DhikrScreen() {
         </View>
       </Animated.View>
 
-      {/* ✅ Animated.FlatList */}
+      {/* Dua List */}
       <Animated.FlatList
         style={styles.fullFlex}
         contentContainerStyle={styles.flatListContent}
         data={currentDuaList}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={renderDuaItem}
+        renderItem={renderItem}
         ListHeaderComponent={<HeaderTitle text={title} />}
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { y: scrollY } } }],
@@ -240,7 +184,6 @@ export default function DhikrScreen() {
         scrollEventThrottle={16}
       />
 
-      {/* ✅ Player Controls */}
       {showPlayer && (
         <PlayerControls
           currentTime={currentTime}
