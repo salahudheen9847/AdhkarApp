@@ -62,8 +62,11 @@ export default function DhikrScreen() {
   );
 
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar backgroundColor="transparent" barStyle="light-content" translucent />
+    <SafeAreaView
+      style={styles.container}
+      edges={["left", "right", "bottom"]} // 🔹 top inset ഒഴിവാക്കി
+    >
+      <StatusBar backgroundColor="#000" barStyle="light-content" translucent={false} />
 
       {/* 🔹 Header */}
       <Animated.View
@@ -99,18 +102,23 @@ export default function DhikrScreen() {
           <View style={localStyles.gapStyle} />
           <WhatsappButton />
           <View style={localStyles.gapStyle} />
-          <TouchableOpacity
-            onPress={() => {
-              setShowPlayer(true);
-              playAudio();
-            }}
-          >
-            <Icon
-              name={isPlaying ? "pause-circle-filled" : "play-circle-filled"}
-              size={42}
-              color={isPlaying ? "#e11d48" : "#22c55e"}
-            />
-          </TouchableOpacity>
+
+          {/* 🔹 Play Button (Big & Centered Slightly) */}
+ <TouchableOpacity
+  style={localStyles.playButton}
+  onPress={() => {
+    setShowPlayer(true);
+    playAudio();
+  }}
+>
+  <Icon
+    name={isPlaying ? "pause-circle-filled" : "play-circle-filled"}
+    size={72}
+    color={isPlaying ? "#e11d48" : "#22c55e"}
+  />
+</TouchableOpacity>
+
+
         </View>
       </Animated.View>
 
@@ -134,6 +142,7 @@ export default function DhikrScreen() {
         scrollEventThrottle={16}
       />
 
+      {/* 🔹 Bottom Player */}
       {showPlayer && (
         <PlayerControls
           currentTime={currentTime}

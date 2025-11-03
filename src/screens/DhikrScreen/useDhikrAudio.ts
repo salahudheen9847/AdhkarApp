@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import Sound from "react-native-sound";
-import { adhkar } from "../../data/adhkar";
+import { adhkar } from "../../data/duaMarichavark";
 import { haddad } from "../../data/haddad";
 import { duaQabar } from "../../data/duaQabar";
 import { Animated } from "react-native";
@@ -12,7 +12,7 @@ export const useDhikrAudio = (type: string) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [fontSize, setFontSize] = useState(20);
+  const [fontSize, setFontSize] = useState(27);
   const [playbackRate, setPlaybackRate] = useState(1);
   const [showPlayer, setShowPlayer] = useState(false);
 
