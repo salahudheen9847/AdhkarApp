@@ -1,113 +1,162 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
   TouchableOpacity,
-  StyleSheet,
   Image,
   StatusBar,
+  ScrollView,
+  TextInput,
+  KeyboardAvoidingView,
+  Platform,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Icon from "react-native-vector-icons/Feather";
+import LinearGradient from "react-native-linear-gradient";
+import { homeStyles as styles } from "../styles/homeStyles"; // Home-specific styles
+import { commonStyles } from "../styles/common"; // ✅ Import common styles
 
 export default function HomeScreen() {
   const navigation = useNavigation<any>();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const duaItems = [
+    {
+      id: "adhkar",
+      title: "Dua Marichavark",
+      image: require("../assets/adhkar_icon.png"),
+      gradient: ["#fff8e1", "#ffedd5"],
+    },
+    {
+      id: "duaQabar",
+      title: "Dua Qabar",
+      image: require("../assets/duaQabar.png"),
+      gradient: ["#fef3c7", "#fde68a"],
+    },
+  ];
+
+  const ratibItems = [
+    {
+      id: "haddad",
+      title: "Ratib al-Haddad",
+      image: require("../assets/haddad_icon.png"),
+      gradient: ["#fef9c3", "#fef08a"],
+    },
+  ];
+
+  const filteredDuas = duaItems.filter((item) =>
+    item.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+  const filteredRatibs = ratibItems.filter((item) =>
+    item.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar
-        backgroundColor="transparent"
-        barStyle="dark-content"
-        translucent={true}
-      />
+    <KeyboardAvoidingView
+      style={commonStyles.container}
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
+      keyboardVerticalOffset={Platform.OS === "ios" ? 60 : 0}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <SafeAreaView
+          style={[commonStyles.container, commonStyles.lightBg, styles.container]}
+        >
+          <StatusBar
+            backgroundColor="transparent"
+            barStyle="dark-content"
+            translucent={true}
+          />
 
-      <Text style={styles.title}>📿 Dhikr Collection</Text>
-
-      {/* Dua Card with inner grid */}
-      <TouchableOpacity style={styles.card}>
-        <View style={styles.innerGrid}>
-          {/* Dua Marichavark */}
-          <TouchableOpacity
-            style={styles.innerCard}
-            onPress={() => navigation.navigate("Dhikr", { type: "adhkar" })}
-          >
-            <Image
-              source={require("../assets/adhkar_icon.png")}
-              style={styles.icon}
+          {/* 🔍 Search Bar */}
+          <View style={[commonStyles.centerContent, styles.searchContainer]}>
+            <Icon
+              name="search"
+              size={18}
+              color="#92400e"
+              style={styles.searchIcon}
             />
-            <Text style={styles.cardText}>Dua Marichavark</Text>
-          </TouchableOpacity>
-
-          {/* Dua Qabar */}
-          <TouchableOpacity
-            style={styles.innerCard}
-            onPress={() => navigation.navigate("Dhikr", { type: "duaQabar" })}
-          >
-            <Image
-              source={require("../assets/duaQabar.png")}
-              style={styles.icon}
+            <TextInput
+              style={styles.searchInput}
+              placeholder="Search duas or ratib..."
+              placeholderTextColor="#a16207"
+              value={searchQuery}
+              onChangeText={(text) => setSearchQuery(text)}
+              autoCapitalize="none"
+              autoCorrect={false}
+              returnKeyType="done"
             />
-            <Text style={styles.cardText}>Dua Qabar</Text>
-          </TouchableOpacity>
-        </View>
-      </TouchableOpacity>
+          </View>
 
-      {/* Ratib al-Haddad Card */}
-      <TouchableOpacity
-        style={styles.card}
-        onPress={() => navigation.navigate("Dhikr", { type: "haddad" })}
-      >
-        <Image
-          source={require("../assets/haddad_icon.png")}
-          style={styles.icon}
-        />
-        <Text style={styles.cardText}>Ratib al-Haddad</Text>
-      </TouchableOpacity>
-    </SafeAreaView>
+          {/* 🔽 Scroll Section */}
+          <ScrollView
+            contentContainerStyle={[styles.scrollContent, commonStyles.centerContent]}
+            showsVerticalScrollIndicator={false}
+            keyboardShouldPersistTaps="always"
+          >
+            {/* 📿 Dua Collection */}
+            {filteredDuas.length > 0 && (
+              <>
+                <Text style={[commonStyles.sectionTitle, styles.sectionTitle]}>
+                  📿 Dua Collection
+                </Text>
+                <View style={styles.innerGrid}>
+                  {filteredDuas.map((item) => (
+                    <TouchableOpacity
+                      key={item.id}
+                      activeOpacity={0.9}
+                      onPress={() =>
+                        navigation.navigate("Dhikr", { type: item.id })
+                      }
+                    >
+                      <LinearGradient colors={item.gradient} style={styles.card}>
+                        <Image source={item.image} style={styles.icon} />
+                        <Text style={[commonStyles.highlightText, styles.cardText]}>
+                          {item.title}
+                        </Text>
+                      </LinearGradient>
+                    </TouchableOpacity>
+                  ))}
+                </View>
+              </>
+            )}
+
+            {/* 📖 Ratib Collection */}
+            {filteredRatibs.length > 0 && (
+              <>
+                <Text style={[commonStyles.sectionTitle, styles.sectionTitle]}>
+                  📖 Ratib Collection
+                </Text>
+                <View style={styles.innerGrid}>
+                  {filteredRatibs.map((item) => (
+                    <TouchableOpacity
+                      key={item.id}
+                      activeOpacity={0.9}
+                      onPress={() =>
+                        navigation.navigate("Dhikr", { type: item.id })
+                      }
+                    >
+                      <LinearGradient colors={item.gradient} style={styles.card}>
+                        <Image source={item.image} style={styles.icon} />
+                        <Text style={[commonStyles.highlightText, styles.cardText]}>
+                          {item.title}
+                        </Text>
+                      </LinearGradient>
+                    </TouchableOpacity>
+                  ))}
+                </View>
+              </>
+            )}
+
+            {/* ❌ No results */}
+            {filteredDuas.length === 0 && filteredRatibs.length === 0 && (
+              <Text style={styles.noResultText}>No matching items found</Text>
+            )}
+          </ScrollView>
+        </SafeAreaView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff7ed",
-    alignItems: "center",
-    paddingTop: 20,
-  },
-  title: {
-    fontSize: 26,
-    fontWeight: "700",
-    color: "#b45309",
-    marginBottom: 20,
-  },
-  card: {
-    backgroundColor: "#fef3c7",
-    padding: 20,
-    borderRadius: 20,
-    alignItems: "center",
-    width: 320,
-    marginVertical: 10,
-    elevation: 3,
-  },
-  innerGrid: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "100%",
-  },
-  innerCard: {
-    alignItems: "center",
-    width: 140,
-  },
-  icon: {
-    width: 60,
-    height: 60,
-    marginBottom: 10,
-    resizeMode: "contain",
-  },
-  cardText: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "#78350f",
-    textAlign: "center",
-  },
-});
