@@ -6,68 +6,84 @@ import {
   StyleSheet,
   StatusBar,
 } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+import {
+  NavigationContainer,
+  DefaultTheme,
+  DarkTheme,
+} from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-// Screens
+// 🧩 Theme Context
+import { ThemeProvider, useThemeContext } from "./src/context/theme";
+
+// 📱 Screens
 import HomeScreen from "./src/screens/HomeScreen";
 import DhikrScreen from "./src/screens/DhikrScreen/DhikrScreen";
-import TranslationScreen from "./src/screens/TranslationScreen"; // ✅ പുതിയ Translation page
+import TranslationScreen from "./src/screens/TranslationScreen";
 
 const Stack = createNativeStackNavigator();
 
+// 🌗 Root Navigator (uses theme)
+function RootNavigator() {
+  const { isDark } = useThemeContext();
+
+  return (
+    <NavigationContainer theme={isDark ? DarkTheme : DefaultTheme}>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Dhikr" component={DhikrScreen} />
+        <Stack.Screen
+          name="Translation"
+          component={TranslationScreen}
+          options={{
+            headerShown: true,
+            title: "മലയാളം വിവർത്തനം",
+            headerStyle: { backgroundColor: isDark ? "#1a1a1a" : "#0f172a" },
+            headerTintColor: "#fff",
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+// 🚀 Main App Component
 export default function App() {
   const [loading, setLoading] = useState(true);
 
+  // Simple splash / loading delay
   useEffect(() => {
-    // App load ആകുന്നതിന് മുൻപ് ചെറിയ delay കൊടുക്കാം
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1500); // 1.5 second delay
-
+    const timer = setTimeout(() => setLoading(false), 1500);
     return () => clearTimeout(timer);
   }, []);
 
+  // Show loader before app loads
   if (loading) {
-    // Loading indicator കാണിക്കാം
     return (
       <View style={styles.loaderContainer}>
         <StatusBar backgroundColor="#fff" barStyle="dark-content" />
-        <ActivityIndicator size="large" color="#007AFF" />
+        <ActivityIndicator size="large" color="#22c55e" />
       </View>
     );
   }
 
+  // 🌙 Wrap everything with SafeArea + ThemeProvider
   return (
     <SafeAreaProvider>
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="Home"
-          screenOptions={{
-            headerShown: false,
-          }}
-        >
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Dhikr" component={DhikrScreen} />
-
-          {/* ✅ Translation Screen add ചെയ്യുന്നു */}
-          <Stack.Screen
-            name="Translation"
-            component={TranslationScreen}
-            options={{
-              headerShown: true,
-              title: "മലയാളം വിവർത്തനം",
-              headerStyle: { backgroundColor: "#0f172a" },
-              headerTintColor: "#fff",
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <ThemeProvider>
+        <RootNavigator />
+      </ThemeProvider>
     </SafeAreaProvider>
   );
 }
 
+// 🎨 Styles
 const styles = StyleSheet.create({
   loaderContainer: {
     flex: 1,

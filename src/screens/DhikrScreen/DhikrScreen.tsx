@@ -5,15 +5,22 @@ import {
   TouchableOpacity,
   StatusBar,
   Animated,
+  StyleSheet,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { useRoute, useNavigation } from "@react-navigation/native";
 
+// 🎨 Theme Context
+import { useThemeContext } from "../../context/theme";
+
+// 🎧 Components & Hooks
 import { PlayerControls } from "../../component/PlayerControls";
 import { YoutubeButton } from "../../component/YoutubeButton";
 import { WhatsappButton } from "../../component/WhatsappButton";
 import { useDhikrAudio } from "../../hooks/useDhikrAudio";
+
+// 🧾 Styles & Data
 import { styles, localStyles } from "../../styles/dhikrscreenstyle";
 import { langStyles } from "../../styles/languageStyles";
 
@@ -29,10 +36,15 @@ export default function DhikrScreen() {
   const navigation = useNavigation();
   const { type } = params;
 
+  // 🌙 Theme Context
+  const { isDark, toggleTheme, colors } = useThemeContext();
+
+  // 🌐 Language toggle state
   const [languageMode, setLanguageMode] = useState<
     "arabic" | "malayalam" | "expanded"
   >("arabic");
 
+  // 🎧 Audio control hook
   const {
     currentIndex,
     currentTime,
@@ -51,6 +63,7 @@ export default function DhikrScreen() {
     onChangeRate,
   } = useDhikrAudio(type);
 
+  // 🕋 Malayalam dua list
   const malayalamList = useMemo(() => {
     switch (type) {
       case "duaMarichavark":
@@ -64,46 +77,75 @@ export default function DhikrScreen() {
     }
   }, [type]);
 
+  // 🕌 Render dua item
   const renderItem = useCallback(
     ({ item }: { item: typeof currentDuaList[0] }) =>
-      renderDuaItem(item, currentIndex ?? 0,
- fontSize, languageMode, malayalamList),
+      renderDuaItem(
+        item,
+        currentIndex ?? 0,
+        fontSize,
+        languageMode,
+        malayalamList
+      ),
     [currentIndex, fontSize, languageMode, malayalamList]
   );
 
+  // 🎨 Theme colors
+  const bgColor = colors.background;
+  const textColor = colors.text;
+
+  // 🧩 Static header styles
+  const headerStaticStyle = {
+    backgroundColor: colors.header,
+    borderBottomColor: colors.border,
+    shadowColor: colors.shadow,
+  };
+
+  // 🧩 Animated header styles
+  const headerAnimatedStyle = {
+    transform: [
+      {
+        translateY: scrollY.interpolate({
+          inputRange: [0, 100],
+          outputRange: [0, -100],
+          extrapolate: "clamp",
+        }),
+      },
+    ],
+    opacity: scrollY.interpolate({
+      inputRange: [0, 100],
+      outputRange: [1, 0],
+      extrapolate: "clamp",
+    }),
+  };
+
   return (
-    <SafeAreaView style={styles.container} edges={["left", "right", "bottom"]}>
-      <StatusBar backgroundColor="#000" barStyle="light-content" />
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: bgColor }]}
+      edges={["left", "right", "bottom"]}
+    >
+      <StatusBar
+        backgroundColor={isDark ? "#000" : "#fff"}
+        barStyle={isDark ? "light-content" : "dark-content"}
+      />
 
       {/* Header */}
       <Animated.View
         style={[
-          styles.headerRow,
-          {
-            transform: [
-              {
-                translateY: scrollY.interpolate({
-                  inputRange: [0, 100],
-                  outputRange: [0, -100],
-                  extrapolate: "clamp",
-                }),
-              },
-            ],
-            opacity: scrollY.interpolate({
-              inputRange: [0, 100],
-              outputRange: [1, 0],
-              extrapolate: "clamp",
-            }),
-          },
+          localAnimated.headerBase,
+          headerStaticStyle,
+          headerAnimatedStyle,
         ]}
       >
+        {/* Back Button */}
         <TouchableOpacity
           style={styles.backButton}
           onPress={() => navigation.goBack()}
         >
-          <Text style={styles.backText}>← Back</Text>
+          <Text style={[styles.backText, { color: textColor }]}>← Back</Text>
         </TouchableOpacity>
 
+        {/* Right side buttons */}
         <View style={localStyles.headerButtonRow}>
           <YoutubeButton type={type} />
           <View style={localStyles.gapStyle} />
@@ -152,7 +194,18 @@ export default function DhikrScreen() {
 
           <View style={localStyles.gapStyle} />
 
-          {/* Play Button */}
+          {/* 🌗 Theme Switch Button */}
+          <TouchableOpacity onPress={toggleTheme}>
+            <Icon
+              name={isDark ? "wb-sunny" : "dark-mode"}
+              size={28}
+              color={isDark ? "#ffcc00" : "#222"}
+            />
+          </TouchableOpacity>
+
+          <View style={localStyles.gapStyle} />
+
+          {/* 🎧 Play Button */}
           <TouchableOpacity
             style={localStyles.playButton}
             onPress={() => {
@@ -162,14 +215,14 @@ export default function DhikrScreen() {
           >
             <Icon
               name={isPlaying ? "pause-circle-filled" : "play-circle-filled"}
-              size={35}
-              color={isPlaying ? "#16d044ff" : "#22c55e"}
+              size={36}
+              color={isPlaying ? "#16d044" : "#22c55e"}
             />
           </TouchableOpacity>
         </View>
       </Animated.View>
 
-      {/* Dua List */}
+      {/* 📜 Dua List */}
       <Animated.FlatList
         style={styles.fullFlex}
         contentContainerStyle={styles.flatListContent}
@@ -184,6 +237,7 @@ export default function DhikrScreen() {
         scrollEventThrottle={16}
       />
 
+      {/* 🎵 Player Controls */}
       {showPlayer && (
         <PlayerControls
           currentTime={currentTime}
@@ -202,3 +256,10 @@ export default function DhikrScreen() {
     </SafeAreaView>
   );
 }
+
+// 🧾 Local Animated StyleSheet
+const localAnimated = StyleSheet.create({
+  headerBase: {
+    borderBottomWidth: 1,
+  },
+});

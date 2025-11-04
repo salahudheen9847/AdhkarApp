@@ -11,41 +11,42 @@ import {
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
+  StyleSheet,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/Feather";
 import LinearGradient from "react-native-linear-gradient";
-import { homeStyles as styles } from "../styles/homeStyles"; // Home-specific styles
-import { commonStyles } from "../styles/common"; // ✅ Import common styles
+import { homeStyles as styles } from "../styles/homeStyles";
+import { commonStyles } from "../styles/common";
+import { useThemeContext } from "../context/theme";
 
 export default function HomeScreen() {
   const navigation = useNavigation<any>();
   const [searchQuery, setSearchQuery] = useState("");
+  const { isDark, colors, toggleTheme } = useThemeContext();
 
-  // 📿 Dua Collection
   const duaItems = [
     {
-      id: "duaMarichavark", // ✅ changed from "adhkar"
+      id: "duaMarichavark",
       title: "Dua Marichavark",
       image: require("../assets/adhkar_icon.png"),
-      gradient: ["#fff8e1", "#ffedd5"],
+      gradient: isDark ? ["#0a0a0a", "#1f2937"] : ["#fff8e1", "#ffedd5"],
     },
     {
       id: "duaQabar",
       title: "Dua Qabar",
       image: require("../assets/duaQabar.png"),
-      gradient: ["#fef3c7", "#fde68a"],
+      gradient: isDark ? ["#111827", "#1f2937"] : ["#fef3c7", "#fde68a"],
     },
   ];
 
-  // 📖 Ratib Collection
   const ratibItems = [
     {
       id: "haddad",
       title: "Ratib al-Haddad",
       image: require("../assets/haddad_icon.png"),
-      gradient: ["#fef9c3", "#fef08a"],
+      gradient: isDark ? ["#0f172a", "#1e293b"] : ["#fef9c3", "#fef08a"],
     },
   ];
 
@@ -58,32 +59,38 @@ export default function HomeScreen() {
 
   return (
     <KeyboardAvoidingView
-      style={commonStyles.container}
+      style={[commonStyles.container, { backgroundColor: colors.background }]}
       behavior={Platform.OS === "ios" ? "padding" : undefined}
       keyboardVerticalOffset={Platform.OS === "ios" ? 60 : 0}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <SafeAreaView
-          style={[commonStyles.container, commonStyles.lightBg, styles.container]}
+          style={[commonStyles.container, { backgroundColor: colors.background }, styles.container]}
         >
           <StatusBar
-            backgroundColor="transparent"
-            barStyle="dark-content"
+            backgroundColor={isDark ? "#000" : "#fff"}
+            barStyle={isDark ? "light-content" : "dark-content"}
             translucent={true}
           />
 
           {/* 🔍 Search Bar */}
-          <View style={[commonStyles.centerContent, styles.searchContainer]}>
+          <View
+            style={[
+              commonStyles.centerContent,
+              styles.searchContainer,
+              isDark ? themeStyles.searchDark : themeStyles.searchLight,
+            ]}
+          >
             <Icon
               name="search"
               size={18}
-              color="#92400e"
+              color={isDark ? "#facc15" : "#92400e"}
               style={styles.searchIcon}
             />
             <TextInput
-              style={styles.searchInput}
+              style={[styles.searchInput, { color: colors.text }]}
               placeholder="Search duas or ratib..."
-              placeholderTextColor="#a16207"
+              placeholderTextColor={isDark ? "#fbbf24" : "#a16207"}
               value={searchQuery}
               onChangeText={(text) => setSearchQuery(text)}
               autoCapitalize="none"
@@ -91,6 +98,15 @@ export default function HomeScreen() {
               returnKeyType="done"
             />
           </View>
+
+          {/* 🌗 Theme Toggle Button */}
+          <TouchableOpacity onPress={toggleTheme} style={themeStyles.themeToggle}>
+            <Icon
+              name={isDark ? "sun" : "moon"}
+              size={22}
+              color={isDark ? "#fde68a" : "#78350f"}
+            />
+          </TouchableOpacity>
 
           {/* 🔽 Scroll Section */}
           <ScrollView
@@ -101,7 +117,13 @@ export default function HomeScreen() {
             {/* 📿 Dua Collection */}
             {filteredDuas.length > 0 && (
               <>
-                <Text style={[commonStyles.sectionTitle, styles.sectionTitle]}>
+                <Text
+                  style={[
+                    commonStyles.sectionTitle,
+                    styles.sectionTitle,
+                    { color: colors.text },
+                  ]}
+                >
                   📿 Dua Collection
                 </Text>
                 <View style={styles.innerGrid}>
@@ -109,13 +131,17 @@ export default function HomeScreen() {
                     <TouchableOpacity
                       key={item.id}
                       activeOpacity={0.9}
-                      onPress={() =>
-                        navigation.navigate("Dhikr", { type: item.id })
-                      }
+                      onPress={() => navigation.navigate("Dhikr", { type: item.id })}
                     >
                       <LinearGradient colors={item.gradient} style={styles.card}>
                         <Image source={item.image} style={styles.icon} />
-                        <Text style={[commonStyles.highlightText, styles.cardText]}>
+                        <Text
+                          style={[
+                            commonStyles.highlightText,
+                            styles.cardText,
+                            { color: colors.text },
+                          ]}
+                        >
                           {item.title}
                         </Text>
                       </LinearGradient>
@@ -128,7 +154,13 @@ export default function HomeScreen() {
             {/* 📖 Ratib Collection */}
             {filteredRatibs.length > 0 && (
               <>
-                <Text style={[commonStyles.sectionTitle, styles.sectionTitle]}>
+                <Text
+                  style={[
+                    commonStyles.sectionTitle,
+                    styles.sectionTitle,
+                    { color: colors.text },
+                  ]}
+                >
                   📖 Ratib Collection
                 </Text>
                 <View style={styles.innerGrid}>
@@ -136,13 +168,17 @@ export default function HomeScreen() {
                     <TouchableOpacity
                       key={item.id}
                       activeOpacity={0.9}
-                      onPress={() =>
-                        navigation.navigate("Dhikr", { type: item.id })
-                      }
+                      onPress={() => navigation.navigate("Dhikr", { type: item.id })}
                     >
                       <LinearGradient colors={item.gradient} style={styles.card}>
                         <Image source={item.image} style={styles.icon} />
-                        <Text style={[commonStyles.highlightText, styles.cardText]}>
+                        <Text
+                          style={[
+                            commonStyles.highlightText,
+                            styles.cardText,
+                            { color: colors.text },
+                          ]}
+                        >
                           {item.title}
                         </Text>
                       </LinearGradient>
@@ -154,7 +190,9 @@ export default function HomeScreen() {
 
             {/* ❌ No results */}
             {filteredDuas.length === 0 && filteredRatibs.length === 0 && (
-              <Text style={styles.noResultText}>No matching items found</Text>
+              <Text style={[styles.noResultText, { color: colors.text }]}>
+                No matching items found
+              </Text>
             )}
           </ScrollView>
         </SafeAreaView>
@@ -162,3 +200,18 @@ export default function HomeScreen() {
     </KeyboardAvoidingView>
   );
 }
+
+// 💅 Local Style Fix
+const themeStyles = StyleSheet.create({
+  searchDark: {
+    backgroundColor: "#1f2937",
+  },
+  searchLight: {
+    backgroundColor: "#fff8e1",
+  },
+  themeToggle: {
+    alignSelf: "flex-end",
+    margin: 10,
+    padding: 6,
+  },
+});
