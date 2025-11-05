@@ -81,5 +81,43 @@ export const localStyles = StyleSheet.create({
   paddingVertical: 10,
   alignItems: "center",
 },
+  headerContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    position: "relative",
+    zIndex: 5,
+  },
+  playButtonContainer: {
+  alignItems: "center",
+  justifyContent: "center",
+},
+
+playButtonInner: {
+  width: 42,
+  height: 42,
+  borderRadius: 21,
+  alignItems: "center",
+  justifyContent: "center",
+  backgroundColor: "#22c55e20", // soft green shade
+  borderWidth: 1,
+  borderColor: "#22c55e50",
+  shadowColor: "#22c55e",
+  shadowOpacity: 0.3,
+  shadowOffset: { width: 0, height: 2 },
+  shadowRadius: 4,
+  elevation: 4,
+},
+
+playLabel: {
+  color: "#22c55e",
+  fontSize: 12,
+  fontWeight: "600",
+  marginTop: 4,
+},
+
+
 
 });

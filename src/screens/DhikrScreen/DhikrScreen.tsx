@@ -123,13 +123,23 @@ export default function DhikrScreen() {
       />
 
       {/* 🔹 Header */}
-      <Animated.View style={[localAnimated.headerBase, headerAnimatedStyle]}>
-        {/* Back Button */}
+      <Animated.View
+        style={[
+          localAnimated.headerBase,
+          localAnimated.headerContainer,
+          { backgroundColor: bgColor },
+          headerAnimatedStyle,
+        ]}
+      >
+        {/* ← Back Button */}
         <TouchableOpacity
-          style={styles.backButton}
+          style={localAnimated.backButton}
           onPress={() => navigation.goBack()}
         >
-          <Text style={[styles.backText, { color: textColor }]}>← Back</Text>
+          <Icon name="arrow-back" size={22} color={textColor} />
+          <Text style={[localAnimated.backText, { color: textColor }]}>
+            Back
+          </Text>
         </TouchableOpacity>
 
         {/* 🔸 Header Buttons Row */}
@@ -193,19 +203,32 @@ export default function DhikrScreen() {
           <View style={localStyles.gapStyle} />
 
           {/* 🎧 Play Button */}
-          <TouchableOpacity
-            style={localStyles.playButton}
-            onPress={() => {
-              setShowPlayer(true);
-              playAudio();
-            }}
-          >
-            <Icon
-              name={isPlaying ? "pause-circle-filled" : "play-circle-filled"}
-              size={36}
-              color={isPlaying ? "#16d044" : "#22c55e"}
-            />
-          </TouchableOpacity>
+<TouchableOpacity
+  style={localStyles.playButtonContainer}
+  activeOpacity={0.8}
+  onPress={() => {
+    setShowPlayer(true);
+    playAudio();
+  }}
+>
+  <View
+    style={[
+      localStyles.playButtonInner,
+      { backgroundColor: isPlaying ? "#16a34a20" : "#22c55e20" },
+    ]}
+  >
+    <Icon
+      name={isPlaying ? "pause" : "play-arrow"}
+      size={26}
+      color={isPlaying ? "#16a34a" : "#22c55e"}
+      style={{ marginLeft: isPlaying ? 0 : 2 }}
+    />
+  </View>
+  <Text style={localStyles.playLabel}>
+    {isPlaying ? "Pause" : "Play"}
+  </Text>
+</TouchableOpacity>
+
         </View>
       </Animated.View>
 
@@ -245,7 +268,29 @@ export default function DhikrScreen() {
 
 // 🧾 Local Animated Style
 const localAnimated = StyleSheet.create({
+  headerContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    position: "relative",
+    zIndex: 5,
+  },
   headerBase: {
     borderBottomWidth: 1,
+    borderBottomColor: "#333",
+  },
+  backButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#374151",
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 10,
+  },
+  backText: {
+    marginLeft: 6,
+    fontSize: 16,
   },
 });
