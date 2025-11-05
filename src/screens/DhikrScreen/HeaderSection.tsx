@@ -83,7 +83,7 @@ export const HeaderSection: React.FC<Props> = ({
             >
               <Icon
                 name={isPlaying ? "pause" : "play-arrow"}
-                size={24}
+                size={50}
                 color={isPlaying ? "#16a34a" : "#22c55e"}
               />
             </View>
@@ -163,16 +163,16 @@ const localAnimated = StyleSheet.create({
   playButtonContainer: {},
   playButtonInner: {},
   playingBg: { backgroundColor: "#16a34a20" },
-  pausedBg: { backgroundColor: "#0dee5f20" },
-  gap14: { width: 14 },
+  pausedBg: { backgroundColor: "#27d66720" },
+  gap14: { width: 20, },
   headerPosition: {
     position: "absolute",
-    top: 0,
+    top: 10,
     left: 0,
     right: 0,
-    height: 160, // 🔺header height increased
-    zIndex: 20,
-    elevation: 20,
+    height: 180, // 🔺header height increased
+    zIndex: 30,
+    elevation: 10,
     overflow: "visible",
   },
 });

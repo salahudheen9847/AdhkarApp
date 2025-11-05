@@ -54,9 +54,9 @@ export const localStyles = StyleSheet.create({
   headerTitleContainer: { alignItems: "center", marginVertical: 12 },
 
   playButton: {
-    backgroundColor: "#2563eb",
+    backgroundColor: "#28eb25ff",
     padding: 15,
-    borderRadius: 40,
+    borderRadius: 90,
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "center",
@@ -117,7 +117,5 @@ playLabel: {
   fontWeight: "600",
   marginTop: 4,
 },
-
-
 
 });

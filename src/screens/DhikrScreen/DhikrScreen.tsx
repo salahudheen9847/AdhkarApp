@@ -62,8 +62,8 @@ export default function DhikrScreen() {
     transform: [
       {
         translateY: scrollY.interpolate({
-          inputRange: [0, 120],
-          outputRange: [0, -120],
+          inputRange: [0, 150],
+          outputRange: [0, 150],
           extrapolate: "clamp",
         }),
       },
