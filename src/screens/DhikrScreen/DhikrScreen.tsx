@@ -1,37 +1,21 @@
-import React, { useCallback, useMemo, useState } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StatusBar,
-  Animated,
-  StyleSheet,
-} from "react-native";
+import React, { useMemo, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import { StatusBar } from "react-native";
 import { useRoute, useNavigation } from "@react-navigation/native";
-
 import { useThemeContext } from "../../context/theme";
-import { PlayerControls } from "../../component/PlayerControls";
-import { YoutubeButton } from "../../component/YoutubeButton";
-import { WhatsappButton } from "../../component/WhatsappButton";
 import { useDhikrAudio } from "../../hooks/useDhikrAudio";
-
-import { styles, localStyles } from "../../styles/dhikrscreenstyle";
-import { langStyles } from "../../styles/languageStyles";
-
 import { duaMarichavarkMalayalam } from "../../data/duaMarichavarkMalayalam";
 import { duaQabarMalayalam } from "../../data/duaQabarMalayalam";
 import { haddadMalayalam } from "../../data/haddadMalayalam";
-
-import { HeaderTitle } from "./HeaderTitle";
-import { renderDuaItem } from "./renderDuaItem";
+import { styles } from "../../styles/dhikrscreenstyle";
+import { PlayerControls } from "../../component/PlayerControls";
+import { HeaderSection } from "./HeaderSection";
+import { DuaListSection } from "./DuaListSection";
 
 export default function DhikrScreen() {
   const { params } = useRoute<any>();
   const navigation = useNavigation();
   const { type } = params;
-
   const { isDark, toggleTheme, colors } = useThemeContext();
   const [languageMode, setLanguageMode] = useState<
     "arabic" | "malayalam" | "expanded"
@@ -68,29 +52,12 @@ export default function DhikrScreen() {
     }
   }, [type]);
 
-  const renderItem = useCallback(
-    ({ item }: { item: typeof currentDuaList[0] }) =>
-      renderDuaItem(
-        item,
-        currentIndex ?? 0,
-        fontSize,
-        languageMode,
-        malayalamList
-      ),
-    [currentIndex, fontSize, languageMode, malayalamList]
-  );
-
-  const bgColor = colors.background;
-  const textColor = colors.text;
-
-  // 🔹 Background stays transparent when scrolled up
   const animatedBg = scrollY.interpolate({
     inputRange: [0, 150],
     outputRange: ["transparent", "transparent"],
     extrapolate: "clamp",
   });
 
-  // 🔹 Header slides up + fades out
   const headerAnimatedStyle = {
     transform: [
       {
@@ -110,7 +77,7 @@ export default function DhikrScreen() {
 
   return (
     <SafeAreaView
-      style={[styles.container, { backgroundColor: bgColor }]}
+      style={[styles.container, { backgroundColor: colors.background }]}
       edges={["left", "right", "bottom"]}
     >
       <StatusBar
@@ -118,141 +85,31 @@ export default function DhikrScreen() {
         barStyle={isDark ? "light-content" : "dark-content"}
       />
 
-      {/* 🔹 HEADER */}
-      <Animated.View
-        style={[
-          localAnimated.headerBase,
-          localAnimated.headerFixedPadding,
-          {
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            zIndex: 10,
-            backgroundColor: animatedBg,
-          },
-          headerAnimatedStyle,
-        ]}
-      >
-        {/* 🔸 Row 1 */}
-        <View style={localAnimated.row1}>
-          <TouchableOpacity
-            style={localAnimated.backButton}
-            onPress={() => navigation.goBack()}
-          >
-            <Icon name="arrow-back" size={22} color={textColor} />
-            <Text style={[localAnimated.backText, { color: textColor }]}>
-              Back
-            </Text>
-          </TouchableOpacity>
-
-          <View style={localAnimated.centerButtons}>
-            <TouchableOpacity
-              style={localStyles.playButtonContainer}
-              activeOpacity={0.8}
-              onPress={() => {
-                setShowPlayer(true);
-                playAudio();
-              }}
-            >
-              <View
-                style={[
-                  localStyles.playButtonInner,
-                  isPlaying
-                    ? localAnimated.playingBg
-                    : localAnimated.pausedBg,
-                ]}
-              >
-                <Icon
-                  name={isPlaying ? "pause" : "play-arrow"}
-                  size={24}
-                  color={isPlaying ? "#16a34a" : "#22c55e"}
-                />
-              </View>
-            </TouchableOpacity>
-
-            <View style={localAnimated.gap14} />
-            <YoutubeButton type={type} />
-            <View style={localAnimated.gap14} />
-            <WhatsappButton />
-          </View>
-        </View>
-
-        {/* 🔸 Row 2 */}
-        <View style={localAnimated.row2}>
-          <View style={langStyles.toggleColumn}>
-            <TouchableOpacity
-              onPress={() =>
-                setLanguageMode((prev) =>
-                  prev === "expanded"
-                    ? "arabic"
-                    : prev === "malayalam"
-                    ? "arabic"
-                    : "expanded"
-                )
-              }
-              style={langStyles.toggleItem}
-            >
-              <Text
-                style={[
-                  langStyles.toggleText,
-                  languageMode === "arabic"
-                    ? langStyles.activeText
-                    : langStyles.inactiveText,
-                ]}
-              >
-                {languageMode === "malayalam"
-                  ? "✅ Malayalam"
-                  : "☑ Arabic ▼"}
-              </Text>
-            </TouchableOpacity>
-
-            {languageMode === "expanded" && (
-              <TouchableOpacity
-                onPress={() => setLanguageMode("malayalam")}
-                style={[
-                  langStyles.toggleItem,
-                  langStyles.toggleItemIndented,
-                ]}
-              >
-                <Text
-                  style={[langStyles.toggleText, langStyles.activeText]}
-                >
-                  Malayalam
-                </Text>
-              </TouchableOpacity>
-            )}
-          </View>
-
-          <TouchableOpacity onPress={toggleTheme}>
-            <Icon
-              name={isDark ? "wb-sunny" : "dark-mode"}
-              size={40}
-              color={isDark ? "#ffcc00" : "#222"}
-            />
-          </TouchableOpacity>
-        </View>
-      </Animated.View>
-
-      {/* 📜 DUA LIST */}
-      <Animated.FlatList
-        style={styles.fullFlex}
-        contentContainerStyle={[
-          styles.flatListContent,
-          { paddingTop: 150 }, // header height
-        ]}
-        data={currentDuaList}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={renderItem}
-        ListHeaderComponent={<HeaderTitle text={title} />}
-        onScroll={Animated.event(
-          [{ nativeEvent: { contentOffset: { y: scrollY } } }],
-          { useNativeDriver: true }
-        )}
-        scrollEventThrottle={16}
+      <HeaderSection
+        navigation={navigation}
+        textColor={colors.text}
+        isDark={isDark}
+        toggleTheme={toggleTheme}
+        isPlaying={isPlaying}
+        setShowPlayer={setShowPlayer}
+        playAudio={playAudio}
+        type={type}
+        languageMode={languageMode}
+        setLanguageMode={setLanguageMode}
+        headerAnimatedStyle={headerAnimatedStyle}
+        animatedBg={animatedBg}
       />
 
-      {/* 🎵 PLAYER */}
+      <DuaListSection
+        currentDuaList={currentDuaList}
+        currentIndex={currentIndex ?? 0}
+        fontSize={fontSize}
+        languageMode={languageMode}
+        malayalamList={malayalamList}
+        title={title}
+        scrollY={scrollY}
+      />
+
       {showPlayer && (
         <PlayerControls
           currentTime={currentTime}
@@ -270,49 +127,3 @@ export default function DhikrScreen() {
     </SafeAreaView>
   );
 }
-
-// 🎨 Local Animated Styles
-const localAnimated = StyleSheet.create({
-  headerBase: {
-    borderBottomWidth: 1,
-    borderBottomColor: "#333",
-    paddingHorizontal: 10,
-    paddingTop: 45,
-  },
-  headerFixedPadding: {
-    paddingVertical: 8,
-  },
-  row1: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-start",
-  },
-  centerButtons: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    flex: 1,
-    marginLeft: 20,
-  },
-  row2: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 8,
-  },
-  backButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#374151",
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 10,
-  },
-  backText: {
-    marginLeft: 6,
-    fontSize: 16,
-  },
-  playingBg: { backgroundColor: "#16a34a20" },
-  pausedBg: { backgroundColor: "#22c55e20" },
-  gap14: { width: 14 },
-});
