@@ -53,35 +53,33 @@ export const localStyles = StyleSheet.create({
   gapStyle: { width: 12 },
   headerTitleContainer: { alignItems: "center", marginVertical: 12 },
 
-  // 🎵 Play button styles
   playButton: {
     backgroundColor: "#2563eb",
-    padding: 10, // 👈 കുറച്ച് smaller
+    padding: 15,
     borderRadius: 40,
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "center",
-    marginTop: -8, // 👈 അല്പം മുകളിലേക്ക് മാറ്റി
+    marginTop: -10, // moved slightly up
   },
-  playIcon: {
-    color: "#fff",
-  },
+  playIcon: { color: "#fff" },
+
   langButton: {
-  backgroundColor: "#334155",
-  paddingHorizontal: 10,
-  paddingVertical: 6,
-  borderRadius: 8,
-},
-langText: {
-  color: "#fff",
-  fontSize: 14,
-},
-langRow: {
-  flexDirection: "row",
+    backgroundColor: "#334155",
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 8,
+  },
+  langText: { color: "#fff", fontSize: 14 },
+  langRow: { flexDirection: "row", alignItems: "center" },
+  tickButton: { marginLeft: 8 },
+  bottomControlsRaised: {
+  position: "absolute",
+  bottom: 22, // 👈 ഇവിടെ ചേർത്തു
+  left: 0,
+  right: 0,
+  paddingVertical: 10,
   alignItems: "center",
-},
-tickButton: {
-  marginLeft: 8,
 },
 
 });

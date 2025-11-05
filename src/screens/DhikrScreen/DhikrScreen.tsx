@@ -94,14 +94,7 @@ export default function DhikrScreen() {
   const bgColor = colors.background;
   const textColor = colors.text;
 
-  // 🧩 Static header styles
-  const headerStaticStyle = {
-    backgroundColor: colors.header,
-    borderBottomColor: colors.border,
-    shadowColor: colors.shadow,
-  };
-
-  // 🧩 Animated header styles
+  // 🧩 Header animation styles
   const headerAnimatedStyle = {
     transform: [
       {
@@ -129,14 +122,8 @@ export default function DhikrScreen() {
         barStyle={isDark ? "light-content" : "dark-content"}
       />
 
-      {/* Header */}
-      <Animated.View
-        style={[
-          localAnimated.headerBase,
-          headerStaticStyle,
-          headerAnimatedStyle,
-        ]}
-      >
+      {/* 🔹 Header */}
+      <Animated.View style={[localAnimated.headerBase, headerAnimatedStyle]}>
         {/* Back Button */}
         <TouchableOpacity
           style={styles.backButton}
@@ -145,14 +132,14 @@ export default function DhikrScreen() {
           <Text style={[styles.backText, { color: textColor }]}>← Back</Text>
         </TouchableOpacity>
 
-        {/* Right side buttons */}
+        {/* 🔸 Header Buttons Row */}
         <View style={localStyles.headerButtonRow}>
           <YoutubeButton type={type} />
           <View style={localStyles.gapStyle} />
           <WhatsappButton />
           <View style={localStyles.gapStyle} />
 
-          {/* Language Toggle */}
+          {/* 🌐 Language Toggle */}
           <View style={langStyles.toggleColumn}>
             <TouchableOpacity
               onPress={() =>
@@ -194,7 +181,7 @@ export default function DhikrScreen() {
 
           <View style={localStyles.gapStyle} />
 
-          {/* 🌗 Theme Switch Button */}
+          {/* 🌗 Theme Switch */}
           <TouchableOpacity onPress={toggleTheme}>
             <Icon
               name={isDark ? "wb-sunny" : "dark-mode"}
@@ -250,14 +237,13 @@ export default function DhikrScreen() {
           fontSize={fontSize}
           onFontSizeChange={setFontSize}
           onClose={() => setShowPlayer(false)}
-          style={styles.bottomControls}
         />
       )}
     </SafeAreaView>
   );
 }
 
-// 🧾 Local Animated StyleSheet
+// 🧾 Local Animated Style
 const localAnimated = StyleSheet.create({
   headerBase: {
     borderBottomWidth: 1,

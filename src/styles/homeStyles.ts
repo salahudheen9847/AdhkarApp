@@ -10,19 +10,33 @@ export const homeStyles = StyleSheet.create({
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight || 40 : 20,
   },
 
-  // 🔍 Search bar styles
+  // 🔍 Search Bar Styles
   searchContainer: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#fff7e6",
+    backgroundColor: "#ffe8b0", // 👀 Slightly darker, visible background
     borderRadius: 25,
     paddingHorizontal: 15,
     paddingVertical: 8,
     width: "90%",
     marginBottom: 20,
-    elevation: 2,
+    elevation: 3,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 2 },
   },
-  searchIcon: { marginRight: 8 },
+
+  // ✨ Optional lighter variant (used in your code)
+  searchContainerLight: {
+    backgroundColor: "#ffefc2",
+    marginTop: 10,
+  },
+
+  searchIcon: {
+    marginRight: 8,
+  },
+
   searchInput: {
     flex: 1,
     fontSize: 16,
@@ -34,6 +48,7 @@ export const homeStyles = StyleSheet.create({
     alignItems: "center",
     paddingBottom: 40,
   },
+
   sectionTitle: {
     fontSize: 22,
     fontWeight: "700",
@@ -59,17 +74,20 @@ export const homeStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     elevation: 5,
+    backgroundColor: "#fff",
     shadowColor: "#000",
     shadowOpacity: 0.1,
     shadowRadius: 5,
     shadowOffset: { width: 0, height: 3 },
   },
+
   icon: {
-    width: 65,
-    height: 65,
+    width: 70, // Slightly bigger
+    height: 70,
     marginBottom: 10,
     resizeMode: "contain",
   },
+
   cardText: {
     fontSize: 16,
     fontWeight: "600",

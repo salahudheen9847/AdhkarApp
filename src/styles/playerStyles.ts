@@ -71,15 +71,16 @@ title: {
     fontWeight: "700",
   },
 
- bottomControls: {
+bottomControls: {
   position: "absolute",
-  bottom: 0,
+  bottom: 30, // 👈 moved up by 30 pixels
   left: 0,
   right: 0,
   backgroundColor: "rgba(0,0,0,0.8)",
   paddingVertical: 10,
   paddingHorizontal: 16,
 },
+
 
   playerCard: {
     borderRadius: 20,
