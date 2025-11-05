@@ -37,7 +37,12 @@ function RootNavigator() {
         }}
       >
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Dhikr" component={DhikrScreen} />
+        <Stack.Screen
+  name="Dhikr"
+  component={DhikrScreen}
+  options={{ headerShown: false }} // 👈 ഇതാണ് പ്രധാന ഭാഗം
+/>
+
         <Stack.Screen
           name="Translation"
           component={TranslationScreen}

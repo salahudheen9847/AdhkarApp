@@ -15,7 +15,7 @@ export const langStyles = StyleSheet.create({
     marginLeft: 16,
   },
   toggleText: {
-    fontSize: 16,
+    fontSize: 30,
     marginLeft: 4,
   },
   activeText: {
