@@ -1,11 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- Optional but sometimes needed -->
-    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
 
     <queries>
-        <!-- Allow app to check if WhatsApp is installed -->
         <package android:name="com.whatsapp" />
         <package android:name="com.whatsapp.w4b" /> <!-- for WhatsApp Business -->
     </queries>
@@ -29,7 +26,7 @@
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize"
             android:exported="true">
-            
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
