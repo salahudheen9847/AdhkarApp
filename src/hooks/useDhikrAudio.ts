@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
+import { Animated, Platform } from "react-native";
 import Sound from "react-native-sound";
 import { duaMarichavark } from "../data/duaMarichavark";
 import { haddad } from "../data/haddad";
 import { duaQabar } from "../data/duaQabar";
 import { asmaulHusna } from "../data/AsmaulHusna";
-import { Animated } from "react-native";
 
 Sound.setCategory("Playback");
 
@@ -73,7 +73,7 @@ export const useDhikrAudio = (type: string) => {
     [currentDuaList, currentIndex]
   );
 
-  // 🧹 Safe cleanup function
+  // 🧹 Cleanup
   const cleanupPlayback = useCallback(() => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
@@ -90,11 +90,10 @@ export const useDhikrAudio = (type: string) => {
     setCurrentIndex(null);
   }, []);
 
-  // ▶️ Play or pause audio
+  // ▶️ Play / Pause
   const playAudio = useCallback(() => {
     try {
       if (soundRef.current && isPlaying) {
-        // Pause
         soundRef.current.pause();
         setIsPlaying(false);
         if (intervalRef.current) clearInterval(intervalRef.current);
@@ -102,34 +101,34 @@ export const useDhikrAudio = (type: string) => {
       }
 
       if (!soundRef.current) {
-        // Load new sound
-        const sound = new Sound(audioFileName, Sound.MAIN_BUNDLE, (error) => {
-          if (error) {
-            console.log("❌ Load error:", error);
-            return;
-          }
-
-          soundRef.current = sound;
-          setDuration(sound.getDuration());
-          sound.setSpeed(playbackRate);
-          setIsPlaying(true);
-
-          // ✅ Safe play callback
-          sound.play((success) => {
-            if (success) {
-              console.log("✅ Playback finished successfully");
-            } else {
-              console.log("⚠️ Playback failed");
+        // ✅ Platform-safe loading
+        const sound = new Sound(
+          audioFileName,
+          Platform.OS === "ios" ? Sound.MAIN_BUNDLE : undefined,
+          (error) => {
+            if (error) {
+              console.log("❌ Load error:", error);
+              return;
             }
 
-            cleanupPlayback(); // ✅ automatic safe cleanup
-          });
+            soundRef.current = sound;
+            setDuration(sound.getDuration());
+            sound.setSpeed(playbackRate);
+            setIsPlaying(true);
 
-          // Interval for progress update
-          intervalRef.current = setInterval(() => updateTime(sound), 500);
-        });
+            sound.play((success) => {
+              if (success) {
+                console.log("✅ Playback finished");
+              } else {
+                console.log("⚠️ Playback failed");
+              }
+              cleanupPlayback();
+            });
+
+            intervalRef.current = setInterval(() => updateTime(sound), 500);
+          }
+        );
       } else {
-        // Resume playback
         const sound = soundRef.current;
         sound.setSpeed(playbackRate);
         setIsPlaying(true);
@@ -144,22 +143,18 @@ export const useDhikrAudio = (type: string) => {
     }
   }, [audioFileName, isPlaying, playbackRate, updateTime, cleanupPlayback]);
 
-  // 🧩 Stop button function (safe)
+  // ⏹️ Stop
   const stopAudio = useCallback(() => {
-    try {
-      cleanupPlayback();
-    } catch (err) {
-      console.log("🚨 Stop error:", err);
-    }
+    cleanupPlayback();
   }, [cleanupPlayback]);
 
-  // 🎚️ Seek bar control
+  // 🎚️ Seek
   const onSeek = (value: number) => {
     soundRef.current?.setCurrentTime(value);
     setCurrentTime(value);
   };
 
-  // 🌀 Change speed
+  // ⚡ Speed control
   const onChangeRate = (rate: number) => {
     setPlaybackRate(rate);
     const sound = soundRef.current;
@@ -173,7 +168,7 @@ export const useDhikrAudio = (type: string) => {
   // 🧼 Cleanup on unmount
   useEffect(() => {
     return () => {
-      cleanupPlayback(); // ✅ handle cleanup safely on unmount
+      cleanupPlayback();
     };
   }, [cleanupPlayback]);
 
