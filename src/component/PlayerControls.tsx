@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -10,6 +10,7 @@ import Slider from "@react-native-community/slider";
 import LinearGradient from "react-native-linear-gradient";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { styles } from "../styles/playerStyles";
+import { FontControl } from "./FontControl"; // ⬅️ പുതിയ import
 
 export interface PlayerControlsProps {
   currentTime: number;
@@ -17,6 +18,7 @@ export interface PlayerControlsProps {
   onSeek: (value: number) => void;
   isPlaying: boolean;
   onPlayPause: () => void;
+  onStop?: () => void;
   playbackRate: number;
   onChangeRate: (rate: number) => void;
   fontSize: number;
@@ -38,7 +40,8 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
   onClose,
   style,
 }) => {
-  // 🔹 Format time (MM:SS)
+  const [showFontControl, setShowFontControl] = useState(false); // 👈 Toggle font bar
+
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
@@ -53,13 +56,24 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
       style={[styles.playerCard, style]}
     >
       {/* 🔹 Header Row */}
-      {onClose && (
-        <View style={styles.headerRow}>
+      <View style={styles.headerRow}>
+        {onClose && (
           <TouchableOpacity onPress={onClose} style={styles.closeButton}>
             <Icon name="close" size={22} color="#f87171" />
           </TouchableOpacity>
-        </View>
-      )}
+        )}
+        {/* Font icon toggle */}
+        <TouchableOpacity
+          onPress={() => setShowFontControl(!showFontControl)}
+          style={styles.fontToggleButton}
+        >
+          <Icon
+            name="text-fields"
+            size={22}
+            color={showFontControl ? "#facc15" : "#cbd5e1"}
+          />
+        </TouchableOpacity>
+      </View>
 
       {/* 🔹 Progress Slider */}
       <Slider
@@ -70,7 +84,7 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
         minimumTrackTintColor="#facc15"
         maximumTrackTintColor="#475569"
         thumbTintColor="#e11d48"
-        onSlidingComplete={onSeek} // smoother seek
+        onSlidingComplete={onSeek}
       />
 
       {/* 🔹 Time + Play / Pause */}
@@ -92,7 +106,7 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
         </TouchableOpacity>
       </View>
 
-      {/* 🔹 Playback Speed Controls */}
+      {/* 🔹 Playback Speed */}
       <View style={styles.rateControls}>
         {[0.5, 1, 1.5, 2].map((rate) => (
           <TouchableOpacity
@@ -115,22 +129,13 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
         ))}
       </View>
 
-      {/* 🔹 Font Size Slider */}
-      <View style={styles.fontBarContainer}>
-        <Text style={styles.fontLabel}>Font</Text>
-        <Slider
-          style={styles.fontSlider}
-          minimumValue={14}
-          maximumValue={50}
-          step={1}
-          value={fontSize}
-          onValueChange={onFontSizeChange}
-          minimumTrackTintColor="#facc15"
-          maximumTrackTintColor="#475569"
-          thumbTintColor="#22c55e"
+      {/* 🔹 Font Control (toggle visibility) */}
+      {showFontControl && (
+        <FontControl
+          fontSize={fontSize}
+          onFontSizeChange={onFontSizeChange}
         />
-        <Text style={styles.fontValue}>{fontSize}px</Text>
-      </View>
+      )}
     </LinearGradient>
   );
 };

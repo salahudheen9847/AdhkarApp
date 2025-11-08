@@ -21,13 +21,14 @@ type Props = {
   isPlaying: boolean;
   setShowPlayer: (val: boolean) => void;
   playAudio: () => void;
-  type: "duaMarichavark" | "duaQabar" | "haddad";
+  type: "duaMarichavark" | "duaQabar" | "haddad" | "asmaulHusna";
   languageMode: "arabic" | "malayalam" | "expanded";
   setLanguageMode: React.Dispatch<
     React.SetStateAction<"arabic" | "malayalam" | "expanded">
   >;
   headerAnimatedStyle: any;
   animatedBg: any;
+  onFontPress: () => void;
 };
 
 export const HeaderSection: React.FC<Props> = ({
@@ -43,32 +44,34 @@ export const HeaderSection: React.FC<Props> = ({
   setLanguageMode,
   headerAnimatedStyle,
   animatedBg,
+  onFontPress,
 }) => {
   return (
     <Animated.View
       style={[
-        localAnimated.headerBase,
-        localAnimated.headerFixedPadding,
-        localAnimated.headerPosition,
+        styles.headerBase,
+        styles.headerFixedPadding,
+        styles.headerPosition,
         { backgroundColor: animatedBg },
         headerAnimatedStyle,
       ]}
     >
-      {/* 🔸 Row 1 */}
-      <View style={localAnimated.row1}>
-        <TouchableOpacity
-          style={localAnimated.backButton}
-          onPress={() => navigation.goBack()}
-        >
-          <Icon name="arrow-back" size={22} color={textColor} />
-          <Text style={[localAnimated.backText, { color: textColor }]}>
-            Back
-          </Text>
-        </TouchableOpacity>
-
-        <View style={localAnimated.centerButtons}>
+      {/* 🔹 Row 1 — Left and Right Sections */}
+      <View style={styles.row1}>
+        {/* 🔙 Left Side: Back + Play */}
+        <View style={styles.leftGroup}>
+          {/* Back Button */}
           <TouchableOpacity
-            style={localAnimated.playButtonContainer}
+            style={styles.backButton}
+            onPress={() => navigation.goBack()}
+          >
+            <Icon name="arrow-back" size={22} color={textColor} />
+            <Text style={[styles.backText, { color: textColor }]}>Back</Text>
+          </TouchableOpacity>
+
+          {/* ▶️ Play Button */}
+          <TouchableOpacity
+            style={styles.playButtonContainer}
             activeOpacity={0.8}
             onPress={() => {
               setShowPlayer(true);
@@ -77,51 +80,60 @@ export const HeaderSection: React.FC<Props> = ({
           >
             <View
               style={[
-                localAnimated.playButtonInner,
-                isPlaying ? localAnimated.playingBg : localAnimated.pausedBg,
+                styles.playButtonInner,
+                isPlaying ? styles.playingBg : styles.pausedBg,
               ]}
             >
               <Icon
                 name={isPlaying ? "pause" : "play-arrow"}
-                size={50}
+                size={46}
                 color={isPlaying ? "#16a34a" : "#22c55e"}
               />
             </View>
           </TouchableOpacity>
+        </View>
 
-          <View style={localAnimated.gap14} />
+        {/* 🔸 Right Side: Font + YouTube + WhatsApp + Theme */}
+        <View style={styles.rightGroup}>
+          {/* 🅰️ Font */}
+          <TouchableOpacity onPress={onFontPress} style={styles.fontButton}>
+            <Icon name="text-fields" size={30} color={textColor} />
+          </TouchableOpacity>
+
+          {/* 📺 YouTube */}
           <YoutubeButton type={type} />
-          <View style={localAnimated.gap14} />
+
+          {/* 💬 WhatsApp */}
           <WhatsappButton />
+
+          {/* 🌓 Theme */}
+          <TouchableOpacity onPress={toggleTheme}>
+            <Icon
+              name={isDark ? "wb-sunny" : "dark-mode"}
+              size={30}
+              color={isDark ? "#ffcc00" : textColor}
+            />
+          </TouchableOpacity>
         </View>
       </View>
 
-      {/* 🔸 Row 2 */}
-      <View style={localAnimated.row2}>
+      {/* 🌐 Row 2 — Language Toggle */}
+      <View style={styles.langRow}>
         <LanguageToggle
           languageMode={languageMode}
           setLanguageMode={setLanguageMode}
         />
-
-        <TouchableOpacity onPress={toggleTheme}>
-          <Icon
-            name={isDark ? "wb-sunny" : "dark-mode"}
-            size={40}
-            color={isDark ? "#ffcc00" : "#222"}
-          />
-        </TouchableOpacity>
       </View>
     </Animated.View>
   );
 };
 
-// 🔹 Local styles
-const localAnimated = StyleSheet.create({
+// 🔹 Styles
+const styles = StyleSheet.create({
   headerBase: {
     borderBottomWidth: 1,
     borderBottomColor: "#333",
     paddingHorizontal: 10,
-    // ✅ Safe top padding for Android
     paddingTop:
       Platform.OS === "android"
         ? (StatusBar.currentHeight ?? 25) + 10
@@ -130,24 +142,33 @@ const localAnimated = StyleSheet.create({
   headerFixedPadding: {
     paddingVertical: 8,
   },
-  row1: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-start",
+  headerPosition: {
+    position: "absolute",
+    top: 10,
+    left: 0,
+    right: 0,
+    height: 170,
+    zIndex: 30,
+    elevation: 10,
   },
-  centerButtons: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    flex: 1,
-    marginLeft: 20,
-  },
-  row2: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 8,
-  },
+row1: {
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "space-evenly", // 👈 ഒരേ സ്പേസ്
+  width: "100%",
+},
+
+leftGroup: {
+  flexDirection: "row",
+  alignItems: "center",
+  gap: 14, // 👈 ഇവിടെ gap കൂട്ടി
+},
+rightGroup: {
+  flexDirection: "row",
+  alignItems: "center",
+  gap: 14, // 👈 രണ്ടിടത്തും ഒരേ gap
+},
+
   backButton: {
     flexDirection: "row",
     alignItems: "center",
@@ -160,19 +181,24 @@ const localAnimated = StyleSheet.create({
     marginLeft: 6,
     fontSize: 16,
   },
-  playButtonContainer: {},
-  playButtonInner: {},
+  playButtonContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  playButtonInner: {
+    width: 58,
+    height: 58,
+    borderRadius: 40,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   playingBg: { backgroundColor: "#16a34a20" },
   pausedBg: { backgroundColor: "#27d66720" },
-  gap14: { width: 20, },
-  headerPosition: {
-    position: "absolute",
-    top: 10,
-    left: 0,
-    right: 0,
-    height: 180, // 🔺header height increased
-    zIndex: 30,
-    elevation: 10,
-    overflow: "visible",
+  fontButton: {
+    marginRight: 4,
+  },
+  langRow: {
+    alignItems: "center",
+    marginTop: 8,
   },
 });

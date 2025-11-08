@@ -3,6 +3,7 @@ import Sound from "react-native-sound";
 import { duaMarichavark } from "../data/duaMarichavark";
 import { haddad } from "../data/haddad";
 import { duaQabar } from "../data/duaQabar";
+import { asmaulHusna } from "../data/AsmaulHusna";
 import { Animated } from "react-native";
 
 Sound.setCategory("Playback");
@@ -20,29 +21,43 @@ export const useDhikrAudio = (type: string) => {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const scrollY = useRef(new Animated.Value(0)).current;
 
+  // 🔊 Select data dynamically
   const { currentDuaList, audioFileName, title } = useMemo(() => {
     switch (type) {
-      case "duaMarichavark": // ✅ changed from adhkar
+      case "duaMarichavark":
         return {
           currentDuaList: duaMarichavark,
           audioFileName: "dua_marichavark.mp3",
-          title: "📿 ദുആ മരിച്ചവർക്കായി",
+          title: "📿 ദുഅ മരിച്ചവർക്കായി",
+        };
+      case "duaQabar":
+        return {
+          currentDuaList: duaQabar,
+          audioFileName: "dua_qabar_full.mp3",
+          title: "🕋 ദുഅ കബറിന്",
         };
       case "haddad":
         return {
           currentDuaList: haddad,
           audioFileName: "haddad_full.mp3",
-          title: "📖 راتب الحداد",
+          title: "📖 റാതിബ് അൽ ഹദ്ദാദ്",
+        };
+      case "asmaulHusna":
+        return {
+          currentDuaList: asmaulHusna,
+          audioFileName: "asmaul_husna.mp3",
+          title: "🕋 അസ്മൗൽ ഹുസ്ന",
         };
       default:
         return {
           currentDuaList: duaQabar,
           audioFileName: "dua_qabar_full.mp3",
-          title: "🕋 دعاء القبر",
+          title: "🕋 ദുഅ കബറിന്",
         };
     }
   }, [type]);
 
+  // ⏱️ Update playback time
   const updateTime = useCallback(
     (sound: Sound) => {
       sound.getCurrentTime((seconds) => {
@@ -58,46 +73,93 @@ export const useDhikrAudio = (type: string) => {
     [currentDuaList, currentIndex]
   );
 
+  // 🧹 Safe cleanup function
   const cleanupPlayback = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+    if (soundRef.current) {
+      soundRef.current.stop(() => {
+        soundRef.current?.release();
+        soundRef.current = null;
+      });
+    }
     setIsPlaying(false);
     setCurrentTime(0);
     setCurrentIndex(null);
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    intervalRef.current = null;
   }, []);
 
+  // ▶️ Play or pause audio
   const playAudio = useCallback(() => {
-    if (soundRef.current && isPlaying) {
-      soundRef.current.pause();
-      setIsPlaying(false);
-      if (intervalRef.current) clearInterval(intervalRef.current);
-      return;
-    }
+    try {
+      if (soundRef.current && isPlaying) {
+        // Pause
+        soundRef.current.pause();
+        setIsPlaying(false);
+        if (intervalRef.current) clearInterval(intervalRef.current);
+        return;
+      }
 
-    if (!soundRef.current) {
-      const sound = new Sound(audioFileName, Sound.MAIN_BUNDLE, (error) => {
-        if (error) return console.log("❌ Load error:", error);
-        setDuration(sound.getDuration());
+      if (!soundRef.current) {
+        // Load new sound
+        const sound = new Sound(audioFileName, Sound.MAIN_BUNDLE, (error) => {
+          if (error) {
+            console.log("❌ Load error:", error);
+            return;
+          }
+
+          soundRef.current = sound;
+          setDuration(sound.getDuration());
+          sound.setSpeed(playbackRate);
+          setIsPlaying(true);
+
+          // ✅ Safe play callback
+          sound.play((success) => {
+            if (success) {
+              console.log("✅ Playback finished successfully");
+            } else {
+              console.log("⚠️ Playback failed");
+            }
+
+            cleanupPlayback(); // ✅ automatic safe cleanup
+          });
+
+          // Interval for progress update
+          intervalRef.current = setInterval(() => updateTime(sound), 500);
+        });
+      } else {
+        // Resume playback
+        const sound = soundRef.current;
         sound.setSpeed(playbackRate);
-        soundRef.current = sound;
         setIsPlaying(true);
-        sound.play(() => cleanupPlayback());
+        sound.play((success) => {
+          if (!success) console.log("⚠️ Resume failed");
+          setIsPlaying(false);
+        });
         intervalRef.current = setInterval(() => updateTime(sound), 500);
-      });
-    } else {
-      const sound = soundRef.current;
-      sound.setSpeed(playbackRate);
-      sound.play(() => cleanupPlayback());
-      setIsPlaying(true);
-      intervalRef.current = setInterval(() => updateTime(sound), 500);
+      }
+    } catch (err) {
+      console.log("🚨 Audio play error:", err);
     }
   }, [audioFileName, isPlaying, playbackRate, updateTime, cleanupPlayback]);
 
+  // 🧩 Stop button function (safe)
+  const stopAudio = useCallback(() => {
+    try {
+      cleanupPlayback();
+    } catch (err) {
+      console.log("🚨 Stop error:", err);
+    }
+  }, [cleanupPlayback]);
+
+  // 🎚️ Seek bar control
   const onSeek = (value: number) => {
     soundRef.current?.setCurrentTime(value);
     setCurrentTime(value);
   };
 
+  // 🌀 Change speed
   const onChangeRate = (rate: number) => {
     setPlaybackRate(rate);
     const sound = soundRef.current;
@@ -108,12 +170,12 @@ export const useDhikrAudio = (type: string) => {
     if (wasPlaying) sound.play();
   };
 
+  // 🧼 Cleanup on unmount
   useEffect(() => {
     return () => {
-      soundRef.current?.stop(() => soundRef.current?.release());
-      if (intervalRef.current) clearInterval(intervalRef.current);
+      cleanupPlayback(); // ✅ handle cleanup safely on unmount
     };
-  }, []);
+  }, [cleanupPlayback]);
 
   return {
     currentIndex,
@@ -131,5 +193,6 @@ export const useDhikrAudio = (type: string) => {
     playAudio,
     onSeek,
     onChangeRate,
+    stopAudio,
   };
 };

@@ -51,6 +51,15 @@ export default function HomeScreen() {
       gradient: ["#fef9c3", "#fef08a"],
     },
   ];
+  const asmaulHusnaItems = [
+  {
+    id: "asmaulHusna",
+    title: "Asmaul Husna",
+    image: require("../assets/asmaulhusna_icon.png"),
+    gradient: ["#fff7ed", "#ffedd5"],
+  },
+];
+
 
   const filteredDuas = duaItems.filter((item) =>
     item.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -58,6 +67,10 @@ export default function HomeScreen() {
   const filteredRatibs = ratibItems.filter((item) =>
     item.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
+  const filteredAsmaulHusna = asmaulHusnaItems.filter((item) =>
+  item.title.toLowerCase().includes(searchQuery.toLowerCase())
+);
+
 
   return (
     <KeyboardAvoidingView
@@ -151,13 +164,46 @@ export default function HomeScreen() {
                 </View>
               </>
             )}
+            {/* 🕋 Asmaul Husna Section */}
+{filteredAsmaulHusna.length > 0 && (
+  <>
+    <Text style={[styles.sectionTitle, { color: colors.text }]}>
+      🕋 Asmaul Husna Collection
+    </Text>
+    <View style={styles.innerGrid}>
+      {filteredAsmaulHusna.map((item) => (
+        <TouchableOpacity
+          key={item.id}
+          activeOpacity={0.9}
+          onPress={() => navigation.navigate("Dhikr", { type: item.id })}
+        >
+          <LinearGradient
+            colors={item.gradient}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 0, y: 1 }}
+            style={styles.card}
+          >
+            <Image source={item.image} style={styles.icon} />
+            <Text style={[styles.cardText, { color: colors.text }]}>
+              {item.title}
+            </Text>
+          </LinearGradient>
+        </TouchableOpacity>
+      ))}
+    </View>
+  </>
+)}
+
 
             {/* ❌ No Results */}
-            {filteredDuas.length === 0 && filteredRatibs.length === 0 && (
-              <Text style={[styles.noResultText, { color: colors.text }]}>
-                No matching items found
-              </Text>
-            )}
+   {filteredDuas.length === 0 &&
+ filteredRatibs.length === 0 &&
+ filteredAsmaulHusna.length === 0 && (
+  <Text style={[styles.noResultText, { color: colors.text }]}>
+    No matching items found
+  </Text>
+)}
+
           </ScrollView>
         </SafeAreaView>
       </TouchableWithoutFeedback>

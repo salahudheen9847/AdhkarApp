@@ -242,6 +242,15 @@ bottomControls: {
     borderRadius: 20,
     backgroundColor: "rgba(255,255,255,0.1)",
   },
-  
+  // styles/playerStyles.ts (അല്ലെങ്കിൽ component file ന്റെ താഴെ)
+rowStyle: {
+  flexDirection: "row",
+  alignItems: "center",
+  gap: 20,
+},
+fontToggleButton: {
+  marginRight: 10,
+},
+
   
 });

@@ -5,8 +5,9 @@ import { styles } from "../styles/playerStyles";
 import { youtubeLinks } from "../data/youtubeLinks";
 
 interface YoutubeButtonProps {
-  type?: "duaMarichavark" | "haddad" | "duaQabar";
+  type?: "duaMarichavark" | "duaQabar" | "haddad" | "asmaulHusna";
 }
+
 
 export const YoutubeButton: React.FC<YoutubeButtonProps> = ({ type = "duaMarichavark" }) => {
   const handlePress = async () => {
