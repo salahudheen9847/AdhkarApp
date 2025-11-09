@@ -6,7 +6,11 @@ import { haddad } from "../data/haddad";
 import { duaQabar } from "../data/duaQabar";
 import { asmaulHusna } from "../data/AsmaulHusna";
 
-Sound.setCategory("Playback");
+try {
+  Sound.setCategory("Playback");
+} catch (err) {
+  console.log("Sound category error:", err);
+}
 
 export const useDhikrAudio = (type: string) => {
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
@@ -73,18 +77,25 @@ export const useDhikrAudio = (type: string) => {
     [currentDuaList, currentIndex]
   );
 
-  // 🧹 Cleanup
+  // 🧹 Cleanup (safe for Android 7)
   const cleanupPlayback = useCallback(() => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
-    if (soundRef.current) {
-      soundRef.current.stop(() => {
-        soundRef.current?.release();
-        soundRef.current = null;
-      });
+
+    const sound = soundRef.current;
+    if (sound) {
+      try {
+        sound.stop(() => {
+          sound.release();
+        });
+      } catch (err) {
+        console.log("Sound cleanup error:", err);
+      }
+      soundRef.current = null;
     }
+
     setIsPlaying(false);
     setCurrentTime(0);
     setCurrentIndex(null);
@@ -101,7 +112,6 @@ export const useDhikrAudio = (type: string) => {
       }
 
       if (!soundRef.current) {
-        // ✅ Platform-safe loading
         const sound = new Sound(
           audioFileName,
           Platform.OS === "ios" ? Sound.MAIN_BUNDLE : undefined,
