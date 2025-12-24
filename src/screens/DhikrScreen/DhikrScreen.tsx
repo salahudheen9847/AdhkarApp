@@ -6,17 +6,26 @@ import { useThemeContext } from "../../context/theme";
 import { useDhikrAudio } from "../../hooks/useDhikrAudio";
 import { FontControl } from "../../component/FontControl";
 
-// 📚 Data Imports
+// 📚 Translation Data
 import { duaMarichavarkMalayalam } from "../../data/duaMarichavarkMalayalam";
 import { duaQabarMalayalam } from "../../data/duaQabarMalayalam";
 import { haddadMalayalam } from "../../data/haddadMalayalam";
 import { asmaulHusnaMalayalam } from "../../data/AsmaulHusnaMalayalam";
+import { duaMarichavarkEnglish } from "../../data/duaMarichavarkEnglish";
+import { duaQabarEnglish } from "../../data/duaQabarEnglish";
+import { asmaulHusnaEnglish } from "../../data/AsmaulHusnaEnglish";
 
-// 🎨 Components & Styles
+// 🎨 UI
 import { styles } from "../../styles/dhikrscreenstyle";
 import { PlayerControls } from "../../component/PlayerControls";
 import { HeaderSection } from "./HeaderSection";
 import { DuaListSection } from "./DuaListSection";
+
+// 🌍 Language Mode
+export type LanguageMode =
+  | "arabic"
+  | "arabic_malayalam"
+  | "arabic_english";
 
 export default function DhikrScreen() {
   const { params } = useRoute<any>();
@@ -24,9 +33,8 @@ export default function DhikrScreen() {
   const { type } = params;
 
   const { isDark, toggleTheme, colors } = useThemeContext();
-  const [languageMode, setLanguageMode] = useState<
-    "arabic" | "malayalam" | "expanded"
-  >("arabic");
+  const [languageMode, setLanguageMode] =
+    useState<LanguageMode>("arabic");
   const [showFontControl, setShowFontControl] = useState(false);
 
   const {
@@ -37,7 +45,7 @@ export default function DhikrScreen() {
     isPlaying,
     playbackRate,
     showPlayer,
-    currentDuaList,
+    currentDuaList, // Arabic list
     title,
     scrollY,
     setShowPlayer,
@@ -48,23 +56,40 @@ export default function DhikrScreen() {
     onChangeRate,
   } = useDhikrAudio(type);
 
-  // 🧿 Malayalam data selection
-  const malayalamList = useMemo(() => {
-    switch (type) {
-      case "duaMarichavark":
-        return duaMarichavarkMalayalam;
-      case "duaQabar":
-        return duaQabarMalayalam;
-      case "haddad":
-        return haddadMalayalam;
-      case "asmaulHusna":
-        return asmaulHusnaMalayalam;
-      default:
-        return [];
+  // 🌍 Translation List
+  const translationList = useMemo(() => {
+    if (languageMode === "arabic_malayalam") {
+      switch (type) {
+        case "duaMarichavark":
+          return duaMarichavarkMalayalam;
+        case "duaQabar":
+          return duaQabarMalayalam;
+        case "haddad":
+          return haddadMalayalam;
+        case "asmaulHusna":
+          return asmaulHusnaMalayalam;
+        default:
+          return [];
+      }
     }
-  }, [type]);
 
-  // 🌀 Animated header background + motion
+    if (languageMode === "arabic_english") {
+      switch (type) {
+        case "duaMarichavark":
+          return duaMarichavarkEnglish;
+        case "duaQabar":
+          return duaQabarEnglish;
+        case "asmaulHusna":
+          return asmaulHusnaEnglish;
+        default:
+          return [];
+      }
+    }
+
+    return [];
+  }, [languageMode, type]);
+
+  // 🌀 Header animation
   const animatedBg = scrollY.interpolate({
     inputRange: [0, 150],
     outputRange: ["transparent", "transparent"],
@@ -98,7 +123,7 @@ export default function DhikrScreen() {
         barStyle={isDark ? "light-content" : "dark-content"}
       />
 
-      {/* 🕌 Header Section */}
+      {/* 🕌 Header */}
       <HeaderSection
         navigation={navigation}
         textColor={colors.text}
@@ -112,21 +137,21 @@ export default function DhikrScreen() {
         setLanguageMode={setLanguageMode}
         headerAnimatedStyle={headerAnimatedStyle}
         animatedBg={animatedBg}
-        onFontPress={() => setShowFontControl(!showFontControl)} // 🅰️ Font icon toggle
+        onFontPress={() => setShowFontControl(!showFontControl)}
       />
 
       {/* 📖 Dua List */}
       <DuaListSection
-        currentDuaList={currentDuaList}
+        currentDuaList={currentDuaList}      // Arabic always
         currentIndex={currentIndex ?? 0}
         fontSize={fontSize}
-        languageMode={languageMode}
-        malayalamList={malayalamList}
+        languageMode={languageMode}          // arabic / arabic_malayalam / arabic_english
+        malayalamList={translationList}      // Malayalam or English
         title={title}
         scrollY={scrollY}
       />
 
-      {/* 🅰️ Font Control Panel */}
+      {/* 🅰️ Font Control */}
       {showFontControl && (
         <Animated.View
           style={[
@@ -142,7 +167,7 @@ export default function DhikrScreen() {
         </Animated.View>
       )}
 
-      {/* 🎧 Player Controls */}
+      {/* 🎧 Player */}
       {showPlayer && (
         <PlayerControls
           currentTime={currentTime}
@@ -162,7 +187,6 @@ export default function DhikrScreen() {
   );
 }
 
-// 🧾 Local StyleSheet to fix ESLint warning
 const localStyles = StyleSheet.create({
   fontControlBox: {
     position: "absolute",

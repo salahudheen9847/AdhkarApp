@@ -13,6 +13,13 @@ import { YoutubeButton } from "../../component/YoutubeButton";
 import { WhatsappButton } from "../../component/WhatsappButton";
 import { LanguageToggle } from "./LanguageToggle";
 
+// ✅ SAME LanguageMode AS DhikrScreen
+export type LanguageMode =
+  | "arabic"
+  | "arabic_malayalam"
+  | "arabic_english";
+
+// HeaderSection Props
 type Props = {
   navigation: any;
   textColor: string;
@@ -22,10 +29,8 @@ type Props = {
   setShowPlayer: (val: boolean) => void;
   playAudio: () => void;
   type: "duaMarichavark" | "duaQabar" | "haddad" | "asmaulHusna";
-  languageMode: "arabic" | "malayalam" | "expanded";
-  setLanguageMode: React.Dispatch<
-    React.SetStateAction<"arabic" | "malayalam" | "expanded">
-  >;
+  languageMode: LanguageMode;
+  setLanguageMode: React.Dispatch<React.SetStateAction<LanguageMode>>;
   headerAnimatedStyle: any;
   animatedBg: any;
   onFontPress: () => void;
@@ -60,13 +65,14 @@ export const HeaderSection: React.FC<Props> = ({
       <View style={styles.row1}>
         {/* 🔙 Left Side: Back + Play */}
         <View style={styles.leftGroup}>
-          {/* Back Button */}
           <TouchableOpacity
             style={styles.backButton}
             onPress={() => navigation.goBack()}
           >
             <Icon name="arrow-back" size={22} color={textColor} />
-            <Text style={[styles.backText, { color: textColor }]}>Back</Text>
+            <Text style={[styles.backText, { color: textColor }]}>
+              Back
+            </Text>
           </TouchableOpacity>
 
           {/* ▶️ Play Button */}
@@ -93,7 +99,7 @@ export const HeaderSection: React.FC<Props> = ({
           </TouchableOpacity>
         </View>
 
-        {/* 🔸 Right Side: Font + YouTube + WhatsApp + Theme */}
+        {/* 🔸 Right Side */}
         <View style={styles.rightGroup}>
           {/* 🅰️ Font */}
           <TouchableOpacity onPress={onFontPress} style={styles.fontButton}>
@@ -128,7 +134,7 @@ export const HeaderSection: React.FC<Props> = ({
   );
 };
 
-// 🔹 Styles
+// 🔹 Styles (UNCHANGED)
 const styles = StyleSheet.create({
   headerBase: {
     borderBottomWidth: 1,
@@ -151,24 +157,22 @@ const styles = StyleSheet.create({
     zIndex: 30,
     elevation: 10,
   },
-row1: {
-  flexDirection: "row",
-  alignItems: "center",
-  justifyContent: "space-evenly", // 👈 ഒരേ സ്പേസ്
-  width: "100%",
-},
-
-leftGroup: {
-  flexDirection: "row",
-  alignItems: "center",
-  gap: 14, // 👈 ഇവിടെ gap കൂട്ടി
-},
-rightGroup: {
-  flexDirection: "row",
-  alignItems: "center",
-  gap: 14, // 👈 രണ്ടിടത്തും ഒരേ gap
-},
-
+  row1: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    width: "100%",
+  },
+  leftGroup: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 14,
+  },
+  rightGroup: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 14,
+  },
   backButton: {
     flexDirection: "row",
     alignItems: "center",

@@ -1,16 +1,20 @@
 import React, { useCallback } from "react";
-import { Animated } from "react-native";
+import { Animated, StyleSheet } from "react-native";
 import { styles } from "../../styles/dhikrscreenstyle";
 import { HeaderTitle } from "./HeaderTitle";
 import { renderDuaItem } from "./renderDuaItem";
-import { StyleSheet } from "react-native";
 
+// ✅ SAME LanguageMode USED EVERYWHERE
+export type LanguageMode =
+  | "arabic"
+  | "arabic_malayalam"
+  | "arabic_english";
 
 type Props = {
   currentDuaList: any[];
   currentIndex: number;
   fontSize: number;
-  languageMode: "arabic" | "malayalam" | "expanded";
+  languageMode: LanguageMode;
   malayalamList: any[];
   title: string;
   scrollY: Animated.Value;
@@ -40,7 +44,10 @@ export const DuaListSection: React.FC<Props> = ({
   return (
     <Animated.FlatList
       style={styles.fullFlex}
-      contentContainerStyle={[styles.flatListContent, localStyles.listPadding]}
+      contentContainerStyle={[
+        styles.flatListContent,
+        localStyles.listPadding,
+      ]}
       data={currentDuaList}
       keyExtractor={(item) => item.id.toString()}
       renderItem={renderItem}
@@ -53,9 +60,9 @@ export const DuaListSection: React.FC<Props> = ({
     />
   );
 };
+
 const localStyles = StyleSheet.create({
   listPadding: {
     paddingTop: 200,
   },
-  
 });

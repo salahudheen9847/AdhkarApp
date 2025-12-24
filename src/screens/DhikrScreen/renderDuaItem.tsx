@@ -2,6 +2,12 @@ import React from "react";
 import { View, Text } from "react-native";
 import { styles } from "../../styles/dhikrscreenstyle";
 
+// ✅ Same LanguageMode everywhere
+export type LanguageMode =
+  | "arabic"
+  | "arabic_malayalam"
+  | "arabic_english";
+
 const textStyle = {
   arabic: {
     textAlign: "center" as const,
@@ -13,16 +19,24 @@ const textStyle = {
     fontFamily: "NotoSansMalayalam-Regular",
     marginTop: 6,
   },
+  english: {
+    textAlign: "center" as const,
+    color: "#e5e7eb",
+    fontFamily: "System",
+    marginTop: 6,
+  },
 };
 
 export const renderDuaItem = (
   item: any,
   currentIndex: number,
   fontSize: number,
-  languageMode: string,
-  malayalamList: any[]
+  languageMode: LanguageMode,
+  translationList: any[]
 ) => {
-  const malItem = malayalamList.find((m) => m.id === item.id);
+  const translationItem = translationList.find(
+    (t) => t.id === item.id
+  );
 
   return (
     <View
@@ -31,25 +45,39 @@ export const renderDuaItem = (
         currentIndex === item.id && styles.activeTextContainer,
       ]}
     >
+      {/* 🕌 Arabic (always shown) */}
       <Text
         style={[
           styles.text,
           currentIndex === item.id && styles.activeText,
           textStyle.arabic,
-          { fontSize, lineHeight: fontSize * 1.5 },
+          { fontSize, lineHeight: fontSize * 1.6 },
         ]}
       >
         {item.text}
       </Text>
 
-      {languageMode === "malayalam" && malItem && (
+      {/* 🌙 Arabic + Malayalam */}
+      {languageMode === "arabic_malayalam" && translationItem && (
         <Text
           style={[
             textStyle.malayalam,
-            { fontSize: fontSize * 0.75, lineHeight: fontSize },
+            { fontSize: fontSize * 0.75, lineHeight: fontSize * 1.3 },
           ]}
         >
-          {malItem.text}
+          {translationItem.text}
+        </Text>
+      )}
+
+      {/* 🌍 Arabic + English */}
+      {languageMode === "arabic_english" && translationItem && (
+        <Text
+          style={[
+            textStyle.english,
+            { fontSize: fontSize * 0.75, lineHeight: fontSize * 1.3 },
+          ]}
+        >
+          {translationItem.text}
         </Text>
       )}
     </View>
