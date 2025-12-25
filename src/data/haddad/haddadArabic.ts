@@ -5,7 +5,7 @@ export type AdhkarItem = {
   end: number;
 };
 
-export const haddad: AdhkarItem[] = [
+export const haddadArabic: AdhkarItem[] = [
   {
     id: 1,
     text: `الى حضرتي روحي نبينا مصطفىنا محمد صلى الله عليه وسلم الْفَاتِحَة

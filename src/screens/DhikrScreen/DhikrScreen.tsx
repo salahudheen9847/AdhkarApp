@@ -6,15 +6,6 @@ import { useThemeContext } from "../../context/theme";
 import { useDhikrAudio } from "../../hooks/useDhikrAudio";
 import { FontControl } from "../../component/FontControl";
 
-// 📚 Translation Data
-import { duaMarichavarkMalayalam } from "../../data/duaMarichavarkMalayalam";
-import { duaQabarMalayalam } from "../../data/duaQabarMalayalam";
-import { haddadMalayalam } from "../../data/haddadMalayalam";
-import { asmaulHusnaMalayalam } from "../../data/AsmaulHusnaMalayalam";
-import { duaMarichavarkEnglish } from "../../data/duaMarichavarkEnglish";
-import { duaQabarEnglish } from "../../data/duaQabarEnglish";
-import { asmaulHusnaEnglish } from "../../data/AsmaulHusnaEnglish";
-
 // 🎨 UI
 import { styles } from "../../styles/dhikrscreenstyle";
 import { PlayerControls } from "../../component/PlayerControls";
@@ -45,7 +36,7 @@ export default function DhikrScreen() {
     isPlaying,
     playbackRate,
     showPlayer,
-    currentDuaList, // Arabic list
+    currentDuaList, // 🔥 DB based list
     title,
     scrollY,
     setShowPlayer,
@@ -56,40 +47,24 @@ export default function DhikrScreen() {
     onChangeRate,
   } = useDhikrAudio(type);
 
-  // 🌍 Translation List
+  /* --------------------------------
+     🌍 Translation List (FROM DB)
+  ---------------------------------*/
   const translationList = useMemo(() => {
-    if (languageMode === "arabic_malayalam") {
-      switch (type) {
-        case "duaMarichavark":
-          return duaMarichavarkMalayalam;
-        case "duaQabar":
-          return duaQabarMalayalam;
-        case "haddad":
-          return haddadMalayalam;
-        case "asmaulHusna":
-          return asmaulHusnaMalayalam;
-        default:
-          return [];
-      }
-    }
+    if (languageMode === "arabic") return [];
 
-    if (languageMode === "arabic_english") {
-      switch (type) {
-        case "duaMarichavark":
-          return duaMarichavarkEnglish;
-        case "duaQabar":
-          return duaQabarEnglish;
-        case "asmaulHusna":
-          return asmaulHusnaEnglish;
-        default:
-          return [];
-      }
-    }
+    return currentDuaList.map(item => ({
+      id: item.id,
+      text:
+        languageMode === "arabic_malayalam"
+          ? item.malayalam
+          : item.english,
+    }));
+  }, [languageMode, currentDuaList]);
 
-    return [];
-  }, [languageMode, type]);
-
-  // 🌀 Header animation
+  /* --------------------------------
+     🌀 Header Animation
+  ---------------------------------*/
   const animatedBg = scrollY.interpolate({
     inputRange: [0, 150],
     outputRange: ["transparent", "transparent"],
@@ -142,11 +117,11 @@ export default function DhikrScreen() {
 
       {/* 📖 Dua List */}
       <DuaListSection
-        currentDuaList={currentDuaList}      // Arabic always
+        currentDuaList={currentDuaList}   // Arabic always
         currentIndex={currentIndex ?? 0}
         fontSize={fontSize}
-        languageMode={languageMode}          // arabic / arabic_malayalam / arabic_english
-        malayalamList={translationList}      // Malayalam or English
+        languageMode={languageMode}
+        malayalamList={translationList}   // Malayalam / English (DB)
         title={title}
         scrollY={scrollY}
       />
@@ -187,6 +162,9 @@ export default function DhikrScreen() {
   );
 }
 
+/* --------------------------------
+   🎨 Local Styles
+---------------------------------*/
 const localStyles = StyleSheet.create({
   fontControlBox: {
     position: "absolute",

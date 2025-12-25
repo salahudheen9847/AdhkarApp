@@ -1,11 +1,11 @@
-export type AsmaulHusnaItem = {
+export type AsmaArabicItem = {
   id: number;
   text: string; // Arabic name
   start: number;
   end: number;
 };
 
-export const asmaulHusna: AsmaulHusnaItem[] = [
+export const asmaulHusnaArabic: AsmaArabicItem[] = [
   { id: 1, text: "ٱللّٰهُ", start: 0, end: 1 },
   { id: 2, text: "ٱلرَّحْمَٰنُ", start: 1, end: 2 },
   { id: 3, text: "ٱلرَّحِيمُ", start: 2, end: 3 },

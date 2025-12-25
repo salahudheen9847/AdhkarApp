@@ -5,7 +5,7 @@ export type DuaQabarItem = {
   end: number;
 };
 
-export const duaQabar: DuaQabarItem[] = [
+export const duaQabarArabic: DuaQabarItem[] = [
   {
     id: 1,
     text: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ اللَّهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ وَعَلَى آلِ سَيِّدِنَا مُحَمَّدٍ.",

@@ -22,9 +22,20 @@ import HomeScreen from "./src/screens/HomeScreen";
 import DhikrScreen from "./src/screens/DhikrScreen/DhikrScreen";
 import TranslationScreen from "./src/screens/TranslationScreen";
 
+// 🗄️ SQLite DB
+import {
+  createTables,
+  seedAsmaulHusna,
+  seedDuaMarichavark,
+  seedDuaQabar,
+  seedHaddad,         // ✅ IMPORTANT
+} from "./src/db";
+
 const Stack = createNativeStackNavigator();
 
-// 🌗 Root Navigator (uses theme)
+/* ------------------------------
+   🌗 Root Navigator
+--------------------------------*/
 function RootNavigator() {
   const { isDark } = useThemeContext();
 
@@ -32,16 +43,15 @@ function RootNavigator() {
     <NavigationContainer theme={isDark ? DarkTheme : DefaultTheme}>
       <Stack.Navigator
         initialRouteName="Home"
-        screenOptions={{
-          headerShown: false,
-        }}
+        screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="Home" component={HomeScreen} />
+
         <Stack.Screen
-  name="Dhikr"
-  component={DhikrScreen}
-  options={{ headerShown: false }} // 👈 ഇതാണ് പ്രധാന ഭാഗം
-/>
+          name="Dhikr"
+          component={DhikrScreen}
+          options={{ headerShown: false }}
+        />
 
         <Stack.Screen
           name="Translation"
@@ -49,8 +59,10 @@ function RootNavigator() {
           options={{
             headerShown: true,
             title: "മലയാളം വിവർത്തനം",
-            headerStyle: { backgroundColor: isDark ? "#1a1a1a" : "#0f172a" },
-            headerTintColor: "#fff",
+            headerStyle: {
+              backgroundColor: isDark ? "#1a1a1a" : "#0f172a",
+            },
+            headerTintColor: "#ffffff",
           }}
         />
       </Stack.Navigator>
@@ -58,27 +70,52 @@ function RootNavigator() {
   );
 }
 
-// 🚀 Main App Component
+/* ------------------------------
+   🚀 Main App Component
+--------------------------------*/
 export default function App() {
   const [loading, setLoading] = useState(true);
 
-  // Simple splash / loading delay
+  /* 🗄️ SQLite INIT — RUNS ONLY ONCE */
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1500);
+    (async () => {
+      try {
+        await createTables();
+        await seedAsmaulHusna();
+        await seedDuaMarichavark();
+        await seedDuaQabar();
+        await seedHaddad(); // ✅ ADD THIS LINE
+
+        console.log("✅ SQLite DB ready");
+      } catch (error) {
+        console.log("❌ DB init error:", error);
+      }
+    })();
+  }, []);
+
+  /* ⏳ Splash / Loader delay */
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+
     return () => clearTimeout(timer);
   }, []);
 
-  // Show loader before app loads
+  /* 🔄 Loader Screen */
   if (loading) {
     return (
       <View style={styles.loaderContainer}>
-        <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+        <StatusBar
+          backgroundColor="#ffffff"
+          barStyle="dark-content"
+        />
         <ActivityIndicator size="large" color="#22c55e" />
       </View>
     );
   }
 
-  // 🌙 Wrap everything with SafeArea + ThemeProvider
+  /* 🌙 App Wrapper */
   return (
     <SafeAreaProvider>
       <ThemeProvider>
@@ -88,12 +125,14 @@ export default function App() {
   );
 }
 
-// 🎨 Styles
+/* ------------------------------
+   🎨 Styles
+--------------------------------*/
 const styles = StyleSheet.create({
   loaderContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#fff",
+    backgroundColor: "#ffffff",
   },
 });

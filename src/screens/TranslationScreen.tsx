@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { useThemeContext } from "../context/theme"; // 🌙 Theme import
-import { duaMarichavark } from "../data/duaMarichavark";
-import { duaMarichavarkMalayalam } from "../data/duaMarichavarkMalayalam";
+import { duaMarichavark } from "../data/duaMarichavark/duaMarichavarkArabic";
+import { duaMarichavarkMalayalam } from "../data/duaMarichavark/duaMarichavarkMalayalam";
 
 export default function TranslationScreen() {
   const { colors } = useThemeContext(); // 🎨 use theme colors

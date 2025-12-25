@@ -1,11 +1,13 @@
-export type AdhkarItem = {
+// src/data/duaMarichavark/core.ts
+
+export type DuaMarichavarkCoreItem = {
   id: number;
-  text: string;
-  start: number;
-  end: number;
+  text: string;   // Arabic (original)
+  start: number;  // audio start (seconds)
+  end: number;    // audio end (seconds)
 };
 
-export const duaMarichavark: AdhkarItem[] = [
+export const duaMarichavarkCore: DuaMarichavarkCoreItem[] = [
   {
     id: 1,
     text: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ، اللَّهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ وَعَلَى آلِ سَيِّدِنَا مُحَمَّدٍ.",
@@ -50,7 +52,7 @@ export const duaMarichavark: AdhkarItem[] = [
   },
   {
     id: 8,
-    text: "اَللَّهُمَّ اجْعَلْ قُبُورَنَا وَقُبُورَهُمْ رَوْضَةً مِنْ رِيَاضِ الْجَنَّةَ وَلَا تَجْعَلْ قُبُورَنَا وَلَا قُبُورَهُمْ حُفْرَةً مِنْ حُفَرِ النِّيرَانِ.",
+    text: "اَللَّهُمَّ اجْعَلْ قُبُورَنَا وَقُبُورَهُمْ رَوْضَةً مِنْ رِيَاضِ الْجَنَّةِ وَلَا تَجْعَلْ قُبُورَنَا وَلَا قُبُورَهُمْ حُفْرَةً مِنْ حُفَرِ النِّيرَانِ.",
     start: 66,
     end: 78,
   },
