@@ -51,10 +51,10 @@ export const FontControl: React.FC<FontControlProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    padding: 15,
+    padding: 30,
     borderRadius: 12,
-    marginHorizontal: 15,
-    marginTop: 10,
+     width: "100%",  
+    marginTop: 30,
   },
   headerRow: {
     flexDirection: "row",

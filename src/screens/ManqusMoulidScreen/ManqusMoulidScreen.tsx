@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { StatusBar } from "react-native";
+import { StatusBar, View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 
@@ -9,18 +9,16 @@ import { useDhikrAudio } from "../../hooks/useDhikrAudio";
 import { styles } from "../../styles/dhikrscreenstyle";
 import { PlayerControls } from "../../component/PlayerControls";
 import { FontControl } from "../../component/FontControl";
-import HeaderSection from "../DhikrScreen/HeaderSection"; // ✅ DEFAULT
+import HeaderSection from "../DhikrScreen/HeaderSection";
 import { DuaListSection } from "../DhikrScreen/DuaListSection";
 import { LanguageMode } from "../DhikrScreen/renderDuaItem";
 
 export default function ManqusMoulidScreen() {
-  /* 🔒 HOOKS */
   const navigation = useNavigation<any>();
   const { isDark, toggleTheme, colors } = useThemeContext();
 
   const [languageMode, setLanguageMode] =
     useState<LanguageMode>("arabic");
-
   const [showFontControl, setShowFontControl] =
     useState(false);
 
@@ -41,7 +39,6 @@ export default function ManqusMoulidScreen() {
     onChangeRate,
   } = useDhikrAudio({ mode: "manqus" });
 
-  /* 🌍 TRANSLATIONS */
   const translationList = useMemo(() => {
     if (languageMode === "arabic") return [];
     return currentDuaList.map(item => ({
@@ -53,7 +50,6 @@ export default function ManqusMoulidScreen() {
     }));
   }, [languageMode, currentDuaList]);
 
-  /* 🔥 HEADER ANIMATION */
   const animatedBg = scrollY.interpolate({
     inputRange: [0, 120],
     outputRange: ["transparent", "transparent"],
@@ -79,7 +75,11 @@ export default function ManqusMoulidScreen() {
 
   return (
     <SafeAreaView
-      style={[styles.container, { backgroundColor: colors.background }]}
+      style={[
+        styles.container,
+        localStyles.screen,
+        { backgroundColor: colors.background },
+      ]}
       edges={["left", "right", "bottom"]}
     >
       <StatusBar
@@ -87,7 +87,7 @@ export default function ManqusMoulidScreen() {
         barStyle={isDark ? "light-content" : "dark-content"}
       />
 
-      {/* 🕌 HEADER */}
+      {/* HEADER */}
       <HeaderSection
         navigation={navigation}
         textColor={colors.text}
@@ -106,18 +106,21 @@ export default function ManqusMoulidScreen() {
         }
       />
 
-      {/* 🔤 FONT CONTROL */}
-      {showFontControl && (
-        <FontControl
-          fontSize={fontSize}
-          onFontSizeChange={setFontSize}
-          onClose={() => setShowFontControl(false)}
-          textColor={colors.text}
-          backgroundColor={colors.background}
-        />
-      )}
+      {/* FONT CONTROL — TRUE FULL WIDTH */}
+  {showFontControl && (
+  <View style={localStyles.fontControlWrapper}>
+    <FontControl
+      fontSize={fontSize}
+      onFontSizeChange={setFontSize}
+      onClose={() => setShowFontControl(false)}
+      textColor={colors.text}
+      backgroundColor={colors.background}
+    />
+  </View>
+)}
 
-      {/* 📖 CONTENT */}
+
+      {/* CONTENT */}
       <DuaListSection
         currentDuaList={currentDuaList}
         currentIndex={currentIndex ?? 0}
@@ -127,7 +130,7 @@ export default function ManqusMoulidScreen() {
         scrollY={scrollY}
       />
 
-      {/* 🎧 PLAYER */}
+      {/* PLAYER */}
       {showPlayer && (
         <PlayerControls
           currentTime={currentTime}
@@ -145,3 +148,19 @@ export default function ManqusMoulidScreen() {
     </SafeAreaView>
   );
 }
+
+/* PROFESSIONAL STYLES */
+const localStyles = StyleSheet.create({
+  screen: {
+    position: "relative",
+  },
+
+  fontControlWrapper: {
+    position: "absolute",
+    top: 170,
+    left: 0,
+    right: 0,
+    zIndex: 9999,
+    elevation: 20,
+  },
+});
