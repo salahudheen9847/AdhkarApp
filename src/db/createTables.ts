@@ -3,7 +3,9 @@ import { db } from "./db";
 export const createTables = async () => {
   const database = await db;
 
-  // 🔹 dhikr table
+  /* -----------------------------
+     📿 DHIKR TABLE
+  ------------------------------*/
   await database.executeSql(`
     CREATE TABLE IF NOT EXISTS dhikr (
       id INTEGER,
@@ -17,20 +19,21 @@ export const createTables = async () => {
     );
   `);
 
-  // 🔹 manqus moulid table
+  /* -----------------------------
+     📖 MANQUS MOULID TABLE
+     (BOX + TEXT support)
+  ------------------------------*/
   await database.executeSql(`
     CREATE TABLE IF NOT EXISTS manqus_moulid (
       id INTEGER PRIMARY KEY,
-      sectionType TEXT,      -- 'text' | 'box'
-      text TEXT,
-      rightText TEXT,
-      leftText TEXT,
+      sectionType TEXT,      -- "text" | "box"
+      text TEXT,             -- normal arabic text
+      rightText TEXT,        -- box right side
+      leftText TEXT,         -- box left side
       malayalam TEXT,
       english TEXT,
       start REAL,
       end REAL
     );
   `);
-
-  console.log("✅ Tables created");
 };

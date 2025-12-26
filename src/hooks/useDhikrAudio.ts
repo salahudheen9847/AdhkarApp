@@ -3,7 +3,6 @@ import { Animated, Platform } from "react-native";
 import Sound from "react-native-sound";
 
 import { getDhikrByType, getManqusMoulid } from "../db/queries";
-import { DhikrDBItem } from "../types/DhikrTypes";
 
 try {
   Sound.setCategory("Playback");
@@ -11,7 +10,7 @@ try {
 
 type UseDhikrAudioParams = {
   mode: "dhikr" | "manqus";
-  type?: string; // dhikr only
+  type?: string;
 };
 
 export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
@@ -23,7 +22,7 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
   const [playbackRate, setPlaybackRate] = useState(1);
   const [showPlayer, setShowPlayer] = useState(false);
 
-  const [currentDuaList, setCurrentDuaList] = useState<DhikrDBItem[]>([]);
+  const [currentDuaList, setCurrentDuaList] = useState<any[]>([]);
   const [audioFileName, setAudioFileName] = useState("");
   const [title, setTitle] = useState("");
 
@@ -32,7 +31,7 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
   const scrollY = useRef(new Animated.Value(0)).current;
 
   /* --------------------------------
-     🔊 Load DB data (Dhikr / Manqus)
+     🔊 Load DB data
   ---------------------------------*/
   useEffect(() => {
     let mounted = true;
@@ -50,16 +49,50 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
 
       if (!mounted) return;
 
-      setCurrentDuaList(
-        rows.map(r => ({
-          id: r.id,
-          text: r.arabic ?? r.text ?? "",
-          malayalam: r.malayalam ?? "",
-          english: r.english ?? "",
-          start: r.start,
-          end: r.end,
-        }))
-      );
+      const mapped = rows
+        .map(r => {
+          /* 🕌 DHIKR */
+          if (mode === "dhikr") {
+            return {
+              id: r.id,
+              type: "text",
+              text: r.arabic ?? "",
+              malayalam: r.malayalam ?? "",
+              english: r.english ?? "",
+              start: r.start,
+              end: r.end,
+            };
+          }
+
+          /* 📖 MANQUS */
+          if (mode === "manqus") {
+            // 📦 BOX
+            if (r.type === "box") {
+              return {
+                id: r.id,
+                type: "box",
+                right: r.rightText ?? "",
+                left: r.leftText ?? "",
+                start: r.start,
+                end: r.end,
+              };
+            }
+
+            // 📝 NORMAL TEXT
+            return {
+              id: r.id,
+              type: "text",
+              text: r.text ?? "",
+              start: r.start,
+              end: r.end,
+            };
+          }
+
+          return null;
+        })
+        .filter(Boolean);
+
+      setCurrentDuaList(mapped);
 
       /* 🎧 Audio + Title */
       if (mode === "dhikr") {
@@ -84,7 +117,7 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
       }
 
       if (mode === "manqus") {
-        setAudioFileName("manqus_moulid.mp3"); // 🔁 if available
+        setAudioFileName("manqus_moulid.mp3");
         setTitle("📖 മൻഖൂസ് മൗലിദ്");
       }
     })();
@@ -103,11 +136,7 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
         setCurrentTime(seconds);
 
         const active = currentDuaList.find(
-          d =>
-            d.start !== undefined &&
-            d.end !== undefined &&
-            seconds >= d.start &&
-            seconds < d.end
+          d => seconds >= d.start && seconds < d.end
         );
 
         if (active && active.id !== currentIndex) {
@@ -122,17 +151,13 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
      🧹 Cleanup
   ---------------------------------*/
   const cleanupPlayback = useCallback(() => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
+    intervalRef.current && clearInterval(intervalRef.current);
+    intervalRef.current = null;
 
-    if (soundRef.current) {
-      soundRef.current.stop(() => {
-        soundRef.current?.release();
-      });
+    soundRef.current?.stop(() => {
+      soundRef.current?.release();
       soundRef.current = null;
-    }
+    });
 
     setIsPlaying(false);
     setCurrentTime(0);
@@ -167,11 +192,12 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
           sound.setSpeed(playbackRate);
           setIsPlaying(true);
 
-          sound.play(() => cleanupPlayback());
+          sound.play(cleanupPlayback);
 
-          intervalRef.current = setInterval(() => {
-            updateTime(sound);
-          }, 500);
+          intervalRef.current = setInterval(
+            () => updateTime(sound),
+            500
+          );
         }
       );
     } else {
@@ -179,9 +205,10 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
       setIsPlaying(true);
       soundRef.current.play();
 
-      intervalRef.current = setInterval(() => {
-        updateTime(soundRef.current!);
-      }, 500);
+      intervalRef.current = setInterval(
+        () => updateTime(soundRef.current!),
+        500
+      );
     }
   }, [audioFileName, isPlaying, playbackRate, updateTime, cleanupPlayback]);
 
@@ -196,9 +223,7 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
   const onChangeRate = (rate: number) => {
     setPlaybackRate(rate);
     if (soundRef.current) {
-      soundRef.current.pause();
       soundRef.current.setSpeed(rate);
-      soundRef.current.play();
     }
   };
 
@@ -209,6 +234,9 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
     return () => cleanupPlayback();
   }, [cleanupPlayback]);
 
+  /* --------------------------------
+     ✅ FINAL RETURN
+  ---------------------------------*/
   return {
     currentIndex,
     currentTime,

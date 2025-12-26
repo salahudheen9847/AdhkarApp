@@ -5,16 +5,28 @@ export const styles = StyleSheet.create({
   fullFlex: { flex: 1 },
   flatListContent: { padding: 16, paddingBottom: 120 },
 
+  /* 🔹 Each item wrapper */
   textContainer: {
     marginBottom: 16,
     padding: 12,
     borderRadius: 12,
     backgroundColor: "#1f2937",
   },
-  activeTextContainer: { backgroundColor: "#2563eb" },
 
-  text: { color: "#e5e7eb", textAlign: "center" },
-  activeText: { color: "#fff", fontWeight: "bold" },
+  activeTextContainer: {
+    backgroundColor: "#2563eb",
+  },
+
+  /* 🔹 Normal text */
+  text: {
+    color: "#e5e7eb",
+    textAlign: "center",
+  },
+
+  activeText: {
+    color: "#ffffff",
+    fontWeight: "bold",
+  },
 
   title: {
     fontSize: 22,
@@ -32,26 +44,48 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  /* 📦 MANQUS BOX STYLES (IMPORTANT) */
+  /* ===============================
+     📦 MANQUS BOX (FINAL WORKING)
+     =============================== */
   manqusBoxContainer: {
-    flexDirection: "row",
+     flexDirection: "column", 
     justifyContent: "space-between",
     gap: 12,
+
     paddingVertical: 10,
+    paddingHorizontal: 8,
+
+    /* 🔹 Visual separation (THIS was missing) */
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: "#6b7280",
+
+    marginVertical: 6,
   },
 
   manqusBoxText: {
     flex: 1,
     textAlign: "center",
     fontFamily: "ScheherazadeNew-Regular",
-    color: "#e5e7eb",
+    color: "#f9fafb",
   },
 });
 
+/* -------------------------------
+   Local / Header styles
+-------------------------------- */
 export const localStyles = StyleSheet.create({
-  headerButtonRow: { flexDirection: "row", alignItems: "center" },
+  headerButtonRow: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
   gapStyle: { width: 12 },
-  headerTitleContainer: { alignItems: "center", marginVertical: 12 },
+
+  headerTitleContainer: {
+    alignItems: "center",
+    marginVertical: 12,
+  },
 
   playButton: {
     backgroundColor: "#28eb25ff",
@@ -73,7 +107,12 @@ export const localStyles = StyleSheet.create({
   },
 
   langText: { color: "#fff", fontSize: 14 },
-  langRow: { flexDirection: "row", alignItems: "center" },
+
+  langRow: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
   tickButton: { marginLeft: 8 },
 
   bottomControlsRaised: {

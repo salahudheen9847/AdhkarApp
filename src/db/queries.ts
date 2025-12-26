@@ -12,19 +12,31 @@ export const getDhikrByType = async (type: string) => {
   return res[0].rows.raw();
 };
 
-/* 🔹 MANQUS MOULID (BOX SUPPORT) */
+/* 🔹 MANQUS MOULID (BOX + TEXT) */
 export const getManqusMoulid = async () => {
   const database = await db;
 
-  const res = await database.executeSql(
-    "SELECT * FROM manqus_moulid ORDER BY id ASC"
-  );
+  const res = await database.executeSql(`
+    SELECT
+      id,
+      sectionType,
+      text,
+      rightText,
+      leftText,
+      malayalam,
+      english,
+      start,
+      end
+    FROM manqus_moulid
+    ORDER BY id ASC
+  `);
 
   const rawRows = res[0].rows.raw();
 
+  // ✅ NORMALIZE DATA FOR UI
   return rawRows.map((r: any) => ({
     id: r.id,
-    type: r.sectionType,     // 🔴 MUST
+    type: r.sectionType,   // ✅ "box" | "text"
     text: r.text,
     rightText: r.rightText,
     leftText: r.leftText,
