@@ -9,7 +9,7 @@ import { FontControl } from "../../component/FontControl";
 // 🎨 UI
 import { styles } from "../../styles/dhikrscreenstyle";
 import { PlayerControls } from "../../component/PlayerControls";
-import { HeaderSection } from "./HeaderSection";
+import HeaderSection from "./HeaderSection";
 import { DuaListSection } from "./DuaListSection";
 
 // 🌍 Language Mode
@@ -37,7 +37,6 @@ const {
   playbackRate,
   showPlayer,
   currentDuaList,
-  title,
   scrollY,
   setShowPlayer,
   setFontSize,
@@ -126,7 +125,6 @@ const {
         fontSize={fontSize}
         languageMode={languageMode}
         malayalamList={translationList}   // Malayalam / English (DB)
-        title={title}
         scrollY={scrollY}
       />
 
