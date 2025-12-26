@@ -2,14 +2,19 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { Animated, Platform } from "react-native";
 import Sound from "react-native-sound";
 
-import { getDhikrByType } from "../db/queries";
+import { getDhikrByType, getManqusMoulid } from "../db/queries";
 import { DhikrDBItem } from "../types/DhikrTypes";
 
 try {
   Sound.setCategory("Playback");
 } catch {}
 
-export const useDhikrAudio = (type: string) => {
+type UseDhikrAudioParams = {
+  mode: "dhikr" | "manqus";
+  type?: string; // dhikr only
+};
+
+export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -27,50 +32,67 @@ export const useDhikrAudio = (type: string) => {
   const scrollY = useRef(new Animated.Value(0)).current;
 
   /* --------------------------------
-     🔊 Load DB data
+     🔊 Load DB data (Dhikr / Manqus)
   ---------------------------------*/
   useEffect(() => {
     let mounted = true;
 
     (async () => {
-      const rows = await getDhikrByType(type);
+      let rows: any[] = [];
+
+      if (mode === "dhikr" && type) {
+        rows = await getDhikrByType(type);
+      }
+
+      if (mode === "manqus") {
+        rows = await getManqusMoulid();
+      }
+
       if (!mounted) return;
 
       setCurrentDuaList(
-        rows.map((r: any) => ({
+        rows.map(r => ({
           id: r.id,
-          text: r.arabic,
-          malayalam: r.malayalam,
-          english: r.english,
+          text: r.arabic ?? r.text ?? "",
+          malayalam: r.malayalam ?? "",
+          english: r.english ?? "",
           start: r.start,
           end: r.end,
         }))
       );
 
-      switch (type) {
-        case "duaMarichavark":
-          setAudioFileName("dua_marichavark.mp3");
-          setTitle("📿 ദുഅ മരിച്ചവർക്കായി");
-          break;
-        case "duaQabar":
-          setAudioFileName("dua_qabar_full.mp3");
-          setTitle("🕋 ദുഅ കബറിന്");
-          break;
-        case "haddad":
-          setAudioFileName("haddad_full.mp3");
-          setTitle("📖 റാതിബ് അൽ ഹദ്ദാദ്");
-          break;
-        case "asmaulHusna":
-          setAudioFileName("asmaul_husna.mp3");
-          setTitle("🕋 അസ്മൗൽ ഹുസ്ന");
-          break;
+      /* 🎧 Audio + Title */
+      if (mode === "dhikr") {
+        switch (type) {
+          case "duaMarichavark":
+            setAudioFileName("dua_marichavark.mp3");
+            setTitle("📿 ദുഅ മരിച്ചവർക്കായി");
+            break;
+          case "duaQabar":
+            setAudioFileName("dua_qabar_full.mp3");
+            setTitle("🕋 ദുഅ കബറിന്");
+            break;
+          case "haddad":
+            setAudioFileName("haddad_full.mp3");
+            setTitle("📖 റാതിബ് അൽ ഹദ്ദാദ്");
+            break;
+          case "asmaulHusna":
+            setAudioFileName("asmaul_husna.mp3");
+            setTitle("🕋 അസ്മൗൽ ഹുസ്ന");
+            break;
+        }
+      }
+
+      if (mode === "manqus") {
+        setAudioFileName("manqus_moulid.mp3"); // 🔁 if available
+        setTitle("📖 മൻഖൂസ് മൗലിദ്");
       }
     })();
 
     return () => {
       mounted = false;
     };
-  }, [type]);
+  }, [mode, type]);
 
   /* --------------------------------
      ⏱️ Highlight logic

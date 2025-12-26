@@ -23,21 +23,6 @@ export const styles = StyleSheet.create({
     textAlign: "center",
   },
 
-  headerRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingHorizontal: 16,
-    alignItems: "center",
-    marginTop: 12,
-  },
-
-  backButton: {
-    backgroundColor: "#374151",
-    padding: 6,
-    borderRadius: 10,
-  },
-  backText: { color: "#f3f4f6", fontSize: 16 },
-
   bottomControls: {
     position: "absolute",
     bottom: 0,
@@ -45,6 +30,21 @@ export const styles = StyleSheet.create({
     right: 0,
     paddingVertical: 10,
     alignItems: "center",
+  },
+
+  /* 📦 MANQUS BOX STYLES (IMPORTANT) */
+  manqusBoxContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    gap: 12,
+    paddingVertical: 10,
+  },
+
+  manqusBoxText: {
+    flex: 1,
+    textAlign: "center",
+    fontFamily: "ScheherazadeNew-Regular",
+    color: "#e5e7eb",
   },
 });
 
@@ -60,8 +60,9 @@ export const localStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "center",
-    marginTop: -10, // moved slightly up
+    marginTop: -10,
   },
+
   playIcon: { color: "#fff" },
 
   langButton: {
@@ -70,17 +71,20 @@ export const localStyles = StyleSheet.create({
     paddingVertical: 6,
     borderRadius: 8,
   },
+
   langText: { color: "#fff", fontSize: 14 },
   langRow: { flexDirection: "row", alignItems: "center" },
   tickButton: { marginLeft: 8 },
+
   bottomControlsRaised: {
-  position: "absolute",
-  bottom: 22, // 👈 ഇവിടെ ചേർത്തു
-  left: 0,
-  right: 0,
-  paddingVertical: 10,
-  alignItems: "center",
-},
+    position: "absolute",
+    bottom: 22,
+    left: 0,
+    right: 0,
+    paddingVertical: 10,
+    alignItems: "center",
+  },
+
   headerContainer: {
     flexDirection: "row",
     alignItems: "center",
@@ -90,32 +94,32 @@ export const localStyles = StyleSheet.create({
     position: "relative",
     zIndex: 5,
   },
+
   playButtonContainer: {
-  alignItems: "center",
-  justifyContent: "center",
-},
+    alignItems: "center",
+    justifyContent: "center",
+  },
 
-playButtonInner: {
-  width: 42,
-  height: 42,
-  borderRadius: 21,
-  alignItems: "center",
-  justifyContent: "center",
-  backgroundColor: "#22c55e20", // soft green shade
-  borderWidth: 1,
-  borderColor: "#22c55e50",
-  shadowColor: "#22c55e",
-  shadowOpacity: 0.3,
-  shadowOffset: { width: 0, height: 2 },
-  shadowRadius: 4,
-  elevation: 4,
-},
+  playButtonInner: {
+    width: 42,
+    height: 42,
+    borderRadius: 21,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#22c55e20",
+    borderWidth: 1,
+    borderColor: "#22c55e50",
+    shadowColor: "#22c55e",
+    shadowOpacity: 0.3,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+    elevation: 4,
+  },
 
-playLabel: {
-  color: "#22c55e",
-  fontSize: 12,
-  fontWeight: "600",
-  marginTop: 4,
-},
-
+  playLabel: {
+    color: "#22c55e",
+    fontSize: 12,
+    fontWeight: "600",
+    marginTop: 4,
+  },
 });

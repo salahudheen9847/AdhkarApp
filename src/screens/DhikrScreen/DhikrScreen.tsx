@@ -28,24 +28,28 @@ export default function DhikrScreen() {
     useState<LanguageMode>("arabic");
   const [showFontControl, setShowFontControl] = useState(false);
 
-  const {
-    currentIndex,
-    currentTime,
-    duration,
-    fontSize,
-    isPlaying,
-    playbackRate,
-    showPlayer,
-    currentDuaList, // 🔥 DB based list
-    title,
-    scrollY,
-    setShowPlayer,
-    setFontSize,
-    playAudio,
-    stopAudio,
-    onSeek,
-    onChangeRate,
-  } = useDhikrAudio(type);
+const {
+  currentIndex,
+  currentTime,
+  duration,
+  fontSize,
+  isPlaying,
+  playbackRate,
+  showPlayer,
+  currentDuaList,
+  title,
+  scrollY,
+  setShowPlayer,
+  setFontSize,
+  playAudio,
+  stopAudio,
+  onSeek,
+  onChangeRate,
+} = useDhikrAudio({
+  mode: "dhikr",
+  type,
+});
+
 
   /* --------------------------------
      🌍 Translation List (FROM DB)

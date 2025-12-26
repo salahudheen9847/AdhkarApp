@@ -28,11 +28,11 @@ type Props = {
   isPlaying: boolean;
   setShowPlayer: (val: boolean) => void;
   playAudio: () => void;
-  type: "duaMarichavark" | "duaQabar" | "haddad" | "asmaulHusna";
+  type: "duaMarichavark" | "duaQabar" | "haddad" | "asmaulHusna" | "manqus";
   languageMode: LanguageMode;
   setLanguageMode: React.Dispatch<React.SetStateAction<LanguageMode>>;
   headerAnimatedStyle: any;
-  animatedBg: any;
+  animatedBg: any; 
   onFontPress: () => void;
 };
 
@@ -205,4 +205,4 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 8,
   },
-});
+}); 

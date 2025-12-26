@@ -21,6 +21,7 @@ import { ThemeProvider, useThemeContext } from "./src/context/theme";
 import HomeScreen from "./src/screens/HomeScreen";
 import DhikrScreen from "./src/screens/DhikrScreen/DhikrScreen";
 import TranslationScreen from "./src/screens/TranslationScreen";
+import ManqusMoulidScreen from "./src/screens/ManqusMoulidScreen/ManqusMoulidScreen"; // ✅ ADD
 
 // 🗄️ SQLite DB
 import {
@@ -28,7 +29,8 @@ import {
   seedAsmaulHusna,
   seedDuaMarichavark,
   seedDuaQabar,
-  seedHaddad,         // ✅ IMPORTANT
+  seedHaddad,
+  seedManqusMoulid,
 } from "./src/db";
 
 const Stack = createNativeStackNavigator();
@@ -41,16 +43,30 @@ function RootNavigator() {
 
   return (
     <NavigationContainer theme={isDark ? DarkTheme : DefaultTheme}>
-      <Stack.Navigator
-        initialRouteName="Home"
-        screenOptions={{ headerShown: false }}
-      >
-        <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
 
         <Stack.Screen
           name="Dhikr"
           component={DhikrScreen}
           options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name="ManqusMoulid"
+          component={ManqusMoulidScreen}
+          options={{
+            headerShown: true,
+            title: "മൻഖൂസ് മൗലിദ്",
+            headerStyle: {
+              backgroundColor: isDark ? "#1a1a1a" : "#0f172a",
+            },
+            headerTintColor: "#ffffff",
+          }}
         />
 
         <Stack.Screen
@@ -78,38 +94,37 @@ export default function App() {
 
   /* 🗄️ SQLite INIT — RUNS ONLY ONCE */
   useEffect(() => {
-    (async () => {
+    const initDB = async () => {
       try {
         await createTables();
         await seedAsmaulHusna();
         await seedDuaMarichavark();
         await seedDuaQabar();
-        await seedHaddad(); // ✅ ADD THIS LINE
+        await seedHaddad();
+        await seedManqusMoulid();
 
         console.log("✅ SQLite DB ready");
       } catch (error) {
         console.log("❌ DB init error:", error);
       }
-    })();
+    };
+
+    initDB();
   }, []);
 
-  /* ⏳ Splash / Loader delay */
+  /* ⏳ Splash / Loader */
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 1200);
 
     return () => clearTimeout(timer);
   }, []);
 
-  /* 🔄 Loader Screen */
   if (loading) {
     return (
       <View style={styles.loaderContainer}>
-        <StatusBar
-          backgroundColor="#ffffff"
-          barStyle="dark-content"
-        />
+        <StatusBar barStyle="dark-content" />
         <ActivityIndicator size="large" color="#22c55e" />
       </View>
     );

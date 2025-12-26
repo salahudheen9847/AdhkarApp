@@ -5,7 +5,7 @@ import { styles } from "../styles/playerStyles";
 import { youtubeLinks } from "../data/youtubeLinks";
 
 interface YoutubeButtonProps {
-  type?: "duaMarichavark" | "duaQabar" | "haddad" | "asmaulHusna";
+  type?: "duaMarichavark" | "duaQabar" | "haddad" | "asmaulHusna" | "manqus";
 }
 
 

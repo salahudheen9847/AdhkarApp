@@ -19,6 +19,13 @@ import LinearGradient from "react-native-linear-gradient";
 import { homeStyles as styles } from "../styles/homeStyles";
 import { commonStyles } from "../styles/common";
 
+type HomeItem = {
+  id: string;
+  title: string;
+  image: any;
+  gradient: string[];
+};
+
 export default function HomeScreen() {
   const navigation = useNavigation<any>();
   const [searchQuery, setSearchQuery] = useState("");
@@ -28,7 +35,8 @@ export default function HomeScreen() {
     text: "#1e293b",
   };
 
-  const duaItems = [
+  /* ---------------- Dua Items ---------------- */
+  const duaItems: HomeItem[] = [
     {
       id: "duaMarichavark",
       title: "Dua Marichavark",
@@ -41,9 +49,16 @@ export default function HomeScreen() {
       image: require("../assets/duaQabar.png"),
       gradient: ["#fef3c7", "#fde68a"],
     },
+    {
+      id: "manqusMoulid",
+      title: "Manqus Moulid",
+      image: require("../assets/manqus.png"),
+      gradient: ["#e0f2fe", "#bae6fd"],
+    },
   ];
 
-  const ratibItems = [
+  /* ---------------- Ratib ---------------- */
+  const ratibItems: HomeItem[] = [
     {
       id: "haddad",
       title: "Ratib al-Haddad",
@@ -51,26 +66,21 @@ export default function HomeScreen() {
       gradient: ["#fef9c3", "#fef08a"],
     },
   ];
-  const asmaulHusnaItems = [
-  {
-    id: "asmaulHusna",
-    title: "Asmaul Husna",
-    image: require("../assets/asmaulhusna_icon.png"),
-    gradient: ["#fff7ed", "#ffedd5"],
-  },
-];
 
+  /* ---------------- Asmaul Husna ---------------- */
+  const asmaulHusnaItems: HomeItem[] = [
+    {
+      id: "asmaulHusna",
+      title: "Asmaul Husna",
+      image: require("../assets/asmaulhusna_icon.png"),
+      gradient: ["#fff7ed", "#ffedd5"],
+    },
+  ];
 
-  const filteredDuas = duaItems.filter((item) =>
-    item.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-  const filteredRatibs = ratibItems.filter((item) =>
-    item.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-  const filteredAsmaulHusna = asmaulHusnaItems.filter((item) =>
-  item.title.toLowerCase().includes(searchQuery.toLowerCase())
-);
-
+  const filter = (items: HomeItem[]) =>
+    items.filter(item =>
+      item.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
   return (
     <KeyboardAvoidingView
@@ -78,14 +88,11 @@ export default function HomeScreen() {
       behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <SafeAreaView
-          style={[commonStyles.container, { backgroundColor: colors.background }]}
-        >
+        <SafeAreaView style={[commonStyles.container, { backgroundColor: colors.background }]}>
           <StatusBar backgroundColor="#fefce8" barStyle="dark-content" translucent />
 
-          {/* 🔍 Search Bar */}
+          {/* 🔍 Search */}
           <View style={[styles.searchContainer, styles.searchContainerLight]}>
-
             <Icon name="search" size={18} color="#92400e" style={styles.searchIcon} />
             <TextInput
               style={[styles.searchInput, { color: colors.text }]}
@@ -93,37 +100,28 @@ export default function HomeScreen() {
               placeholderTextColor="#a16207"
               value={searchQuery}
               onChangeText={setSearchQuery}
-              autoCapitalize="none"
-              autoCorrect={false}
-              returnKeyType="done"
             />
           </View>
 
-          {/* 🔽 Scroll Content */}
-          <ScrollView
-            contentContainerStyle={[styles.scrollContent]}
-            showsVerticalScrollIndicator={false}
-            keyboardShouldPersistTaps="always"
-          >
-            {/* 📿 Dua Section */}
-            {filteredDuas.length > 0 && (
+          <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+            {/* 📿 Dua */}
+            {filter(duaItems).length > 0 && (
               <>
                 <Text style={[styles.sectionTitle, { color: colors.text }]}>
                   📿 Dua Collection
                 </Text>
                 <View style={styles.innerGrid}>
-                  {filteredDuas.map((item) => (
+                  {filter(duaItems).map(item => (
                     <TouchableOpacity
                       key={item.id}
                       activeOpacity={0.9}
-                      onPress={() => navigation.navigate("Dhikr", { type: item.id })}
+                      onPress={() =>
+                        item.id === "manqusMoulid"
+                          ? navigation.navigate("ManqusMoulid")
+                          : navigation.navigate("Dhikr", { type: item.id })
+                      }
                     >
-                      <LinearGradient
-                        colors={item.gradient}
-                        start={{ x: 0, y: 0 }}
-                        end={{ x: 0, y: 1 }}
-                        style={styles.card}
-                      >
+                      <LinearGradient colors={item.gradient} style={styles.card}>
                         <Image source={item.image} style={styles.icon} />
                         <Text style={[styles.cardText, { color: colors.text }]}>
                           {item.title}
@@ -135,25 +133,20 @@ export default function HomeScreen() {
               </>
             )}
 
-            {/* 📖 Ratib Section */}
-            {filteredRatibs.length > 0 && (
+            {/* 📖 Ratib */}
+            {filter(ratibItems).length > 0 && (
               <>
                 <Text style={[styles.sectionTitle, { color: colors.text }]}>
                   📖 Ratib Collection
                 </Text>
                 <View style={styles.innerGrid}>
-                  {filteredRatibs.map((item) => (
+                  {filter(ratibItems).map(item => (
                     <TouchableOpacity
                       key={item.id}
                       activeOpacity={0.9}
                       onPress={() => navigation.navigate("Dhikr", { type: item.id })}
                     >
-                      <LinearGradient
-                        colors={item.gradient}
-                        start={{ x: 0, y: 0 }}
-                        end={{ x: 0, y: 1 }}
-                        style={styles.card}
-                      >
+                      <LinearGradient colors={item.gradient} style={styles.card}>
                         <Image source={item.image} style={styles.icon} />
                         <Text style={[styles.cardText, { color: colors.text }]}>
                           {item.title}
@@ -164,46 +157,40 @@ export default function HomeScreen() {
                 </View>
               </>
             )}
-            {/* 🕋 Asmaul Husna Section */}
-{filteredAsmaulHusna.length > 0 && (
-  <>
-    <Text style={[styles.sectionTitle, { color: colors.text }]}>
-      🕋 Asmaul Husna Collection
-    </Text>
-    <View style={styles.innerGrid}>
-      {filteredAsmaulHusna.map((item) => (
-        <TouchableOpacity
-          key={item.id}
-          activeOpacity={0.9}
-          onPress={() => navigation.navigate("Dhikr", { type: item.id })}
-        >
-          <LinearGradient
-            colors={item.gradient}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 0, y: 1 }}
-            style={styles.card}
-          >
-            <Image source={item.image} style={styles.icon} />
-            <Text style={[styles.cardText, { color: colors.text }]}>
-              {item.title}
-            </Text>
-          </LinearGradient>
-        </TouchableOpacity>
-      ))}
-    </View>
-  </>
-)}
 
+            {/* 🕋 Asmaul Husna */}
+            {filter(asmaulHusnaItems).length > 0 && (
+              <>
+                <Text style={[styles.sectionTitle, { color: colors.text }]}>
+                  🕋 Asmaul Husna Collection
+                </Text>
+                <View style={styles.innerGrid}>
+                  {filter(asmaulHusnaItems).map(item => (
+                    <TouchableOpacity
+                      key={item.id}
+                      activeOpacity={0.9}
+                      onPress={() => navigation.navigate("Dhikr", { type: item.id })}
+                    >
+                      <LinearGradient colors={item.gradient} style={styles.card}>
+                        <Image source={item.image} style={styles.icon} />
+                        <Text style={[styles.cardText, { color: colors.text }]}>
+                          {item.title}
+                        </Text>
+                      </LinearGradient>
+                    </TouchableOpacity>
+                  ))}
+                </View>
+              </>
+            )}
 
             {/* ❌ No Results */}
-   {filteredDuas.length === 0 &&
- filteredRatibs.length === 0 &&
- filteredAsmaulHusna.length === 0 && (
-  <Text style={[styles.noResultText, { color: colors.text }]}>
-    No matching items found
-  </Text>
-)}
-
+            {filter(duaItems).length === 0 &&
+              filter(ratibItems).length === 0 &&
+              filter(asmaulHusnaItems).length === 0 && (
+                <Text style={[styles.noResultText, { color: colors.text }]}>
+                  No matching items found
+                </Text>
+              )}
           </ScrollView>
         </SafeAreaView>
       </TouchableWithoutFeedback>

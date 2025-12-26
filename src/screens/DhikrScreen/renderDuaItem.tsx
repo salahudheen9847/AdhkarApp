@@ -8,6 +8,7 @@ export type LanguageMode =
   | "arabic_malayalam"
   | "arabic_english";
 
+
 const textStyle = {
   arabic: {
     textAlign: "center" as const,
