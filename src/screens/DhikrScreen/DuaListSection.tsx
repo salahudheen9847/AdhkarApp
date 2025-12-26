@@ -1,10 +1,8 @@
 import React, { useCallback } from "react";
 import { Animated, StyleSheet } from "react-native";
-import { styles } from "../../styles/dhikrscreenstyle";
-import { HeaderTitle } from "./HeaderTitle";
 import { renderDuaItem } from "./renderDuaItem";
 
-// ✅ SAME LanguageMode USED EVERYWHERE
+/* 🌍 Language Mode */
 export type LanguageMode =
   | "arabic"
   | "arabic_malayalam"
@@ -16,7 +14,6 @@ type Props = {
   fontSize: number;
   languageMode: LanguageMode;
   malayalamList: any[];
-  title: string;
   scrollY: Animated.Value;
 };
 
@@ -26,14 +23,13 @@ export const DuaListSection: React.FC<Props> = ({
   fontSize,
   languageMode,
   malayalamList,
-  title,
   scrollY,
 }) => {
   const renderItem = useCallback(
     ({ item }: { item: any }) =>
       renderDuaItem(
         item,
-        currentIndex ?? 0,
+        currentIndex,
         fontSize,
         languageMode,
         malayalamList
@@ -43,15 +39,12 @@ export const DuaListSection: React.FC<Props> = ({
 
   return (
     <Animated.FlatList
-      style={styles.fullFlex}
-      contentContainerStyle={[
-        styles.flatListContent,
-        localStyles.listPadding,
-      ]}
+      style={localStyles.list}
+      contentContainerStyle={localStyles.content}
       data={currentDuaList}
       keyExtractor={(item) => item.id.toString()}
       renderItem={renderItem}
-      ListHeaderComponent={<HeaderTitle text={title} />}
+      ListHeaderComponent={null}
       onScroll={Animated.event(
         [{ nativeEvent: { contentOffset: { y: scrollY } } }],
         { useNativeDriver: true }
@@ -61,8 +54,15 @@ export const DuaListSection: React.FC<Props> = ({
   );
 };
 
+/* ------------------------------
+   🎨 Local Styles (ESLint Safe)
+--------------------------------*/
 const localStyles = StyleSheet.create({
-  listPadding: {
-    paddingTop: 200,
+  list: {
+    flex: 1,
+  },
+  content: {
+    paddingTop: 180,     // ✅ HeaderSection height
+    paddingBottom: 140, // ✅ PlayerControls space
   },
 });

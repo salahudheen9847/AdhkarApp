@@ -1,40 +1,57 @@
 import React from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
-import { useThemeContext } from "../context/theme"; // 🌙 Theme import
-import { duaMarichavark } from "../data/duaMarichavark/duaMarichavarkArabic";
+import { useThemeContext } from "../context/theme";
+
+// 📘 Arabic & Malayalam data
+import { duaMarichavarkArabic } from "../data/duaMarichavark/duaMarichavarkArabic";
 import { duaMarichavarkMalayalam } from "../data/duaMarichavark/duaMarichavarkMalayalam";
 
+/* 🧩 Types (matches existing data) */
+type ArabicItem = {
+  id: number;
+  text: string;
+};
+
+type MalayalamItem = {
+  id: number;
+  text: string;
+};
+
 export default function TranslationScreen() {
-  const { colors } = useThemeContext(); // 🎨 use theme colors
+  const { colors } = useThemeContext();
 
   return (
     <ScrollView
+      showsVerticalScrollIndicator={false}
       contentContainerStyle={[
         styles.container,
         { backgroundColor: colors.background },
       ]}
-      showsVerticalScrollIndicator={false}
     >
-      {duaMarichavark.map((arabicItem) => {
-        const malItem = duaMarichavarkMalayalam.find(
-          (m) => m.id === arabicItem.id
-        );
+      {duaMarichavarkArabic.map((arabicItem: ArabicItem) => {
+        const malItem: MalayalamItem | undefined =
+          duaMarichavarkMalayalam.find(
+            (m) => m.id === arabicItem.id
+          );
 
         return (
           <View
             key={arabicItem.id}
             style={[
               styles.itemContainer,
-              { borderBottomColor: colors.border, shadowColor: colors.shadow },
+              {
+                borderBottomColor: colors.border,
+                shadowColor: colors.shadow,
+              },
             ]}
           >
-            {/* Arabic Text */}
+            {/* 🕌 Arabic Text */}
             <Text style={[styles.arabic, { color: colors.text }]}>
               {arabicItem.text}
             </Text>
 
-            {/* Malayalam Translation */}
-            {malItem && (
+            {/* 🌙 Malayalam Translation */}
+            {malItem?.text && (
               <Text style={[styles.malayalam, { color: colors.text }]}>
                 {malItem.text}
               </Text>
@@ -46,6 +63,7 @@ export default function TranslationScreen() {
   );
 }
 
+/* 🎨 Styles */
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,

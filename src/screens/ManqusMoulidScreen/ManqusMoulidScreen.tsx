@@ -1,15 +1,11 @@
-import React, { useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
+import React, { useState, useMemo } from "react";
 import { StatusBar } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 
-// 🌗 Theme
 import { useThemeContext } from "../../context/theme";
-
-// 🔊 Audio Hook
 import { useDhikrAudio } from "../../hooks/useDhikrAudio";
 
-// 🎨 UI
 import { styles } from "../../styles/dhikrscreenstyle";
 import { PlayerControls } from "../../component/PlayerControls";
 import { HeaderSection } from "../DhikrScreen/HeaderSection";
@@ -17,14 +13,13 @@ import { DuaListSection } from "../DhikrScreen/DuaListSection";
 import { LanguageMode } from "../DhikrScreen/renderDuaItem";
 
 export default function ManqusMoulidScreen() {
+  /* 🔒 HOOK ORDER FIXED */
   const navigation = useNavigation<any>();
   const { isDark, toggleTheme, colors } = useThemeContext();
 
-  // 🌍 Language state (REAL)
   const [languageMode, setLanguageMode] =
     useState<LanguageMode>("arabic");
 
-  /* 🔥 MANQUS MODE AUDIO + DATA */
   const {
     currentIndex,
     currentTime,
@@ -41,13 +36,11 @@ export default function ManqusMoulidScreen() {
     stopAudio,
     onSeek,
     onChangeRate,
-  } = useDhikrAudio({
-    mode: "manqus",
-  });
+  } = useDhikrAudio({ mode: "manqus" });
 
-  /* 🌀 HEADER ANIMATION (SAME AS DHIKR) */
+  /* 🔥 HEADER ANIMATION */
   const animatedBg = scrollY.interpolate({
-    inputRange: [0, 150],
+    inputRange: [0, 120],
     outputRange: ["transparent", "transparent"],
     extrapolate: "clamp",
   });
@@ -56,8 +49,8 @@ export default function ManqusMoulidScreen() {
     transform: [
       {
         translateY: scrollY.interpolate({
-          inputRange: [0, 150],
-          outputRange: [0, 150],
+          inputRange: [0, 120],
+          outputRange: [0, -120], // ⬆️ header hides on scroll
           extrapolate: "clamp",
         }),
       },
@@ -69,14 +62,18 @@ export default function ManqusMoulidScreen() {
     }),
   };
 
-  /* 🌍 Translation List */
-  const translationList = currentDuaList.map(item => ({
-    id: item.id,
-    text:
-      languageMode === "arabic_malayalam"
-        ? item.malayalam
-        : item.english,
-  }));
+  /* 🌍 TRANSLATION LIST */
+  const translationList = useMemo(() => {
+    if (languageMode === "arabic") return [];
+
+    return currentDuaList.map(item => ({
+      id: item.id,
+      text:
+        languageMode === "arabic_malayalam"
+          ? item.malayalam
+          : item.english,
+    }));
+  }, [languageMode, currentDuaList]);
 
   return (
     <SafeAreaView
@@ -88,7 +85,7 @@ export default function ManqusMoulidScreen() {
         barStyle={isDark ? "light-content" : "dark-content"}
       />
 
-      {/* 🕌 Header */}
+      {/* 🕌 HEADER ONLY */}
       <HeaderSection
         navigation={navigation}
         textColor={colors.text}
@@ -98,25 +95,24 @@ export default function ManqusMoulidScreen() {
         setShowPlayer={setShowPlayer}
         playAudio={playAudio}
         type="manqus"
-        languageMode={languageMode}          // ✅ REAL STATE
-        setLanguageMode={setLanguageMode}    // ✅ REAL SETTER
-        headerAnimatedStyle={headerAnimatedStyle} // ✅
-        animatedBg={animatedBg}                   // ✅
+        languageMode={languageMode}
+        setLanguageMode={setLanguageMode}
+        headerAnimatedStyle={headerAnimatedStyle}
+        animatedBg={animatedBg}
         onFontPress={() => {}}
       />
 
-      {/* 📖 Manqus List */}
+      {/* 📖 MANQUS CONTENT (NO TITLE TEXT) */}
       <DuaListSection
         currentDuaList={currentDuaList}
         currentIndex={currentIndex ?? 0}
         fontSize={fontSize}
-        languageMode={languageMode}          // ✅ SAME STATE
+        languageMode={languageMode}
         malayalamList={translationList}
-        title="മൻഖൂസ് മൗലിദ്"
         scrollY={scrollY}
       />
 
-      {/* 🎧 Player */}
+      {/* 🎧 PLAYER */}
       {showPlayer && (
         <PlayerControls
           currentTime={currentTime}

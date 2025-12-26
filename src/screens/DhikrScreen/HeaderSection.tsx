@@ -9,17 +9,18 @@ import {
   Platform,
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
+
 import { YoutubeButton } from "../../component/YoutubeButton";
 import { WhatsappButton } from "../../component/WhatsappButton";
 import { LanguageToggle } from "./LanguageToggle";
 
-// ✅ SAME LanguageMode AS DhikrScreen
+/* 🌍 Language Mode */
 export type LanguageMode =
   | "arabic"
   | "arabic_malayalam"
   | "arabic_english";
 
-// HeaderSection Props
+/* 🔹 Props */
 type Props = {
   navigation: any;
   textColor: string;
@@ -28,11 +29,16 @@ type Props = {
   isPlaying: boolean;
   setShowPlayer: (val: boolean) => void;
   playAudio: () => void;
-  type: "duaMarichavark" | "duaQabar" | "haddad" | "asmaulHusna" | "manqus";
+  type:
+    | "duaMarichavark"
+    | "duaQabar"
+    | "haddad"
+    | "asmaulHusna"
+    | "manqus";
   languageMode: LanguageMode;
   setLanguageMode: React.Dispatch<React.SetStateAction<LanguageMode>>;
   headerAnimatedStyle: any;
-  animatedBg: any; 
+  animatedBg: any;
   onFontPress: () => void;
 };
 
@@ -61,9 +67,9 @@ export const HeaderSection: React.FC<Props> = ({
         headerAnimatedStyle,
       ]}
     >
-      {/* 🔹 Row 1 — Left and Right Sections */}
+      {/* 🔹 ROW 1 */}
       <View style={styles.row1}>
-        {/* 🔙 Left Side: Back + Play */}
+        {/* 🔙 Left */}
         <View style={styles.leftGroup}>
           <TouchableOpacity
             style={styles.backButton}
@@ -75,7 +81,7 @@ export const HeaderSection: React.FC<Props> = ({
             </Text>
           </TouchableOpacity>
 
-          {/* ▶️ Play Button */}
+          {/* ▶️ Play */}
           <TouchableOpacity
             style={styles.playButtonContainer}
             activeOpacity={0.8}
@@ -99,20 +105,15 @@ export const HeaderSection: React.FC<Props> = ({
           </TouchableOpacity>
         </View>
 
-        {/* 🔸 Right Side */}
+        {/* 🔸 Right */}
         <View style={styles.rightGroup}>
-          {/* 🅰️ Font */}
-          <TouchableOpacity onPress={onFontPress} style={styles.fontButton}>
+          <TouchableOpacity onPress={onFontPress}>
             <Icon name="text-fields" size={30} color={textColor} />
           </TouchableOpacity>
 
-          {/* 📺 YouTube */}
           <YoutubeButton type={type} />
-
-          {/* 💬 WhatsApp */}
           <WhatsappButton />
 
-          {/* 🌓 Theme */}
           <TouchableOpacity onPress={toggleTheme}>
             <Icon
               name={isDark ? "wb-sunny" : "dark-mode"}
@@ -123,7 +124,7 @@ export const HeaderSection: React.FC<Props> = ({
         </View>
       </View>
 
-      {/* 🌐 Row 2 — Language Toggle */}
+      {/* 🌐 ROW 2 — Language */}
       <View style={styles.langRow}>
         <LanguageToggle
           languageMode={languageMode}
@@ -134,7 +135,7 @@ export const HeaderSection: React.FC<Props> = ({
   );
 };
 
-// 🔹 Styles (UNCHANGED)
+/* 🎨 Styles */
 const styles = StyleSheet.create({
   headerBase: {
     borderBottomWidth: 1,
@@ -198,11 +199,8 @@ const styles = StyleSheet.create({
   },
   playingBg: { backgroundColor: "#16a34a20" },
   pausedBg: { backgroundColor: "#27d66720" },
-  fontButton: {
-    marginRight: 4,
-  },
   langRow: {
     alignItems: "center",
     marginTop: 8,
   },
-}); 
+});

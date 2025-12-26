@@ -1,9 +1,22 @@
 import { StyleSheet } from "react-native";
 
+/* ===============================
+   🌍 MAIN STYLES
+================================ */
 export const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#111827" },
-  fullFlex: { flex: 1 },
-  flatListContent: { padding: 16, paddingBottom: 120 },
+  container: {
+    flex: 1,
+    backgroundColor: "#111827",
+  },
+
+  fullFlex: {
+    flex: 1,
+  },
+
+  flatListContent: {
+    padding: 16,
+    paddingBottom: 120,
+  },
 
   /* 🔹 Each item wrapper */
   textContainer: {
@@ -17,7 +30,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "#2563eb",
   },
 
-  /* 🔹 Normal text */
+  /* 🔹 Normal Arabic text */
   text: {
     color: "#e5e7eb",
     textAlign: "center",
@@ -45,42 +58,51 @@ export const styles = StyleSheet.create({
   },
 
   /* ===============================
-     📦 MANQUS BOX (FINAL WORKING)
+     📦 MANQUS BOX (FINAL)
      =============================== */
-  manqusBoxContainer: {
-     flexDirection: "column", 
-    justifyContent: "space-between",
-    gap: 12,
 
-    paddingVertical: 10,
-    paddingHorizontal: 8,
-
-    /* 🔹 Visual separation (THIS was missing) */
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: "#6b7280",
-
-    marginVertical: 6,
+  /** 🔹 Extra spacing so box never collapses */
+  manqusBoxWrapper: {
+    paddingVertical: 14,
+    marginVertical: 12,
   },
 
+  /** 🔹 Actual box */
+  manqusBoxContainer: {
+    borderWidth: 1,
+    borderColor: "#334155",
+    borderRadius: 10,
+
+    paddingVertical: 14,
+    paddingHorizontal: 12,
+
+    backgroundColor: "#0f172a",
+
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  /** 🔹 Box text (right & left) */
   manqusBoxText: {
-    flex: 1,
-    textAlign: "center",
     fontFamily: "ScheherazadeNew-Regular",
-    color: "#f9fafb",
+    textAlign: "center",
+    lineHeight: 38,
+    color: "#e5e7eb",
   },
 });
 
-/* -------------------------------
-   Local / Header styles
--------------------------------- */
+/* ===============================
+   🎛️ LOCAL / HEADER STYLES
+================================ */
 export const localStyles = StyleSheet.create({
   headerButtonRow: {
     flexDirection: "row",
     alignItems: "center",
   },
 
-  gapStyle: { width: 12 },
+  gapStyle: {
+    width: 12,
+  },
 
   headerTitleContainer: {
     alignItems: "center",
@@ -97,7 +119,9 @@ export const localStyles = StyleSheet.create({
     marginTop: -10,
   },
 
-  playIcon: { color: "#fff" },
+  playIcon: {
+    color: "#fff",
+  },
 
   langButton: {
     backgroundColor: "#334155",
@@ -106,14 +130,19 @@ export const localStyles = StyleSheet.create({
     borderRadius: 8,
   },
 
-  langText: { color: "#fff", fontSize: 14 },
+  langText: {
+    color: "#fff",
+    fontSize: 14,
+  },
 
   langRow: {
     flexDirection: "row",
     alignItems: "center",
   },
 
-  tickButton: { marginLeft: 8 },
+  tickButton: {
+    marginLeft: 8,
+  },
 
   bottomControlsRaised: {
     position: "absolute",

@@ -60,7 +60,7 @@ function RootNavigator() {
           name="ManqusMoulid"
           component={ManqusMoulidScreen}
           options={{
-            headerShown: true,
+          headerShown: false,
             title: "മൻഖൂസ് മൗലിദ്",
             headerStyle: {
               backgroundColor: isDark ? "#1a1a1a" : "#0f172a",

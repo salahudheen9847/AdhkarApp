@@ -50,7 +50,7 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
       if (!mounted) return;
 
       const mapped = rows
-        .map(r => {
+        .map((r) => {
           /* 🕌 DHIKR */
           if (mode === "dhikr") {
             return {
@@ -78,11 +78,13 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
               };
             }
 
-            // 📝 NORMAL TEXT
+            // 📝 NORMAL TEXT (WITH TRANSLATIONS)
             return {
               id: r.id,
               type: "text",
-              text: r.text ?? "",
+              text: r.text ?? r.arabic ?? "",
+              malayalam: r.malayalam ?? "",
+              english: r.english ?? "",
               start: r.start,
               end: r.end,
             };
@@ -91,6 +93,11 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
           return null;
         })
         .filter(Boolean);
+
+      /* 🔥 DEBUG (VERY IMPORTANT) */
+      console.log("🧪 MODE:", mode);
+      console.log("🧪 FIRST ITEM:", mapped[0]);
+      console.log("🧪 TOTAL ITEMS:", mapped.length);
 
       setCurrentDuaList(mapped);
 
@@ -132,11 +139,11 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
   ---------------------------------*/
   const updateTime = useCallback(
     (sound: Sound) => {
-      sound.getCurrentTime(seconds => {
+      sound.getCurrentTime((seconds) => {
         setCurrentTime(seconds);
 
         const active = currentDuaList.find(
-          d => seconds >= d.start && seconds < d.end
+          (d) => seconds >= d.start && seconds < d.end
         );
 
         if (active && active.id !== currentIndex) {
@@ -181,7 +188,7 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
       const sound = new Sound(
         audioFileName,
         Platform.OS === "ios" ? Sound.MAIN_BUNDLE : undefined,
-        error => {
+        (error) => {
           if (error) {
             console.log("❌ AUDIO LOAD ERROR:", error);
             return;

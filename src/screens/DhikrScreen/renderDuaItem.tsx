@@ -8,6 +8,12 @@ export type LanguageMode =
   | "arabic_malayalam"
   | "arabic_english";
 
+/* 🗂 Translation Type (MATCHES translationList) */
+type TranslationItem = {
+  id: number;
+  text?: string;
+};
+
 /* 🎨 Text Styles */
 const textStyle = {
   arabic: {
@@ -28,15 +34,16 @@ const textStyle = {
   },
 };
 
+/* 🧩 Renderer */
 export const renderDuaItem = (
   item: any,
   currentIndex: number,
   fontSize: number,
   languageMode: LanguageMode,
-  translationList: any[]
+  translationList: TranslationItem[]
 ) => {
-  const translationItem = translationList.find(
-    (t) => t.id === item.id
+  const translationItem = translationList?.find(
+    t => t.id === item.id
   );
 
   const isBox = item.type === "box";
@@ -45,10 +52,11 @@ export const renderDuaItem = (
     <View
       style={[
         styles.textContainer,
+        isBox && styles.manqusBoxWrapper, // ✅ VERY IMPORTANT
         currentIndex === item.id && styles.activeTextContainer,
       ]}
     >
-      {/* 📦 MANQUS BOX */}
+      {/* 📦 MANQUS BOX (Arabic only) */}
       {isBox ? (
         <View style={styles.manqusBoxContainer}>
           <Text
@@ -87,7 +95,7 @@ export const renderDuaItem = (
 
           {/* 🌙 Arabic + Malayalam */}
           {languageMode === "arabic_malayalam" &&
-            translationItem && (
+            translationItem?.text && (
               <Text
                 style={[
                   textStyle.malayalam,
@@ -103,7 +111,7 @@ export const renderDuaItem = (
 
           {/* 🌍 Arabic + English */}
           {languageMode === "arabic_english" &&
-            translationItem && (
+            translationItem?.text && (
               <Text
                 style={[
                   textStyle.english,
