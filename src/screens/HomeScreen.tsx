@@ -35,7 +35,7 @@ export default function HomeScreen() {
     text: "#1e293b",
   };
 
-  /* ---------------- Dua Items ---------------- */
+  /* ---------------- Dua ---------------- */
   const duaItems: HomeItem[] = [
     {
       id: "duaMarichavark",
@@ -49,6 +49,10 @@ export default function HomeScreen() {
       image: require("../assets/duaQabar.png"),
       gradient: ["#fef3c7", "#fde68a"],
     },
+  ];
+
+  /* ---------------- 🌙 Moulid ---------------- */
+  const moulidItems: HomeItem[] = [
     {
       id: "manqusMoulid",
       title: "Manqus Moulid",
@@ -88,22 +92,31 @@ export default function HomeScreen() {
       behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <SafeAreaView style={[commonStyles.container, { backgroundColor: colors.background }]}>
-          <StatusBar backgroundColor="#fefce8" barStyle="dark-content" translucent />
+        <SafeAreaView
+          style={[commonStyles.container, { backgroundColor: colors.background }]}
+        >
+          <StatusBar
+            backgroundColor="#fefce8"
+            barStyle="dark-content"
+            translucent
+          />
 
           {/* 🔍 Search */}
           <View style={[styles.searchContainer, styles.searchContainerLight]}>
             <Icon name="search" size={18} color="#92400e" style={styles.searchIcon} />
             <TextInput
               style={[styles.searchInput, { color: colors.text }]}
-              placeholder="Search duas or ratib..."
+              placeholder="Search duas or collections..."
               placeholderTextColor="#a16207"
               value={searchQuery}
               onChangeText={setSearchQuery}
             />
           </View>
 
-          <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+          <ScrollView
+            contentContainerStyle={styles.scrollContent}
+            showsVerticalScrollIndicator={false}
+          >
             {/* 📿 Dua */}
             {filter(duaItems).length > 0 && (
               <>
@@ -116,10 +129,33 @@ export default function HomeScreen() {
                       key={item.id}
                       activeOpacity={0.9}
                       onPress={() =>
-                        item.id === "manqusMoulid"
-                          ? navigation.navigate("ManqusMoulid")
-                          : navigation.navigate("Dhikr", { type: item.id })
+                        navigation.navigate("Dhikr", { type: item.id })
                       }
+                    >
+                      <LinearGradient colors={item.gradient} style={styles.card}>
+                        <Image source={item.image} style={styles.icon} />
+                        <Text style={[styles.cardText, { color: colors.text }]}>
+                          {item.title}
+                        </Text>
+                      </LinearGradient>
+                    </TouchableOpacity>
+                  ))}
+                </View>
+              </>
+            )}
+
+            {/* 🌙 Moulid */}
+            {filter(moulidItems).length > 0 && (
+              <>
+                <Text style={[styles.sectionTitle, { color: colors.text }]}>
+                  🌙 Moulid Collection
+                </Text>
+                <View style={styles.innerGrid}>
+                  {filter(moulidItems).map(item => (
+                    <TouchableOpacity
+                      key={item.id}
+                      activeOpacity={0.9}
+                      onPress={() => navigation.navigate("ManqusMoulid")}
                     >
                       <LinearGradient colors={item.gradient} style={styles.card}>
                         <Image source={item.image} style={styles.icon} />
@@ -144,7 +180,9 @@ export default function HomeScreen() {
                     <TouchableOpacity
                       key={item.id}
                       activeOpacity={0.9}
-                      onPress={() => navigation.navigate("Dhikr", { type: item.id })}
+                      onPress={() =>
+                        navigation.navigate("Dhikr", { type: item.id })
+                      }
                     >
                       <LinearGradient colors={item.gradient} style={styles.card}>
                         <Image source={item.image} style={styles.icon} />
@@ -169,7 +207,9 @@ export default function HomeScreen() {
                     <TouchableOpacity
                       key={item.id}
                       activeOpacity={0.9}
-                      onPress={() => navigation.navigate("Dhikr", { type: item.id })}
+                      onPress={() =>
+                        navigation.navigate("Dhikr", { type: item.id })
+                      }
                     >
                       <LinearGradient colors={item.gradient} style={styles.card}>
                         <Image source={item.image} style={styles.icon} />
@@ -185,6 +225,7 @@ export default function HomeScreen() {
 
             {/* ❌ No Results */}
             {filter(duaItems).length === 0 &&
+              filter(moulidItems).length === 0 &&
               filter(ratibItems).length === 0 &&
               filter(asmaulHusnaItems).length === 0 && (
                 <Text style={[styles.noResultText, { color: colors.text }]}>
