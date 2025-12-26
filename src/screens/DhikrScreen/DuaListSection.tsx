@@ -2,7 +2,6 @@ import React, { useCallback } from "react";
 import { Animated, StyleSheet } from "react-native";
 import { renderDuaItem } from "./renderDuaItem";
 
-/* 🌍 Language Mode */
 export type LanguageMode =
   | "arabic"
   | "arabic_malayalam"
@@ -44,7 +43,7 @@ export const DuaListSection: React.FC<Props> = ({
       data={currentDuaList}
       keyExtractor={(item) => item.id.toString()}
       renderItem={renderItem}
-      ListHeaderComponent={null}
+      extraData={fontSize}   // ⭐ REQUIRED
       onScroll={Animated.event(
         [{ nativeEvent: { contentOffset: { y: scrollY } } }],
         { useNativeDriver: true }
@@ -54,15 +53,10 @@ export const DuaListSection: React.FC<Props> = ({
   );
 };
 
-/* ------------------------------
-   🎨 Local Styles (ESLint Safe)
---------------------------------*/
 const localStyles = StyleSheet.create({
-  list: {
-    flex: 1,
-  },
+  list: { flex: 1 },
   content: {
-    paddingTop: 180,     // ✅ HeaderSection height
-    paddingBottom: 140, // ✅ PlayerControls space
+    paddingTop: 180,
+    paddingBottom: 140,
   },
 });

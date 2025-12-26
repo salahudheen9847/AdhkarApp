@@ -3,16 +3,46 @@ import { View, Text, StyleSheet } from "react-native";
 export const ManqusItemRenderer = ({ item, fontSize }: any) => {
   if (item.sectionType === "text") {
     return (
-      <Text style={[styles.arabic, { fontSize }]}>
+      <Text
+        style={[
+          styles.arabic,
+          {
+            fontSize,
+            lineHeight: fontSize * 1.8, // ⭐ important
+          },
+        ]}
+      >
         {item.text}
       </Text>
     );
   }
 
+  // 📦 BOX TYPE
   return (
     <View style={styles.box}>
-      <Text style={styles.right}>{item.rightText}</Text>
-      <Text style={styles.left}>{item.leftText}</Text>
+      <Text
+        style={[
+          styles.right,
+          {
+            fontSize: fontSize * 0.9,
+            lineHeight: fontSize * 1.6,
+          },
+        ]}
+      >
+        {item.rightText}
+      </Text>
+
+      <Text
+        style={[
+          styles.left,
+          {
+            fontSize: fontSize * 0.9,
+            lineHeight: fontSize * 1.6,
+          },
+        ]}
+      >
+        {item.leftText}
+      </Text>
     </View>
   );
 };
@@ -20,7 +50,6 @@ export const ManqusItemRenderer = ({ item, fontSize }: any) => {
 const styles = StyleSheet.create({
   arabic: {
     textAlign: "center",
-    lineHeight: 44,
     marginVertical: 12,
   },
   box: {

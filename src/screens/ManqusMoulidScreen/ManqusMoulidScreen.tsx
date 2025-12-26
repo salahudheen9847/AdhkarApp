@@ -8,17 +8,21 @@ import { useDhikrAudio } from "../../hooks/useDhikrAudio";
 
 import { styles } from "../../styles/dhikrscreenstyle";
 import { PlayerControls } from "../../component/PlayerControls";
-import { HeaderSection } from "../DhikrScreen/HeaderSection";
+import { FontControl } from "../../component/FontControl";
+import HeaderSection from "../DhikrScreen/HeaderSection"; // ✅ DEFAULT
 import { DuaListSection } from "../DhikrScreen/DuaListSection";
 import { LanguageMode } from "../DhikrScreen/renderDuaItem";
 
 export default function ManqusMoulidScreen() {
-  /* 🔒 HOOK ORDER FIXED */
+  /* 🔒 HOOKS */
   const navigation = useNavigation<any>();
   const { isDark, toggleTheme, colors } = useThemeContext();
 
   const [languageMode, setLanguageMode] =
     useState<LanguageMode>("arabic");
+
+  const [showFontControl, setShowFontControl] =
+    useState(false);
 
   const {
     currentIndex,
@@ -33,10 +37,21 @@ export default function ManqusMoulidScreen() {
     setShowPlayer,
     setFontSize,
     playAudio,
-    stopAudio,
     onSeek,
     onChangeRate,
   } = useDhikrAudio({ mode: "manqus" });
+
+  /* 🌍 TRANSLATIONS */
+  const translationList = useMemo(() => {
+    if (languageMode === "arabic") return [];
+    return currentDuaList.map(item => ({
+      id: item.id,
+      text:
+        languageMode === "arabic_malayalam"
+          ? item.malayalam
+          : item.english,
+    }));
+  }, [languageMode, currentDuaList]);
 
   /* 🔥 HEADER ANIMATION */
   const animatedBg = scrollY.interpolate({
@@ -50,7 +65,7 @@ export default function ManqusMoulidScreen() {
       {
         translateY: scrollY.interpolate({
           inputRange: [0, 120],
-          outputRange: [0, -120], // ⬆️ header hides on scroll
+          outputRange: [0, -120],
           extrapolate: "clamp",
         }),
       },
@@ -62,19 +77,6 @@ export default function ManqusMoulidScreen() {
     }),
   };
 
-  /* 🌍 TRANSLATION LIST */
-  const translationList = useMemo(() => {
-    if (languageMode === "arabic") return [];
-
-    return currentDuaList.map(item => ({
-      id: item.id,
-      text:
-        languageMode === "arabic_malayalam"
-          ? item.malayalam
-          : item.english,
-    }));
-  }, [languageMode, currentDuaList]);
-
   return (
     <SafeAreaView
       style={[styles.container, { backgroundColor: colors.background }]}
@@ -85,7 +87,7 @@ export default function ManqusMoulidScreen() {
         barStyle={isDark ? "light-content" : "dark-content"}
       />
 
-      {/* 🕌 HEADER ONLY */}
+      {/* 🕌 HEADER */}
       <HeaderSection
         navigation={navigation}
         textColor={colors.text}
@@ -99,10 +101,23 @@ export default function ManqusMoulidScreen() {
         setLanguageMode={setLanguageMode}
         headerAnimatedStyle={headerAnimatedStyle}
         animatedBg={animatedBg}
-        onFontPress={() => {}}
+        onFontPress={() =>
+          setShowFontControl(prev => !prev)
+        }
       />
 
-      {/* 📖 MANQUS CONTENT (NO TITLE TEXT) */}
+      {/* 🔤 FONT CONTROL */}
+      {showFontControl && (
+        <FontControl
+          fontSize={fontSize}
+          onFontSizeChange={setFontSize}
+          onClose={() => setShowFontControl(false)}
+          textColor={colors.text}
+          backgroundColor={colors.background}
+        />
+      )}
+
+      {/* 📖 CONTENT */}
       <DuaListSection
         currentDuaList={currentDuaList}
         currentIndex={currentIndex ?? 0}
@@ -120,7 +135,6 @@ export default function ManqusMoulidScreen() {
           onSeek={onSeek}
           isPlaying={isPlaying}
           onPlayPause={playAudio}
-          onStop={stopAudio}
           playbackRate={playbackRate}
           onChangeRate={onChangeRate}
           fontSize={fontSize}

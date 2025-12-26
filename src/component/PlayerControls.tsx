@@ -10,7 +10,7 @@ import Slider from "@react-native-community/slider";
 import LinearGradient from "react-native-linear-gradient";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { styles } from "../styles/playerStyles";
-import { FontControl } from "./FontControl"; // ⬅️ പുതിയ import
+import { FontControl } from "./FontControl";
 
 export interface PlayerControlsProps {
   currentTime: number;
@@ -40,7 +40,7 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
   onClose,
   style,
 }) => {
-  const [showFontControl, setShowFontControl] = useState(false); // 👈 Toggle font bar
+  const [showFontControl, setShowFontControl] = useState(false);
 
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
@@ -62,9 +62,10 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
             <Icon name="close" size={22} color="#f87171" />
           </TouchableOpacity>
         )}
-        {/* Font icon toggle */}
+
+        {/* 🔤 Font Toggle */}
         <TouchableOpacity
-          onPress={() => setShowFontControl(!showFontControl)}
+          onPress={() => setShowFontControl(prev => !prev)}
           style={styles.fontToggleButton}
         >
           <Icon
@@ -108,7 +109,7 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
 
       {/* 🔹 Playback Speed */}
       <View style={styles.rateControls}>
-        {[0.5, 1, 1.5, 2].map((rate) => (
+        {[0.5, 1, 1.5, 2].map(rate => (
           <TouchableOpacity
             key={rate}
             style={[
@@ -129,7 +130,7 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
         ))}
       </View>
 
-      {/* 🔹 Font Control (toggle visibility) */}
+      {/* 🔹 Font Size Slider */}
       {showFontControl && (
         <FontControl
           fontSize={fontSize}

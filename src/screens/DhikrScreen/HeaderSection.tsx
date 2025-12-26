@@ -20,8 +20,8 @@ export type LanguageMode =
   | "arabic_malayalam"
   | "arabic_english";
 
-/* 🔹 Props */
-type Props = {
+/* 🔹 Props TYPE */
+export type HeaderSectionProps = {
   navigation: any;
   textColor: string;
   isDark: boolean;
@@ -36,13 +36,16 @@ type Props = {
     | "asmaulHusna"
     | "manqus";
   languageMode: LanguageMode;
-  setLanguageMode: React.Dispatch<React.SetStateAction<LanguageMode>>;
+  setLanguageMode: React.Dispatch<
+    React.SetStateAction<LanguageMode>
+  >;
   headerAnimatedStyle: any;
   animatedBg: any;
   onFontPress: () => void;
 };
 
-export const HeaderSection: React.FC<Props> = ({
+/* ✅ COMPONENT MUST BE TYPED */
+const HeaderSection: React.FC<HeaderSectionProps> = ({
   navigation,
   textColor,
   isDark,
@@ -69,7 +72,7 @@ export const HeaderSection: React.FC<Props> = ({
     >
       {/* 🔹 ROW 1 */}
       <View style={styles.row1}>
-        {/* 🔙 Left */}
+        {/* 🔙 Back */}
         <View style={styles.leftGroup}>
           <TouchableOpacity
             style={styles.backButton}
@@ -124,7 +127,7 @@ export const HeaderSection: React.FC<Props> = ({
         </View>
       </View>
 
-      {/* 🌐 ROW 2 — Language */}
+      {/* 🌐 Language */}
       <View style={styles.langRow}>
         <LanguageToggle
           languageMode={languageMode}
@@ -134,6 +137,8 @@ export const HeaderSection: React.FC<Props> = ({
     </Animated.View>
   );
 };
+
+export default HeaderSection; // ✅ THIS LINE IS CRITICAL
 
 /* 🎨 Styles */
 const styles = StyleSheet.create({
