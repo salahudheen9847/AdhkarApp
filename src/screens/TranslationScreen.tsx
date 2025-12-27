@@ -6,7 +6,7 @@ import { useThemeContext } from "../context/theme";
 import { duaMarichavarkArabic } from "../data/duaMarichavark/duaMarichavarkArabic";
 import { duaMarichavarkMalayalam } from "../data/duaMarichavark/duaMarichavarkMalayalam";
 
-/* 🧩 Types (matches existing data) */
+/* 🧩 Types */
 type ArabicItem = {
   id: number;
   text: string;
@@ -31,7 +31,7 @@ export default function TranslationScreen() {
       {duaMarichavarkArabic.map((arabicItem: ArabicItem) => {
         const malItem: MalayalamItem | undefined =
           duaMarichavarkMalayalam.find(
-            (m) => m.id === arabicItem.id
+            m => m.id === arabicItem.id
           );
 
         return (
@@ -45,14 +45,24 @@ export default function TranslationScreen() {
               },
             ]}
           >
-            {/* 🕌 Arabic Text */}
-            <Text style={[styles.arabic, { color: colors.text }]}>
+            {/* 🕌 Arabic */}
+            <Text
+              style={[
+                styles.arabic,
+                { color: colors.text },
+              ]}
+            >
               {arabicItem.text}
             </Text>
 
-            {/* 🌙 Malayalam Translation */}
+            {/* 🌙 Malayalam */}
             {malItem?.text && (
-              <Text style={[styles.malayalam, { color: colors.text }]}>
+              <Text
+                style={[
+                  styles.malayalam,
+                  { color: colors.text },
+                ]}
+              >
                 {malItem.text}
               </Text>
             )}

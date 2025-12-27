@@ -8,7 +8,7 @@ export type LanguageMode =
   | "arabic_malayalam"
   | "arabic_english";
 
-/* 🗂 Translation Type (SIMPLE) */
+/* 🗂 Translation Type */
 type TranslationItem = {
   id: number;
   text?: string;
@@ -21,6 +21,7 @@ const textStyle = {
   arabic: {
     textAlign: "center" as const,
     fontFamily: "ScheherazadeNew-Regular",
+    writingDirection: "rtl" as const,
   },
   malayalam: {
     textAlign: "center" as const,
@@ -48,7 +49,13 @@ export const renderDuaItem = (
     t => t.id === item.id
   );
 
-  const isBox = item.type === "box";
+  const isBox =
+    item.type === "box" &&
+    typeof item.right === "string" &&
+    typeof item.left === "string";
+
+  const isMalayalam = languageMode === "arabic_malayalam";
+  const isEnglish = languageMode === "arabic_english";
 
   return (
     <View
@@ -58,10 +65,10 @@ export const renderDuaItem = (
         currentIndex === item.id && styles.activeTextContainer,
       ]}
     >
-      {/* 📦 BOX */}
+      {/* 📦 BOX ITEM */}
       {isBox ? (
         <View style={styles.manqusBoxContainer}>
-          {/* 🔹 Arabic BOX */}
+          {/* 🔹 Arabic (always) */}
           <Text
             style={[
               styles.manqusBoxText,
@@ -82,27 +89,36 @@ export const renderDuaItem = (
             {item.left}
           </Text>
 
-          {/* 🔹 Malayalam BOX */}
-          {languageMode === "arabic_malayalam" &&
-            translationItem?.right && (
-              <View style={localStyles.boxMalayalamWrapper}>
-                <Text
-                  style={[
-                    textStyle.malayalam,
-                    { fontSize: fontSize * 0.75 },
-                  ]}
-                >
-                  {translationItem.right}
-                </Text>
+          {/* 🔹 Translation */}
+          {languageMode !== "arabic" &&
+            (translationItem?.right ||
+              translationItem?.left) && (
+              <View style={localStyles.boxTranslationWrapper}>
+                {translationItem?.right && (
+                  <Text
+                    style={[
+                      isMalayalam
+                        ? textStyle.malayalam
+                        : textStyle.english,
+                      { fontSize: fontSize * 0.75 },
+                    ]}
+                  >
+                    {translationItem.right}
+                  </Text>
+                )}
 
-                <Text
-                  style={[
-                    textStyle.malayalam,
-                    { fontSize: fontSize * 0.75 },
-                  ]}
-                >
-                  {translationItem.left}
-                </Text>
+                {translationItem?.left && (
+                  <Text
+                    style={[
+                      isMalayalam
+                        ? textStyle.malayalam
+                        : textStyle.english,
+                      { fontSize: fontSize * 0.75 },
+                    ]}
+                  >
+                    {translationItem.left}
+                  </Text>
+                )}
               </View>
             )}
         </View>
@@ -121,36 +137,34 @@ export const renderDuaItem = (
           </Text>
 
           {/* 🌙 Malayalam TEXT */}
-          {languageMode === "arabic_malayalam" &&
-            translationItem?.text && (
-              <Text
-                style={[
-                  textStyle.malayalam,
-                  {
-                    fontSize: fontSize * 0.75,
-                    lineHeight: fontSize * 1.3,
-                  },
-                ]}
-              >
-                {translationItem.text}
-              </Text>
-            )}
+          {isMalayalam && translationItem?.text && (
+            <Text
+              style={[
+                textStyle.malayalam,
+                {
+                  fontSize: fontSize * 0.75,
+                  lineHeight: fontSize * 1.3,
+                },
+              ]}
+            >
+              {translationItem.text}
+            </Text>
+          )}
 
           {/* 🌍 English TEXT */}
-          {languageMode === "arabic_english" &&
-            translationItem?.text && (
-              <Text
-                style={[
-                  textStyle.english,
-                  {
-                    fontSize: fontSize * 0.75,
-                    lineHeight: fontSize * 1.3,
-                  },
-                ]}
-              >
-                {translationItem.text}
-              </Text>
-            )}
+          {isEnglish && translationItem?.text && (
+            <Text
+              style={[
+                textStyle.english,
+                {
+                  fontSize: fontSize * 0.75,
+                  lineHeight: fontSize * 1.3,
+                },
+              ]}
+            >
+              {translationItem.text}
+            </Text>
+          )}
         </>
       )}
     </View>
@@ -158,10 +172,10 @@ export const renderDuaItem = (
 };
 
 /* --------------------------------
-   🎨 Local Styles (NO INLINE STYLE)
+   🎨 Local Styles
 ---------------------------------*/
 const localStyles = StyleSheet.create({
-  boxMalayalamWrapper: {
+  boxTranslationWrapper: {
     marginTop: 8,
   },
 });

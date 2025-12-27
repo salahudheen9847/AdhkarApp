@@ -119,14 +119,15 @@ const {
       />
 
       {/* 📖 Dua List */}
-      <DuaListSection
-        currentDuaList={currentDuaList}   // Arabic always
-        currentIndex={currentIndex ?? 0}
-        fontSize={fontSize}
-        languageMode={languageMode}
-        malayalamList={translationList}   // Malayalam / English (DB)
-        scrollY={scrollY}
-      />
+ <DuaListSection
+  currentDuaList={currentDuaList}
+  currentIndex={currentIndex ?? 0}
+  fontSize={fontSize}
+  languageMode={languageMode}
+  translationList={translationList}
+  scrollY={scrollY}
+/>
+
 
       {/* 🅰️ Font Control */}
       {showFontControl && (

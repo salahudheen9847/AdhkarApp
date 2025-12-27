@@ -12,7 +12,7 @@ type Props = {
   currentIndex: number;
   fontSize: number;
   languageMode: LanguageMode;
-  malayalamList: any[];
+  translationList: any[];
   scrollY: Animated.Value;
 };
 
@@ -21,7 +21,7 @@ export const DuaListSection: React.FC<Props> = ({
   currentIndex,
   fontSize,
   languageMode,
-  malayalamList,
+  translationList,
   scrollY,
 }) => {
   const renderItem = useCallback(
@@ -31,9 +31,9 @@ export const DuaListSection: React.FC<Props> = ({
         currentIndex,
         fontSize,
         languageMode,
-        malayalamList
+        translationList
       ),
-    [currentIndex, fontSize, languageMode, malayalamList]
+    [currentIndex, fontSize, languageMode, translationList]
   );
 
   return (
@@ -43,7 +43,7 @@ export const DuaListSection: React.FC<Props> = ({
       data={currentDuaList}
       keyExtractor={(item) => item.id.toString()}
       renderItem={renderItem}
-      extraData={fontSize}   // ⭐ REQUIRED
+      extraData={fontSize}
       onScroll={Animated.event(
         [{ nativeEvent: { contentOffset: { y: scrollY } } }],
         { useNativeDriver: true }

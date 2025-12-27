@@ -42,15 +42,32 @@ export default function ManqusMoulidScreen() {
   } = useDhikrAudio({ mode: "manqus" });
 
   /* --------------------------------
-     🌍 English Translation (DB)
+     🌍 English Translation (from DB)
   ---------------------------------*/
   const englishList = useMemo(() => {
     if (languageMode !== "arabic_english") return [];
     return currentDuaList.map(item => ({
       id: item.id,
       text: item.english,
+      right: item.englishRight,
+      left: item.englishLeft,
     }));
   }, [languageMode, currentDuaList]);
+
+  /* --------------------------------
+     🌐 Translation List (FINAL)
+  ---------------------------------*/
+  const translationList = useMemo(() => {
+    if (languageMode === "arabic_malayalam") {
+      return ManqusmoulidMalayalam;
+    }
+
+    if (languageMode === "arabic_english") {
+      return englishList;
+    }
+
+    return [];
+  }, [languageMode, englishList]);
 
   /* --------------------------------
      🌀 Header Animation
@@ -126,17 +143,11 @@ export default function ManqusMoulidScreen() {
 
       {/* 📖 CONTENT */}
       <DuaListSection
-        currentDuaList={currentDuaList} // Arabic (DB)
+        currentDuaList={currentDuaList}
         currentIndex={currentIndex ?? 0}
         fontSize={fontSize}
         languageMode={languageMode}
-        malayalamList={
-          languageMode === "arabic_malayalam"
-            ? ManqusmoulidMalayalam        // ✅ Malayalam (static)
-            : languageMode === "arabic_english"
-            ? englishList                  // ✅ English (DB)
-            : []
-        }
+        translationList={translationList}
         scrollY={scrollY}
       />
 
