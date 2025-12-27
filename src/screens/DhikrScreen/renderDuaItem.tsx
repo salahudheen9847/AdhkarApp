@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { styles } from "../../styles/dhikrscreenstyle";
 
 /* 🌍 Language Mode */
@@ -8,10 +8,12 @@ export type LanguageMode =
   | "arabic_malayalam"
   | "arabic_english";
 
-/* 🗂 Translation Type (MATCHES translationList) */
+/* 🗂 Translation Type (SIMPLE) */
 type TranslationItem = {
   id: number;
   text?: string;
+  right?: string;
+  left?: string;
 };
 
 /* 🎨 Text Styles */
@@ -52,14 +54,14 @@ export const renderDuaItem = (
     <View
       style={[
         styles.textContainer,
-        isBox && styles.manqusBoxWrapper, // ✅ VERY IMPORTANT
+        isBox && styles.manqusBoxWrapper,
         currentIndex === item.id && styles.activeTextContainer,
       ]}
     >
-      {/* 📦 MANQUS BOX (Arabic only) */}
-      
+      {/* 📦 BOX */}
       {isBox ? (
         <View style={styles.manqusBoxContainer}>
+          {/* 🔹 Arabic BOX */}
           <Text
             style={[
               styles.manqusBoxText,
@@ -79,6 +81,30 @@ export const renderDuaItem = (
           >
             {item.left}
           </Text>
+
+          {/* 🔹 Malayalam BOX */}
+          {languageMode === "arabic_malayalam" &&
+            translationItem?.right && (
+              <View style={localStyles.boxMalayalamWrapper}>
+                <Text
+                  style={[
+                    textStyle.malayalam,
+                    { fontSize: fontSize * 0.75 },
+                  ]}
+                >
+                  {translationItem.right}
+                </Text>
+
+                <Text
+                  style={[
+                    textStyle.malayalam,
+                    { fontSize: fontSize * 0.75 },
+                  ]}
+                >
+                  {translationItem.left}
+                </Text>
+              </View>
+            )}
         </View>
       ) : (
         <>
@@ -94,7 +120,7 @@ export const renderDuaItem = (
             {item.text}
           </Text>
 
-          {/* 🌙 Arabic + Malayalam */}
+          {/* 🌙 Malayalam TEXT */}
           {languageMode === "arabic_malayalam" &&
             translationItem?.text && (
               <Text
@@ -110,7 +136,7 @@ export const renderDuaItem = (
               </Text>
             )}
 
-          {/* 🌍 Arabic + English */}
+          {/* 🌍 English TEXT */}
           {languageMode === "arabic_english" &&
             translationItem?.text && (
               <Text
@@ -130,3 +156,12 @@ export const renderDuaItem = (
     </View>
   );
 };
+
+/* --------------------------------
+   🎨 Local Styles (NO INLINE STYLE)
+---------------------------------*/
+const localStyles = StyleSheet.create({
+  boxMalayalamWrapper: {
+    marginTop: 8,
+  },
+});

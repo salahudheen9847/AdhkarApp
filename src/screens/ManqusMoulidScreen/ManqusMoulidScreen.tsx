@@ -3,6 +3,8 @@ import { StatusBar, View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 
+import { ManqusmoulidMalayalam } from "../../data/ManqusMoulid/ManqusmoulidMalayalam";
+
 import { useThemeContext } from "../../context/theme";
 import { useDhikrAudio } from "../../hooks/useDhikrAudio";
 
@@ -39,17 +41,20 @@ export default function ManqusMoulidScreen() {
     onChangeRate,
   } = useDhikrAudio({ mode: "manqus" });
 
-  const translationList = useMemo(() => {
-    if (languageMode === "arabic") return [];
+  /* --------------------------------
+     🌍 English Translation (DB)
+  ---------------------------------*/
+  const englishList = useMemo(() => {
+    if (languageMode !== "arabic_english") return [];
     return currentDuaList.map(item => ({
       id: item.id,
-      text:
-        languageMode === "arabic_malayalam"
-          ? item.malayalam
-          : item.english,
+      text: item.english,
     }));
   }, [languageMode, currentDuaList]);
 
+  /* --------------------------------
+     🌀 Header Animation
+  ---------------------------------*/
   const animatedBg = scrollY.interpolate({
     inputRange: [0, 120],
     outputRange: ["transparent", "transparent"],
@@ -87,7 +92,7 @@ export default function ManqusMoulidScreen() {
         barStyle={isDark ? "light-content" : "dark-content"}
       />
 
-      {/* HEADER */}
+      {/* 🕌 HEADER */}
       <HeaderSection
         navigation={navigation}
         textColor={colors.text}
@@ -106,31 +111,36 @@ export default function ManqusMoulidScreen() {
         }
       />
 
-      {/* FONT CONTROL — TRUE FULL WIDTH */}
-  {showFontControl && (
-  <View style={localStyles.fontControlWrapper}>
-    <FontControl
-      fontSize={fontSize}
-      onFontSizeChange={setFontSize}
-      onClose={() => setShowFontControl(false)}
-      textColor={colors.text}
-      backgroundColor={colors.background}
-    />
-  </View>
-)}
+      {/* 🔠 FONT CONTROL */}
+      {showFontControl && (
+        <View style={localStyles.fontControlWrapper}>
+          <FontControl
+            fontSize={fontSize}
+            onFontSizeChange={setFontSize}
+            onClose={() => setShowFontControl(false)}
+            textColor={colors.text}
+            backgroundColor={colors.background}
+          />
+        </View>
+      )}
 
-
-      {/* CONTENT */}
+      {/* 📖 CONTENT */}
       <DuaListSection
-        currentDuaList={currentDuaList}
+        currentDuaList={currentDuaList} // Arabic (DB)
         currentIndex={currentIndex ?? 0}
         fontSize={fontSize}
         languageMode={languageMode}
-        malayalamList={translationList}
+        malayalamList={
+          languageMode === "arabic_malayalam"
+            ? ManqusmoulidMalayalam        // ✅ Malayalam (static)
+            : languageMode === "arabic_english"
+            ? englishList                  // ✅ English (DB)
+            : []
+        }
         scrollY={scrollY}
       />
 
-      {/* PLAYER */}
+      {/* 🎧 PLAYER */}
       {showPlayer && (
         <PlayerControls
           currentTime={currentTime}
@@ -149,12 +159,13 @@ export default function ManqusMoulidScreen() {
   );
 }
 
-/* PROFESSIONAL STYLES */
+/* --------------------------------
+   🎨 Local Styles
+---------------------------------*/
 const localStyles = StyleSheet.create({
   screen: {
     position: "relative",
   },
-
   fontControlWrapper: {
     position: "absolute",
     top: 170,
