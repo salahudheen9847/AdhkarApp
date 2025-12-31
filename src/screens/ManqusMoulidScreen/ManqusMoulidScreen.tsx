@@ -1,9 +1,7 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import { StatusBar, View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
-
-import { ManqusmoulidMalayalam } from "../../data/ManqusMoulid/ManqusmoulidMalayalam";
 
 import { useThemeContext } from "../../context/theme";
 import { useDhikrAudio } from "../../hooks/useDhikrAudio";
@@ -24,60 +22,28 @@ export default function ManqusMoulidScreen() {
   const [showFontControl, setShowFontControl] =
     useState(false);
 
-  const {
-    currentIndex,
-    currentTime,
-    duration,
-    fontSize,
-    isPlaying,
-    playbackRate,
-    showPlayer,
-    currentDuaList,
-    scrollY,
-    setShowPlayer,
-    setFontSize,
-    playAudio,
-    onSeek,
-    onChangeRate,
-  } = useDhikrAudio({ mode: "manqus" });
+const {
+  currentIndex,
+  currentTime,
+  duration,
+  fontSize,
+  isPlaying,
+  playbackRate,
+  showPlayer,
+  currentDuaList,
+  scrollY,
+  title,                    // 🔥 ADD THIS
+  setShowPlayer,
+  setFontSize,
+  playAudio,
+  onSeek,
+  onChangeRate,
+} = useDhikrAudio({ mode: "manqus" });
 
-  /* --------------------------------
-     🌍 English Translation (from DB)
-  ---------------------------------*/
-  const englishList = useMemo(() => {
-    if (languageMode !== "arabic_english") return [];
-    return currentDuaList.map(item => ({
-      id: item.id,
-      text: item.english,
-      right: item.englishRight,
-      left: item.englishLeft,
-    }));
-  }, [languageMode, currentDuaList]);
 
-  /* --------------------------------
-     🌐 Translation List (FINAL)
-  ---------------------------------*/
-  const translationList = useMemo(() => {
-    if (languageMode === "arabic_malayalam") {
-      return ManqusmoulidMalayalam;
-    }
-
-    if (languageMode === "arabic_english") {
-      return englishList;
-    }
-
-    return [];
-  }, [languageMode, englishList]);
-
-  /* --------------------------------
-     🌀 Header Animation
-  ---------------------------------*/
-  const animatedBg = scrollY.interpolate({
-    inputRange: [0, 120],
-    outputRange: ["transparent", "transparent"],
-    extrapolate: "clamp",
-  });
-
+  /* -----------------------------
+     🌀 Header Animation (SAFE)
+  ------------------------------*/
   const headerAnimatedStyle = {
     transform: [
       {
@@ -102,7 +68,7 @@ export default function ManqusMoulidScreen() {
         localStyles.screen,
         { backgroundColor: colors.background },
       ]}
-      edges={["left", "right", "bottom"]}
+      edges={["top", "left", "right", "bottom"]}   // ✅ FIX
     >
       <StatusBar
         backgroundColor={isDark ? "#000" : "#fff"}
@@ -110,23 +76,23 @@ export default function ManqusMoulidScreen() {
       />
 
       {/* 🕌 HEADER */}
-      <HeaderSection
-        navigation={navigation}
-        textColor={colors.text}
-        isDark={isDark}
-        toggleTheme={toggleTheme}
-        isPlaying={isPlaying}
-        setShowPlayer={setShowPlayer}
-        playAudio={playAudio}
-        type="manqus"
-        languageMode={languageMode}
-        setLanguageMode={setLanguageMode}
-        headerAnimatedStyle={headerAnimatedStyle}
-        animatedBg={animatedBg}
-        onFontPress={() =>
-          setShowFontControl(prev => !prev)
-        }
-      />
+<HeaderSection
+  navigation={navigation}
+  textColor={colors.text}
+  isDark={isDark}
+  toggleTheme={toggleTheme}
+  isPlaying={isPlaying}
+  setShowPlayer={setShowPlayer}
+  playAudio={playAudio}
+  type="manqus"
+  title={title}          // 🔥 MUST
+  languageMode={languageMode}
+  setLanguageMode={setLanguageMode}
+  headerAnimatedStyle={headerAnimatedStyle}
+  onFontPress={() => setShowFontControl(!showFontControl)}
+/>
+
+
 
       {/* 🔠 FONT CONTROL */}
       {showFontControl && (
@@ -147,7 +113,6 @@ export default function ManqusMoulidScreen() {
         currentIndex={currentIndex ?? 0}
         fontSize={fontSize}
         languageMode={languageMode}
-        translationList={translationList}
         scrollY={scrollY}
       />
 
@@ -170,9 +135,7 @@ export default function ManqusMoulidScreen() {
   );
 }
 
-/* --------------------------------
-   🎨 Local Styles
----------------------------------*/
+/* 🎨 Local Styles */
 const localStyles = StyleSheet.create({
   screen: {
     position: "relative",

@@ -1,85 +1,66 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
+import { StatusBar, View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { StatusBar, Animated, StyleSheet } from "react-native";
-import { useRoute, useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+
 import { useThemeContext } from "../../context/theme";
 import { useDhikrAudio } from "../../hooks/useDhikrAudio";
-import { FontControl } from "../../component/FontControl";
 
-// 🎨 UI
-import { styles } from "../../styles/dhikrscreenstyle";
-import { PlayerControls } from "../../component/PlayerControls";
 import HeaderSection from "./HeaderSection";
 import { DuaListSection } from "./DuaListSection";
-
-// 🌍 Language Mode
-export type LanguageMode =
-  | "arabic"
-  | "arabic_malayalam"
-  | "arabic_english";
+import { PlayerControls } from "../../component/PlayerControls";
+import { FontControl } from "../../component/FontControl";
+import { LanguageMode } from "./renderDuaItem";
+import { styles as screenStyles } from "../../styles/dhikrscreenstyle";
 
 export default function DhikrScreen() {
-  const { params } = useRoute<any>();
-  const navigation = useNavigation();
-  const { type } = params;
+  const navigation = useNavigation<any>();
+  const route = useRoute<any>();
 
   const { isDark, toggleTheme, colors } = useThemeContext();
+
   const [languageMode, setLanguageMode] =
     useState<LanguageMode>("arabic");
-  const [showFontControl, setShowFontControl] = useState(false);
+  const [showFontControl, setShowFontControl] =
+    useState(false);
 
-const {
-  currentIndex,
-  currentTime,
-  duration,
-  fontSize,
-  isPlaying,
-  playbackRate,
-  showPlayer,
-  currentDuaList,
-  scrollY,
-  setShowPlayer,
-  setFontSize,
-  playAudio,
-  stopAudio,
-  onSeek,
-  onChangeRate,
-} = useDhikrAudio({
-  mode: "dhikr",
-  type,
-});
+  /* 🔥 FIX: ALWAYS STABLE TYPE */
+  const type:
+    | "duaMarichavark"
+    | "duaQabar"
+    | "haddad"
+    | "asmaulHusna" =
+    route.params?.type ?? "duaMarichavark";
 
-
-  /* --------------------------------
-     🌍 Translation List (FROM DB)
-  ---------------------------------*/
-  const translationList = useMemo(() => {
-    if (languageMode === "arabic") return [];
-
-    return currentDuaList.map(item => ({
-      id: item.id,
-      text:
-        languageMode === "arabic_malayalam"
-          ? item.malayalam
-          : item.english,
-    }));
-  }, [languageMode, currentDuaList]);
-
-  /* --------------------------------
-     🌀 Header Animation
-  ---------------------------------*/
-  const animatedBg = scrollY.interpolate({
-    inputRange: [0, 150],
-    outputRange: ["transparent", "transparent"],
-    extrapolate: "clamp",
+  /* 🔥 HOOK — ALWAYS CALLED */
+  const {
+    currentIndex,
+    currentTime,
+    duration,
+    fontSize,
+    isPlaying,
+    playbackRate,
+    showPlayer,
+    currentDuaList,
+    scrollY,
+    title,
+    setShowPlayer,
+    setFontSize,
+    playAudio,
+    onSeek,
+    onChangeRate,
+  } = useDhikrAudio({
+    mode: "dhikr",
+    type,
   });
 
+  /* 🌀 Header Animation */
   const headerAnimatedStyle = {
     transform: [
       {
         translateY: scrollY.interpolate({
-          inputRange: [0, 150],
-          outputRange: [0, 150],
+          inputRange: [0, 120],
+          outputRange: [0, -120],
           extrapolate: "clamp",
         }),
       },
@@ -93,15 +74,19 @@ const {
 
   return (
     <SafeAreaView
-      style={[styles.container, { backgroundColor: colors.background }]}
-      edges={["left", "right", "bottom"]}
+      style={[
+        screenStyles.container,
+        localStyles.screen,
+        { backgroundColor: colors.background },
+      ]}
+      edges={["top", "left", "right", "bottom"]}
     >
       <StatusBar
         backgroundColor={isDark ? "#000" : "#fff"}
         barStyle={isDark ? "light-content" : "dark-content"}
       />
 
-      {/* 🕌 Header */}
+      {/* 🕌 HEADER */}
       <HeaderSection
         navigation={navigation}
         textColor={colors.text}
@@ -111,41 +96,38 @@ const {
         setShowPlayer={setShowPlayer}
         playAudio={playAudio}
         type={type}
+        title={title}
         languageMode={languageMode}
         setLanguageMode={setLanguageMode}
         headerAnimatedStyle={headerAnimatedStyle}
-        animatedBg={animatedBg}
-        onFontPress={() => setShowFontControl(!showFontControl)}
+        onFontPress={() =>
+          setShowFontControl(!showFontControl)
+        }
       />
 
-      {/* 📖 Dua List */}
- <DuaListSection
-  currentDuaList={currentDuaList}
-  currentIndex={currentIndex ?? 0}
-  fontSize={fontSize}
-  languageMode={languageMode}
-  translationList={translationList}
-  scrollY={scrollY}
-/>
-
-
-      {/* 🅰️ Font Control */}
+      {/* 🔠 FONT CONTROL */}
       {showFontControl && (
-        <Animated.View
-          style={[
-            localStyles.fontControlBox,
-            isDark ? localStyles.darkBox : localStyles.lightBox,
-          ]}
-        >
+        <View style={localStyles.fontControlWrapper}>
           <FontControl
             fontSize={fontSize}
             onFontSizeChange={setFontSize}
             onClose={() => setShowFontControl(false)}
+            textColor={colors.text}
+            backgroundColor={colors.background}
           />
-        </Animated.View>
+        </View>
       )}
 
-      {/* 🎧 Player */}
+      {/* 📖 CONTENT */}
+      <DuaListSection
+        currentDuaList={currentDuaList}
+        currentIndex={currentIndex ?? 0}
+        fontSize={fontSize}
+        languageMode={languageMode}
+        scrollY={scrollY}
+      />
+
+      {/* 🎧 PLAYER */}
       {showPlayer && (
         <PlayerControls
           currentTime={currentTime}
@@ -153,7 +135,6 @@ const {
           onSeek={onSeek}
           isPlaying={isPlaying}
           onPlayPause={playAudio}
-          onStop={stopAudio}
           playbackRate={playbackRate}
           onChangeRate={onChangeRate}
           fontSize={fontSize}
@@ -165,25 +146,17 @@ const {
   );
 }
 
-/* --------------------------------
-   🎨 Local Styles
----------------------------------*/
+/* 🎨 Local Styles */
 const localStyles = StyleSheet.create({
-  fontControlBox: {
+  screen: {
+    position: "relative",
+  },
+  fontControlWrapper: {
     position: "absolute",
-    top: 180,
+    top: 170,
     left: 0,
     right: 0,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: "#555",
-    zIndex: 40,
-  },
-  darkBox: {
-    backgroundColor: "#1e293b",
-  },
-  lightBox: {
-    backgroundColor: "#f1f5f9",
+    zIndex: 9999,
+    elevation: 20,
   },
 });

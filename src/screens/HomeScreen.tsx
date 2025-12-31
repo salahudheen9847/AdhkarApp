@@ -35,7 +35,7 @@ export default function HomeScreen() {
     text: "#1e293b",
   };
 
-  /* ---------------- Dua ---------------- */
+  /* ---------------- DATA ---------------- */
   const duaItems: HomeItem[] = [
     {
       id: "duaMarichavark",
@@ -51,7 +51,6 @@ export default function HomeScreen() {
     },
   ];
 
-  /* ---------------- 🌙 Moulid ---------------- */
   const moulidItems: HomeItem[] = [
     {
       id: "manqusMoulid",
@@ -61,7 +60,6 @@ export default function HomeScreen() {
     },
   ];
 
-  /* ---------------- Ratib ---------------- */
   const ratibItems: HomeItem[] = [
     {
       id: "haddad",
@@ -71,7 +69,6 @@ export default function HomeScreen() {
     },
   ];
 
-  /* ---------------- Asmaul Husna ---------------- */
   const asmaulHusnaItems: HomeItem[] = [
     {
       id: "asmaulHusna",
@@ -86,6 +83,55 @@ export default function HomeScreen() {
       item.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
+  /* ---------------- RENDER SECTION HELPER ---------------- */
+  const renderSection = (
+    title: string,
+    items: HomeItem[],
+    onPress: (id: string) => void,
+    keyPrefix: string
+  ) => {
+    const filtered = filter(items);
+
+    return (
+      <>
+        <Text style={[styles.sectionTitle, { color: colors.text }]}>
+          {title}
+        </Text>
+
+        {filtered.length > 0 ? (
+          <View style={styles.innerGrid}>
+            {filtered.map((item, index) => (
+              <TouchableOpacity
+                key={`${keyPrefix}-${item.id}-${index}`}
+                activeOpacity={0.9}
+                onPress={() => onPress(item.id)}
+              >
+                <LinearGradient
+                  colors={item.gradient}
+                  style={styles.card}
+                >
+                  <Image source={item.image} style={styles.icon} />
+                  <Text
+                    style={[
+                      styles.cardText,
+                      { color: colors.text },
+                    ]}
+                  >
+                    {item.title}
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
+            ))}
+          </View>
+        ) : (
+          <Text style={styles.noResultText}>
+            No items found
+          </Text>
+        )}
+      </>
+    );
+  };
+
   return (
     <KeyboardAvoidingView
       style={[commonStyles.container, { backgroundColor: colors.background }]}
@@ -93,7 +139,10 @@ export default function HomeScreen() {
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <SafeAreaView
-          style={[commonStyles.container, { backgroundColor: colors.background }]}
+          style={[
+            commonStyles.container,
+            { backgroundColor: colors.background },
+          ]}
         >
           <StatusBar
             backgroundColor="#fefce8"
@@ -103,7 +152,12 @@ export default function HomeScreen() {
 
           {/* 🔍 Search */}
           <View style={[styles.searchContainer, styles.searchContainerLight]}>
-            <Icon name="search" size={18} color="#92400e" style={styles.searchIcon} />
+            <Icon
+              name="search"
+              size={18}
+              color="#92400e"
+              style={styles.searchIcon}
+            />
             <TextInput
               style={[styles.searchInput, { color: colors.text }]}
               placeholder="Search duas or collections..."
@@ -117,121 +171,25 @@ export default function HomeScreen() {
             contentContainerStyle={styles.scrollContent}
             showsVerticalScrollIndicator={false}
           >
-            {/* 📿 Dua */}
-            {filter(duaItems).length > 0 && (
-              <>
-                <Text style={[styles.sectionTitle, { color: colors.text }]}>
-                  📿 Dua Collection
-                </Text>
-                <View style={styles.innerGrid}>
-                  {filter(duaItems).map(item => (
-                    <TouchableOpacity
-                      key={item.id}
-                      activeOpacity={0.9}
-                      onPress={() =>
-                        navigation.navigate("Dhikr", { type: item.id })
-                      }
-                    >
-                      <LinearGradient colors={item.gradient} style={styles.card}>
-                        <Image source={item.image} style={styles.icon} />
-                        <Text style={[styles.cardText, { color: colors.text }]}>
-                          {item.title}
-                        </Text>
-                      </LinearGradient>
-                    </TouchableOpacity>
-                  ))}
-                </View>
-              </>
+            {renderSection("📿 Dua Collection", duaItems, id =>
+              navigation.navigate("Dhikr", { type: id }),
+              "dua"
             )}
 
-            {/* 🌙 Moulid */}
-            {filter(moulidItems).length > 0 && (
-              <>
-                <Text style={[styles.sectionTitle, { color: colors.text }]}>
-                  🌙 Moulid Collection
-                </Text>
-                <View style={styles.innerGrid}>
-                  {filter(moulidItems).map(item => (
-                    <TouchableOpacity
-                      key={item.id}
-                      activeOpacity={0.9}
-                      onPress={() => navigation.navigate("ManqusMoulid")}
-                    >
-                      <LinearGradient colors={item.gradient} style={styles.card}>
-                        <Image source={item.image} style={styles.icon} />
-                        <Text style={[styles.cardText, { color: colors.text }]}>
-                          {item.title}
-                        </Text>
-                      </LinearGradient>
-                    </TouchableOpacity>
-                  ))}
-                </View>
-              </>
+            {renderSection("🌙 Moulid Collection", moulidItems, () =>
+              navigation.navigate("ManqusMoulid"),
+              "moulid"
             )}
 
-            {/* 📖 Ratib */}
-            {filter(ratibItems).length > 0 && (
-              <>
-                <Text style={[styles.sectionTitle, { color: colors.text }]}>
-                  📖 Ratib Collection
-                </Text>
-                <View style={styles.innerGrid}>
-                  {filter(ratibItems).map(item => (
-                    <TouchableOpacity
-                      key={item.id}
-                      activeOpacity={0.9}
-                      onPress={() =>
-                        navigation.navigate("Dhikr", { type: item.id })
-                      }
-                    >
-                      <LinearGradient colors={item.gradient} style={styles.card}>
-                        <Image source={item.image} style={styles.icon} />
-                        <Text style={[styles.cardText, { color: colors.text }]}>
-                          {item.title}
-                        </Text>
-                      </LinearGradient>
-                    </TouchableOpacity>
-                  ))}
-                </View>
-              </>
+            {renderSection("📖 Ratib Collection", ratibItems, id =>
+              navigation.navigate("Dhikr", { type: id }),
+              "ratib"
             )}
 
-            {/* 🕋 Asmaul Husna */}
-            {filter(asmaulHusnaItems).length > 0 && (
-              <>
-                <Text style={[styles.sectionTitle, { color: colors.text }]}>
-                  🕋 Asmaul Husna Collection
-                </Text>
-                <View style={styles.innerGrid}>
-                  {filter(asmaulHusnaItems).map(item => (
-                    <TouchableOpacity
-                      key={item.id}
-                      activeOpacity={0.9}
-                      onPress={() =>
-                        navigation.navigate("Dhikr", { type: item.id })
-                      }
-                    >
-                      <LinearGradient colors={item.gradient} style={styles.card}>
-                        <Image source={item.image} style={styles.icon} />
-                        <Text style={[styles.cardText, { color: colors.text }]}>
-                          {item.title}
-                        </Text>
-                      </LinearGradient>
-                    </TouchableOpacity>
-                  ))}
-                </View>
-              </>
+            {renderSection("🕋 Asmaul Husna Collection", asmaulHusnaItems, id =>
+              navigation.navigate("Dhikr", { type: id }),
+              "asma"
             )}
-
-            {/* ❌ No Results */}
-            {filter(duaItems).length === 0 &&
-              filter(moulidItems).length === 0 &&
-              filter(ratibItems).length === 0 &&
-              filter(asmaulHusnaItems).length === 0 && (
-                <Text style={[styles.noResultText, { color: colors.text }]}>
-                  No matching items found
-                </Text>
-              )}
           </ScrollView>
         </SafeAreaView>
       </TouchableWithoutFeedback>

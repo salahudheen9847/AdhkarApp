@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text } from "react-native";
 import { styles } from "../../styles/dhikrscreenstyle";
+import { ManqusMoulidItem } from "../../data/ManqusMoulid/manqusMoulid.data";
 
 /* 🌍 Language Mode */
 export type LanguageMode =
@@ -8,174 +9,90 @@ export type LanguageMode =
   | "arabic_malayalam"
   | "arabic_english";
 
-/* 🗂 Translation Type */
-type TranslationItem = {
-  id: number;
-  text?: string;
-  right?: string;
-  left?: string;
+/* 🔧 Normalize helper (VERY IMPORTANT) */
+const normalizeText = (value?: string | string[]) => {
+  if (!value) return "";
+  return Array.isArray(value) ? value.join("\n") : value;
 };
 
-/* 🎨 Text Styles */
-const textStyle = {
-  arabic: {
-    textAlign: "center" as const,
-    fontFamily: "ScheherazadeNew-Regular",
-    writingDirection: "rtl" as const,
-  },
-  malayalam: {
-    textAlign: "center" as const,
-    color: "#d1d5db",
-    fontFamily: "NotoSansMalayalam-Regular",
-    marginTop: 6,
-  },
-  english: {
-    textAlign: "center" as const,
-    color: "#e5e7eb",
-    fontFamily: "System",
-    marginTop: 6,
-  },
-};
-
-/* 🧩 Renderer */
 export const renderDuaItem = (
-  item: any,
+  item: ManqusMoulidItem,
   currentIndex: number,
   fontSize: number,
-  languageMode: LanguageMode,
-  translationList: TranslationItem[]
+  languageMode: LanguageMode
 ) => {
-  const translationItem = translationList?.find(
-    t => t.id === item.id
-  );
+  const isActive = item.id === currentIndex;
+  const safeFontSize = Math.max(12, fontSize);
 
-  const isBox =
-    item.type === "box" &&
-    typeof item.right === "string" &&
-    typeof item.left === "string";
+  let content = "";
 
-  const isMalayalam = languageMode === "arabic_malayalam";
-  const isEnglish = languageMode === "arabic_english";
+  /* 🕌 Arabic only */
+  if (languageMode === "arabic") {
+    content = normalizeText(item.text);
+  }
 
+  /* 🕌 Arabic + Malayalam */
+  if (languageMode === "arabic_malayalam") {
+    content = item.malayalam
+      ? `${normalizeText(item.text)}\n\n${normalizeText(item.malayalam)}`
+      : normalizeText(item.text);
+  }
+
+  /* 🕌 Arabic + English */
+  if (languageMode === "arabic_english") {
+    content = item.english
+      ? `${normalizeText(item.text)}\n\n${normalizeText(item.english)}`
+      : normalizeText(item.text);
+  }
+
+  if (!content) return null;
+
+  /* 📦 MANQUS BOX */
+  if (item.isBox) {
+    const lines = content.split("\n");
+
+    return (
+      <View
+        style={[
+          styles.manqusBoxWrapper,
+          isActive && styles.activeTextContainer,
+        ]}
+      >
+        <View style={styles.manqusBoxContainer}>
+          {lines.map((line, i) => (
+            <Text
+              key={`${item.id}-line-${i}`}
+              style={[
+                styles.manqusBoxText,
+                isActive && styles.activeText,
+                { fontSize: safeFontSize * 0.9 },
+              ]}
+            >
+              {line}
+            </Text>
+          ))}
+        </View>
+      </View>
+    );
+  }
+
+  /* 📝 NORMAL TEXT */
   return (
     <View
       style={[
         styles.textContainer,
-        isBox && styles.manqusBoxWrapper,
-        currentIndex === item.id && styles.activeTextContainer,
+        isActive && styles.activeTextContainer,
       ]}
     >
-      {/* 📦 BOX ITEM */}
-      {isBox ? (
-        <View style={styles.manqusBoxContainer}>
-          {/* 🔹 Arabic (always) */}
-          <Text
-            style={[
-              styles.manqusBoxText,
-              textStyle.arabic,
-              { fontSize: fontSize * 0.9 },
-            ]}
-          >
-            {item.right}
-          </Text>
-
-          <Text
-            style={[
-              styles.manqusBoxText,
-              textStyle.arabic,
-              { fontSize: fontSize * 0.9 },
-            ]}
-          >
-            {item.left}
-          </Text>
-
-          {/* 🔹 Translation */}
-          {languageMode !== "arabic" &&
-            (translationItem?.right ||
-              translationItem?.left) && (
-              <View style={localStyles.boxTranslationWrapper}>
-                {translationItem?.right && (
-                  <Text
-                    style={[
-                      isMalayalam
-                        ? textStyle.malayalam
-                        : textStyle.english,
-                      { fontSize: fontSize * 0.75 },
-                    ]}
-                  >
-                    {translationItem.right}
-                  </Text>
-                )}
-
-                {translationItem?.left && (
-                  <Text
-                    style={[
-                      isMalayalam
-                        ? textStyle.malayalam
-                        : textStyle.english,
-                      { fontSize: fontSize * 0.75 },
-                    ]}
-                  >
-                    {translationItem.left}
-                  </Text>
-                )}
-              </View>
-            )}
-        </View>
-      ) : (
-        <>
-          {/* 🕌 Arabic TEXT */}
-          <Text
-            style={[
-              styles.text,
-              currentIndex === item.id && styles.activeText,
-              textStyle.arabic,
-              { fontSize, lineHeight: fontSize * 1.6 },
-            ]}
-          >
-            {item.text}
-          </Text>
-
-          {/* 🌙 Malayalam TEXT */}
-          {isMalayalam && translationItem?.text && (
-            <Text
-              style={[
-                textStyle.malayalam,
-                {
-                  fontSize: fontSize * 0.75,
-                  lineHeight: fontSize * 1.3,
-                },
-              ]}
-            >
-              {translationItem.text}
-            </Text>
-          )}
-
-          {/* 🌍 English TEXT */}
-          {isEnglish && translationItem?.text && (
-            <Text
-              style={[
-                textStyle.english,
-                {
-                  fontSize: fontSize * 0.75,
-                  lineHeight: fontSize * 1.3,
-                },
-              ]}
-            >
-              {translationItem.text}
-            </Text>
-          )}
-        </>
-      )}
+      <Text
+        style={[
+          styles.text,
+          isActive && styles.activeText,
+          { fontSize: safeFontSize },
+        ]}
+      >
+        {content}
+      </Text>
     </View>
   );
 };
-
-/* --------------------------------
-   🎨 Local Styles
----------------------------------*/
-const localStyles = StyleSheet.create({
-  boxTranslationWrapper: {
-    marginTop: 8,
-  },
-});

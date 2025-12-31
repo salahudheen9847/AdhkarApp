@@ -1,60 +1,51 @@
 import { db } from "./db";
-import type { SQLiteDatabase, Transaction } from "react-native-sqlite-storage";
-import { ManqusmoulidArabic } from "../data/ManqusMoulid/ManqusmoulidArabic";
-import { ManqusmoulidMalayalam } from "../data/ManqusMoulid/ManqusmoulidMalayalam";
-import { ManqusmoulidEnglish } from "../data/ManqusMoulid/ManqusmoulidEnglish";
+import { ManqusMoulidData } from "../data/ManqusMoulid/manqusMoulid.data";
+
+/* 🔧 helper to normalize string | string[] */
+const normalize = (v?: string | string[]) =>
+  Array.isArray(v) ? v.join("\n") : v ?? null;
 
 export const seedManqusMoulid = async () => {
-  const database: SQLiteDatabase = await db;
+  try {
+    const database = await db;
 
-  return new Promise<void>((resolve, reject) => {
-    database.transaction(
-      (tx: Transaction) => {
-        ManqusmoulidArabic.forEach(ar => {
-          const ml = ManqusmoulidMalayalam.find(m => m.id === ar.id);
-          const en = ManqusmoulidEnglish.find(e => e.id === ar.id);
+    database.transaction(tx => {
+      // ✅ check existing rows
+      tx.executeSql(
+        "SELECT COUNT(*) as count FROM manqus_moulid",
+        [],
+        (_, result) => {
+          const count = result.rows.item(0).count;
 
-          tx.executeSql(
-            `
-            INSERT OR IGNORE INTO manqus_moulid
-            (
-              id,
-              sectionType,
-              text,
-              rightText,
-              leftText,
-              malayalam,
-              english,
-              start,
-              end
-            )
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-            `,
-            [
-              ar.id,
-              ar.type,
+          if (count > 0) {
+            console.log("ℹ️ Manqus Moulid already seeded");
+            return;
+          }
 
-              // 🕌 normal Arabic text
-              ar.type === "text" ? ar.text : null,
+          // ✅ CORRECT COLUMN NAME: arabic (NOT text)
+          const insertQuery = `
+            INSERT INTO manqus_moulid
+            (id, isBox, arabic, malayalam, english, start, end)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+          `;
 
-              // 📦 BOX → right / left (THIS WAS THE ISSUE)
-              ar.type === "box" ? ar.right : null,
-              ar.type === "box" ? ar.left : null,
+          ManqusMoulidData.forEach(item => {
+            tx.executeSql(insertQuery, [
+              item.id,
+              item.isBox ? 1 : 0,
+              normalize(item.text),        // 👉 text → arabic
+              normalize(item.malayalam),
+              normalize(item.english),
+              item.start,
+              item.end,
+            ]);
+          });
 
-              // 🌙 Malayalam
-              ml?.text ?? "",
-
-              // 🌍 English
-              en?.text ?? "",
-
-              ar.start,
-              ar.end,
-            ]
-          );
-        });
-      },
-      error => reject(error),
-      () => resolve()
-    );
-  });
+          console.log("✅ Manqus Moulid seeded");
+        }
+      );
+    });
+  } catch (error) {
+    console.error("❌ Manqus seed error:", error);
+  }
 };

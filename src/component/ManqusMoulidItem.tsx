@@ -1,29 +1,55 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-export const ManqusMoulidItem = ({ item, fontSize }: any) => {
-  if (item.type === "text") {
-    return (
-      <Text style={[styles.text, { fontSize }]}>
-        {item.text}
-      </Text>
-    );
-  }
+type Props = {
+  item: {
+    id: number;
+    isBox: boolean;
+    text: string;
+    malayalam?: string;
+    english?: string;
+  };
+  fontSize: number;
+};
 
-  if (item.type === "box") {
+export const ManqusMoulidItem: React.FC<Props> = ({
+  item,
+  fontSize,
+}) => {
+  const safeFontSize = Math.max(12, fontSize);
+
+  /* 📦 BOX ITEM */
+  if (item.isBox) {
+    const lines = item.text.split("\n");
+
     return (
       <View style={styles.box}>
-        <Text style={[styles.boxText, { fontSize }]}>
-          {item.right}
-        </Text>
-        <Text style={[styles.boxText, { fontSize }]}>
-          {item.left}
-        </Text>
+        {lines.map((line, index) => (
+          <Text
+            key={`${item.id}-${index}`} // ✅ UNIQUE KEY
+            style={[
+              styles.boxText,
+              { fontSize: safeFontSize * 0.9 },
+            ]}
+          >
+            {line}
+          </Text>
+        ))}
       </View>
     );
   }
 
-  return null;
+  /* 📝 NORMAL TEXT */
+  return (
+    <Text
+      style={[
+        styles.text,
+        { fontSize: safeFontSize },
+      ]}
+    >
+      {item.text}
+    </Text>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -35,8 +61,9 @@ const styles = StyleSheet.create({
   box: {
     borderWidth: 1,
     borderColor: "#999",
-    padding: 12,
+    padding: 14,
     marginVertical: 16,
+    borderRadius: 8,
   },
   boxText: {
     textAlign: "center",

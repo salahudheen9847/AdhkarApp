@@ -1,24 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
-import { useThemeContext } from "../context/theme";
+import { useThemeContext } from "../../src/context/theme";
 
-// 📘 Arabic & Malayalam data
-import { duaMarichavarkArabic } from "../data/duaMarichavark/duaMarichavarkArabic";
-import { duaMarichavarkMalayalam } from "../data/duaMarichavark/duaMarichavarkMalayalam";
+/* 🗄️ DB */
+import { getDhikrByType } from "../../src/db/queries";
 
-/* 🧩 Types */
-type ArabicItem = {
+/* 🌍 Language Mode */
+type LanguageMode = "arabic" | "arabic_malayalam" | "arabic_english";
+
+/* 🔧 Helper */
+const normalize = (v?: string | string[]) =>
+  Array.isArray(v) ? v.join("\n") : v ?? "";
+
+type DhikrItem = {
   id: number;
-  text: string;
-};
-
-type MalayalamItem = {
-  id: number;
-  text: string;
+  arabic: string;
+  malayalam: string;
+  english: string;
 };
 
 export default function TranslationScreen() {
   const { colors } = useThemeContext();
+  const [items, setItems] = useState<DhikrItem[]>([]);
+  const [languageMode] = useState<LanguageMode>(
+    "arabic_malayalam"
+  );
+
+  useEffect(() => {
+    getDhikrByType("duaMarichavark").then(rows => {
+      setItems(rows);
+    });
+  }, []);
 
   return (
     <ScrollView
@@ -28,47 +40,34 @@ export default function TranslationScreen() {
         { backgroundColor: colors.background },
       ]}
     >
-      {duaMarichavarkArabic.map((arabicItem: ArabicItem) => {
-        const malItem: MalayalamItem | undefined =
-          duaMarichavarkMalayalam.find(
-            m => m.id === arabicItem.id
-          );
+      {items.map(item => (
+        <View
+          key={`dua-marichavark-${item.id}`}
+          style={[
+            styles.itemContainer,
+            { borderBottomColor: colors.border },
+          ]}
+        >
+          {/* 🕌 Arabic */}
+          <Text style={[styles.arabic, { color: colors.text }]}>
+            {normalize(item.arabic)}
+          </Text>
 
-        return (
-          <View
-            key={arabicItem.id}
-            style={[
-              styles.itemContainer,
-              {
-                borderBottomColor: colors.border,
-                shadowColor: colors.shadow,
-              },
-            ]}
-          >
-            {/* 🕌 Arabic */}
+          {/* 🌙 Translation */}
+          {languageMode !== "arabic" && (
             <Text
               style={[
-                styles.arabic,
+                styles.translation,
                 { color: colors.text },
               ]}
             >
-              {arabicItem.text}
+              {languageMode === "arabic_malayalam"
+                ? normalize(item.malayalam)
+                : normalize(item.english)}
             </Text>
-
-            {/* 🌙 Malayalam */}
-            {malItem?.text && (
-              <Text
-                style={[
-                  styles.malayalam,
-                  { color: colors.text },
-                ]}
-              >
-                {malItem.text}
-              </Text>
-            )}
-          </View>
-        );
-      })}
+          )}
+        </View>
+      ))}
     </ScrollView>
   );
 }
@@ -84,7 +83,6 @@ const styles = StyleSheet.create({
     marginBottom: 28,
     borderBottomWidth: 1,
     paddingBottom: 18,
-    borderRadius: 12,
   },
   arabic: {
     fontSize: 28,
@@ -94,7 +92,7 @@ const styles = StyleSheet.create({
     fontFamily: "ScheherazadeNew-Regular",
     writingDirection: "rtl",
   },
-  malayalam: {
+  translation: {
     fontSize: 20,
     textAlign: "center",
     lineHeight: 30,

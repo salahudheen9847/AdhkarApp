@@ -5,6 +5,12 @@ import { DhikrItem } from "../data/types";
 
 import { asmaulHusnaData } from "../data/asmaulHusna/asmaulHusnaData";
 import { duaMarichavarkData } from "../data/duaMarichavark/duaMarichavarkData";
+import { duaQabarData } from "../data/duaQabar/duaQabarData";
+import { haddadData } from "../data/haddad/haddadData";
+
+/* 🔧 helper */
+const normalize = (v?: string | string[]) =>
+  Array.isArray(v) ? v.join("\n") : v ?? "";
 
 const insertDhikr = (
   tx: Transaction,
@@ -20,49 +26,42 @@ const insertDhikr = (
     [
       item.id,
       type,
-      Array.isArray(item.text)
-        ? item.text.join("\n")
-        : item.text,
-      Array.isArray(item.malayalam)
-        ? item.malayalam.join("\n")
-        : item.malayalam ?? "",
-      Array.isArray(item.english)
-        ? item.english.join("\n")
-        : item.english ?? "",
+      normalize(item.text),
+      normalize(item.malayalam),
+      normalize(item.english),
       item.start,
       item.end,
     ]
   );
 };
 
-export const seedAsmaulHusna = async () => {
+export const seedDhikr = async () => {
   const database: SQLiteDatabase = await db;
 
   return new Promise<void>((resolve, reject) => {
     database.transaction(
       tx => {
-        asmaulHusnaData.forEach(item =>
-          insertDhikr(tx, "asmaulHusna", item)
+        asmaulHusnaData.forEach(i =>
+          insertDhikr(tx, "asmaulHusna", i)
+        );
+
+        duaMarichavarkData.forEach(i =>
+          insertDhikr(tx, "duaMarichavark", i)
+        );
+
+        duaQabarData.forEach(i =>
+          insertDhikr(tx, "duaQabar", i)
+        );
+
+        haddadData.forEach(i =>
+          insertDhikr(tx, "haddad", i)
         );
       },
       err => reject(err),
-      () => resolve()
-    );
-  });
-};
-
-export const seedDuaMarichavark = async () => {
-  const database: SQLiteDatabase = await db;
-
-  return new Promise<void>((resolve, reject) => {
-    database.transaction(
-      tx => {
-        duaMarichavarkData.forEach(item =>
-          insertDhikr(tx, "duaMarichavark", item)
-        );
-      },
-      err => reject(err),
-      () => resolve()
+      () => {
+        console.log("✅ All dhikr seeded");
+        resolve();
+      }
     );
   });
 };

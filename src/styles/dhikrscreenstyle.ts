@@ -4,6 +4,7 @@ import { StyleSheet } from "react-native";
    🌍 MAIN STYLES
 ================================ */
 export const styles = StyleSheet.create({
+  /* 🌿 Screen */
   container: {
     flex: 1,
     backgroundColor: "#111827",
@@ -21,24 +22,33 @@ export const styles = StyleSheet.create({
   /* 🔹 Each item wrapper */
   textContainer: {
     marginBottom: 16,
-    padding: 12,
+    padding: 14,
     borderRadius: 12,
     backgroundColor: "#1f2937",
   },
 
-  activeTextContainer: {
-    backgroundColor: "#2563eb",
-  },
+  /* ✨ Active ayah (audio sync ready) */
+activeTextContainer: {
+  backgroundColor: "#0ea5e920",
+  borderWidth: 1,
+  borderColor: "#0ea5e950",
+},
+
+
 
   /* 🔹 Normal Arabic text */
   text: {
     color: "#e5e7eb",
     textAlign: "center",
+    fontFamily: "ScheherazadeNew-Regular",
+    fontSize: 28,
+    lineHeight: 46,
+    writingDirection: "rtl",
   },
 
   activeText: {
     color: "#ffffff",
-    fontWeight: "bold",
+    fontWeight: "600",
   },
 
   title: {
@@ -58,23 +68,23 @@ export const styles = StyleSheet.create({
   },
 
   /* ===============================
-     📦 MANQUS BOX (FINAL)
+     📦 MANQUS BOX
      =============================== */
 
-  /** 🔹 Extra spacing so box never collapses */
+  /* 🔹 Extra spacing so box never collapses */
   manqusBoxWrapper: {
-    paddingVertical: 14,
-    marginVertical: 12,
+    paddingVertical: 18,
+    marginVertical: 18,
   },
 
-  /** 🔹 Actual box */
+  /* 🔹 Actual box */
   manqusBoxContainer: {
     borderWidth: 1,
     borderColor: "#334155",
-    borderRadius: 10,
+    borderRadius: 12,
 
-    paddingVertical: 14,
-    paddingHorizontal: 12,
+    paddingVertical: 16,
+    paddingHorizontal: 14,
 
     backgroundColor: "#0f172a",
 
@@ -82,17 +92,19 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
-  /** 🔹 Box text (right & left) */
+  /* 🔹 Box text (each line) */
   manqusBoxText: {
     fontFamily: "ScheherazadeNew-Regular",
     textAlign: "center",
-    lineHeight: 38,
-    color: "#e5e7eb",
+    fontSize: 26,
+    lineHeight: 40,
+    color: "#f1f5f9",
+    writingDirection: "rtl",
   },
 });
 
 /* ===============================
-   🎛️ LOCAL / HEADER STYLES
+   🎛️ HEADER / LOCAL STYLES
 ================================ */
 export const localStyles = StyleSheet.create({
   headerButtonRow: {
@@ -110,7 +122,7 @@ export const localStyles = StyleSheet.create({
   },
 
   playButton: {
-    backgroundColor: "#28eb25ff",
+    backgroundColor: "#22c55e",
     padding: 15,
     borderRadius: 90,
     alignItems: "center",
@@ -190,4 +202,11 @@ export const localStyles = StyleSheet.create({
     fontWeight: "600",
     marginTop: 4,
   },
+manqusBoxActive: {
+  backgroundColor: "#16a34a30", // 🟢 active highlight
+  borderColor: "#16a34a",
+  borderWidth: 1,
+},
+
+
 });

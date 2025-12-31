@@ -8,11 +8,27 @@ try {
   Sound.setCategory("Playback");
 } catch {}
 
+/* --------------------------------
+   🔹 Types
+---------------------------------*/
 type UseDhikrAudioParams = {
   mode: "dhikr" | "manqus";
   type?: string;
 };
 
+type DuaItem = {
+  id: number;
+  isBox: boolean;
+  text: string;
+  malayalam?: string;
+  english?: string;
+  start?: number;
+  end?: number;
+};
+
+/* --------------------------------
+   🎧 Hook
+---------------------------------*/
 export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -22,12 +38,12 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
   const [playbackRate, setPlaybackRate] = useState(1);
   const [showPlayer, setShowPlayer] = useState(false);
 
-  const [currentDuaList, setCurrentDuaList] = useState<any[]>([]);
+  const [currentDuaList, setCurrentDuaList] = useState<DuaItem[]>([]);
   const [audioFileName, setAudioFileName] = useState("");
   const [title, setTitle] = useState("");
 
   const soundRef = useRef<Sound | null>(null);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const scrollY = useRef(new Animated.Value(0)).current;
 
   /* --------------------------------
@@ -49,13 +65,12 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
 
       if (!mounted) return;
 
-      const mapped = rows
+      const mapped: DuaItem[] = rows
         .map((r) => {
-          /* 🕌 DHIKR */
           if (mode === "dhikr") {
             return {
               id: r.id,
-              type: "text",
+              isBox: false,
               text: r.arabic ?? "",
               malayalam: r.malayalam ?? "",
               english: r.english ?? "",
@@ -64,25 +79,11 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
             };
           }
 
-          /* 📖 MANQUS */
           if (mode === "manqus") {
-            // 📦 BOX
-            if (r.type === "box") {
-              return {
-                id: r.id,
-                type: "box",
-                right: r.rightText ?? "",
-                left: r.leftText ?? "",
-                start: r.start,
-                end: r.end,
-              };
-            }
-
-            // 📝 NORMAL TEXT (WITH TRANSLATIONS)
             return {
               id: r.id,
-              type: "text",
-              text: r.text ?? r.arabic ?? "",
+              isBox: r.isBox === 1 || r.isBox === true,
+              text: r.text ?? "",
               malayalam: r.malayalam ?? "",
               english: r.english ?? "",
               start: r.start,
@@ -92,12 +93,7 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
 
           return null;
         })
-        .filter(Boolean);
-
-      /* 🔥 DEBUG (VERY IMPORTANT) */
-      console.log("🧪 MODE:", mode);
-      console.log("🧪 FIRST ITEM:", mapped[0]);
-      console.log("🧪 TOTAL ITEMS:", mapped.length);
+        .filter(Boolean) as DuaItem[];
 
       setCurrentDuaList(mapped);
 
@@ -135,7 +131,7 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
   }, [mode, type]);
 
   /* --------------------------------
-     ⏱️ Highlight logic
+     ⏱️ Highlight logic (SAFE)
   ---------------------------------*/
   const updateTime = useCallback(
     (sound: Sound) => {
@@ -143,7 +139,11 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
         setCurrentTime(seconds);
 
         const active = currentDuaList.find(
-          (d) => seconds >= d.start && seconds < d.end
+          (d) =>
+            typeof d.start === "number" &&
+            typeof d.end === "number" &&
+            seconds >= d.start &&
+            seconds < d.end
         );
 
         if (active && active.id !== currentIndex) {
@@ -158,8 +158,10 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
      🧹 Cleanup
   ---------------------------------*/
   const cleanupPlayback = useCallback(() => {
-    intervalRef.current && clearInterval(intervalRef.current);
-    intervalRef.current = null;
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
 
     soundRef.current?.stop(() => {
       soundRef.current?.release();
@@ -177,6 +179,7 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
   const playAudio = useCallback(() => {
     if (!audioFileName) return;
 
+    // pause
     if (soundRef.current && isPlaying) {
       soundRef.current.pause();
       setIsPlaying(false);
@@ -184,6 +187,13 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
       return;
     }
 
+    // clear old interval (safety)
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+
+    // first play
     if (!soundRef.current) {
       const sound = new Sound(
         audioFileName,
@@ -217,7 +227,13 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
         500
       );
     }
-  }, [audioFileName, isPlaying, playbackRate, updateTime, cleanupPlayback]);
+  }, [
+    audioFileName,
+    isPlaying,
+    playbackRate,
+    updateTime,
+    cleanupPlayback,
+  ]);
 
   /* --------------------------------
      🎚️ Seek / Speed
@@ -229,9 +245,7 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
 
   const onChangeRate = (rate: number) => {
     setPlaybackRate(rate);
-    if (soundRef.current) {
-      soundRef.current.setSpeed(rate);
-    }
+    soundRef.current?.setSpeed(rate);
   };
 
   /* --------------------------------
@@ -242,7 +256,7 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
   }, [cleanupPlayback]);
 
   /* --------------------------------
-     ✅ FINAL RETURN
+     ✅ RETURN
   ---------------------------------*/
   return {
     currentIndex,

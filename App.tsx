@@ -21,17 +21,15 @@ import { ThemeProvider, useThemeContext } from "./src/context/theme";
 import HomeScreen from "./src/screens/HomeScreen";
 import DhikrScreen from "./src/screens/DhikrScreen/DhikrScreen";
 import TranslationScreen from "./src/screens/TranslationScreen";
-import ManqusMoulidScreen from "./src/screens/ManqusMoulidScreen/ManqusMoulidScreen"; // ✅ ADD
+import ManqusMoulidScreen from "./src/screens/ManqusMoulidScreen/ManqusMoulidScreen";
 
 // 🗄️ SQLite DB
 import {
   createTables,
-  seedAsmaulHusna,
-  seedDuaMarichavark,
-  seedDuaQabar,
-  seedHaddad,
+  seedDhikr,
   seedManqusMoulid,
 } from "./src/db";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -59,21 +57,13 @@ function RootNavigator() {
         <Stack.Screen
           name="ManqusMoulid"
           component={ManqusMoulidScreen}
-          options={{
-          headerShown: false,
-            title: "മൻഖൂസ് മൗലിദ്",
-            headerStyle: {
-              backgroundColor: isDark ? "#1a1a1a" : "#0f172a",
-            },
-            headerTintColor: "#ffffff",
-          }}
+          options={{ headerShown: false }}
         />
 
         <Stack.Screen
           name="Translation"
           component={TranslationScreen}
           options={{
-            headerShown: true,
             title: "മലയാളം വിവർത്തനം",
             headerStyle: {
               backgroundColor: isDark ? "#1a1a1a" : "#0f172a",
@@ -96,45 +86,33 @@ export default function App() {
   useEffect(() => {
     const initDB = async () => {
       try {
+    
         await createTables();
-        await seedAsmaulHusna();
-        await seedDuaMarichavark();
-        await seedDuaQabar();
-        await seedHaddad();
-        await seedManqusMoulid();
+await seedDhikr();          // 🔥 ALL normal dhikr
+await seedManqusMoulid();   // 🔥 Manqus only
 
         console.log("✅ SQLite DB ready");
       } catch (error) {
         console.log("❌ DB init error:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     initDB();
   }, []);
 
-  /* ⏳ Splash / Loader */
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1200);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return (
-      <View style={styles.loaderContainer}>
-        <StatusBar barStyle="dark-content" />
-        <ActivityIndicator size="large" color="#22c55e" />
-      </View>
-    );
-  }
-
-  /* 🌙 App Wrapper */
   return (
     <SafeAreaProvider>
       <ThemeProvider>
-        <RootNavigator />
+        {loading ? (
+          <View style={styles.loaderContainer}>
+            <StatusBar barStyle="dark-content" />
+            <ActivityIndicator size="large" color="#22c55e" />
+          </View>
+        ) : (
+          <RootNavigator />
+        )}
       </ThemeProvider>
     </SafeAreaProvider>
   );

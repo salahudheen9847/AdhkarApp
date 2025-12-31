@@ -35,16 +35,17 @@ export type HeaderSectionProps = {
     | "haddad"
     | "asmaulHusna"
     | "manqus";
+
+  title: string;
+
   languageMode: LanguageMode;
   setLanguageMode: React.Dispatch<
     React.SetStateAction<LanguageMode>
   >;
   headerAnimatedStyle: any;
-  animatedBg: any;
   onFontPress: () => void;
 };
 
-/* ✅ COMPONENT MUST BE TYPED */
 const HeaderSection: React.FC<HeaderSectionProps> = ({
   navigation,
   textColor,
@@ -54,10 +55,10 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
   setShowPlayer,
   playAudio,
   type,
+  title,
   languageMode,
   setLanguageMode,
   headerAnimatedStyle,
-  animatedBg,
   onFontPress,
 }) => {
   return (
@@ -66,14 +67,14 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
         styles.headerBase,
         styles.headerFixedPadding,
         styles.headerPosition,
-        { backgroundColor: animatedBg },
+        isDark ? styles.headerDark : styles.headerLight, // ✅ FIX
         headerAnimatedStyle,
       ]}
     >
       {/* 🔹 ROW 1 */}
       <View style={styles.row1}>
-        {/* 🔙 Back */}
         <View style={styles.leftGroup}>
+          {/* 🔙 Back */}
           <TouchableOpacity
             style={styles.backButton}
             onPress={() => navigation.goBack()}
@@ -108,7 +109,7 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
           </TouchableOpacity>
         </View>
 
-        {/* 🔸 Right */}
+        {/* 🔸 Right icons */}
         <View style={styles.rightGroup}>
           <TouchableOpacity onPress={onFontPress}>
             <Icon name="text-fields" size={30} color={textColor} />
@@ -127,7 +128,17 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
         </View>
       </View>
 
-      {/* 🌐 Language */}
+      {/* 🏷️ TITLE */}
+      <View style={styles.titleWrapper}>
+        <Text
+          style={[styles.titleText, { color: textColor }]}
+          numberOfLines={1}
+        >
+          {title}
+        </Text>
+      </View>
+
+      {/* 🌐 Language Toggle */}
       <View style={styles.langRow}>
         <LanguageToggle
           languageMode={languageMode}
@@ -138,7 +149,7 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
   );
 };
 
-export default HeaderSection; // ✅ THIS LINE IS CRITICAL
+export default HeaderSection;
 
 /* 🎨 Styles */
 const styles = StyleSheet.create({
@@ -156,13 +167,22 @@ const styles = StyleSheet.create({
   },
   headerPosition: {
     position: "absolute",
-    top: 10,
+    top: 0,
     left: 0,
     right: 0,
     height: 170,
-    zIndex: 30,
-    elevation: 10,
+    zIndex: 50,
+    elevation: 20,
   },
+
+  /* ✅ FIXED BACKGROUND STYLES */
+  headerDark: {
+    backgroundColor: "#000000ee",
+  },
+  headerLight: {
+    backgroundColor: "#ffffffee",
+  },
+
   row1: {
     flexDirection: "row",
     alignItems: "center",
@@ -204,6 +224,17 @@ const styles = StyleSheet.create({
   },
   playingBg: { backgroundColor: "#16a34a20" },
   pausedBg: { backgroundColor: "#27d66720" },
+
+  titleWrapper: {
+    marginTop: 6,
+    alignItems: "center",
+  },
+  titleText: {
+    fontSize: 18,
+    fontWeight: "600",
+    textAlign: "center",
+  },
+
   langRow: {
     alignItems: "center",
     marginTop: 8,

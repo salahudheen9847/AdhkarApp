@@ -5,20 +5,23 @@ import { styles } from "../styles/playerStyles";
 
 export const WhatsappButton = () => {
   const handlePress = async () => {
-    const phoneNumber = "919745525150"; // ✅ + ഇല്ലാതെ
-    const message = "Assalamu Alaikum"; // 🔹 default message
+    const phoneNumber = "919745525150";
+    const message = "Assalamu Alaikum";
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
     try {
-      await Linking.openURL(url); // 🚀 Direct open WhatsApp
+      await Linking.openURL(url);
     } catch (error) {
       console.log("❌ WhatsApp link error:", error);
     }
   };
 
   return (
-    <TouchableOpacity style={styles.whatsappButton} onPress={handlePress}>
-      <Icon name="whatsapp" size={24} color="#fff" /> 
+    <TouchableOpacity
+      style={styles.whatsappButton}
+      onPress={handlePress}
+    >
+      <Icon name="whatsapp" size={24} color="#fff" />
     </TouchableOpacity>
   );
 };

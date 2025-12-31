@@ -1,18 +1,12 @@
 import React, { useCallback } from "react";
 import { Animated, StyleSheet } from "react-native";
-import { renderDuaItem } from "./renderDuaItem";
-
-export type LanguageMode =
-  | "arabic"
-  | "arabic_malayalam"
-  | "arabic_english";
+import { renderDuaItem, LanguageMode } from "./renderDuaItem";
 
 type Props = {
   currentDuaList: any[];
   currentIndex: number;
   fontSize: number;
   languageMode: LanguageMode;
-  translationList: any[];
   scrollY: Animated.Value;
 };
 
@@ -21,7 +15,6 @@ export const DuaListSection: React.FC<Props> = ({
   currentIndex,
   fontSize,
   languageMode,
-  translationList,
   scrollY,
 }) => {
   const renderItem = useCallback(
@@ -30,10 +23,9 @@ export const DuaListSection: React.FC<Props> = ({
         item,
         currentIndex,
         fontSize,
-        languageMode,
-        translationList
+        languageMode
       ),
-    [currentIndex, fontSize, languageMode, translationList]
+    [currentIndex, fontSize, languageMode]
   );
 
   return (
@@ -41,9 +33,11 @@ export const DuaListSection: React.FC<Props> = ({
       style={localStyles.list}
       contentContainerStyle={localStyles.content}
       data={currentDuaList}
-      keyExtractor={(item) => item.id.toString()}
+      keyExtractor={(item, index) =>
+        `${item.id}-${index}`   // ✅ UNIQUE KEY FIX
+      }
       renderItem={renderItem}
-      extraData={fontSize}
+      extraData={currentIndex}
       onScroll={Animated.event(
         [{ nativeEvent: { contentOffset: { y: scrollY } } }],
         { useNativeDriver: true }

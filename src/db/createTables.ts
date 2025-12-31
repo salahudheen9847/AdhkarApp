@@ -1,13 +1,18 @@
+// src/db/createTables.ts
 import { db } from "./db";
 
 export const createTables = async () => {
   const database = await db;
 
-  /* -----------------------------
-     📿 DHIKR TABLE
-  ------------------------------*/
+  /* ⚠️ DEV ONLY — DROP TABLES */
+  await database.executeSql(`DROP TABLE IF EXISTS manqus_moulid;`);
+  await database.executeSql(`DROP TABLE IF EXISTS dhikr;`);
+
+  /* =====================================================
+     📿 DHIKR (ALL NORMAL DHIKR, ASMAUL HUSNA, DUA)
+  ===================================================== */
   await database.executeSql(`
-    CREATE TABLE IF NOT EXISTS dhikr (
+    CREATE TABLE dhikr (
       id INTEGER,
       type TEXT,
       arabic TEXT,
@@ -19,21 +24,20 @@ export const createTables = async () => {
     );
   `);
 
-  /* -----------------------------
-     📖 MANQUS MOULID TABLE
-     (BOX + TEXT support)
-  ------------------------------*/
+  /* =====================================================
+     📖 MANQUS MOULID (HAS BOX ITEMS)
+  ===================================================== */
   await database.executeSql(`
-    CREATE TABLE IF NOT EXISTS manqus_moulid (
+    CREATE TABLE manqus_moulid (
       id INTEGER PRIMARY KEY,
-      sectionType TEXT,      -- "text" | "box"
-      text TEXT,             -- normal arabic text
-      rightText TEXT,        -- box right side
-      leftText TEXT,         -- box left side
+      isBox INTEGER,
+      arabic TEXT,
       malayalam TEXT,
       english TEXT,
       start REAL,
       end REAL
     );
   `);
+
+  console.log("✅ Tables created");
 };
