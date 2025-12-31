@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { styles } from "../../styles/dhikrscreenstyle";
+import { View, Text, StyleSheet } from "react-native";
+import { styles as baseStyles } from "../../styles/dhikrscreenstyle";
 import { ManqusMoulidItem } from "../../data/ManqusMoulid/manqusMoulid.data";
 
 /* 🌍 Language Mode */
@@ -9,7 +9,7 @@ export type LanguageMode =
   | "arabic_malayalam"
   | "arabic_english";
 
-/* 🔧 Normalize helper (VERY IMPORTANT) */
+/* 🔧 Normalize helper */
 const normalizeText = (value?: string | string[]) => {
   if (!value) return "";
   return Array.isArray(value) ? value.join("\n") : value;
@@ -17,28 +17,29 @@ const normalizeText = (value?: string | string[]) => {
 
 export const renderDuaItem = (
   item: ManqusMoulidItem,
-  currentIndex: number,
+  currentIndex: number, // 🔑 audio index (1-based)
   fontSize: number,
-  languageMode: LanguageMode
+  languageMode: LanguageMode,
+  highlightColor: string,
+  dividerColor: string,
+  textColor: string
 ) => {
   const isActive = item.id === currentIndex;
+  const isBox = item.isBox === true; // ✅ BOX CHECK
   const safeFontSize = Math.max(12, fontSize);
 
   let content = "";
 
-  /* 🕌 Arabic only */
   if (languageMode === "arabic") {
     content = normalizeText(item.text);
   }
 
-  /* 🕌 Arabic + Malayalam */
   if (languageMode === "arabic_malayalam") {
     content = item.malayalam
       ? `${normalizeText(item.text)}\n\n${normalizeText(item.malayalam)}`
       : normalizeText(item.text);
   }
 
-  /* 🕌 Arabic + English */
   if (languageMode === "arabic_english") {
     content = item.english
       ? `${normalizeText(item.text)}\n\n${normalizeText(item.english)}`
@@ -47,52 +48,67 @@ export const renderDuaItem = (
 
   if (!content) return null;
 
-  /* 📦 MANQUS BOX */
-  if (item.isBox) {
-    const lines = content.split("\n");
-
-    return (
-      <View
-        style={[
-          styles.manqusBoxWrapper,
-          isActive && styles.activeTextContainer,
-        ]}
-      >
-        <View style={styles.manqusBoxContainer}>
-          {lines.map((line, i) => (
-            <Text
-              key={`${item.id}-line-${i}`}
-              style={[
-                styles.manqusBoxText,
-                isActive && styles.activeText,
-                { fontSize: safeFontSize * 0.9 },
-              ]}
-            >
-              {line}
-            </Text>
-          ))}
-        </View>
-      </View>
-    );
-  }
-
-  /* 📝 NORMAL TEXT */
   return (
     <View
       style={[
-        styles.textContainer,
-        isActive && styles.activeTextContainer,
+        localStyles.container,
+        isBox && localStyles.manqusBoxContainer,      // 🔥 BOX ONLY COLOR
+        isActive && localStyles.activeContainer,
+        isActive && { backgroundColor: highlightColor },
       ]}
     >
+      {/* 📝 TEXT */}
       <Text
         style={[
-          styles.text,
-          isActive && styles.activeText,
-          { fontSize: safeFontSize },
+          isBox ? baseStyles.manqusBoxText : baseStyles.text,
+          isActive ? localStyles.activeText : { color: textColor },
+          { fontSize: isBox ? safeFontSize * 0.9 : safeFontSize },
         ]}
       >
         {content}
       </Text>
+
+      {/* 🔵 DIVIDER LINE */}
+      <View
+        style={[
+          localStyles.divider,
+          { backgroundColor: dividerColor },
+        ]}
+      />
     </View>
   );
 };
+
+/* ===============================
+   🎨 LOCAL STYLES (ERROR-FREE)
+================================ */
+const localStyles = StyleSheet.create({
+  container: {
+    width: "100%",
+    paddingVertical: 15,
+  },
+
+  /* 🔥 MANQUS BOX ONLY */
+  manqusBoxContainer: {
+    backgroundColor: "#92962aff",
+    borderRadius: 14,
+    paddingHorizontal: 12,
+    paddingVertical: 16,
+    marginVertical: 6,
+  },
+
+  activeContainer: {
+    borderRadius: 15,
+  },
+
+  activeText: {
+    color: "#ffffff",
+  },
+
+  divider: {
+    marginTop: 18,
+    height: StyleSheet.hairlineWidth,
+    width: "100%",
+    opacity: 0.6,
+  },
+});

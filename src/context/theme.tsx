@@ -1,54 +1,92 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+} from "react";
 
-// 🎨 Theme color sets
+/* =====================================================
+   🎨 THEME COLOR SETS
+===================================================== */
+
 const lightColors = {
   background: "#f9f9f9",
-  text: "#1a1a1a",
-  accent: "#22c55e",
+  text: "#000000",            // ✅ black text (light theme)
+  accent: "#2563eb",
   header: "#ffffff",
-  border: "#ddd",
+  border: "#e5e7eb",
   shadow: "#ccc",
+
+  // 🔵 SOLID BLUE HIGHLIGHT (NO BLUR)
+  highlightBox: "#2563eb",    // blue-600
+  highlightText: "#ffffff",  // white text on highlight
 };
 
 const darkColors = {
   background: "#000000",
-  text: "#ffffff",
-  accent: "#16d044",
+  text: "#ffffff",            // ✅ white text (dark theme)
+  accent: "#2563eb",
   header: "#1a1a1a",
   border: "#333",
   shadow: "#000",
+
+  // 🔵 SOLID BLUE HIGHLIGHT (DARK MODE)
+  highlightBox: "#1d4ed8",    // blue-700
+  highlightText: "#ffffff",
 };
 
-// 🧠 Context type
+/* =====================================================
+   🧠 CONTEXT TYPE
+===================================================== */
+
 interface ThemeContextType {
   isDark: boolean;
   colors: typeof lightColors;
   toggleTheme: () => void;
 }
 
-// 🪄 Create context
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+/* =====================================================
+   🪄 CREATE CONTEXT
+===================================================== */
 
-// 📦 Provider component
-export const ThemeProvider = ({ children }: { children: ReactNode }) => {
+const ThemeContext = createContext<ThemeContextType | undefined>(
+  undefined
+);
+
+/* =====================================================
+   📦 PROVIDER
+===================================================== */
+
+export const ThemeProvider = ({
+  children,
+}: {
+  children: ReactNode;
+}) => {
   const [isDark, setIsDark] = useState(true); // default: dark mode
 
-  const toggleTheme = () => setIsDark((prev) => !prev);
+  const toggleTheme = () => setIsDark(prev => !prev);
 
   const colors = isDark ? darkColors : lightColors;
 
   return (
-    <ThemeContext.Provider value={{ isDark, colors, toggleTheme }}>
+    <ThemeContext.Provider
+      value={{ isDark, colors, toggleTheme }}
+    >
       {children}
     </ThemeContext.Provider>
   );
 };
 
-// 🧩 Hook for consuming theme
+/* =====================================================
+   🧩 THEME HOOK
+===================================================== */
+
 export const useThemeContext = () => {
   const context = useContext(ThemeContext);
   if (!context) {
-    throw new Error("useThemeContext must be used within a ThemeProvider");
+    throw new Error(
+      "useThemeContext must be used within a ThemeProvider"
+    );
   }
   return context;
 };

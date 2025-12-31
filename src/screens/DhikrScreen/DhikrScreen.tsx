@@ -159,4 +159,10 @@ const localStyles = StyleSheet.create({
     zIndex: 9999,
     elevation: 20,
   },
+  manqusBoxActive: {
+  backgroundColor: "#16a34a30", // 🟢 active highlight
+  borderColor: "#16a34a",
+  borderWidth: 1,
+},
+
 });

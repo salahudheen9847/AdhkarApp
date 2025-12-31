@@ -24,21 +24,17 @@ export const styles = StyleSheet.create({
     marginBottom: 16,
     padding: 14,
     borderRadius: 12,
-    backgroundColor: "#1f2937",
+    backgroundColor: "transparent", // ✅ IMPORTANT
   },
 
-  /* ✨ Active ayah (audio sync ready) */
-activeTextContainer: {
-  backgroundColor: "#0ea5e920",
-  borderWidth: 1,
-  borderColor: "#0ea5e950",
-},
+  /* ✨ Active ayah border (optional) */
+  activeTextContainer: {
+    borderWidth: 1,
+    borderColor: "#2563eb50",
+  },
 
-
-
-  /* 🔹 Normal Arabic text */
+  /* 🔹 Arabic text (COLOR REMOVED) */
   text: {
-    color: "#e5e7eb",
     textAlign: "center",
     fontFamily: "ScheherazadeNew-Regular",
     fontSize: 28,
@@ -47,7 +43,6 @@ activeTextContainer: {
   },
 
   activeText: {
-    color: "#ffffff",
     fontWeight: "600",
   },
 
@@ -71,34 +66,29 @@ activeTextContainer: {
      📦 MANQUS BOX
      =============================== */
 
-  /* 🔹 Extra spacing so box never collapses */
   manqusBoxWrapper: {
     paddingVertical: 18,
     marginVertical: 18,
+    borderRadius: 14,
   },
 
-  /* 🔹 Actual box */
   manqusBoxContainer: {
     borderWidth: 1,
     borderColor: "#334155",
     borderRadius: 12,
-
     paddingVertical: 16,
     paddingHorizontal: 14,
-
-    backgroundColor: "#0f172a",
-
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "transparent", // ✅ IMPORTANT
   },
 
-  /* 🔹 Box text (each line) */
+  /* 🔹 Manqus box text (COLOR REMOVED) */
   manqusBoxText: {
     fontFamily: "ScheherazadeNew-Regular",
     textAlign: "center",
     fontSize: 26,
     lineHeight: 40,
-    color: "#f1f5f9",
     writingDirection: "rtl",
   },
 });
@@ -202,11 +192,4 @@ export const localStyles = StyleSheet.create({
     fontWeight: "600",
     marginTop: 4,
   },
-manqusBoxActive: {
-  backgroundColor: "#16a34a30", // 🟢 active highlight
-  borderColor: "#16a34a",
-  borderWidth: 1,
-},
-
-
 });

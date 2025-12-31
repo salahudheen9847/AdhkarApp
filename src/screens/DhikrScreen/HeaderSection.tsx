@@ -7,12 +7,12 @@ import {
   StyleSheet,
   StatusBar,
   Platform,
+  ScrollView,
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
 import { YoutubeButton } from "../../component/YoutubeButton";
 import { WhatsappButton } from "../../component/WhatsappButton";
-import { LanguageToggle } from "./LanguageToggle";
 
 /* 🌍 Language Mode */
 export type LanguageMode =
@@ -42,6 +42,7 @@ export type HeaderSectionProps = {
   setLanguageMode: React.Dispatch<
     React.SetStateAction<LanguageMode>
   >;
+
   headerAnimatedStyle: any;
   onFontPress: () => void;
 };
@@ -67,14 +68,13 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
         styles.headerBase,
         styles.headerFixedPadding,
         styles.headerPosition,
-        isDark ? styles.headerDark : styles.headerLight, // ✅ FIX
+        isDark ? styles.headerDark : styles.headerLight,
         headerAnimatedStyle,
       ]}
     >
       {/* 🔹 ROW 1 */}
       <View style={styles.row1}>
         <View style={styles.leftGroup}>
-          {/* 🔙 Back */}
           <TouchableOpacity
             style={styles.backButton}
             onPress={() => navigation.goBack()}
@@ -85,7 +85,6 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
             </Text>
           </TouchableOpacity>
 
-          {/* ▶️ Play */}
           <TouchableOpacity
             style={styles.playButtonContainer}
             activeOpacity={0.8}
@@ -109,7 +108,6 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
           </TouchableOpacity>
         </View>
 
-        {/* 🔸 Right icons */}
         <View style={styles.rightGroup}>
           <TouchableOpacity onPress={onFontPress}>
             <Icon name="text-fields" size={30} color={textColor} />
@@ -138,13 +136,45 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
         </Text>
       </View>
 
-      {/* 🌐 Language Toggle */}
-      <View style={styles.langRow}>
-        <LanguageToggle
-          languageMode={languageMode}
-          setLanguageMode={setLanguageMode}
-        />
-      </View>
+      {/* 🌐 LANGUAGE SELECTOR */}
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.langRow}
+      >
+        {/* Arabic */}
+        <TouchableOpacity
+          style={[
+            styles.languageBox,
+            languageMode === "arabic" && styles.activeBox,
+          ]}
+          onPress={() => setLanguageMode("arabic")}
+        >
+          <Text style={styles.langText}>Arabic</Text>
+        </TouchableOpacity>
+
+        {/* Malayalam */}
+        <TouchableOpacity
+          style={[
+            styles.languageBox,
+            languageMode === "arabic_malayalam" && styles.activeBox,
+          ]}
+          onPress={() => setLanguageMode("arabic_malayalam")}
+        >
+          <Text style={styles.langText}>Malayalam</Text>
+        </TouchableOpacity>
+
+        {/* English */}
+        <TouchableOpacity
+          style={[
+            styles.languageBox,
+            languageMode === "arabic_english" && styles.activeBox,
+          ]}
+          onPress={() => setLanguageMode("arabic_english")}
+        >
+          <Text style={styles.langText}>English</Text>
+        </TouchableOpacity>
+      </ScrollView>
     </Animated.View>
   );
 };
@@ -170,12 +200,11 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    height: 170,
+    height: 190,
     zIndex: 50,
     elevation: 20,
   },
 
-  /* ✅ FIXED BACKGROUND STYLES */
   headerDark: {
     backgroundColor: "#000000ee",
   },
@@ -186,8 +215,7 @@ const styles = StyleSheet.create({
   row1: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-evenly",
-    width: "100%",
+    justifyContent: "space-between",
   },
   leftGroup: {
     flexDirection: "row",
@@ -199,6 +227,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 14,
   },
+
   backButton: {
     flexDirection: "row",
     alignItems: "center",
@@ -211,6 +240,7 @@ const styles = StyleSheet.create({
     marginLeft: 6,
     fontSize: 16,
   },
+
   playButtonContainer: {
     justifyContent: "center",
     alignItems: "center",
@@ -235,8 +265,26 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 
+  /* 🌐 Language selector */
   langRow: {
+    gap: 20,
+    paddingVertical: 5,
+  },
+  languageBox: {
+    minWidth: 110,
+    paddingVertical: 8,
+    paddingHorizontal: 7,
+    borderRadius: 5,
+    backgroundColor: "#1f2937",
     alignItems: "center",
-    marginTop: 8,
+  },
+  activeBox: {
+    borderWidth: 1,
+    borderColor: "#22c55e",
+  },
+  langText: {
+    fontSize: 18,
+    color: "#ffffff",
+    fontWeight: "500",
   },
 });

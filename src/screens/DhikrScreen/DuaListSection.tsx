@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { Animated, StyleSheet } from "react-native";
 import { renderDuaItem, LanguageMode } from "./renderDuaItem";
+import { useThemeContext } from "../../context/theme";
 
 type Props = {
   currentDuaList: any[];
@@ -17,15 +18,28 @@ export const DuaListSection: React.FC<Props> = ({
   languageMode,
   scrollY,
 }) => {
+  /* ✅ HOOK ALWAYS AT TOP */
+  const { colors } = useThemeContext();
+
   const renderItem = useCallback(
     ({ item }: { item: any }) =>
       renderDuaItem(
         item,
         currentIndex,
         fontSize,
-        languageMode
+        languageMode,
+        colors.highlightBox, // 🔵 active highlight bg
+        colors.accent,       // 🔵 divider line color
+        colors.text          // 📝 text color
       ),
-    [currentIndex, fontSize, languageMode]
+    [
+      currentIndex,
+      fontSize,
+      languageMode,
+      colors.highlightBox,
+      colors.accent,
+      colors.text,
+    ]
   );
 
   return (
@@ -33,9 +47,7 @@ export const DuaListSection: React.FC<Props> = ({
       style={localStyles.list}
       contentContainerStyle={localStyles.content}
       data={currentDuaList}
-      keyExtractor={(item, index) =>
-        `${item.id}-${index}`   // ✅ UNIQUE KEY FIX
-      }
+      keyExtractor={(item, index) => `${item.id}-${index}`}
       renderItem={renderItem}
       extraData={currentIndex}
       onScroll={Animated.event(
@@ -48,7 +60,9 @@ export const DuaListSection: React.FC<Props> = ({
 };
 
 const localStyles = StyleSheet.create({
-  list: { flex: 1 },
+  list: {
+    flex: 1,
+  },
   content: {
     paddingTop: 180,
     paddingBottom: 140,
