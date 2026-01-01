@@ -24,7 +24,7 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     english:
       "In the Name of Allah, the Most Merciful, the Most Compassionate.",
     start: 0,
-    end: 1,
+    end: 4,
   },
   {
     id: 2,
@@ -36,8 +36,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
       "റബീഉൽ അവ്വൽ മാസത്തിൽ മാർഗദർശക നബിയുടെ ചന്ദ്രനെ ഉദിപ്പിച്ചവനും, സൃഷ്ടിക്കുമുമ്പേ അവന്റെ നൂറിനെ സൃഷ്ടിച്ചവനും, അവനെ ‘മുഹമ്മദ്’ എന്ന് നാമകരണം ചെയ്തവനും ആയ അല്ലാഹുവിന് പരിശുദ്ധി.",
     english:
       "Glory be to Him who caused the moon of the Prophet of guidance to rise in the month of Rabiʿ al-Awwal, who created his light before the creation of the universe, and named him Muhammad.",
-    start: 1,
-    end: 2,
+    start: 4,
+    end: 14,
   },
   {
     id: 3,
@@ -49,8 +49,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
       "അല്ലാഹു വിധിച്ചതുപോലെ അവസാനം കാലഘട്ടത്തിൽ അവനെ പ്രത്യക്ഷമാക്കി, ആര്ക്കും നൽകാത്ത സൗന്ദര്യത്തിന്റെ അങ്കി അവനു ധരിപ്പിച്ചു.",
     english:
       "And He brought him forth at the appointed time as He decreed, manifesting him and clothing him with a robe of beauty that He granted to none other.",
-    start: 2,
-    end: 3,
+    start: 14,
+    end: 23,
   },
   {
     id: 4,
@@ -62,8 +62,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
       "ചന്ദ്രനെയും നക്ഷത്രത്തെയും ലജ്ജിപ്പിക്കുന്ന മുഖസൗന്ദര്യത്തോടെ അവൻ ജനിച്ചു. അവനെയാണ് ആദം (അലൈഹിസ്സലാം) വഴിയായി പ്രാർത്ഥിച്ചതും, അവന്റെ പിതാവാകുന്നതിൽ അഭിമാനം കൊണ്ടതും.",
     english:
       "He was born with a face that put the moon and stars to shame. It was by him that Adam (peace be upon him) sought intercession, and he took pride in being his father.",
-    start: 3,
-    end: 4,
+    start: 23,
+    end: 32,
   },
   {
     id: 5,
@@ -74,8 +74,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
       "നൂഹ് (അലൈഹിസ്സലാം) അവനെ വഴിയായി സഹായം തേടിയപ്പോൾ, നാശത്തിൽ നിന്ന് രക്ഷപ്പെട്ടു.",
     english:
       "And Noah (peace be upon him) sought help through him, and thus was saved from destruction.",
-    start: 4,
-    end: 5,
+    start: 31,
+    end: 35,
   },
   {
     id: 6,
@@ -87,8 +87,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
       "ഇബ്രാഹീം (അലൈഹിസ്സലാം) അഗ്നിയിൽ എറിഞ്ഞപ്പോൾ അവന്റെ വംശപരമ്പരയിൽ അവൻ ഉണ്ടായിരുന്നു; അഗ്നിയുടെ ജ്വാല ശമിച്ചു.",
     english:
       "He was in the lineage of Ibrahim (peace be upon him) when he was cast into the fire, and its flames were subdued and extinguished.",
-    start: 5,
-    end: 6,
+    start: 35,
+    end: 44,
   },
   {
     id: 7,
@@ -100,8 +100,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
       "അവനെ ഗർഭം ധരിച്ചപ്പോൾ അവന്റെ മാതാവ് ആമിന (റ) ആകാശത്തിലെ മലക്കുകളെ സഹായത്തോടെ കാണുകയും, നബിമാർ അവളുടെ അടുക്കൽ വന്ന് പറയുകയും ചെയ്തു.",
     english:
       "When his mother Amina conceived him, she saw the angels of the heavens offering support, and the prophets came to her saying:",
-    start: 6,
-    end: 7,
+    start: 44,
+    end: 55,
   },
   {
     id: 8,
@@ -112,8 +112,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
       "നീ മാർഗദർശനത്തിന്റെയും വിജയത്തിന്റെയും സൂര്യനെ പ്രസവിക്കുമ്പോൾ, അവനെ ‘മുഹമ്മദ്’ എന്ന് പേരിടുക.",
     english:
       "When you give birth to the sun of success and guidance, name him Muhammad.",
-    start: 7,
-    end: 8,
+    start: 55,
+    end: 61,
   },
   {
     id: 9,
@@ -125,21 +125,21 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
       "അല്ലാഹു (അസ്ജ്ജ വജല്ല) അരുളിച്ചെയ്യുന്നു: നിങ്ങളിൽ നിന്നുതന്നെ ഒരു ദൂതൻ നിങ്ങൾക്കിടയിൽ വന്നിരിക്കുന്നു. നിങ്ങളുടെ കഷ്ടത അവനു ഭാരമാണ്; അവൻ നിങ്ങളെക്കുറിച്ച് അതീവ കരുതലുള്ളവനും, വിശ്വാസികളോട് കരുണയും ദയയും ഉള്ളവനുമാണ്.",
     english:
       "Allah, the Mighty and Majestic, says: There has certainly come to you a Messenger from among yourselves. Grievous to him is your suffering; he is deeply concerned for you, and to the believers he is most kind and merciful.",
-    start: 8,
-    end: 9,
+    start: 61,
+    end: 73,
   },
   {
     id: 10,
     isBox: false,
     text:
-      "عَنِ النَّبِيِّ ﷺ أَنَّهُ قَالَ كُنْتُ نُورًا بَيْنَ يَدَيِ اللَّهِ عَزَّ وَجَلَّ " +
+      "وَرُوِيَ عَنِ النَّبِيِّ ﷺ أَنَّهُ قَالَ كُنْتُ نُورًا بَيْنَ يَدَيِ اللَّهِ عَزَّ وَجَلَّ  " +
       "قَبْلَ أَنْ يَخْلُقَ آدَمَ بِأَلْفَيْ عَامٍ",
     malayalam:
       "നബി ﷺ പറഞ്ഞു: ആദമിനെ സൃഷ്ടിക്കുന്നതിന് രണ്ടായിരം വർഷങ്ങൾക്ക് മുമ്പ് ഞാൻ അല്ലാഹുവിന്റെ സന്നിധിയിൽ ഒരു നൂറായിരുന്നു.",
     english:
       "The Prophet ﷺ said: I was a light before Allah, the Mighty and Majestic, two thousand years before Adam was created.",
-    start: 9,
-    end: 10,
+    start: 73,
+    end: 84,
   },
    {
     id: 11,
@@ -151,8 +151,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
       "ആ നൂർ അല്ലാഹുവിനെ തസ്ബീഹ് ചെയ്യുകയായിരുന്നു; മലക്കുകളും അതിന്റെ തസ്ബീഹ് കൊണ്ടു തസ്ബീഹ് ചെയ്തു. പിന്നീട് അല്ലാഹു (തഅാല) ആദം (അലൈഹിസ്സലാം)നെ സൃഷ്ടിച്ചപ്പോൾ, ആ നൂറിനെ അവന്റെ മണ്ണിൽ ഏല്പിച്ചു.",
     english:
       "That light glorified Allah, and the angels glorified Him with its glorification. When Allah the Exalted created Adam (peace be upon him), He placed that light into his clay.",
-    start: 10,
-    end: 11,
+    start: 84,
+    end: 97,
   },
   {
     id: 12,
@@ -164,8 +164,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
       "അങ്ങനെ അല്ലാഹു എന്നെ ആദം (അലൈഹിസ്സലാം)ന്റെ വംശപരമ്പരയിൽ ഭൂമിയിലേക്കിറക്കി; പിന്നെ നൂഹ് (അലൈഹിസ്സലാം)ന്റെ വംശത്തിലൂടെ കപ്പലിൽ എന്നെ ആക്കി.",
     english:
       "Thus Allah sent me down to the earth within the lineage of Adam (peace be upon him), and placed me in the Ark within the lineage of Noah (peace be upon him).",
-    start: 11,
-    end: 12,
+    start: 97,
+    end: 106,
   },
   {
     id: 13,
@@ -177,8 +177,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
       "ഇബ്രാഹീം അൽഖലീൽ (അലൈഹിസ്സലാം)നെ അഗ്നിയിൽ എറിഞ്ഞപ്പോൾ അവന്റെ വംശത്തിൽ എന്നെ ആക്കി; എന്റെ رب്ബ് എന്നെ മഹത്തായും ആദരണീയമായും ഉള്ള വംശങ്ങളിൽ നിന്നു തുടർച്ചയായി മാറ്റിക്കൊണ്ടിരുന്നു.",
     english:
       "He placed me in the lineage of Ibrahim the Friend (peace be upon him) when he was cast into the fire, and my Lord continued to transfer me through noble and honored lineages.",
-    start: 12,
-    end: 13,
+    start: 106,
+    end: 119,
   },
   {
     id: 14,
@@ -190,8 +190,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
       "ശുദ്ധവും പരിശുദ്ധവുമായ ഗർഭങ്ങളിൽ നിന്ന് ഗർഭങ്ങളിലേക്കു എന്നെ മാറ്റി, ഒടുവിൽ അല്ലാഹു എന്നെ എന്റെ മാതാപിതാക്കളുടെ ഇടയിൽ നിന്ന് പുറത്ത് കൊണ്ടുവന്നു; അവർ ഒരിക്കലും വ്യഭിചാരത്തിൽ ഒന്നിച്ചിട്ടില്ല.",
     english:
       "Into pure and chaste wombs, until Allah brought me forth from between my parents, who never united in fornication at any time.",
-    start: 13,
-    end: 14,
+    start: 119,
+    end: 130,
   },
   {
     id: 15,
@@ -205,8 +205,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     english:
       "Blessings upon the Prophet and peace upon the Messenger,\n" +
       "the intercessor of al-Abtah and the beloved of the Arabs.",
-    start: 6,
-    end: 7,
+    start: 130,
+    end: 140,
   },
   {
     id: 16,
@@ -220,8 +220,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     english:
       "You rise among us amidst the stars like full moons;\n" +
       "rather, you are more noble than them, O my master, the best of prophets.",
-    start: 7,
-    end: 8,
+    start: 140,
+    end: 150,
   },
   {
     id: 17,
@@ -235,8 +235,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     english:
       "In mother or father alike,\n" +
       "we have never seen beauty like yours, O my master, the best of prophets.",
-    start: 8,
-    end: 9,
+    start: 150,
+    end: 160,
   },
   {
     id: 18,
@@ -250,8 +250,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     english:
       "You will be our savior tomorrow through your pure intercession;\n" +
       "who do we have like you, O my master, the best of prophets?",
-    start: 9,
-    end: 10,
+    start: 160,
+    end: 170,
   },
   {
     id: 19,
@@ -265,8 +265,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     english:
       "I have committed countless and innumerable mistakes;\n" +
       "to you I complain of them, O my master, the best of prophets.",
-    start: 10,
-    end: 11,
+    start: 170,
+    end: 180,
   },
   {
     id: 20,
@@ -280,8 +280,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     english:
       "We hope for the cup of your Pond to quench our thirst\n" +
       "on the Day when my record is spread, O my master, the best of prophets.",
-    start: 11,
-    end: 12,
+    start: 180,
+    end: 190,
   },
   {
   id: 21,
@@ -295,8 +295,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "Grant us intercession on the Day of Resurrection,\n" +
     "woe to us if it is lost, O my master, the best of prophets.",
-  start: 12,
-  end: 13,
+  start: 190,
+  end: 200,
 },
 {
   id: 22,
@@ -310,8 +310,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "Blessings upon the Prophet at all times, forever,\n" +
     "as long as a star shines in the sky, O my master, the best of prophets.",
-  start: 13,
-  end: 14,
+  start: 200,
+  end: 210,
 },
 {
   id: 23,
@@ -324,8 +324,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "കഅ്ബ് അൽഅഹ്ബാർ (റ) روایت ചെയ്യുന്നു: സൂക്ഷിച്ചുവച്ച നൂറിനെ പ്രകടിപ്പിക്കാനും മറഞ്ഞ രത്നത്തെ വെളിപ്പെടുത്താനും അല്ലാഹു (തഅാല) ആഗ്രഹിച്ചപ്പോൾ, അബ്ദുല്ലാഹിൽ നിന്ന് അറബികളിലെ ഏറ്റവും പരിശുദ്ധയായ പെൺകുട്ടിയായ ആമിനയുടെ ഗർഭത്തിലേക്ക് അത് മാറ്റി; അത് റജബ് മാസത്തിലെ വെള്ളിയാഴ്ച രാത്രിയിലായിരുന്നു.",
   english:
     "Ka‘b al-Ahbar (may Allah be pleased with him) narrated: When Allah the Exalted willed to manifest the stored light and reveal the hidden jewel, He transferred it from ‘Abdullah to the womb of Amina, the purest woman among the Arabs, and that was on the night of Friday in the month of Rajab.",
-  start: 14,
-  end: 15,
+  start: 210,
+  end: 229,
 },
 {
   id: 24,
@@ -337,8 +337,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "റിദ്വാൻ (അലൈഹിസ്സലാം)നോട് അല്ലാഹു ആജ്ഞാപിച്ചു; സ്വർഗ്ഗത്തിന്റെ വാതിലുകൾ തുറന്നു, ഹൂർകളും ബാലകരും അലങ്കരിക്കപ്പെട്ടു, സന്തോഷവാർത്തകൾ മുഴങ്ങി, പ്രഭാത നക്ഷത്രങ്ങൾ പ്രകാശിച്ചു.",
   english:
     "Allah commanded Ridwan (peace be upon him), so the gates of Paradise were opened, the houris and youths were adorned, glad tidings were proclaimed, and the stars of dawn shone brightly.",
-  start: 15,
-  end: 16,
+  start: 229,
+  end: 240,
 },
 {
   id: 25,
@@ -350,8 +350,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "ആകാശത്തിലും ഭൂമിയിലും ഒരു വിളിയുയർന്നു: ‘മനുഷ്യരുടെ നായകനായ അവനിൽ നിന്നുള്ള മറഞ്ഞ നൂർ ആമിനയുടെ ഗർഭത്തിൽ സ്ഥിരമായിരിക്കുന്നു.’",
   english:
     "A caller proclaimed in the heavens and the earth: ‘Behold! The hidden light from which comes the master of mankind has now settled in the womb of Amina.’",
-  start: 16,
-  end: 17,
+  start: 240,
+  end: 250,
 },
 {
   id: 26,
@@ -363,8 +363,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "നമ്മുടെ നബി മുഹമ്മദ് ﷺയുടെ നൂർ അബ്ദുല്ലാഹിൽ നിന്ന് ആമിനയുടെ ഗർഭത്തിലേക്ക് മാറിയപ്പോൾ, സന്തോഷത്തോടെ അർഷ് കുലുങ്ങി; കുര്‍സി കൂടുതൽ ഭീതിയും ഗൗരവവും നേടി.",
   english:
     "When the light of our Prophet Muhammad ﷺ moved from ‘Abdullah to the womb of Amina, the Throne trembled with joy and gladness, and the Kursi increased in majesty and dignity.",
-  start: 17,
-  end: 18,
+  start: 250,
+  end: 264,
 },
 {
   id: 27,
@@ -376,8 +376,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "ആകാശങ്ങൾ എല്ലാം നൂറുകളാൽ നിറഞ്ഞു; മലക്കുകൾ തഹ്‌ലീലും ഇസ്തിഗ്ഫാറും കൊണ്ട് മുഴങ്ങി; ആ രാത്രി ആമിനയുടെ നെറ്റിയിൽ വിശ്വാസനീയമായ പ്രകാശം തെളിഞ്ഞു.",
   english:
     "The heavens were filled with lights, and the angels resounded with glorification and seeking forgiveness; that night Amina awoke with lights shining upon her noble forehead.",
-  start: 18,
-  end: 19,
+  start: 264,
+  end: 276,
 },
 {
   id: 28,
@@ -389,35 +389,50 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "അവൾ മറഞ്ഞ ഭയങ്ങളിൽ നിന്ന് സുരക്ഷിതയായി; അവന്റെ നൂറിന്റെ മാറലിന് അടയാളങ്ങൾ പ്രകടമായി; എല്ലാ സൃഷ്ടികളും അതിൽ സന്തോഷിച്ചു.",
   english:
     "She was made secure from hidden fears; signs of the transfer of his light became manifest, and all creation rejoiced in it.",
-  start: 19,
-  end: 20,
+  start: 264,
+  end: 286,
 },
 {
   id: 29,
   isBox: false,
   text:
-    "وَلَمَّا حَمَلَتْ بِهِ فِي رَجَبٍ بُشِّرَتْ فِي شَعْبَانَ " +
-    "وَقِيلَ لَهَا فِي رَمَضَانَ لَقَدْ حَمَلْتِ بِالْمُطَهَّرِ مِنَ الدَّنَسِ وَالْخَنَا",
+    "وَلَمَّا حَمَلَتْ بِهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ فِي رَجَبٍ، " +
+    "بُشِّرَتْ فِي شَعْبَانَ بِنَيْلِ الْمُنَى، " +
+    "وَقِيلَ لَهَا فِي رَمَضَانَ: " +
+    "لَقَدْ حَمَلْتِ بِالْمُطَهَّرِ مِنَ الدَّنَسِ وَالْخَنَا.",
+
   malayalam:
-    "റജബിൽ അവനെ ഗർഭം ധരിച്ചപ്പോൾ, ശഅ്ബാനിൽ അവൾക്ക് സന്തോഷവാർത്ത ലഭിച്ചു; റമദാനിൽ അവളോട് പറഞ്ഞു: നീ അഴുക്കിലും അശുദ്ധിയിലും നിന്നു ശുദ്ധനായവനെ ഗർഭം ധരിച്ചിരിക്കുന്നു.",
+    "റജബ് മാസത്തിൽ അവനെ ഗർഭം ധരിച്ചപ്പോൾ, ശഅ്ബാൻ മാസത്തിൽ അവൾക്ക് സന്തോഷവാർത്ത ലഭിച്ചു; " +
+    "റമദാൻ മാസത്തിൽ അവളോട് പറഞ്ഞു: നീ അഴുക്കിലും അശുദ്ധിയിലും നിന്നു ശുദ്ധനായവനെ ഗർഭം ധരിച്ചിരിക്കുന്നു.",
+
   english:
-    "When she conceived him in Rajab, she was given glad tidings in Sha‘ban, and in Ramadan it was said to her: You have conceived the one purified from all impurity and filth.",
-  start: 20,
-  end: 21,
+    "When she conceived him in Rajab, she was given glad tidings in Sha‘ban; " +
+    "and in Ramadan it was said to her: You have conceived the one purified from all impurity and filth.",
+
+  start: 286,
+  end: 298,
 },
 {
   id: 30,
   isBox: false,
   text:
-    "وَسَمِعَتِ الْمَلَائِكَةَ فِي شَوَّالٍ يُبَشِّرُونَهَا " +
-    "وَرَأَتِ الْخَلِيلَ إِبْرَاهِيمَ عَلَيْهِ السَّلَامُ فِي ذِي الْقَعْدَةِ وَهُوَ يَقُولُ لَهَا أَبْشِرِي " +
-    "بِصَاحِبِ الْأَنْوَارِ وَالْوَقَارِ وَالسَّنَا",
+    "وَسَمِعَتِ الْمَلَائِكَةَ فِي شَوَّالٍ يُبَشِّرُونَهَا بِالظَّفَرِ بِغَايَةِ الْمُنَى، " +
+    "وَرَأَتِ الْخَلِيلَ إِبْرَاهِيمَ عَلَيْهِ السَّلَامُ فِي ذِي الْقَعْدَةِ، " +
+    "وَهُوَ يَقُولُ لَهَا: أَبْشِرِي " +
+    "بِصَاحِبِ الْأَنْوَارِ وَالْوَقَارِ وَالسَّنَا.",
+
   malayalam:
-    "ശവ്വാലിൽ മലക്കുകളുടെ സന്തോഷവാർത്തകൾ അവൾ കേട്ടു; ദുൽഖഅദയിൽ ഇബ്രാഹീം അൽഖലീൽ (അലൈഹിസ്സലാം)നെ അവൾ കണ്ടു; അവൻ പറഞ്ഞു: നൂറിന്റെയും മഹത്വത്തിന്റെയും ഉടമയെക്കുറിച്ച് സന്തോഷിക്കൂ.",
+    "ശവ്വാൽ മാസത്തിൽ മലക്കുകളുടെ സന്തോഷവാർത്തകൾ അവൾ കേട്ടു; " +
+    "ദുൽഖഅദ മാസത്തിൽ ഇബ്രാഹീം അൽഖലീൽ (അലൈഹിസ്സലാം)നെ അവൾ കണ്ടു; " +
+    "അവൻ പറഞ്ഞു: നൂറിന്റെയും മഹത്വത്തിന്റെയും ദീപ്തിയുടെയും ഉടമയെക്കുറിച്ച് സന്തോഷിക്കൂ.",
+
   english:
-    "In Shawwal she heard the angels giving her glad tidings, and in Dhu al-Qa‘dah she saw Ibrahim the Friend (peace be upon him) saying to her: Rejoice in the one endowed with light, dignity, and radiance.",
-  start: 21,
-  end: 22,
+    "In Shawwal she heard the angels giving her glad tidings of attaining the highest hopes; " +
+    "and in Dhu al-Qa‘dah she saw Ibrahim the Friend (peace be upon him), " +
+    "who said to her: Rejoice in the one endowed with light, dignity, and radiance.",
+
+  start: 298,
+  end: 313,
 },
 {
   id: 31,
@@ -429,8 +444,9 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "ദുൽഹിജ്ജയിൽ മൂസാ അൽകലീം (അലൈഹിസ്സലാം) അവളുടെ അടുക്കൽ വന്നു; മുഹമ്മദ് ﷺയുടെ മഹത്തായ പദവിയും ഉന്നതമായ സ്ഥാനവും അവൾക്ക് അറിയിച്ചു.",
   english:
     "In Dhu al-Hijjah, Moses the One Spoken to (peace be upon him) came to her and informed her of the lofty rank and exalted status of Muhammad ﷺ.",
-  start: 22,
-  end: 23,
+  start: 313,
+  end: 323,
+
 },
 {
   id: 32,
@@ -442,8 +458,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "മുഹറമിൽ ജിബ്രീൽ (അലൈഹിസ്സലാം) അവളെ വിളിച്ച് പ്രസവസമയം അടുത്തുവെന്ന് അറിയിച്ചു; സഫറിൽ മലക്കുകൾ അവളുടെ വാസസ്ഥലം തിരഞ്ഞെടുത്തു; സന്തോഷത്തിന്റെ സമയം വളരെ സമീപിച്ചുവെന്ന് അവൾ അറിഞ്ഞു.",
   english:
     "In Muharram, Jibril (peace be upon him) called her, informing her that the time of birth had drawn near; in Safar the angels chose her dwelling, and she realized that the moment of joy was close at hand.",
-  start: 23,
-  end: 24,
+  start: 323,
+  end: 337,
 },
 {
   id: 33,
@@ -454,8 +470,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "റബീഉൽ അവ്വൽ ആരംഭിച്ചപ്പോൾ ഭൂമിയും ആകാശവും പ്രകാശിച്ചു; ഭവനവും സഫാ കുന്നും ദീപ്തമായി.",
   english:
     "When Rabiʿ al-Awwal arrived, the earth and the heavens were illuminated, and the house and Safa shone brightly.",
-  start: 24,
-  end: 25,
+  start: 337,
+  end: 342,
 },
 {
   id: 34,
@@ -468,8 +484,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "പ്രസവസമയം എത്തിയപ്പോൾ ഭാഗ്യത്തിന്റെ പ്രഘോഷണം പുറപ്പെട്ടു; ആമിനയ്ക്ക് പ്രസവവേദന തുടങ്ങി. ഭാഗ്യത്തിന്റെ സൂര്യൻ ഉദിക്കുന്ന സമയം എത്തി; സത്യം നൂറായി ദീപ്തമായി, ലോകമാകെ തൃപ്തിയുടെ പതാകകൾ ഉയർത്തപ്പെട്ടു.",
   english:
     "When the time of birth arrived and the proclamation of felicity was issued, the matter of childbirth began for Amina. The moment for the rising of the sun of happiness came; truth shone as light, and banners of divine pleasure were unfurled throughout the universe.",
-  start: 25,
-  end: 26,
+  start: 342,
+  end: 359,
 },
 {
   id: 35,
@@ -481,8 +497,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "അപ്പോൾ ആകാശത്തിൽ നിന്ന് ഒരു വെളുത്ത പക്ഷി ഇറങ്ങി, വേഗത്തിൽ തന്റെ ചിറകുകൾ ആമിനയുടെ വയറിന് മുകളിലൂടെ കടത്തി; റബീഉൽ അവ്വൽ മാസത്തിലെ പന്ത്രണ്ടാം തിങ്കളാഴ്ച രാത്രിയിൽ അവൾക്ക് പ്രസവവേദന ആരംഭിച്ചു.",
   english:
     "Then a white bird descended from the sky and swiftly passed its wings over the belly of Amina; labor pains struck her on the night of Monday, the twelfth of the month of Rabiʿ al-Awwal.",
-  start: 26,
-  end: 27,
+  start: 359,
+  end: 372,
 },
 {
   id: 36,
@@ -494,8 +510,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "അടുത്ത പ്രഭാതത്തിൽ അവൾ മനുഷ്യരുടെയും ജിന്നുകളുടെയും നബി ﷺയെ പ്രസവിച്ചു; അല്ലാഹുവിന്റെ സമാധാനവും അനുഗ്രഹവും അവന്റെയും അവന്റെ കുടുംബത്തിന്റെയും സഹാബികളുടെയും മേൽ ഉണ്ടാകട്ടെ.",
   english:
     "The following morning she gave birth to the Prophet of both humans and jinn, ﷺ; may Allah’s blessings and peace be upon him, his family, and all his companions.",
-  start: 27,
-  end: 28,
+  start: 372,
+  end: 382,
 },
 {
   id: 37,
@@ -509,8 +525,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "O my Lord, send blessings upon the Prophet Muhammad,\n" +
     "the one who will save creation from Hell tomorrow.",
-  start: 28,
-  end: 29,
+  start: 382,
+  end: 390,
 },
 {
   id: 38,
@@ -524,8 +540,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "The beloved, devoted master has been born,\n" +
     "and light radiates from his blessed cheeks.",
-  start: 29,
-  end: 30,
+  start: 390,
+  end: 396,
 },
 {
   id: 39,
@@ -539,8 +555,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "Jibril called out upon the platform of his beauty:\n" +
     "This is the beauty of the universe, this is Ahmad.",
-  start: 30,
-  end: 31,
+  start: 396,
+  end: 403,
 },
 {
   id: 40,
@@ -554,8 +570,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "This is the one with kohl-darkened eyes, the Chosen One;\n" +
     "this is the one of great attributes, this is the noble master.",
-  start: 31,
-  end: 32,
+  start: 403,
+  end: 410,
 },
 {
   id: 41,
@@ -569,8 +585,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "This is the one of beautiful qualities, the Chosen;\n" +
     "this is the handsome-faced one, the Unique.",
-  start: 32,
-  end: 33,
+  start: 410,
+  end: 417,
 },
 {
   id: 42,
@@ -584,8 +600,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "This is the one adorned with noble garments and precious gifts;\n" +
     "none like him can be found.",
-  start: 33,
-  end: 34,
+  start: 417,
+  end: 424,
 },
 {
   id: 43,
@@ -599,8 +615,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "All the angels of the heavens proclaimed:\n" +
     "the Beloved has been born—none like him will ever be born.",
-  start: 34,
-  end: 35,
+  start: 424,
+  end: 432,
 },
 {
   id: 44,
@@ -614,23 +630,26 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "Glad tidings to his nation for beholding his face;\n" +
     "this is the great and ever-increasing rank.",
-  start: 35,
-  end: 36,
+  start: 432,
+  end: 439,
 },
 {
   id: 45,
   isBox: true,
   text:
-    "وُلِدَ مَخْتُونًا وَمَكْحُولًا كَمَا\n" +
+    "وَلَدَتْهُ مَخْتُونًا وَمَكْحُولًا كَمَا\n" +
     "قَدْ جَاءَ فِي الْخَبَرِ الصَّحِيحِ الْمُسْنَدِ",
+
   malayalam:
     "ശുദ്ധീകരിക്കപ്പെട്ടതും കണ്ണുകളിൽ കാജൽപോലെയുള്ള സൗന്ദര്യമുള്ളതുമായ അവൻ ജനിച്ചു,\n" +
     "ഇത് വിശ്വസനീയമായ സഹീഹ് റിപ്പോർട്ടുകളിൽ വന്നതുപോലെ.",
+
   english:
     "He was born circumcised and with kohl-darkened eyes,\n" +
     "as reported in authentic, well-established narrations.",
-  start: 36,
-  end: 37,
+
+  start: 439,
+  end: 447,
 },
 {
   id: 46,
@@ -644,8 +663,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "May Allah send blessings upon you, O banner of guidance,\n" +
     "as long as birds sing upon the branches.",
-  start: 37,
-  end: 38,
+  start: 447,
+  end: 455,
 },
 {
   id: 47,
@@ -659,8 +678,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "It is narrated that when Amina gave birth to him ﷺ, she saw a light\n" +
     "that illuminated the palaces of Busra in the land of Sham.",
-  start: 38,
-  end: 39,
+  start: 455,
+  end: 466,
 },
 {
   id: 48,
@@ -675,8 +694,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "Amina said: When I gave birth to him, I looked to see my child but did not see him;\n" +
     "then I found him in the inner chamber.",
-  start: 39,
-  end: 40,
+  start: 466,
+  end: 474,
 },
 {
   id: 49,
@@ -691,8 +710,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "He was with kohl-darkened eyes, anointed and circumcised,\n" +
     "wrapped in a white woolen cloth softer than silk.",
-  start: 40,
-  end: 41,
+  start: 474,
+  end: 483,
 },
 {
   id: 50,
@@ -706,8 +725,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "Fragrance emanated from his being,\n" +
     "so I kept gazing upon him.",
-  start: 41,
-  end: 42,
+  start: 483,
+  end: 488,
 },
 {
   id: 51,
@@ -721,8 +740,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "Then a caller called out:\n" +
     "Hide him from the eyes of people.",
-  start: 42,
-  end: 43,
+  start: 488,
+  end: 492,
 },
 {
   id: 52,
@@ -736,8 +755,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "She said: His disappearance and return\n" +
     "were nothing but like the blink of an eye.",
-  start: 43,
-  end: 44,
+  start: 492,
+  end: 497,
 },
 {
   id: 53,
@@ -754,8 +773,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "While I was bewildered by this,\n" +
     "three men entered upon me,\n" +
     "their faces like radiant full moons.",
-  start: 44,
-  end: 45,
+  start: 497,
+  end: 505,
 },
 {
   id: 54,
@@ -769,8 +788,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "In the hand of one of them was a silver pitcher,\n" +
     "and with another was a basin made of green chrysolite.",
-  start: 45,
-  end: 46,
+  start: 505,
+  end: 512,
 },
 {
   id: 55,
@@ -784,8 +803,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "In the hand of the third was a folded white silk cloth;\n" +
     "when he unfolded it, there was a seal within it.",
-  start: 46,
-  end: 47,
+  start: 512,
+  end: 520,
 },
 {
   id: 56,
@@ -799,8 +818,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "Its intense light dazzled the eyes of those who looked;\n" +
     "they took my son and handed him to the one holding the basin, while I watched.",
-  start: 47,
-  end: 48,
+  start: 520,
+  end: 528,
 },
 {
   id: 57,
@@ -814,8 +833,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "He washed him seven times with the water from the pitcher;\n" +
     "then he said to his companion: Seal between his shoulders with the Seal of Prophethood.",
-  start: 48,
-  end: 49,
+  start: 528,
+  end: 538,
 },
 {
   id: 58,
@@ -829,8 +848,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "Thus he is the Seal of the Prophets\n" +
     "and the master of all who dwell in the heavens and the earth.",
-  start: 49,
-  end: 50,
+  start: 538,
+  end: 543,
 },
 {
   id: 59,
@@ -844,8 +863,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "It is said that on the night he ﷺ was born,\n" +
     "the fire of Persia was extinguished after blazing for a thousand years.",
-  start: 50,
-  end: 51,
+  start: 543,
+  end: 556,
 },
 {
   id: 60,
@@ -861,8 +880,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "The palace of Kisra trembled;\n" +
     "fourteen of its balconies collapsed,\n" +
     "and the Lake of Sawa dried up.",
-  start: 51,
-  end: 52,
+  start: 556,
+  end: 566,
 },
 {
   id: 61,
@@ -876,8 +895,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "All the idols of the world were found overturned,\n" +
     "and the devils were pelted from the heavens with blazing meteors.",
-  start: 52,
-  end: 53,
+  start: 566,
+  end: 574,
 },
 {
   id: 62,
@@ -891,23 +910,27 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "The dawn of truth broke forth,\n" +
     "and all that every liar used to do was rendered null.",
-  start: 53,
-  end: 54,
+  start: 574,
+  end: 580,
 },
 {
   id: 63,
   isBox: false,
   text:
     "وَرُوِيَ عَنْ يَحْيَى بْنِ عُرْوَةَ أَنَّ نَفَرًا مِنْ قُرَيْشٍ " +
-    "كَانُوا عِنْدَ صَنَمٍ مِنْ أَصْنَامِهِمْ قَدِ اتَّخَذُوا ذَلِكَ الْيَوْمَ عِيدًا",
+    "كَانُوا عِنْدَ صَنَمٍ مِنْ أَصْنَامِهِمْ، " +
+    "قَدِ اتَّخَذُوا ذَلِكَ الْيَوْمَ عِيدًا مِنْ أَيَّامِهِمْ.",
+
   malayalam:
     "യഹ്യാ ബിൻ ഉർവ (റ) വഴി روایت ചെയ്യപ്പെട്ടത്: ഖുറൈശിൽപ്പെട്ട ചിലർ അവരുടെ ഒരു വിഗ്രഹത്തിനരികിൽ,\n" +
-    "ആ ദിനത്തെ ഉത്സവമായി ആചരിച്ചുകൊണ്ടിരുന്നു.",
+    "ആ ദിനത്തെ അവരുടെ ദിവസങ്ങളിലൊന്നായ ഉത്സവമായി ആചരിച്ചുകൊണ്ടിരുന്നു.",
+
   english:
     "It is narrated from Yahya ibn ‘Urwah that a group from Quraysh\n" +
-    "were gathered around one of their idols, having taken that day as a festival.",
-  start: 54,
-  end: 55,
+    "were gathered around one of their idols, having taken that day as one of their festival days.",
+
+  start: 580,
+  end: 588,
 },
 {
   id: 64,
@@ -922,15 +945,15 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "They slaughtered camels there, ate and drank,\n" +
     "and remained devoted to it, indulging in talk and play.",
-  start: 55,
-  end: 56,
+  start: 588,
+  end: 596,
 },
 {
   id: 65,
   isBox: false,
   text:
     "فَدَخَلُوا عَلَيْهِ فَوَجَدُوهُ مَكْبُوبًا عَلَى وَجْهِهِ " +
-    "فَأَنْكَرُوا ذَلِكَ عَلَيْهِ وَرَدُّوهُ إِلَى حَالِهِ",
+    "فَأَنْكَرُوا عِنْدَ ذَلِكَ عَلَيْهِ وَرَدُّوهُ إِلَى حَالِهِ",
   malayalam:
     "അവർ അകത്തു കടന്നപ്പോൾ,\n" +
     "വിഗ്രഹം മുഖംകീഴായി മറിഞ്ഞുകിടക്കുന്നതായി കണ്ടു;\n" +
@@ -938,8 +961,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "When they entered, they found it fallen on its face;\n" +
     "they disapproved of this and returned it to its former position.",
-  start: 56,
-  end: 57,
+  start: 596,
+  end: 606,
 },
 {
   id: 66,
@@ -955,8 +978,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "It overturned again in humiliation;\n" +
     "they set it upright three times,\n" +
     "yet it would not remain standing.",
-  start: 57,
-  end: 58,
+  start: 606,
+  end: 611,
 },
 {
   id: 67,
@@ -970,15 +993,15 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "When they saw this, they showed sorrow and distress;\n" +
     "the festival they were celebrating turned into a day of mourning.",
-  start: 58,
-  end: 59,
+  start: 611,
+  end: 618,
 },
 {
   id: 68,
   isBox: false,
   text:
     "فَقَالَ عُثْمَانُ بْنُ الْحُوَيْرِثِ مَا لَهُ قَدْ أَكْثَرَ التَّنَكُّسَ " +
-    "إِنَّ هَذَا لَأَمْرٌ حَدَثَ وَأَنْشَدَ وَقَلْبُهُ يَصْلَى بِالنَّارِ",
+    "إِنَّ هَذَا لِأَمْرٍ حَدَثَ وَأَنْشَدَ وَقَلْبُهُ يَصْلَى بِالنَّارِ",
   malayalam:
     "അപ്പോൾ ഉഥ്മാൻ ബിൻ അൽഹുവൈരിത് പറഞ്ഞു:\n" +
     "ഇത് എന്താണ് ഇങ്ങനെ വീണ്ടും വീണ്ടും മറിഞ്ഞുകൊണ്ടിരിക്കുന്നത്?\n" +
@@ -989,8 +1012,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "Why does it keep overturning again and again?\n" +
     "This is indeed a strange occurrence—\n" +
     "and he recited verses while his heart burned like fire.",
-  start: 59,
-  end: 60,
+  start: 618,
+  end: 632,
 },
 {
   id: 69,
@@ -1004,8 +1027,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "Blessings, peace, and the purest salutations\n" +
     "upon the Chosen One, the Elect, the best of all creation.",
-  start: 60,
-  end: 61,
+  start: 632,
+  end: 640,
 },
 {
   id: 70,
@@ -1019,8 +1042,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "O idol of the festival day,\n" +
     "around whom stood the chiefs from near and from far.",
-  start: 61,
-  end: 62,
+  start: 640,
+  end: 648,
 },
 {
   id: 71,
@@ -1034,8 +1057,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "You have fallen overturned—tell us why;\n" +
     "from our sorrow, even the caravans were torn apart beneath the clouds.",
-  start: 62,
-  end: 63,
+  start: 648,
+  end: 656,
 },
 {
   id: 72,
@@ -1049,8 +1072,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "If it is due to a sin we have committed,\n" +
     "we confess it and turn away from the sin.",
-  start: 63,
-  end: 64,
+  start: 656,
+  end: 663,
 },
 {
   id: 73,
@@ -1064,8 +1087,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "And if you are overpowered and overturned in humiliation,\n" +
     "then you are not the true lord among idols.",
-  start: 64,
-  end: 65,
+  start: 663,
+  end: 671,
 },
 {
   id: 74,
@@ -1079,8 +1102,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "You have fallen because of a newborn,\n" +
     "by whose light all the paths of the earth shone in awe.",
-  start: 65,
-  end: 66,
+  start: 671,
+  end: 678,
 },
 {
   id: 75,
@@ -1094,8 +1117,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "Because of him, the fire of all Persia was extinguished;\n" +
     "and the Shah of Persia spent the night in great distress.",
-  start: 66,
-  end: 67,
+  start: 678,
+  end: 686,
 },
 {
   id: 76,
@@ -1109,8 +1132,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "O descendants of Qusayy, return from your misguidance;\n" +
     "hasten to Islam and to the spacious abode.",
-  start: 67,
-  end: 68,
+  start: 686,
+  end: 694,
 },
 {
   id: 77,
@@ -1127,8 +1150,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "Ibn Ishaq said: When the seventh day came,\n" +
     "his grandfather ‘Abd al-Muttalib sacrificed on his behalf\n" +
     "and fulfilled his duties as required.",
-  start: 68,
-  end: 69,
+  start: 694,
+  end: 703,
 },
 {
   id: 78,
@@ -1142,8 +1165,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "He invited Quraysh, fed them and honored them;\n" +
     "when they finished eating, they asked: O ‘Abd al-Muttalib, what have you named your son?",
-  start: 69,
-  end: 70,
+  start: 703,
+  end: 710,
 },
 {
   id: 79,
@@ -1157,8 +1180,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "He said: I named him Muhammad;\n" +
     "they replied: Have you turned away from the names of your forefathers?",
-  start: 70,
-  end: 71,
+  start: 710,
+  end: 717,
 },
 {
   id: 80,
@@ -1169,8 +1192,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "അവൻ പറഞ്ഞു: ഭൂമിയിലെ എല്ലാവരും അവനെ പുകഴ്ത്തണമെന്നാണ് ഞാൻ ആഗ്രഹിച്ചത്.",
   english:
     "He said: I desired that all who walk upon the earth would praise him.",
-  start: 71,
-  end: 72,
+  start: 717,
+  end: 722,
 },
 {
   id: 81,
@@ -1184,8 +1207,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "They named the Prophet of guidance ‘Muhammad’;\n" +
     "and he is the most deserving of praise among people.",
-  start: 72,
-  end: 73,
+  start: 722,
+  end: 729,
 },
 {
   id: 82,
@@ -1199,8 +1222,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "May Allah send blessings upon him\n" +
     "as long as the morning sun shines in that blessed time.",
-  start: 73,
-  end: 74,
+  start: 729,
+  end: 735,
 },
 {
   id: 83,
@@ -1214,8 +1237,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "When the time came for his secrets to be revealed\n" +
     "and for the universe to shine with his lights,",
-  start: 74,
-  end: 75,
+  start: 735,
+  end: 742,
 },
 {
   id: 84,
@@ -1229,8 +1252,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "While Amina was in her home,\n" +
     "alone yet comforted by his blessings, unique in her state,",
-  start: 75,
-  end: 76,
+  start: 742,
+  end: 751,
 },
 {
   id: 85,
@@ -1244,24 +1267,25 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "She scarcely realized it when light filled her house,\n" +
     "and joy and happiness enveloped her.",
-  start: 76,
-  end: 77,
+  start: 751,
+  end: 757,
 },
 {
   id: 86,
   isBox: false,
   text:
     "وَأَقْبَلَتِ الْمَلَائِكَةُ وَالْحُورُ\n" +
-    "وَحَفَّتْ حُجْرَتَهَا أَنْوَاعُ الطُّيُورِ",
+    "وَحَفَ حُجْرَتَهَا أَنْوَاعُ الطُّيُورِ",
   malayalam:
     "മലക്കുകളും ഹൂറുകളും സമീപിച്ചു,\n" +
     "വിവിധതരം പക്ഷികൾ അവളുടെ മുറി ചുറ്റിനിന്നു.",
   english:
     "Angels and houris approached,\n" +
     "and various kinds of birds surrounded her chamber.",
-  start: 77,
-  end: 78,
+  start: 757,
+  end: 764,
 },
+
 {
   id: 87,
   isBox: false,
@@ -1274,8 +1298,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "She heard their gathering\n" +
     "and their hushed celebration of the Beloved’s arrival.",
-  start: 78,
-  end: 79,
+  start: 764,
+  end: 770,
 },
 {
   id: 88,
@@ -1288,8 +1312,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "And how could it be otherwise,\n" +
     "when the Master of the worlds had come into her home?",
-  start: 79,
-  end: 80,
+  start: 770,
+  end: 775,
 },
 {
   id: 89,
@@ -1303,8 +1327,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "O Lord of the worlds, send blessings\n" +
     "upon the Master of the two realms and of the radiant lamps.",
-  start: 80,
-  end: 81,
+  start: 775,
+  end: 781,
 },
 {
   id: 90,
@@ -1318,8 +1342,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "A house in which you dwell\n" +
     "has no need of lamps.",
-  start: 81,
-  end: 82,
+  start: 781,
+  end: 789,
 },
 {
   id: 91,
@@ -1333,8 +1357,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "Your radiant face is our proof\n" +
     "on the Day when people come with their arguments.",
-  start: 82,
-  end: 83,
+  start: 789,
+  end: 795,
 },
 {
   id: 92,
@@ -1348,8 +1372,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "And when you visit the sick,\n" +
     "Allah has already granted him relief.",
-  start: 83,
-  end: 84,
+  start: 795,
+  end: 802,
 },
 {
   id: 93,
@@ -1363,8 +1387,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "Whoever has you as his ultimate aim has succeeded\n" +
     "and risen to the highest of ranks.",
-  start: 84,
-  end: 85,
+  start: 802,
+  end: 808,
 },
 {
   id: 94,
@@ -1378,8 +1402,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "Spending his very soul in love,\n" +
     "generously offering spirit and life itself.",
-  start: 85,
-  end: 86,
+  start: 808,
+  end: 814,
 },
 {
   id: 95,
@@ -1393,8 +1417,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "O noble one of boundless generosity,\n" +
     "you sufficed even the seas and their depths.",
-  start: 86,
-  end: 87,
+  start: 814,
+  end: 821,
 },
 {
   id: 96,
@@ -1408,8 +1432,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "You are our savior from burning,\n" +
     "from the blaze and flames of the Fire.",
-  start: 87,
-  end: 88,
+  start: 821,
+  end: 828,
 },
 {
   id: 97,
@@ -1423,8 +1447,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "Erase our sins so that You protect us\n" +
     "from floods of tears and anguish.",
-  start: 88,
-  end: 89,
+  start: 828,
+  end: 835,
 },
 {
   id: 98,
@@ -1438,8 +1462,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "Your love in our hearts erases\n" +
     "the stains of sin and distress.",
-  start: 89,
-  end: 90,
+  start: 835,
+  end: 841,
 },
 {
   id: 99,
@@ -1454,8 +1478,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "By Allah, devotion to you has never failed,\n" +
     "for the perfection of beauty and joy.",
-  start: 90,
-  end: 91,
+  start: 841,
+  end: 848,
 },
 {
   id: 100,
@@ -1469,8 +1493,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "Through our intercessor, we hope\n" +
     "for the rectification of faith and the path.",
-  start: 91,
-  end: 92,
+  start: 848,
+  end: 853,
 },
 {
   id: 101,
@@ -1484,8 +1508,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "He is the one who saved us from trials;\n" +
     "his fragrance spreads throughout the world.",
-  start: 92,
-  end: 93,
+  start: 853,
+  end: 861,
 },
 {
   id: 102,
@@ -1499,8 +1523,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "O Lord, grant us the blessing of visiting him\n" +
     "before the soul is taken away and departs.",
-  start: 93,
-  end: 94,
+  start: 861,
+  end: 868,
 },
 {
   id: 103,
@@ -1514,50 +1538,134 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "O my Lord, send blessings upon the Guide\n" +
     "to the path of truth and relief.",
-  start: 94,
-  end: 95,
+  start: 868,
+  end: 876,
 },
 {
   id: 104,
   isBox: false,
   text:
-    "قَالَ عَلِيُّ بْنُ زَيْدٍ رَحِمَهُ اللَّهُ تَعَالَى كَانَ إِلَى جَانِبِي رَجُلٌ ذِمِّيٌّ، " +
-    "وَكُنْتُ فِي شَهْرِ رَبِيعِ الْأَوَّلِ أَدْعُو الْفُقَرَاءَ وَأَعْمَلُ مَوْلِدًا لِلنَّبِيِّ ﷺ، " +
-    "فَقَالَ لِي ذَلِكَ الذِّمِّيُّ لِمَ تَفْعَلُ فِي هَذَا الشَّهْرِ دُونَ غَيْرِهِ، " +
-    "فَقُلْتُ فَرَحًا بِمَوْلِدِ رَسُولِ اللَّهِ ﷺ لِأَنَّهُ وُلِدَ فِي هَذَا الشَّهْرِ،",
+    "قَالَ عَلِيُّ بْنُ زَيْدٍ رَحِمَهُ اللَّهُ تَعَالَى: " +
+    "كَانَ إِلَى جَانِبِي رَجُلٌ ذِمِّيٌّ، " +
+    "وَكُنْتُ فِي شَهْرِ رَبِيعِ الْأَوَّلِ أَدْعُو الْفُقَرَاءَ " +
+    "وَأَعْمَلُ مَوْلِدًا لِلنَّبِيِّ ﷺ، " +
+    "فَقَالَ لِي ذَلِكَ الذِّمِّيُّ: لِمَ تَفْعَلُ فِي هَذَا الشَّهْرِ دُونَ غَيْرِهِ؟ " +
+    "فَقُلْتُ: فَرَحًا بِمَوْلِدِ رَسُولِ اللَّهِ ﷺ، " +
+    "لِأَنَّهُ وُلِدَ فِي هَذَا الشَّهْرِ. " +
+    "فَجَعَلَ يَهْزَأُ بِي فَعَزَّ عَلَيَّ ذَلِكَ، " +
+    "وَوَجَدْتُ مِنْ ذَلِكَ أَمْرًا عَظِيمًا. " +
+    "فَلَمَّا نِمْتُ فِي تِلْكَ اللَّيْلَةِ، " +
+    "رَأَيْتُ رَسُولَ اللَّهِ ﷺ، " +
+    "فَقَالَ لِي: مَا بِكَ؟ " +
+    "فَأَخْبَرْتُهُ بِخَبَرِي مَعَ الذِّمِّيِّ، " +
+    "فَقَالَ: لَا تَحْزَنْ، " +
+    "فَإِنَّهُ يَأْتِي إِلَيْكَ غَدًا وَهُوَ مُؤْمِنٌ.",
+
   malayalam:
-    "അലി ബിൻ സൈദ് (റഹി) പറഞ്ഞു: എന്റെ അടുത്ത് ഒരു ധിമ്മി പുരുഷൻ ഉണ്ടായിരുന്നു.\n" +
-    "റബീഉൽ അവ്വൽ മാസത്തിൽ ഞാൻ ദരിദ്രരെ ക്ഷണിക്കുകയും നബിയുടെ ﷺ മൗലിദ് നടത്തുകയും ചെയ്തിരുന്നു.\n" +
-    "അപ്പോൾ ആ ധിമ്മി ചോദിച്ചു: മറ്റുമാസങ്ങൾ ഒഴിവാക്കി ഈ മാസത്തിൽ മാത്രം നീ എന്തുകൊണ്ട് ഇത് ചെയ്യുന്നു?\n" +
-    "ഞാൻ പറഞ്ഞു: ഈ മാസത്തിൽ റസൂലുള്ളാഹ് ﷺ ജനിച്ചതിനാൽ സന്തോഷത്തോടെ ആചരിക്കുകയാണ്.",
+    "അലി ബിൻ സൈദ് (റഹിമഹുല്ലാഹ്) പറഞ്ഞു: എന്റെ അടുത്ത് ഒരു ധിമ്മി പുരുഷൻ ഉണ്ടായിരുന്നു.\n" +
+    "റബീഉൽ അവ്വൽ മാസത്തിൽ ഞാൻ ദരിദ്രരെ ക്ഷണിക്കുകയും നബി ﷺ യുടെ മൗലിദ് നടത്തുകയും ചെയ്തിരുന്നു.\n" +
+    "അപ്പോൾ ആ ധിമ്മി ചോദിച്ചു: മറ്റു മാസങ്ങളെ ഒഴിവാക്കി ഈ മാസത്തിൽ മാത്രം നീ എന്തുകൊണ്ട് ഇത് ചെയ്യുന്നു?\n" +
+    "ഞാൻ പറഞ്ഞു: റസൂലുള്ളാഹ് ﷺ ഈ മാസത്തിൽ ജനിച്ചതിനാൽ അദ്ദേഹത്തിന്റെ ജനനത്തിൽ സന്തോഷം പ്രകടിപ്പിക്കാനാണ്.\n\n" +
+    "അപ്പോൾ അവൻ എന്നെ പരിഹസിച്ചു; അത് എനിക്ക് വളരെ ദുഃഖകരമായി തോന്നി.\n" +
+    "അന്ന് രാത്രിയിൽ ഞാൻ ഉറങ്ങിയപ്പോൾ, സ്വപ്നത്തിൽ റസൂലുള്ളാഹ് ﷺ നെ കണ്ടു.\n" +
+    "അദ്ദേഹം എന്നോട് ചോദിച്ചു: നിനക്ക് എന്താണ് സംഭവിച്ചത്?\n" +
+    "ഞാൻ ആ ധിമ്മിയുമായി ഉണ്ടായ കാര്യം പറഞ്ഞു.\n" +
+    "അപ്പോൾ അദ്ദേഹം പറഞ്ഞു: ദുഃഖിക്കേണ്ട, അവൻ നാളെയെത്തുമ്പോൾ വിശ്വാസിയായിരിക്കും.",
+
   english:
     "‘Ali ibn Zayd (may Allah have mercy on him) said: There was a non-Muslim man beside me.\n" +
-    "In the month of Rabi‘ al-Awwal I would invite the poor and hold a Mawlid for the Prophet ﷺ.\n" +
-    "He asked me: Why do you do this in this month and not in others?\n" +
-    "I replied: Out of joy for the birth of the Messenger of Allah ﷺ, for he was born in this month.",
-  start: 95,
-  end: 96,
+    "In the month of Rabi‘ al-Awwal, I used to invite the poor and hold a Mawlid for the Prophet ﷺ.\n" +
+    "That man asked me: Why do you do this in this month and not in others?\n" +
+    "I replied: Out of joy for the birth of the Messenger of Allah ﷺ, for he was born in this month.\n\n" +
+    "He then began to mock me, and that saddened me greatly.\n" +
+    "When I slept that night, I saw the Messenger of Allah ﷺ in a dream.\n" +
+    "He asked me: What is troubling you?\n" +
+    "I informed him of what had happened with the man.\n" +
+    "He said: Do not grieve; he will come to you tomorrow as a believer.",
+
+  start: 876,
+  end: 920,
 },
+
+
 {
   id: 105,
   isBox: false,
   text:
-    "فَقَالَ فَاسْتَيْقَظْتُ وَقَدِ ازْدَادَ وَجْدِي وَأَنَا أَنْتَظِرُ إِنْجَازَ وَعْدِي، " +
-    "وَسُحُبُ الْمَدَامِعِ قَدْ جَرَتْ عَلَى خَدِّي، " +
-    "وَإِذَا بِالْبَابِ يُطْرَقُ",
+    "قَالَ فَاسْتَيْقَظْتُ وَقَدِ ازْدَادَ وَجْدِي، " +
+    "وَأَنَا أَنْتَظِرُ إِنْجَازَ وَعْدِي، " +
+    "وَسُحُبُ الْمَدَامِعِ قَدْ جَرَتْ عَلَى خَدِّي. " +
+
+    "وَإِذَا بِالْبَابِ يُطْرَقُ، " +
+    "وَالذِّمِّيُّ يَقُولُ: افْتَحْ، " +
+    "فَقَدْ زَالَ صَدَى قَلْبِي، " +
+    "إِنْ كَانَ الْحَبِيبُ قَدْ كَانَ عِنْدَكَ فَالْبَارِحَةَ، " +
+    "فَقَدْ كَانَ عِنْدِي. " +
+
+    "قَالَ: فَفَتَحْتُ لَهُ الْبَابَ، " +
+    "فَدَخَلَ وَهُوَ يَقُولُ: " +
+    "لَا إِلَهَ إِلَّا اللَّهُ، مُحَمَّدٌ رَسُولُ اللَّهِ. " +
+
+    "فَقُلْتُ لَهُ: مَا شَأْنُكَ؟ " +
+    "قَالَ: رَأَيْتُ اللَّيْلَةَ رَجُلًا " +
+    "حَسَنَ الْوَجْهِ، طَيِّبَ الرَّائِحَةِ، " +
+    "عَظِيمَ الْهَيْبَةِ، أَزَجَّ الْحَاجِبَيْنِ، " +
+    "سَهْلَ الْخَدَّيْنِ. " +
+
+    "إِذَا تَكَلَّمَ فَعَلَيْهِ الْبَهَاءُ، " +
+    "وَإِذَا صَمَتَ فَعَلَيْهِ الْوَقَارُ، " +
+    "حُلْوَ الْمَنْطِقِ، " +
+    "إِذَا طَلَعَ تَقُولُ: هَذَا الْبَدْرُ الْمُنِيرُ، " +
+    "وَإِذَا مَشَى يَفُوحُ مِنْهُ الْمِسْكُ وَالْعَنْبَرُ. " +
+
+    "مَا أَحْسَنَ وَجْهَهُ، " +
+    "وَمَا أَطْيَبَ رَائِحَتَهُ. " +
+    "فَأَرَدْتُ أَنْ أُقَبِّلَ يَدَيْهِ، " +
+    "قَالَ: أَتُقَبِّلُ يَدِي وَأَنْتَ عَلَى غَيْرِ دِينِي؟ " +
+
+    "فَقُلْتُ: مَنْ أَنْتَ الَّذِي مَنَّ اللَّهُ عَلَيَّ بِكَ؟ " +
+    "قَالَ: أَنَا الَّذِي أُرْسِلْتُ رَحْمَةً لِلْعَالَمِينَ، " +
+    "أَنَا سَيِّدُ الْأَوَاّلِينَا وَا لْآخِرِينَا، " +
+    "أنا مُحֲمָدٌ خاتِم النبىٍّ، " +
+    "وَرَسُولُ رَبِّ الْعَالَمِينَ. " +
+
+    "فَقُلْتُ: لَا إِلَهَ إِلَّا اللَّهُ، مُحَمَّدٌ رَسُولُ اللَّهِ. " +
+
+    "فَفَتَحَ يَدَيْهِ وَعَانَقَنِي، " +
+    "ثُمَّ قَالَ: هَذِهِ الْجَنَّةُ، وَذَاكَ الْقَصْرُ لَكَ. " +
+
+    "فَقُلْتُ: مَا عَلَامَةُ ذَلِكَ؟ " +
+    "قَالَ: أَنْ تَمُوتَ غَدًا. " +
+
+    "قَالَ صَاحِبُ الْحِكَايَةِ: " +
+    "فَبَيْنَمَا هُوَ يُحَدِّثُنِي، " +
+    "وَإِذَا بِالْبَابِ يُطْرَقُ، " +
+    "وَقَائِلٌ يَقُولُ: .",
+
   malayalam:
-    "അവൻ പറഞ്ഞു: ഞാൻ ഉണർന്നു; എന്റെ വികാരം വർധിച്ചു,\n" +
+    "അവൻ പറഞ്ഞു: ഞാൻ ഉണർന്നു; എന്റെ വികാരം അതിയായി വർധിച്ചു.\n" +
     "വാഗ്ദാനം നിറവേറുമെന്ന പ്രതീക്ഷയിൽ ഞാൻ കാത്തുനിന്നു.\n" +
-    "കണ്ണീരൊഴുക്കുകൾ എന്റെ കവിളിലൂടെ ഒഴുകിയിരുന്നു;\n" +
-    "അപ്പോൾ വാതിൽ തട്ടുന്ന ശബ്ദം കേട്ടു.",
+    "കണ്ണീരൊഴുക്കുകൾ എന്റെ കവിളിലൂടെ ഒഴുകിയിരുന്നു.\n\n" +
+    "അപ്പോൾ വാതിൽ തട്ടപ്പെട്ടു; ധിമ്മി പറഞ്ഞു: തുറക്കൂ.\n" +
+    "എന്റെ ഹൃദയത്തിലെ കാഠിന്യം മാറി; ഇന്നലെ നിങ്ങൾക്കുണ്ടായിരുന്ന പ്രിയൻ ഇന്ന് എനിക്കുണ്ടായി എന്ന് അവൻ പറഞ്ഞു.\n\n" +
+    "ഞാൻ വാതിൽ തുറന്നു; അവൻ അകത്ത് പ്രവേശിച്ചു,\n" +
+    "അവൻ പറഞ്ഞു: അല്ലാഹുവല്ലാതെ ആരാധ്യനില്ല; മുഹമ്മദ് ﷺ അല്ലാഹുവിന്റെ ദൂതനാണ്.\n\n" +
+    "കഥ പറയുന്നവൻ പറഞ്ഞു: അവൻ സംസാരിച്ചുകൊണ്ടിരിക്കെ,\n" +
+    "വീണ്ടും വാതിൽ തട്ടപ്പെട്ടു; ഒരാൾ പറഞ്ഞു: തുറക്കൂ.",
+
   english:
-    "He said: I awoke with my longing intensified,\n" +
-    "awaiting the fulfillment of the promise.\n" +
-    "Streams of tears flowed down my cheeks,\n" +
-    "when suddenly the door was knocked.",
-  start: 96,
-  end: 97,
+    "He said: I awoke with my longing greatly intensified,\n" +
+    "waiting for the fulfillment of the promise.\n" +
+    "Streams of tears flowed down my cheeks.\n\n" +
+    "Then the door was knocked, and the man said: Open the door.\n\n" +
+    "The narrator said: While he was speaking to me,\n" +
+    "the door was knocked again, and a voice said: Open the door.",
+
+  start: 920,
+  end: 1026,
 },
+
+
 {
   id: 106,
   isBox: true,
@@ -1570,24 +1678,66 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "If you are granted the meeting one day,\n" +
     "estrangement will leave us and misery will fade away.",
-  start: 97,
-  end: 98,
+  start: 1026,
+  end: 1036,
 },
 {
   id: 107,
   isBox: false,
   text:
-    "فَقُلْتُ لَهُ مَنْ هَؤُلَاءِ؟ قَالَ زَوْجَتِي وَابْنَتِي، " +
-    "قَالَ فَدَخَلَتَا وَهُمَا تَقُولَانِ لَا إِلَهَ إِلَّا اللَّهُ مُحَمَّدٌ رَسُولُ اللَّهِ",
+    "فَقُلْتُ لَهُ: مَنْ هَؤُلَاءِ؟ " +
+    "قَالَ: زَوْجَتِي وَابْنَتِي. " +
+    "قَالَ: فَدَخَلَتَا وَهُمَا تَقُولَانِ: " +
+    "لَا إِلَهَ إِلَّا اللَّهُ، مُحَمَّدٌ رَسُولُ اللَّهِ. " +
+
+    "فَقَالَ لَهُمَا: كَيْفَ إِيمَانُكُمَا؟ " +
+    "قَالَتَا: رَأَيْنَاهُ كَمَا رَأَيْتَ، رَأْيَ عَيْنٍ. " +
+    "وَإِنْ كَانَ وَعَدَكَ بِقَصْرٍ، " +
+    "فَقَدْ وَعَدَنَا بِقَصْرَيْنِ. " +
+
+    "قَالَ: فَمَاتَ الرَّجُلُ فِي الْوَقْتِ. " +
+    "وَفِي الْغَدِ مَاتَتْ ابْنَتُهُ. " +
+    "وَفِي الْيَوْمِ الثَّالِثِ مَاتَتْ زَوْجَتُهُ. " +
+
+    "رَحِمَهُمُ اللَّهُ تَعَالَى، " +
+    "وَرَحِمَنَا مَعَهُمْ. " +
+
+    "الْحَمْدُ لِلَّهِ الَّذِي جَعَلَنَا " +
+    "مِنْ أُمَّةِ مُحَمَّدٍ ﷺ، " +
+    "كُلَّمَا ذَكَرَهُ الذَّاكِرُونَ، " +
+    "وَغَفَلَ عَنْ ذِكْرِهِ الْغَافِلُونَ.",
+
   malayalam:
-    "ഞാൻ ചോദിച്ചു: ഇവർ ആരാണ്? അവൻ പറഞ്ഞു: എന്റെ ഭാര്യയും മകളും.\n" +
-    "അവർ അകത്തു വന്നു: ‘ലാ ഇലാഹ ഇല്ലല്ലാഹ്, മുഹമ്മദ് റസൂലുള്ളാഹ്’ എന്ന് പറഞ്ഞുകൊണ്ട്.",
+    "ഞാൻ അവനോട് ചോദിച്ചു: ഇവർ ആരാണ്?\n" +
+    "അവൻ പറഞ്ഞു: എന്റെ ഭാര്യയും എന്റെ മകളും.\n" +
+    "അവർ അകത്തു പ്രവേശിച്ചു; ‘ലാ ഇലാഹ ഇല്ലല്ലാഹ്, മുഹമ്മദ് ﷺ അല്ലാഹുവിന്റെ ദൂതനാണ്’ എന്ന് പറഞ്ഞുകൊണ്ട്.\n\n" +
+    "അവൻ അവരോട് ചോദിച്ചു: നിങ്ങളുടെ ഇമാൻ എങ്ങനെയാണ്?\n" +
+    "അവർ പറഞ്ഞു: നിങ്ങൾ കണ്ടതുപോലെ തന്നെയാണ് ഞങ്ങളും കണ്ണുകൊണ്ട് കണ്ടത്.\n" +
+    "നിങ്ങൾക്ക് ഒരു കൊട്ടാരം വാഗ്ദാനം ചെയ്തിട്ടുണ്ടെങ്കിൽ, ഞങ്ങൾക്ക് രണ്ട് കൊട്ടാരങ്ങളാണ് വാഗ്ദാനം ചെയ്തത്.\n\n" +
+    "അപ്പോൾ ആ മനുഷ്യൻ അതേ സമയത്ത് മരണപ്പെട്ടു.\n" +
+    "അടുത്ത ദിവസം അദ്ദേഹത്തിന്റെ മകളും,\n" +
+    "മൂന്നാം ദിവസം അദ്ദേഹത്തിന്റെ ഭാര്യയും മരണപ്പെട്ടു.\n\n" +
+    "അല്ലാഹു അവർക്കെല്ലാം കരുണ കാണിക്കട്ടെ;\n" +
+    "ഞങ്ങളെയും അവരോടൊപ്പം കരുണയിൽ ഉൾപ്പെടുത്തട്ടെ.\n\n" +
+    "മുഹമ്മദ് ﷺ ന്റെ ഉമ്മത്താക്കി ഞങ്ങളെ ആക്കിയ അല്ലാഹുവിന് സ്തുതി.",
+
   english:
-    "I asked him: Who are these? He said: My wife and my daughter.\n" +
-    "They entered saying: ‘There is no god but Allah; Muhammad is the Messenger of Allah.’",
-  start: 98,
-  end: 99,
+    "I asked him: Who are these?\n" +
+    "He replied: My wife and my daughter.\n" +
+    "They entered proclaiming: ‘There is no deity except Allah; Muhammad ﷺ is the Messenger of Allah.’\n\n" +
+    "He asked them: How is your faith?\n" +
+    "They said: We saw him just as you saw him, with our own eyes.\n" +
+    "If he promised you one palace, then he promised us two palaces.\n\n" +
+    "The man died at that very moment.\n" +
+    "The next day his daughter died,\n" +
+    "and on the third day his wife died.\n\n" +
+    "May Allah have mercy on them all, and include us with them in His mercy.\n\n" +
+    "All praise is due to Allah who made us among the Ummah of Muhammad ﷺ.",
+
+  start: 1036,
+  end: 1080,
 },
+
 {
   id: 108,
   isBox: true,
@@ -1600,8 +1750,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "O Lord, send blessings upon the Prophet Muhammad ﷺ,\n" +
     "the one who will save creation from Hell tomorrow.",
-  start: 99,
-  end: 100,
+  start: 1080,
+  end: 1090,
 },
 {
   id: 109,
@@ -1615,8 +1765,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "The month of Mawlid revived the spring of hearts,\n" +
     "bringing life to all people through the remembrance of Ahmad’s birth.",
-  start: 100,
-  end: 101,
+  start: 1090,
+  end: 1098,
 },
 {
   id: 110,
@@ -1630,23 +1780,26 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "Glad tidings came for his noble birth,\n" +
     "and wondrous miracles appeared on the night of his birth.",
-  start: 101,
-  end: 102,
+  start: 1098,
+  end: 1105,
 },
 {
   id: 111,
   isBox: true,
   text:
     "آيَاتُهُ وَالْمُعْجِزَاتُ كَثِيرَةٌ\n" +
-    "شَهِدَتْ بِصِحَّتِهَا عُقُولُ الْحَسَدِ",
+    "شَهِدَتْ بِصِحَّتِهَا عُقُولُ الْحُسَّادِ",
+
   malayalam:
     "അവന്റെ അടയാളങ്ങളും അത്ഭുതങ്ങളും അനവധി;\n" +
-    "അവയുടെ സത്യതയെ പോലും അസൂയക്കാരുടെ ബുദ്ധികൾ സാക്ഷ്യപ്പെടുത്തി.",
+    "അവയുടെ സത്യതയ്ക്ക് അസൂയക്കാരുടെ ബുദ്ധികളും സാക്ഷ്യം വഹിച്ചു.",
+
   english:
     "His signs and miracles are many;\n" +
-    "even the minds of the envious testified to their truth.",
-  start: 99,
-  end: 100,
+    "the minds of the envious themselves bore witness to their truth.",
+
+  start: 1105,
+  end: 1114,
 },
 {
   id: 112,
@@ -1660,8 +1813,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "The full moon split by his command,\n" +
     "and the sun, when it had set, was returned for him without hesitation.",
-  start: 100,
-  end: 101,
+  start: 1114,
+  end: 1121,
 },
 {
   id: 113,
@@ -1675,8 +1828,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "Beasts and trees prostrated to him,\n" +
     "and they sent salutations upon him after bearing witness.",
-  start: 101,
-  end: 102,
+  start: 1121,
+  end: 1129,
 },
 {
   id: 114,
@@ -1690,8 +1843,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "From a small amount he gave drink and food to his army\n" +
     "until they were satisfied, while the little never diminished.",
-  start: 102,
-  end: 103,
+  start: 1129,
+  end: 1137,
 },
 {
   id: 115,
@@ -1705,8 +1858,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "For him are the means, virtue, and the highest ranks;\n" +
     "and his station is the Praiseworthy Station on the promised Day.",
-  start: 103,
-  end: 104,
+  start: 1137,
+  end: 1143,
 },
 {
   id: 116,
@@ -1720,8 +1873,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "His attributes cannot be fully enumerated;\n" +
     "all praise falls short of reaching the true aim.",
-  start: 104,
-  end: 105,
+  start: 1143,
+  end: 1152,
 },
 {
   id: 117,
@@ -1735,8 +1888,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "O master of masters, I have come to you with purpose;\n" +
     "I seek your protection—do not disappoint my aim.",
-  start: 105,
-  end: 106,
+  start: 1152,
+  end: 1160,
 },
 {
   id: 118,
@@ -1750,8 +1903,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "You know the harm, injustice, and severe weakness that have befallen me;\n" +
     "so grant me relief and happiness.",
-  start: 106,
-  end: 107,
+  start: 1160,
+  end: 1166,
 },
 {
   id: 119,
@@ -1765,8 +1918,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "I have no means with you except my love;\n" +
     "so favor me with the grace of your generosity and grant me joy.",
-  start: 107,
-  end: 108,
+  start: 1166,
+  end: 1175,
 },
 {
   id: 120,
@@ -1780,8 +1933,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "I am your guest, and a guest has a special place with you;\n" +
     "O best of creation, all goodness flows from you.",
-  start: 108,
-  end: 109,
+  start: 1175,
+  end: 1182,
 },
 {
   id: 121,
@@ -1795,8 +1948,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "Upon you from us at all times, forever,\n" +
     "the purest blessings along with everlasting peace.",
-  start: 109,
-  end: 110,
+  start: 1182,
+  end: 1189,
 },
 {
   id: 122,
@@ -1810,8 +1963,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "And upon all your noble Companions,\n" +
     "and those who followed them in goodness—grant them abundance.",
-  start: 110,
-  end: 111,
+  start: 1189,
+  end: 1196,
 },
 {
   id: 123,
@@ -1819,8 +1972,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   text: "🤲 الدُّعَاء",
   malayalam: "🤲 ദുആ",
   english: "🤲 Supplication",
-  start: 110.5,
-  end: 111,
+  start: 1196,
+  end: 11,
 },
 {
   id: 124,
@@ -1849,8 +2002,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "purify us from all sins,\n" +
     "forgive us all our faults,\n" +
     "and fulfill all our needs through it.",
-  start: 111,
-  end: 112,
+  start: 1197,
+  end: 1223,
 },
 {
   id: 125,
@@ -1867,8 +2020,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "And raise us by it to the highest ranks in Your presence,\n" +
     "and cause us to reach the utmost goals of all goodness,\n" +
     "in this life and after death.",
-  start: 112,
-  end: 113,
+  start: 1223,
+  end: 1232,
 },
 {
   id: 126,
@@ -1885,8 +2038,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "O Allah, we seek nearness to You through Your Mighty Name,\n" +
     "through the honor of Your noble Prophet,\n" +
     "and through Your great righteous servant.",
-  start: 113,
-  end: 114,
+  start: 1232,
+  end: 1241,
 },
 {
   id: 127,
@@ -1903,8 +2056,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "That You pardon our sins,\n" +
     "conceal our faults,\n" +
     "and beautify our character.",
-  start: 114,
-  end: 115,
+  start: 1241,
+  end: 1246,
 },
 {
   id: 128,
@@ -1921,8 +2074,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "Expand our provision,\n" +
     "heal illnesses,\n" +
     "and grant relief from pains.",
-  start: 115,
-  end: 116,
+  start: 1246,
+  end: 1251,
 },
 {
   id: 129,
@@ -1938,44 +2091,45 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "And repel from us,\n" +
     "from our land and the people of this house,\n" +
     "the deadly poison, the crushing disease, and the devastating epidemic.",
-  start: 116,
-  end: 117,
+  start: 1251,
+  end: 1261,
 },
 {
   id: 130,
   isBox: false,
-  text:
-    "إِنَّكَ سَمِيعٌ مُجِيبٌ،",
+  text: "إِنَّكَ مُجِيبٌ سَامِعٌ،",
   malayalam:
-    "നീ കേൾക്കുന്നവനും ഉത്തരം നൽകുന്നവനുമാണ്.",
+    "നീ ഉത്തരം നൽകുന്നവനും കേൾക്കുന്നവനുമാണ്.",
   english:
-    "Indeed, You are All-Hearing, Ever-Responding.",
-  start: 117,
-  end: 118,
+    "Indeed, You are Ever-Responding and All-Hearing.",
+  start: 1261,
+  end: 1263,
 },
+
 {
   id: 131,
   isBox: false,
   text:
     "وَأَنْ تَصْرِفَ عَنَّا الطَّاعُونَ وَالْبَلَاءَ، " +
     "وَتَعْصِمَنَا مِنْ إِنْزَالِ قَهْرِكَ وَالْوَبَاءِ، " +
-    "وَاحْتَجِبْنَا بِنُورِكَ مِنْ كُلِّ شَرٍّ",
+    "وَاحْتَجِبْنَا بِنُورِكَ",
   malayalam:
     "പ്ലേഗും ദുരിതവും ഞങ്ങളിൽ നിന്ന് നീ അകറ്റണമേ;\n" +
-    "നിന്റെ കഠിനശിക്ഷയും മഹാമാരിയും ഞങ്ങളിൽ ഇറങ്ങാതിരിപ്പാൻ സംരക്ഷിക്കണമേ;\n" +
-    "നിന്റെ നൂറിനാൽ എല്ലാ ദോഷങ്ങളിൽ നിന്നും ഞങ്ങളെ മറയ്ക്കണമേ.",
+    "നിന്റെ കഠിനശിക്ഷയും മഹാമാരിയും ഞങ്ങളിൽ ഇറങ്ങാതിരിപ്പാൻ ഞങ്ങളെ സംരക്ഷിക്കണമേ;\n" +
+    "നിന്റെ നൂറിനാൽ ഞങ്ങളെ മറയ്ക്കണമേ.",
   english:
     "Turn away from us plague and affliction;\n" +
     "protect us from the descent of Your wrath and epidemic;\n" +
-    "and shield us by Your light from every evil.",
-  start: 118,
-  end: 119,
+    "and envelop us in Your light.",
+  start: 1263,
+  end: 1271,
 },
+
 {
   id: 132,
   isBox: false,
   text:
-    "وَمِنْ شَرِّ عَدُوِّنَا وَشَرِّ الْمَلْعُونِ، " +
+    "مِنْ شَرِّ عَدُوِّنَا وَشَرِّ الْمَلْعُونِ " +
     "وَمِنْ شَرِّ الْوَبَاءِ وَالطَّاعُونِ.",
   malayalam:
     "ഞങ്ങളുടെ ശത്രുവിന്റെ ദോഷത്തിൽ നിന്നും,\n" +
@@ -1985,8 +2139,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "And from the evil of our enemy,\n" +
     "from the evil of the accursed one,\n" +
     "and from the evil of epidemics and plagues.",
-  start: 119,
-  end: 120,
+  start: 1271,
+  end: 1278,
 },
 {
   id: 133,
@@ -2000,8 +2154,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "O Allah, do not hold us accountable for our evil deeds,\n" +
     "and do not destroy us because of our sins.",
-  start: 120,
-  end: 121,
+  start: 1278,
+  end: 1283,
 },
 {
   id: 134,
@@ -2015,24 +2169,25 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   english:
     "O Allah, we ask You to protect us from the punishment of the grave,\n" +
     "and to grant us safety from the greatest terror.",
-  start: 121,
-  end: 122,
+  start: 1283,
+  end: 1289,
 },
 {
   id: 135,
   isBox: false,
   text:
-    "وَتُنَجِّيَنَا مِنْ دَارِ الْبَوَارِ، " +
-    "وَتُسْكِنَنَا الْفِرْدَوْسَ دَارَ الْقَرَارِ،",
+    "وَتُنَجِّيَنَا عَنْ دَارِ الْبَوَارِ، " +
+    "وَتُسْكِنَنَا الْفِرْدَوْسَ مِنْ دَارِ الْقَرَارِ،",
   malayalam:
     "നാശത്തിന്റെ വാസസ്ഥലത്തിൽ നിന്ന് ഞങ്ങളെ രക്ഷിക്കുകയും,\n" +
     "സ്ഥിരതയുടെ വാസസ്ഥലമായ ഫിർദൗസിൽ ഞങ്ങളെ പാർപ്പിക്കണമേ.",
   english:
     "Save us from the abode of destruction,\n" +
     "and settle us in al-Firdaws, the abode of permanence.",
-  start: 122,
-  end: 123,
+  start: 1289,
+  end: 1294,
 },
+
 {
   id: 136,
   isBox: false,
@@ -2048,8 +2203,8 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
     "By the honor of Muhammad ﷺ and his righteous family.\n" +
     "May Allah send blessings upon the best of His creation, our master Muhammad ﷺ,\n" +
     "and upon all his family and Companions.",
-  start: 123,
-  end: 124,
+  start: 1294,
+  end: 1306,
 },
 
 

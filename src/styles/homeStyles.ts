@@ -101,4 +101,8 @@ export const homeStyles = StyleSheet.create({
     color: "#9ca3af",
     marginTop: 30,
   },
+  scrollContentWithPadding: {
+  paddingBottom: 40,
+},
+
 });

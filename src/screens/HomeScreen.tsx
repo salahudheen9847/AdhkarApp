@@ -7,10 +7,6 @@ import {
   StatusBar,
   ScrollView,
   TextInput,
-  KeyboardAvoidingView,
-  Platform,
-  TouchableWithoutFeedback,
-  Keyboard,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -83,7 +79,7 @@ export default function HomeScreen() {
       item.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-  /* ---------------- RENDER SECTION HELPER ---------------- */
+  /* ---------------- RENDER SECTION ---------------- */
   const renderSection = (
     title: string,
     items: HomeItem[],
@@ -98,101 +94,84 @@ export default function HomeScreen() {
           {title}
         </Text>
 
-        {filtered.length > 0 ? (
-          <View style={styles.innerGrid}>
-            {filtered.map((item, index) => (
-              <TouchableOpacity
-                key={`${keyPrefix}-${item.id}-${index}`}
-                activeOpacity={0.9}
-                onPress={() => onPress(item.id)}
+        <View style={styles.innerGrid}>
+          {filtered.map((item, index) => (
+            <TouchableOpacity
+              key={`${keyPrefix}-${item.id}-${index}`}
+              activeOpacity={0.9}
+              onPress={() => onPress(item.id)}
+            >
+              <LinearGradient
+                colors={item.gradient}
+                style={styles.card}
               >
-                <LinearGradient
-                  colors={item.gradient}
-                  style={styles.card}
-                >
-                  <Image source={item.image} style={styles.icon} />
-                  <Text
-                    style={[
-                      styles.cardText,
-                      { color: colors.text },
-                    ]}
-                  >
-                    {item.title}
-                  </Text>
-                </LinearGradient>
-              </TouchableOpacity>
-            ))}
-          </View>
-        ) : (
-          <Text style={styles.noResultText}>
-            No items found
-          </Text>
-        )}
+                <Image source={item.image} style={styles.icon} />
+                <Text style={[styles.cardText, { color: colors.text }]}>
+                  {item.title}
+                </Text>
+              </LinearGradient>
+            </TouchableOpacity>
+          ))}
+        </View>
       </>
     );
   };
 
   return (
-    <KeyboardAvoidingView
-      style={[commonStyles.container, { backgroundColor: colors.background }]}
-      behavior={Platform.OS === "ios" ? "padding" : undefined}
+    <SafeAreaView
+      style={[
+        commonStyles.container,
+        { backgroundColor: colors.background },
+      ]}
     >
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <SafeAreaView
-          style={[
-            commonStyles.container,
-            { backgroundColor: colors.background },
-          ]}
-        >
-          <StatusBar
-            backgroundColor="#fefce8"
-            barStyle="dark-content"
-            translucent
-          />
+      <StatusBar barStyle="dark-content" />
 
-          {/* 🔍 Search */}
-          <View style={[styles.searchContainer, styles.searchContainerLight]}>
-            <Icon
-              name="search"
-              size={18}
-              color="#92400e"
-              style={styles.searchIcon}
-            />
-            <TextInput
-              style={[styles.searchInput, { color: colors.text }]}
-              placeholder="Search duas or collections..."
-              placeholderTextColor="#a16207"
-              value={searchQuery}
-              onChangeText={setSearchQuery}
-            />
-          </View>
+      {/* 🔍 Search */}
+      <View style={[styles.searchContainer, styles.searchContainerLight]}>
+        <Icon
+          name="search"
+          size={18}
+          color="#92400e"
+          style={styles.searchIcon}
+        />
+        <TextInput
+          style={[styles.searchInput, { color: colors.text }]}
+          placeholder="Search duas or collections..."
+          placeholderTextColor="#a16207"
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+        />
+      </View>
 
-          <ScrollView
-            contentContainerStyle={styles.scrollContent}
-            showsVerticalScrollIndicator={false}
-          >
-            {renderSection("📿 Dua Collection", duaItems, id =>
-              navigation.navigate("Dhikr", { type: id }),
-              "dua"
-            )}
+      {/* ✅ SCROLL FIXED */}
+  <ScrollView
+  contentContainerStyle={[
+    styles.scrollContent,
+    styles.scrollContentWithPadding,
+  ]}
+  showsVerticalScrollIndicator={false}
+>
 
-            {renderSection("🌙 Moulid Collection", moulidItems, () =>
-              navigation.navigate("ManqusMoulid"),
-              "moulid"
-            )}
+        {renderSection("📿 Dua Collection", duaItems, id =>
+          navigation.navigate("Dhikr", { type: id }),
+          "dua"
+        )}
 
-            {renderSection("📖 Ratib Collection", ratibItems, id =>
-              navigation.navigate("Dhikr", { type: id }),
-              "ratib"
-            )}
+        {renderSection("🌙 Moulid Collection", moulidItems, () =>
+          navigation.navigate("ManqusMoulid"),
+          "moulid"
+        )}
 
-            {renderSection("🕋 Asmaul Husna Collection", asmaulHusnaItems, id =>
-              navigation.navigate("Dhikr", { type: id }),
-              "asma"
-            )}
-          </ScrollView>
-        </SafeAreaView>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+        {renderSection("📖 Ratib Collection", ratibItems, id =>
+          navigation.navigate("Dhikr", { type: id }),
+          "ratib"
+        )}
+
+        {renderSection("🕋 Asmaul Husna Collection", asmaulHusnaItems, id =>
+          navigation.navigate("Dhikr", { type: id }),
+          "asma"
+        )}
+      </ScrollView>
+    </SafeAreaView>
   );
 }

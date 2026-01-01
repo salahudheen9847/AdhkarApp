@@ -52,7 +52,7 @@ export const renderDuaItem = (
     <View
       style={[
         localStyles.container,
-        isBox && localStyles.manqusBoxContainer,      // 🔥 BOX ONLY COLOR
+        isBox && localStyles.manqusBoxContainer, // 🔥 box only
         isActive && localStyles.activeContainer,
         isActive && { backgroundColor: highlightColor },
       ]}
@@ -68,7 +68,7 @@ export const renderDuaItem = (
         {content}
       </Text>
 
-      {/* 🔵 DIVIDER LINE */}
+      {/* 🔵 DIVIDER */}
       <View
         style={[
           localStyles.divider,
