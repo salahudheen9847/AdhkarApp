@@ -55,7 +55,7 @@ const isNewerVersion = (latest: string, current: string) => {
 };
 
 /* ------------------------------
-   🌗 Root Navigator (ALWAYS MOUNTED)
+   🌗 Root Navigator
 --------------------------------*/
 function RootNavigator() {
   const { isDark } = useThemeContext();
@@ -109,11 +109,12 @@ function RootNavigator() {
 export default function App() {
   const [loading, setLoading] = useState(true);
 
-  /* 🔔 UPDATE CHECK */
+  /* 🔔 UPDATE CHECK (OPTIONAL – MAX 3 TIMES) */
   useEffect(() => {
     const checkUpdate = async () => {
       try {
         const currentVersion = DeviceInfo.getVersion();
+
         const res = await fetch(
           "https://raw.githubusercontent.com/salahudheen9847/adhkar-version/main/version.json?ts=" +
             Date.now()
@@ -121,10 +122,15 @@ export default function App() {
         const data = await res.json();
 
         const latestVersion = data.latestVersion;
-        const key = `update_shown_${latestVersion}`;
-        const shown = await AsyncStorage.getItem(key);
 
-        if (isNewerVersion(latestVersion, currentVersion) && !shown) {
+        const key = `update_count_${latestVersion}`;
+        const countStr = await AsyncStorage.getItem(key);
+        const count = countStr ? parseInt(countStr, 10) : 0;
+
+        if (
+          isNewerVersion(latestVersion, currentVersion) &&
+          count < 3
+        ) {
           Alert.alert(
             "Update Available",
             "New version available. Please update from Play Store.",
@@ -139,10 +145,14 @@ export default function App() {
               },
             ]
           );
-          await AsyncStorage.setItem(key, "yes");
+
+          await AsyncStorage.setItem(
+            key,
+            String(count + 1)
+          );
         }
       } catch {
-        // silent
+        // silent fail
       }
     };
 
@@ -171,10 +181,10 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <ThemeProvider>
-        {/* 🚦 Navigator ALWAYS */}
+        {/* 🚦 Navigator */}
         <RootNavigator />
 
-        {/* ⏳ Loader OVERLAY */}
+        {/* ⏳ Loader */}
         {loading && (
           <View style={styles.loaderOverlay}>
             <StatusBar barStyle="dark-content" />
