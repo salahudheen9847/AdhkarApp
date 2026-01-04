@@ -18,534 +18,181 @@ export const baderMoulidData: BaderMoulidItem[] = [
 {
     id: 1,
     isBox: false,
-    text: "بِسْمِ اللَّهِ الرَّحْمٰنِ الرَّحِيمِ",
+    text: "بِسْمِ اللَّهِ الرَّحْمٰنِ الرَّحِيمِ اَلْحَمْدُ لِلَّهِ الَّذِي هَدَانَا إِلَى الْمِلَّةِ الْحَنِيفِيَّةِ",
     malayalam:
-      "പരമകാരുണികനും അത്യന്തം കരുണയുള്ളവനുമായ അല്ലാഹുവിന്റെ നാമത്തിൽ.",
+      "പരമകാരുണികനും അത്യന്തം കരുണയുള്ളവനുമായ അല്ലാഹുവിന്റെ നാമത്തിൽ. നമ്മെ ഹനീഫ് മാർഗത്തിലേക്ക് നയിച്ച അല്ലാഹുവിനാണ് സകല സ്തുതിയും.",
     english:
-      "In the Name of Allah, the Most Merciful, the Most Compassionate.",
+      "In the Name of Allah, the Most Merciful, the Most Compassionate. All praise is due to Allah who guided us to the upright (Hanif) path.",
     start: 0,
-    end: 6,
+    end: 9,
   },
-
   {
     id: 2,
     isBox: false,
-    text: "اَلْحَمْدُ لِلَّهِ الَّذِي هَدَانَا",
+    text: "وَأَنْهَلَنَا مِنْ حُمَيًّا قَوْلِهِ تَعَالَى وَلَقَدْ كَرَّمْنَا بَنِي آدَمَ كَأْسَاتٍ سَنِيَّةٍ",
     malayalam:
-      "നമ്മെ നയിച്ച അല്ലാഹുവിനാണ് സകല സ്തുതിയും.",
+      "അല്ലാഹുവിന്റെ വചനത്തിന്റെ മധുരത്തിൽ നിന്ന് നമ്മെ കുടിപ്പിച്ചു. ആദം സന്തതികളെ തീർച്ചയായും അല്ലാഹു മഹത്വമുള്ള പാനപാത്രങ്ങളാൽ മഹത്വപ്പെടുത്തി.",
     english:
-      "All praise is due to Allah who guided us.",
-    start: 6,
-    end: 10,
+      "And He let us drink from the sweetness of His words: 'Indeed, We honored the children of Adam', with noble cups (of honor).",
+    start: 9,
+    end: 18,
   },
-
   {
     id: 3,
     isBox: false,
-    text: "إِلَى الْمِلَّةِ الْحَنِيفِيَّةِ",
+    text: "وَعَلَّنَا مِنْ أَقْدَاحٍ خُصُوصِ قَوْلِهِ تَعَالَى كُنتُمْ خَيْرَ أُمَّةٍ أُخْرِجَتْ لِلنَّاسِ سَائِغَةً هَنِيَّةً",
     malayalam:
-      "ഹനീഫ് മാർഗത്തിലേക്ക്.",
+      "പാനപാത്രങ്ങളിൽ നിന്ന് ഞങ്ങളെ പഠിപ്പിച്ചു. 'മനുഷ്യർക്കായി പുറത്ത് കൊണ്ടുവന്ന ഏറ്റവും നല്ല സമൂഹമാണ് നിങ്ങൾ' എന്ന അവന്റെ മഹത്വമുള്ള വചനത്തിന്റെ പ്രത്യേകതയാൽ അത് സുഖകരവും ആസ്വാദ്യവുമായിരുന്നു.",
     english:
-      "To the upright (Hanif) path.",
-    start: 10,
-    end: 14,
+      "And He taught us from the cups, through the special favor of His exalted word: 'You are the best nation brought forth for mankind', pleasant and wholesome.",
+    start: 18,
+    end: 30,
   },
-
   {
     id: 4,
     isBox: false,
-    text: "وَأَنْهَلَنَا مِنْ حُمَيًّا قَوْلِهِ تَعَالَى",
+    text: "وَشَرَّفَنَا بِحَبِيبِهِ الْمُصْطَفَى مِنَ الْجِبِلَّةِ الْبَشَرِيَّةِ مُحَمَّدِنِ الْمَبْعُوثِ بِالدِّينِ الْحَقِّ الْمُؤَيَّدِ بِالْآيَاتِ الْبَاهِرَاتِ الْعَلِيَّةِ",
     malayalam:
-      "അല്ലാഹുവിന്റെ വചനത്തിന്റെ മധുരത്തിൽ നിന്ന് നമ്മെ കുടിപ്പിച്ചു.",
+      "മനുഷ്യരിൽ നിന്നുയർന്നവനായ, സത്യമായ ദീനം കൊണ്ടും പ്രകാശമാനമായ മഹത്തായ അടയാളങ്ങളാലും നിയോഗിക്കപ്പെട്ട മുഹമ്മദ് നബി(സ) എന്ന, തന്റെ തിരഞ്ഞെടുത്ത പ്രിയനാൽ അല്ലാഹു നമ്മെ ആദരിച്ചു.",
     english:
-      "And He let us drink from the sweetness of His words.",
-    start: 14,
-    end: 19,
+      "He honored us through His chosen beloved from among mankind, Muhammad ﷺ, sent with the true religion, divinely supported with the radiant and exalted signs.",
+    start: 30,
+    end: 43,
   },
-
   {
     id: 5,
     isBox: false,
-    text: "وَلَقَدْ كَرَّمْنَا بَنِي آدَمَ",
+    text: "فَسُبْحَانَ مَنْ شَيَّدَ أَرْكَانَ دِينِهِ بِالنَّبِيِّ وَأَصْحَابِهِ الَّذِينَ وَصَفَهُمْ بِقَوْلِهِ تَعَالَى مُحَمَّدٌ رَّسُولُ اللَّهِ",
     malayalam:
-      "ആദം സന്തതികളെ തീർച്ചയായും അല്ലാഹു മഹത്വപ്പെടുത്തി.",
+      "നബിയെയും, ‘മുഹമ്മദ് അല്ലാഹുവിന്റെ ദൂതനാണ്’ എന്ന് അല്ലാഹു വിശേഷിപ്പിച്ച അവന്റെ സഹാബാക്കളെയും വഴി തന്റെ ദീനിന്റെ അടിസ്ഥാനം ഉറപ്പിച്ചവനായ അല്ലാഹുവിന് പരിശുദ്ധി.",
     english:
-      "Indeed, We honored the children of Adam.",
-    start: 19,
-    end: 24,
+      "So glory be to Him who firmly established the pillars of His religion through the Prophet and his Companions whom He described by His saying: Muhammad is the Messenger of Allah.",
+    start: 43,
+    end: 54,
   },
-    {
+  {
     id: 6,
     isBox: false,
-    text: "كَأْسَاتٍ سَنِيَّةٍ",
+    text: "وَالَّذِينَ مَعَهُ أَشِدَّاءُ عَلَى الْكُفَّارِ رُحَمَاءُ بَيْنَهُمْ تَرَاهُمْ رُكَّعًا سُجَّدًا",
     malayalam:
-      "മഹത്വമുള്ള പാനപാത്രങ്ങളാൽ.",
+      "അവനോടൊപ്പം ഉള്ളവർ അവിശ്വാസികളോട് കടുപ്പമുള്ളവരും, അവർ തമ്മിൽ പരസ്പരം കരുണയുള്ളവരുമാണ്. നീ അവരെ റുകൂവിലും സജ്ദയിലും കാണും.",
     english:
-      "With noble cups (of honor).",
-    start: 24,
-    end: 27,
+      "And those with him are firm against the disbelievers, merciful among themselves. You will see them bowing and prostrating.",
+    start: 54,
+    end: 63,
   },
-
   {
     id: 7,
     isBox: false,
-    text: "وَعَلَّنَا مِنْ أَقْدَاحٍ",
+    text: "يَبْتَغُونَ فَضْلًا مِّنَ اللَّهِ وَرِضْوَانًا سِيمَاهُمْ فِي وُجُوهِهِم مِّنْ أَثَرِ السُّجُودِ ذَٰلِكَ مَثَلُهُمْ فِي التَّوْرَاةِ وَمَثَلُهُمْ فِي الْإِنجِيلِ كَزَرْعٍ أَخْرَجَ شَطْأَهُ",
     malayalam:
-      "പാനപാത്രങ്ങളിൽ നിന്ന് ഞങ്ങളെ പഠിപ്പിച്ചു.",
+      "അല്ലാഹുവിന്റെ അനുഗ്രഹവും തൃപ്തിയും അവർ തേടുന്നു. സജ്ദയുടെ അടയാളങ്ങൾ അവരുടെ മുഖങ്ങളിൽ കാണപ്പെടുന്നു. തൗറാത്തിലെ അവരുടെ ഉപമ ഇതാണ്. ഇൻജീലിൽ അവരുടെ ഉപമ: തളിർ പുറപ്പെടുവിച്ച കൃഷിപോലെ.",
     english:
-      "And He taught us from the cups.",
-    start: 27,
-    end: 31,
+      "Seeking bounty from Allah and His pleasure. Their marks are on their faces from the traces of prostration. That is their description in the Torah. And their description in the Gospel is like a crop that sends forth its shoot.",
+    start: 63,
+    end: 79,
   },
 
   {
     id: 8,
     isBox: false,
-    text: "خُصُوصِ قَوْلِهِ تَعَالَى",
+    text: "فَآزَرَهُ فَاسْتَغْلَظَ فَاسْتَوَى عَلَى سُوقِهِ يُعْجِبُ الزُّرَّاعَ لِيَغِيظَ بِهِمُ الْكُفَّارَ",
     malayalam:
-      "അവന്റെ മഹത്വമുള്ള വചനത്തിന്റെ പ്രത്യേകതയാൽ.",
+      "അത് അതിനെ ശക്തിപ്പെടുത്തി, കട്ടിയാർന്നു, തന്റെ തണ്ടിൽ നേരെ നിൽക്കുന്നു. കർഷകരെ അത് അത്ഭുതപ്പെടുത്തുന്നു. അവരിലൂടെ അവിശ്വാസികളെ ക്രോധിപ്പിക്കാൻ.",
     english:
-      "Through the special favor of His exalted word.",
-    start: 31,
-    end: 35,
+      "Then it strengthens it, grows thick, and stands firmly on its stem, delighting the farmers, so that He may enrage the disbelievers by them.",
+    start: 79,
+    end: 162,
   },
-
   {
     id: 9,
     isBox: false,
-    text: "كُنتُمْ خَيْرَ أُمَّةٍ أُخْرِجَتْ لِلنَّاسِ",
+    text: "وَعَدَ اللَّهُ الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ مِنْهُمْ مَغْفِرَةً وَأَجْرًا عَظِيمًا",
     malayalam:
-      "മനുഷ്യർക്കായി പുറത്ത് കൊണ്ടുവന്ന ഏറ്റവും നല്ല സമൂഹമാണ് നിങ്ങൾ.",
+      "വിശ്വസിക്കുകയും സൽപ്രവൃത്തികൾ ചെയ്യുകയും ചെയ്തവർക്ക് അല്ലാഹു മാപ്പും മഹത്തായ പ്രതിഫലവും വാഗ്ദാനം ചെയ്തിരിക്കുന്നു.",
     english:
-      "You are the best nation brought forth for mankind.",
-    start: 35,
-    end: 42,
+      "Allah has promised those among them who believe and do righteous deeds forgiveness and a great reward.",
+    start: 162,
+    end: 182,
   },
-
   {
     id: 10,
     isBox: false,
-    text: "سَائِغَةً هَنِيَّةً",
+    text: "وَفَضَّلَ اللَّهُ الْمُجَاهِدِينَ عَلَى الْقَاعِدِينَ أَجْرًا عَظِيمًا",
     malayalam:
-      "സുഖകരവും ആസ്വാദ്യവുമായതായി.",
+      "പിന്നിൽ നിന്നവരേക്കാൾ മുജാഹിദുകളെ മഹത്തായ പ്രതിഫലം നൽകി അല്ലാഹു ഉയർത്തി.",
     english:
-      "Pleasant and wholesome.",
-    start: 42,
-    end: 45,
+      "Allah favored the strivers over those who stayed behind with a great reward.",
+    start: 182,
+    end: 196,
   },
-    {
+  {
     id: 11,
     isBox: false,
-    text: "وَشَرَّفَنَا بِحَبِيبِهِ الْمُصْطَفَى",
+    text: "دَرَجَاتٍ مِّنْهُ وَمَغْفِرَةً وَرَحْمَةً وَكَانَ اللَّهُ غَفُورًا رَّحِيمًا وَفَضَّلَ مِنْ أَصْحَابِهِ الْمُجَاهِدِينَ",
     malayalam:
-      "തന്റെ തിരഞ്ഞെടുത്ത പ്രിയനാൽ അല്ലാഹു നമ്മെ ആദരിച്ചു.",
+      "അവനിൽ നിന്നുള്ള ഉന്നത പദവികളും മാപ്പും കരുണയും നൽകി. അല്ലാഹു ഏറെ മാപ്പും കരുണയും ഉള്ളവനാണ്. അവൻ തന്റെ സഹാബികളിൽ നിന്ന് മുജാഹിദുകളെ ഉയർത്തി.",
     english:
-      "He honored us through His chosen beloved.",
-    start: 45,
-    end: 50,
+      "Ranks from Him, forgiveness, and mercy. And Allah is Most Forgiving, Most Merciful. And He favored from his companions the strivers.",
+    start: 196,
+    end: 216,
   },
-
   {
     id: 12,
     isBox: false,
-    text: "مِنَ الْجِبِلَّةِ الْبَشَرِيَّةِ",
+    text: "وَذَلِكَ قَوْلُهُ تَعَالَى وَفَضَّلَ اللَّهُ الْمُجَاهِدِينَ عَلَى الْقَاعِدِينَ أَجْرًا عَظِيمًا دَرَجَاتٍ مِّنْهُ وَمَغْفِرَةً وَرَحْمَةً وَكَانَ اللَّهُ غَفُورًا رَّحِيمًا وَفَضَّلَ مِنْهُمُ الشُّهَدَاءَ",
     malayalam:
-      "മനുഷ്യരിൽ നിന്നുയർന്നവനായ.",
+      "ഇത് അല്ലാഹുവിന്റെ വചനമാണ്: 'പിന്നിൽ നിന്നവരേക്കാൾ മുജാഹിദുകളെ അവൻ ഉയർത്തി; മഹത്തായ പ്രതിഫലം, പദവികൾ, മാപ്പ്, കരുണ എന്നിവ നൽകി.' അല്ലാഹു ഏറെ മാപ്പും കരുണയും ഉള്ളവനാണ്; അവരിൽ നിന്ന് ശുഹദാക്കളെ അവൻ ഉയർത്തി.",
     english:
-      "From among mankind.",
-    start: 50,
-    end: 54,
+      "And that is His saying: Allah favored the strivers over those who stayed behind with a great reward, ranks from Him, forgiveness and mercy. Allah is Most Forgiving, Most Merciful, and He favored from them the martyrs.",
+    start: 216,
+    end: 245,
   },
-
   {
     id: 13,
     isBox: false,
-    text: "مُحَمَّدِنِ الْمَبْعُوثِ بِالدِّينِ",
+    text: "الْبَدْرِيِّينَ الَّذِينَ بَذَلُوا لِلَّهِ وَلِلرَّسُولِ نُفُوسَهُمُ الزَّكِيَّةِ",
     malayalam:
-      "ദീനം കൊണ്ടു നിയോഗിക്കപ്പെട്ട മുഹമ്മദ് ﷺ.",
+      "അല്ലാഹുവിനും റസൂലിനും വേണ്ടി തങ്ങളുടെ പരിശുദ്ധമായ ജീവൻ സമർപ്പിച്ച ബദ്രിലെ ശുഹദാക്കൾ.",
     english:
-      "Muhammad ﷺ, sent with the religion.",
-    start: 54,
-    end: 60,
-  },
-
-  {
-    id: 14,
-    isBox: false,
-    text: "الْحَقِّ الْمُؤَيَّدِ",
-    malayalam:
-      "സത്യമായ ദീനം കൊണ്ട് ശക്തിപ്പെടുത്തപ്പെട്ട.",
-    english:
-      "The true religion, divinely supported.",
-    start: 60,
-    end: 64,
-  },
-
-  {
-    id: 15,
-    isBox: false,
-    text: "بِالْآيَاتِ الْبَاهِرَاتِ الْعَلِيَّةِ",
-    malayalam:
-      "പ്രകാശമാനമായ മഹത്തായ അടയാളങ്ങളാൽ.",
-    english:
-      "With the radiant and exalted signs.",
-    start: 64,
-    end: 70,
-  },
-      {
-    id: 16,
-    isBox: false,
-    text: "فَسُبْحَانَ مَنْ شَيَّدَ أَرْكَانَ دِينِهِ",
-    malayalam: "തന്റെ ദീനിന്റെ അടിസ്ഥാനം ഉറപ്പിച്ചവനായ അല്ലാഹുവിന് പരിശുദ്ധി.",
-    english: "So glory be to Him who firmly established the pillars of His religion.",
-    start: 70,
-    end: 76,
-  },
-
-  {
-    id: 17,
-    isBox: false,
-    text: "بِالنَّبِيِّ وَأَصْحَابِهِ الَّذِينَ وَصَفَهُمْ",
-    malayalam: "നബിയെയും അവന്റെ സഹാബാക്കളെയും വഴിയായി.",
-    english: "Through the Prophet and his Companions whom He described.",
-    start: 76,
-    end: 83,
-  },
-
-  {
-    id: 18,
-    isBox: false,
-    text: "بِقَوْلِهِ تَعَالَى مُحَمَّدٌ رَّسُولُ اللَّهِ",
-    malayalam: "‘മുഹമ്മദ് അല്ലാഹുവിന്റെ ദൂതനാണ്’ എന്ന അവന്റെ വചനത്തിലൂടെ.",
-    english: "By His saying: Muhammad is the Messenger of Allah.",
-    start: 83,
-    end: 90,
-  },
-
-  {
-    id: 19,
-    isBox: false,
-    text: "وَالَّذِينَ مَعَهُ أَشِدَّاءُ عَلَى الْكُفَّارِ",
-    malayalam: "അവനോടൊപ്പം ഉള്ളവർ അവിശ്വാസികളോട് കടുപ്പമുള്ളവരാണ്.",
-    english: "And those with him are firm against the disbelievers.",
-    start: 90,
-    end: 96,
-  },
-
-  {
-    id: 20,
-    isBox: false,
-    text: "رُحَمَاءُ بَيْنَهُمْ",
-    malayalam: "അവർ തമ്മിൽ പരസ്പരം കരുണയുള്ളവരാണ്.",
-    english: "Merciful among themselves.",
-    start: 96,
-    end: 100,
-  },
-
-  {
-    id: 21,
-    isBox: false,
-    text: "تَرَاهُمْ رُكَّعًا سُجَّدًا",
-    malayalam: "നീ അവരെ റുകൂവിലും സജ്ദയിലും കാണും.",
-    english: "You will see them bowing and prostrating.",
-    start: 100,
-    end: 105,
-  },
-
-  {
-    id: 22,
-    isBox: false,
-    text: "يَبْتَغُونَ فَضْلًا مِّنَ اللَّهِ وَرِضْوَانًا",
-    malayalam: "അല്ലാഹുവിന്റെ അനുഗ്രഹവും തൃപ്തിയും അവർ തേടുന്നു.",
-    english: "Seeking bounty from Allah and His pleasure.",
-    start: 105,
-    end: 112,
-  },
-
-  {
-    id: 23,
-    isBox: false,
-    text: "سِيمَاهُمْ فِي وُجُوهِهِم مِّنْ أَثَرِ السُّجُودِ",
-    malayalam: "സജ്ദയുടെ അടയാളങ്ങൾ അവരുടെ മുഖങ്ങളിൽ കാണപ്പെടുന്നു.",
-    english: "Their marks are on their faces from the traces of prostration.",
-    start: 112,
-    end: 120,
-  },
-
-  {
-    id: 24,
-    isBox: false,
-    text: "ذَٰلِكَ مَثَلُهُمْ فِي التَّوْرَاةِ",
-    malayalam: "തൗറാത്തിലെ അവരുടെ ഉപമ ഇതാണ്.",
-    english: "That is their description in the Torah.",
-    start: 120,
-    end: 126,
-  },
-
-  {
-    id: 25,
-    isBox: false,
-    text: "وَمَثَلُهُمْ فِي الْإِنجِيلِ كَزَرْعٍ أَخْرَجَ شَطْأَهُ",
-    malayalam: "ഇൻജീലിൽ അവരുടെ ഉപമ: തളിർ പുറപ്പെടുവിച്ച കൃഷിപോലെ.",
-    english: "And their description in the Gospel is like a crop that sends forth its shoot.",
-    start: 126,
-    end: 135,
-  },
-
-  {
-    id: 26,
-    isBox: false,
-    text: "فَآزَرَهُ",
-    malayalam: "അത് അതിനെ ശക്തിപ്പെടുത്തി.",
-    english: "Then it strengthens it.",
-    start: 135,
-    end: 139,
-  },
-
-  {
-    id: 27,
-    isBox: false,
-    text: "فَاسْتَغْلَظَ",
-    malayalam: "അത് കട്ടിയാർന്നു.",
-    english: "And it grows thick.",
-    start: 139,
-    end: 144,
-  },
-
-  {
-    id: 28,
-    isBox: false,
-    text: "فَاسْتَوَى عَلَى سُوقِهِ",
-    malayalam: "തന്റെ തണ്ടിൽ നേരെ നിൽക്കുന്നു.",
-    english: "And stands firmly on its stem.",
-    start: 144,
-    end: 150,
-  },
-
-  {
-    id: 29,
-    isBox: false,
-    text: "يُعْجِبُ الزُّرَّاعَ",
-    malayalam: "കർഷകരെ അത് അത്ഭുതപ്പെടുത്തുന്നു.",
-    english: "Delighting the farmers.",
-    start: 150,
-    end: 155,
-  },
-
-  {
-    id: 30,
-    isBox: false,
-    text: "لِيَغِيظَ بِهِمُ الْكُفَّارَ",
-    malayalam: "അവരിലൂടെ അവിശ്വാസികളെ ക്രോധിപ്പിക്കാൻ.",
-    english: "So that He may enrage the disbelievers by them.",
-    start: 155,
-    end: 162,
-  },
-
-  {
-    id: 31,
-    isBox: false,
-    text: "وَعَدَ اللَّهُ الَّذِينَ آمَنُوا",
-    malayalam: "വിശ്വസിച്ചവർക്കു അല്ലാഹു വാഗ്ദാനം ചെയ്തു.",
-    english: "Allah has promised those who believe.",
-    start: 162,
-    end: 168,
-  },
-
-  {
-    id: 32,
-    isBox: false,
-    text: "وَعَمِلُوا الصَّالِحَاتِ",
-    malayalam: "സൽപ്രവൃത്തികൾ ചെയ്തവർക്കും.",
-    english: "And do righteous deeds.",
-    start: 168,
-    end: 174,
-  },
-
-  {
-    id: 33,
-    isBox: false,
-    text: "مِنْهُمْ مَغْفِرَةً",
-    malayalam: "അവർക്കു മാപ്പ്.",
-    english: "For them is forgiveness.",
-    start: 174,
-    end: 178,
-  },
-
-  {
-    id: 34,
-    isBox: false,
-    text: "وَأَجْرًا عَظِيمًا",
-    malayalam: "മഹത്തായ പ്രതിഫലവും.",
-    english: "And a عظظيم reward.",
-    start: 178,
-    end: 182,
-  },
-
-  {
-    id: 35,
-    isBox: false,
-    text: "وَفَضَّلَ اللَّهُ الْمُجَاهِدِينَ",
-    malayalam: "മുജാഹിദുകളെ അല്ലാഹു ഉയർത്തി.",
-    english: "Allah favored the strivers.",
-    start: 182,
-    end: 188,
-  },
-
-  {
-    id: 36,
-    isBox: false,
-    text: "عَلَى الْقَاعِدِينَ",
-    malayalam: "പിന്നിൽ നിന്നവരേക്കാൾ.",
-    english: "Over those who stayed behind.",
-    start: 188,
-    end: 192,
-  },
-
-  {
-    id: 37,
-    isBox: false,
-    text: "أَجْرًا عَظِيمًا",
-    malayalam: "മഹത്തായ പ്രതിഫലത്തോടെ.",
-    english: "With a great reward.",
-    start: 192,
-    end: 196,
-  },
-
-  {
-    id: 38,
-    isBox: false,
-    text: "دَرَجَاتٍ مِّنْهُ وَمَغْفِرَةً وَرَحْمَةً",
-    malayalam: "ഉന്നത പദവികളും മാപ്പും കരുണയും.",
-    english: "Ranks from Him, forgiveness, and mercy.",
-    start: 196,
-    end: 205,
-  },
-
-  {
-    id: 39,
-    isBox: false,
-    text: "وَكَانَ اللَّهُ غَفُورًا رَّحِيمًا",
-    malayalam: "അല്ലാഹു ഏറെ മാപ്പും കരുണയും ഉള്ളവനാണ്.",
-    english: "And Allah is Most Forgiving, Most Merciful.",
-    start: 205,
-    end: 210,
-  },
-
-  {
-    id: 40,
-    isBox: false,
-    text: "وَفَضَّلَ مِنْ أَصْحَابِهِ الْمُجَاهِدِينَ",
-    malayalam: "അവന്റെ സഹാബികളിൽ നിന്ന് മുജാഹിദുകളെ ഉയർത്തി.",
-    english: "And He favored from his companions the strivers.",
-    start: 210,
-    end: 216,
-  },
-
-  {
-    id: 41,
-    isBox: false,
-    text: `وَذَلِكَ قَوْلُهُ تَعَالَى
-وَفَضَّلَ اللَّهُ الْمُجَاهِدِينَ عَلَى الْقَاعِدِينَ`,
-    malayalam: "ഇത് അല്ലാഹുവിന്റെ വചനമാണ്: പിന്നിൽ നിന്നവരേക്കാൾ മുജാഹിദുകളെ അവൻ ഉയർത്തി.",
-    english: "And that is His saying: Allah favored the strivers over those who stayed behind.",
-    start: 216,
-    end: 225,
-  },
-
-  {
-    id: 42,
-    isBox: false,
-    text: `أَجْرًا عَظِيمًا
-دَرَجَاتٍ مِّنْهُ وَمَغْفِرَةً وَرَحْمَةً`,
-    malayalam: "മഹത്തായ പ്രതിഫലം, പദവികൾ, മാപ്പ്, കരുണ.",
-    english: "A great reward, ranks from Him, forgiveness and mercy.",
-    start: 225,
-    end: 235,
-  },
-
-  {
-    id: 43,
-    isBox: false,
-    text: `وَكَانَ اللَّهُ غَفُورًا رَّحِيمًا
-وَفَضَّلَ مِنْهُمُ الشُّهَدَاءَ`,
-    malayalam: "അല്ലാഹു ഏറെ മാപ്പും കരുണയും ഉള്ളവനാണ്; അവരിൽ നിന്ന് ശുഹദാക്കളെ ഉയർത്തി.",
-    english: "Allah is Most Forgiving, Most Merciful, and He favored from them the martyrs.",
-    start: 235,
-    end: 245,
-  },
-
-  {
-    id: 44,
-    isBox: false,
-    text: `الْبَدْرِيِّينَ الَّذِينَ بَذَلُوا لِلَّهِ
-وَلِلرَّسُولِ نُفُوسَهُمُ الزَّكِيَّةِ`,
-    malayalam: "ബദ്രിലെ ശുഹദാക്കൾ; അല്ലാഹുവിനും ദൂതനുമായി അവർ തങ്ങളുടെ ശുദ്ധമായ ജീവൻ സമർപ്പിച്ചു.",
-    english: "The Badri martyrs who sacrificed their pure lives for Allah and His Messenger.",
+      "The Badri martyrs who sacrificed their pure lives for Allah and His Messenger.",
     start: 245,
     end: 255,
   },
-
   {
-    id: 45,
+    id: 14,
     isBox: false,
-    text: `وَشَرَّفَهُمْ وَجَعَلَ فِي قِرَاءَةِ أَسْمَائِهِمْ
-وَالتَّوَسُّلِ بِهِمْ فَوَائِدَ جَلِيَّةً`,
-    malayalam: "അവരെ ആദരിച്ചു; അവരുടെ പേരുകൾ വായിക്കുന്നതിലും അവരിലൂടെ തവസ്സുൽ ചെയ്യുന്നതിലും വ്യക്തമായ ഗുണങ്ങൾ ഉണ്ടാക്കി.",
-    english: "He honored them and placed clear benefits in reciting their names and seeking intercession through them.",
+    text: "وَشَرَّفَهُمْ وَجَعَلَ فِي قِرَاءَةِ أَسْمَائِهِمْ وَالتَّوَسُّلِ بِهِمْ فَوَائِدَ جَلِيَّةً",
+    malayalam:
+      "അവരെ അവൻ ആദരിച്ചു; അവരുടെ പേരുകൾ പാരായണം ചെയ്യുന്നതിലും അവരിലൂടെ തവസ്സുൽ (ഇടതേട്ടം) ചെയ്യുന്നതിലും വ്യക്തമായ ഗുണങ്ങൾ നിശ്ചയിച്ചു.",
+    english:
+      "He honored them and placed clear benefits in reciting their names and seeking intercession through them.",
     start: 255,
     end: 265,
   },
   {
-    id: 46,
+    id: 15,
     isBox: false,
-    text: "رَضِيَ اللَّهُ عَنْهُمْ",
-    malayalam: "അല്ലാഹു അവരോട് പ്രസന്നനാകട്ടെ.",
-    english: "May Allah be pleased with them.",
+    text: "رَضِيَ اللَّهُ عَنْهُمْ وَنَفَعَنَا بِهِمْ فِي الدَّارَيْنِ بِبَرَكَتِهِمِ الْعَلِيَّةِ",
+    malayalam:
+      "അല്ലാഹു അവരെ തൃപ്തിപ്പെടട്ടെ. അവരുടെ മഹത്തായ ബർക്കത്തിനാൽ ഇഹലോകത്തിലും പരലോകത്തിലും അവരിലൂടെ നമ്മെ ഉപകാരപ്പെടുത്തട്ടെ.",
+    english:
+      "May Allah be pleased with them, and may He benefit us through them in both abodes by their exalted blessings.",
     start: 265,
-    end: 270,
-  },
-
-  {
-    id: 47,
-    isBox: false,
-    text: "وَنَفَعَنَا بِهِمْ فِي الدَّارَيْنِ",
-    malayalam: "ഇഹലോകത്തിലും പരലോകത്തിലും അവരിലൂടെ നമ്മെ ഉപകാരപ്പെടുത്തട്ടെ.",
-    english: "And may He benefit us through them in both abodes.",
-    start: 270,
-    end: 278,
-  },
-
-  {
-    id: 48,
-    isBox: false,
-    text: "بِبَرَكَتِهِمِ الْعَلِيَّةِ",
-    malayalam: "അവരുടെ മഹത്തായ ബർക്കത്തിനാൽ.",
-    english: "By their exalted blessings.",
-    start: 278,
     end: 283,
   },
-
   {
-    id: 49,
+    id: 16,
     isBox: false,
-    text: "وَصَلَّى اللَّهُ عَلَى سَيِّدِنَا مُحَمَّدٍ",
-    malayalam: "നമ്മുടെ നേതാവായ മുഹമ്മദ് ﷺ നബിയിലേക്ക് അല്ലാഹു സ്വലാത്ത് ചൊരിയട്ടെ.",
-    english: "May Allah send blessings upon our master Muhammad ﷺ.",
+    text: "وَصَلَّى اللَّهُ عَلَى سَيِّدِنَا مُحَمَّدٍ وَآلِهِ وَصَحْبِهِ وَسَلَّمَ تَسْلِيمًا كَثِيرًا كَثِيرًا",
+    malayalam:
+      "നമ്മുടെ നേതാവായ മുഹമ്മദ് ﷺ നബിയിലേക്കും, അദ്ദേഹത്തിന്റെ കുടുംബത്തിലേക്കും സഹാബികളിലേക്കും അല്ലാഹു കാരുണ്യവും ധാരാളം ശാന്തിയും വർഷിക്കട്ടെ.",
+    english:
+      "May Allah send blessings upon our master Muhammad ﷺ and upon his family and companions, granting abundant peace.",
     start: 283,
-    end: 290,
-  },
-
-  {
-    id: 50,
-    isBox: false,
-    text: "وَآلِهِ وَصَحْبِهِ وَسَلَّمَ تَسْلِيمًا كَثِيرًا كَثِيرًا",
-    malayalam: "അവന്റെ കുടുംബത്തിനും സഹാബികൾക്കും സമാധാനവും ധാരാളം ശാന്തിയും ഉണ്ടാകട്ടെ.",
-    english: "And upon his family and companions, granting abundant peace.",
-    start: 290,
     end: 300,
   },{
-    id: 51,
+    id: 17,
     isBox: true,
     text: "صَلَاةٌ وَتَسْلِيمٌ وَأَزْكَى تَحِيَّةٍ",
     malayalam: "സ്വലാത്തും സലാമും ഏറ്റവും ശ്രേഷ്ഠമായ അഭിവാദ്യവും.",
@@ -555,7 +202,7 @@ export const baderMoulidData: BaderMoulidItem[] = [
   },
 
   {
-    id: 52,
+    id: 18,
     isBox: true,
     text: "عَلَى الْمُصْطَفَى الْمُخْتَارِ خَيْرِ الْبَرِيَّةِ",
     malayalam: "തിരഞ്ഞെടുത്ത മഹാനായ, സൃഷ്ടികളിൽ ശ്രേഷ്ഠനായവനിലേക്ക്.",
@@ -565,7 +212,7 @@ export const baderMoulidData: BaderMoulidItem[] = [
   },
 
   {
-    id: 53,
+    id: 19,
     isBox: true,
     text: "أَلَا لِلْإِلَهِ الْحَمْدُ فِي كُلِّ لَحْظَةٍ",
     malayalam: "എല്ലാ നിമിഷങ്ങളിലും ദൈവത്തിനാണ് സകല സ്തുതിയും.",
@@ -575,7 +222,7 @@ export const baderMoulidData: BaderMoulidItem[] = [
   },
 
   {
-    id: 54,
+    id: 20,
     isBox: true,
     text: "عَلَى مَا هَدَانَا مِلَّةً خَيْرَ مِلَّةٍ",
     malayalam: "മികച്ച മാർഗത്തിലേക്ക് നമ്മെ നയിച്ചതിന്.",
@@ -584,7 +231,7 @@ export const baderMoulidData: BaderMoulidItem[] = [
     end: 338,
   },
     {
-    id: 55,
+    id: 21,
     isBox: true,
     text: "وَكَرَّمَنَا فَضْلًا عَلَيْنَا بِأَحْمَدٍ",
     malayalam: "അഹ്മദ് (നബി ﷺ) മുഖേന നമ്മെ പ്രത്യേകമായി ആദരിച്ചു.",
@@ -594,7 +241,7 @@ export const baderMoulidData: BaderMoulidItem[] = [
   },
 
   {
-    id: 56,
+    id: 22,
     isBox: true,
     text: "نَبِيِّ الْهُدَى مَاحِي الرَّدَى وَالرَّزِيَّةِ",
     malayalam: "മാർഗദർശകനായ നബി, ദുരിതങ്ങളും നാശവും നീക്കുന്നവൻ.",
@@ -604,7 +251,7 @@ export const baderMoulidData: BaderMoulidItem[] = [
   },
 
   {
-    id: 57,
+    id: 23,
     isBox: true,
     text: "رَسُولٌ دَعَى الْكُفَّارَ لِلْحَقِّ",
     malayalam: "സത്യത്തിലേക്ക് അവിശ്വാസികളെ ക്ഷണിച്ച ദൂതൻ.",
@@ -614,7 +261,7 @@ export const baderMoulidData: BaderMoulidItem[] = [
   },
 
   {
-    id: 58,
+    id: 24,
     isBox: true,
     text: "فَالْأُولَى قَفَوْهُ اهْتَدَوْا",
     malayalam: "അവനെ പിന്തുടർന്ന ആദ്യവർഗം സന്മാർഗം പ്രാപിച്ചു.",
@@ -624,7 +271,7 @@ export const baderMoulidData: BaderMoulidItem[] = [
   },
 
   {
-    id: 59,
+    id: 25,
     isBox: true,
     text: "وَالْفَوْزَ نَالُوا بِجُمْلَةٍ",
     malayalam: "അവർ എല്ലാവരും മഹാവിജയം നേടി.",
@@ -634,7 +281,7 @@ export const baderMoulidData: BaderMoulidItem[] = [
   },
 
   {
-    id: 60,
+    id: 26,
     isBox: true,
     text: "وَمَنْ مَنَعُوا مِنْهُ فَأُرْدُوا وَأُهْلِكُوا",
     malayalam: "അവനെ നിരസിച്ചവർ നശിപ്പിക്കപ്പെടുകയും പരാജയപ്പെടുകയും ചെയ്തു.",
@@ -643,7 +290,7 @@ export const baderMoulidData: BaderMoulidItem[] = [
     end: 388,
   },
     {
-    id: 61,
+    id: 27,
     isBox: true,
     text: "بِأَنْوَاعِ تَعْذِيبٍ وَأَصْنَافِ نِقْمَةٍ",
     malayalam: "വിവിധ തരത്തിലുള്ള ശിക്ഷകളും വ്യത്യസ്തമായ ശാപങ്ങളും കൊണ്ട്.",
@@ -653,7 +300,7 @@ export const baderMoulidData: BaderMoulidItem[] = [
   },
 
   {
-    id: 62,
+    id: 28,
     isBox: true,
     text: "وَأَيَّدَهُ بِالْمُعْجِزَاتِ وَبِالْأُولَى",
     malayalam: "അത്ഭുതങ്ങളാൽ അല്ലാഹു അവനെ പിന്തുണച്ചു.",
@@ -663,7 +310,7 @@ export const baderMoulidData: BaderMoulidItem[] = [
   },
 
   {
-    id: 63,
+    id: 29,
     isBox: true,
     text: " هُمُو شَيَّدُوا دِينَ الْإِلَهِ بِنُصْرَةِ",
     malayalam: "ആദ്യവരും അവനെ സഹായിച്ച് അല്ലാഹുവിന്റെ ദീനം സ്ഥാപിച്ചു.",
@@ -673,7 +320,7 @@ export const baderMoulidData: BaderMoulidItem[] = [
   },
 
   {
-    id: 64,
+    id: 30,
     isBox: true,
     text: "وَجَادُوا بِأَمْوَالٍ وَبَاعُوا نُفُوسَهُمْ",
     malayalam: "സമ്പത്തുകൾ ചെലവഴിക്കുകയും മാർഗദർശന ദീനത്തിനായി ജീവൻ സമർപ്പിക്കുകയും ചെയ്തു.",
@@ -683,7 +330,7 @@ export const baderMoulidData: BaderMoulidItem[] = [
   },
 
   {
-    id: 65,
+    id: 31,
     isBox: true,
     text: " لِدِينِ الْهُدَى فِي كُلِّ مَوْطِنِ غَزْوَةٍ",
     malayalam: "ഓരോ യുദ്ധഭൂമിയിലും.",
@@ -693,7 +340,7 @@ export const baderMoulidData: BaderMoulidItem[] = [
   },
 
   {
-    id: 66,
+    id: 32,
     isBox: true,
     text: "وَشَرَّفَ مِنْهُمْ أَهْلَ بَدْرٍ إِلَهُنَا",
     malayalam: "അവരിൽ നിന്ന് ബദ്രുകാരെ നമ്മുടെ റബ്ബ് ആദരിച്ചു.",
@@ -703,7 +350,7 @@ export const baderMoulidData: BaderMoulidItem[] = [
   },
 
   {
-    id: 67,
+    id: 33,
     isBox: true,
     text: "بِأَنْوَاعِ آلآءِ وَأَعْلَى مَزِيَّةٍ",
     malayalam: "വിവിധ അനുഗ്രഹങ്ങളാലും ഉന്നതമായ മഹത്വത്താലും.",
@@ -713,7 +360,7 @@ export const baderMoulidData: BaderMoulidItem[] = [
   },
 
   {
-    id: 68,
+    id: 34,
     isBox: true,
     text: "وَفِي مَدْحِهِمْ جَاءَ الْكِتَابُ وَسُنَّةٌ",
     malayalam: "അവരുടെ പ്രശംസയിൽ കിതാബും സുന്നത്തും വന്നിരിക്കുന്നു.",
@@ -723,7 +370,7 @@ export const baderMoulidData: BaderMoulidItem[] = [
   },
 
   {
-    id: 69,
+    id: 35,
     isBox: true,
     text: "كَفَاهُمْ لَهُمْ نَصُّ الْكِتَابِ وَسُنَّةِ",
     malayalam: "കിതാബിന്റെയും സുന്നത്തിന്റെയും തെളിവുകൾ അവർക്കു മതിയാകുന്നു.",
@@ -733,7 +380,7 @@ export const baderMoulidData: BaderMoulidItem[] = [
   },
 
   {
-    id: 70,
+    id: 36,
     isBox: true,
     text: "وَصَلَّى عَلَى الْهَادِي وَآلٍ وَصَحْبِهِ",
     malayalam: "മാർഗദർശകനായ നബിയിലേക്കും അവന്റെ കുടുംബത്തിലും സഹാബികളിലും.",
@@ -743,7 +390,7 @@ export const baderMoulidData: BaderMoulidItem[] = [
   },
 
   {
-    id: 71,
+    id: 37,
     isBox: true,
     text: "صَلَاةً مَعَ التَّسْلِيمِ رَبُّ الْبَرِيَّةِ",
     malayalam: "സലാമോടുകൂടിയ സ്വലാത്ത് — സർവ്വസൃഷ്ടികളുടെ റബ്ബ്.",
@@ -752,336 +399,280 @@ export const baderMoulidData: BaderMoulidItem[] = [
     end: 492,
   },
 
-  {
-    id: 72,
+{
+    id: 38,
     isBox: false,
-    text: "قَالَ اللَّهُ سُبْحَانَهُ وَتَعَالَى وَلَا تَحْسَبَنَّ الَّذِينَ",
-    malayalam: "അല്ലാഹു (പരിശുദ്ധനും ഉന്നതനും) പറഞ്ഞു: ‘അങ്ങനെ കരുതരുത്…’",
-    english: "Allah, Glorified and Exalted, said: ‘Do not think that those…’",
-    start: 492,
-    end: 505,
-  },
-    {
-    id: 73,
-    isBox: false,
-    text: `قُتِلُوا فِي سَبِيلِ اللَّهِ أَمْوَاتًا
-بَلْ أَحْيَاءٌ عِندَ رَبِّهِمْ يُرْزَقُونَ`,
+    text:
+      "قَالَ اللَّهُ سُبْحَانَهُ وَتَعَالَى وَلَا تَحْسَبَنَّ الَّذِينَ\n" +
+      "قُتِلُوا فِي سَبِيلِ اللَّهِ أَمْوَاتًا\n" +
+      "بَلْ أَحْيَاءٌ عِندَ رَبِّهِمْ يُرْزَقُونَ",
     malayalam:
-      "അല്ലാഹുവിന്റെ വഴിയിൽ കൊല്ലപ്പെട്ടവരെ മരിച്ചവരെന്ന് കരുതരുത്; അവർ അവരുടെ റബ്ബിന്റെ അടുക്കൽ ജീവിച്ചിരിക്കുകയാണ്, അവർക്കു ഉപജീവനം ലഭിക്കുന്നു.",
+      "അല്ലാഹു (പരിശുദ്ധനും ഉന്നതനും) പറഞ്ഞു: അല്ലാഹുവിന്റെ വഴിയിൽ കൊല്ലപ്പെട്ടവരെ മരിച്ചവരെന്ന് കരുതരുത്; അവർ അവരുടെ റബ്ബിന്റെ അടുക്കൽ ജീവിച്ചിരിക്കുകയാണ്, അവർക്കു ഉപജീവനം ലഭിക്കുന്നു.",
     english:
-      "Do not think of those who are killed in the way of Allah as dead; rather, they are alive with their Lord, receiving provision.",
-    start: 505,
+      "Allah, Glorified and Exalted, said: Do not think of those who are killed in the way of Allah as dead; rather, they are alive with their Lord, receiving provision.",
+    start: 492,
     end: 520,
   },
 
   {
-    id: 74,
+    id: 39,
     isBox: false,
-    text: `فَرِحِينَ بِمَا آتَاهُمُ اللَّهُ مِنْ فَضْلِهِ`,
+    text:
+      "فَرِحِينَ بِمَا آتَاهُمُ اللَّهُ مِنْ فَضْلِهِ\n" +
+      "وَيَسْتَبْشِرُونَ بِالَّذِينَ لَمْ يَلْحَقُوا بِهِم\n" +
+      "مِّنْ خَلْفِهِمْ أَلَّا خَوْفٌ عَلَيْهِمْ",
     malayalam:
-      "അല്ലാഹു തന്റെ അനുഗ്രഹത്തിൽ നിന്ന് അവർക്കു നൽകിയതിൽ അവർ സന്തോഷിക്കുന്നു.",
+      "അല്ലാഹു തന്റെ അനുഗ്രഹത്തിൽ നിന്ന് അവർക്കു നൽകിയതിൽ അവർ സന്തോഷിക്കുന്നു; അവരെത്തുടർന്ന് ഇനിയും ചേർന്നിട്ടില്ലാത്തവരെ കുറിച്ചും അവർ സന്തോഷിക്കുന്നു; അവർക്കു ഭയം ഉണ്ടാകില്ല.",
     english:
-      "Rejoicing in what Allah has bestowed upon them of His bounty.",
+      "They rejoice in what Allah has bestowed upon them of His bounty, and they rejoice for those who have not yet joined them, that there will be no fear upon them.",
     start: 520,
-    end: 528,
-  },
-
-  {
-    id: 75,
-    isBox: false,
-    text: `وَيَسْتَبْشِرُونَ بِالَّذِينَ لَمْ يَلْحَقُوا بِهِم
-مِّنْ خَلْفِهِمْ أَلَّا خَوْفٌ عَلَيْهِمْ`,
-    malayalam:
-      "അവരെത്തുടർന്ന് ഇനിയും ചേർന്നിട്ടില്ലാത്തവരെ കുറിച്ചും അവർ സന്തോഷിക്കുന്നു; അവർക്കു ഭയം ഉണ്ടാകില്ലെന്ന്.",
-    english:
-      "They rejoice for those who have not yet joined them, that there will be no fear upon them.",
-    start: 528,
     end: 545,
   },
 
   {
-    id: 76,
+    id: 40,
     isBox: false,
-    text: `وَلَا هُمْ يَحْزَنُونَ
-يَسْتَبْشِرُونَ بِنِعْمَةٍ مِّنَ اللَّهِ وَفَضْلٍ`,
+    text:
+      "وَلَا هُمْ يَحْزَنُونَ\n" +
+      "يَسْتَبْشِرُونَ بِنِعْمَةٍ مِّنَ اللَّهِ وَفَضْلٍ\n" +
+      "وَأَنَّ اللَّهَ لَا يُضِيعُ أَجْرَ الْمُؤْمِنِينَ",
     malayalam:
-      "അവർ ദുഃഖിക്കുന്നതുമില്ല; അല്ലാഹുവിൽ നിന്നുള്ള അനുഗ്രഹത്തിലും അനുഗ്രഹദാനത്തിലും അവർ സന്തോഷിക്കുന്നു.",
+      "അവർ ദുഃഖിക്കുന്നതുമില്ല; അല്ലാഹുവിൽ നിന്നുള്ള അനുഗ്രഹത്തിലും അനുഗ്രഹദാനത്തിലും അവർ സന്തോഷിക്കുന്നു; വിശ്വാസികളുടെ പ്രതിഫലം അല്ലാഹു ഒരിക്കലും നഷ്ടപ്പെടുത്തുന്നില്ല.",
     english:
-      "Nor will they grieve; they rejoice in a blessing and favor from Allah.",
+      "Nor will they grieve; they rejoice in a blessing and favor from Allah, and that Allah never lets the reward of the believers be lost.",
     start: 545,
-    end: 560,
-  },
-
-  {
-    id: 77,
-    isBox: false,
-    text: `وَأَنَّ اللَّهَ لَا يُضِيعُ أَجْرَ الْمُؤْمِنِينَ`,
-    malayalam:
-      "വിശ്വാസികളുടെ പ്രതിഫലം അല്ലാഹു ഒരിക്കലും നഷ്ടപ്പെടുത്തുന്നില്ലെന്ന്.",
-    english:
-      "And that Allah never lets the reward of the believers be lost.",
-    start: 560,
     end: 568,
   },
 
   {
-    id: 78,
+    id: 41,
     isBox: false,
-    text: `قَالَ عُلَمَاءُ السِّيَرِ رَحِمَهُمُ اللَّهُ
-إِنَّ شُهَدَاءَ بَدْرٍ لَمْ يُقْتَلْ`,
+    text:
+      "قَالَ عُلَمَاءُ السِّيَرِ رَحِمَهُمُ اللَّهُ\n" +
+      "إِنَّ شُهَدَاءَ بَدْرٍ لَمْ يُقْتَلْ\n" +
+      "مِنْهُمْ إِلَّا بِضْعَةَ عَشَرَ",
     malayalam:
       "സീറാ പണ്ഡിതന്മാർ (അല്ലാഹു അവരോട് കരുണ കാണിക്കട്ടെ) പറഞ്ഞു: ബദ്രിലെ ശുഹദാക്കളിൽ ചിലരെ മാത്രമാണ് കൊല്ലപ്പെട്ടത്.",
     english:
-      "The scholars of biography said (may Allah have mercy on them): among the martyrs of Badr, only some were killed.",
+      "The scholars of biography said: among the martyrs of Badr, only a few were killed.",
     start: 568,
     end: 585,
   },
 
   {
-    id: 79,
+    id: 42,
     isBox: false,
-    text: `مِنْهُمْ إِلَّا بِضْعَةَ عَشَرَ
-وَالْبَاقُونَ مَأْجُورُونَ مِثْلَهُمْ`,
+    text:
+      "وَالْبَاقُونَ مَأْجُورُونَ مِثْلَهُمْ\n" +
+      "فَكَانُوا كُلُّهُمْ مِصْدَاقَ هَذِهِ الْآيَةِ الشَّرِيفَةِ",
     malayalam:
-      "അവരിൽ കുറച്ചുപേർ മാത്രം; ശേഷിക്കുന്നവർക്ക് അവരെപ്പോലെ തന്നെ പ്രതിഫലം ലഭിക്കുന്നു.",
+      "ശേഷിക്കുന്നവർക്ക് അവരെപ്പോലെ തന്നെ പ്രതിഫലം ലഭിക്കുന്നു; അങ്ങനെ അവർ എല്ലാവരും ഈ മഹത്തായ ആയത്തിന്റെ ഉദാഹരണങ്ങളായി.",
     english:
-      "Only a few among them; the rest are rewarded just like them.",
+      "The rest are rewarded just like them; thus all of them are embodiments of this noble verse.",
     start: 585,
     end: 600,
   },
 
   {
-    id: 80,
+    id: 43,
     isBox: false,
-    text: `فَكَانُوا كُلُّهُمْ مِصْدَاقَ هَذِهِ الْآيَةِ الشَّرِيفَةِ
-بِالْأَحَادِيثِ الْوَاضِحَةِ وَالْحُجَجِ الْقَاطِعَةِ`,
+    text:
+      "بِالْأَحَادِيثِ الْوَاضِحَةِ وَالْحُجَجِ الْقَاطِعَةِ\n" +
+      "وَأَمَّا عَدَدُهُمْ فَثَلَاثَةَ عَشَرَ",
     malayalam:
-      "അങ്ങനെ, വ്യക്തമായ ഹദീസുകളും നിർണ്ണായകമായ തെളിവുകളും വഴി, അവർ എല്ലാവരും ഈ മഹത്തായ ആയത്തിന്റെ ഉദാഹരണമായി.",
+      "വ്യക്തമായ ഹദീസുകളും നിർണ്ണായകമായ തെളിവുകളും വഴി; അവരുടെ എണ്ണം പതിമൂന്നാണെന്ന് പറയുന്നു.",
     english:
-      "Thus, all of them are embodiments of this noble verse, affirmed by clear narrations and decisive proofs.",
+      "Affirmed by clear narrations and decisive proofs; as for their number, it is said to be thirteen.",
     start: 600,
-    end: 620,
-  },
-    {
-    id: 81,
-    isBox: false,
-    text: `وَأَمَّا عَدَدُهُمْ فَثَلَاثَةَ عَشَرَ`,
-    malayalam: "അവരുടെ എണ്ണം പതിമൂന്നാണെന്ന് ചില അഭിപ്രായങ്ങൾ പറയുന്നു.",
-    english: "As for their number, it is said to be thirteen.",
-    start: 620,
     end: 628,
   },
 
   {
-    id: 82,
+    id: 44,
     isBox: false,
-    text: `أَوْ أَرْبَعَةَ عَشَرَ`,
-    malayalam: "അല്ലെങ്കിൽ പതിനാലാണെന്നും പറയുന്നു.",
-    english: "Or it is said to be fourteen.",
+    text:
+      "أَوْ أَرْبَعَةَ عَشَرَ\n" +
+      "أَوْ خَمْسَةَ عَشَرَ وَثَلاثُمِائَةٍ\n" +
+      "أَوْ ثَلاثُمِائَةٍ وَثَلَاثَةٌ وَسِتُّونَ\n" +
+      "عَلَى أَقْوَالٍ",
+    malayalam:
+      "അല്ലെങ്കിൽ പതിനാലെന്നും, അല്ലെങ്കിൽ മൂവായിരത്തി പതിനഞ്ചെന്നും, അല്ലെങ്കിൽ മൂവായിരത്തി അറുപത്തിമൂന്നെന്നും—ഇവയെല്ലാം വ്യത്യസ്ത അഭിപ്രായങ്ങളാണ്.",
+    english:
+      "Or fourteen, or three hundred and fifteen, or three hundred and sixty-three, according to different opinions.",
     start: 628,
-    end: 634,
-  },
-
-  {
-    id: 83,
-    isBox: false,
-    text: `أَوْ خَمْسَةَ عَشَرَ وَثَلاثُمِائَةٍ`,
-    malayalam: "അല്ലെങ്കിൽ മൂവായിരത്തി പതിനഞ്ച് എന്നുമുണ്ട്.",
-    english: "Or fifteen and three hundred.",
-    start: 634,
-    end: 644,
-  },
-
-  {
-    id: 84,
-    isBox: false,
-    text: `أَوْ ثَلاثُمِائَةٍ وَثَلَاثَةٌ وَسِتُّونَ`,
-    malayalam: "അല്ലെങ്കിൽ മൂവായിരത്തി അറുപത്തിമൂന്ന് എന്നുമുണ്ട്.",
-    english: "Or three hundred and sixty-three.",
-    start: 644,
-    end: 656,
-  },
-
-  {
-    id: 85,
-    isBox: false,
-    text: `عَلَى أَقْوَالٍ`,
-    malayalam: "ഇവയെല്ലാം വ്യത്യസ്ത അഭിപ്രായങ്ങളായി പറയുന്നു.",
-    english: "According to different opinions.",
-    start: 656,
     end: 660,
   },
 
   {
-    id: 86,
+    id: 45,
     isBox: false,
-    text: `وَأَمَّا مَنَاقِبُهُمْ فَكَثِيرَةٌ`,
-    malayalam: "അവരുടെ മഹത്വങ്ങളും ശ്രേഷ്ഠതകളും അനവധി ആണ്.",
-    english: "As for their virtues, they are many.",
+    text:
+      "وَأَمَّا مَنَاقِبُهُمْ فَكَثِيرَةٌ\n" +
+      "وَلْنُورِدْ نُبْذَةً مِنْهَا",
+    malayalam:
+      "അവരുടെ മഹത്വങ്ങളും ശ്രേഷ്ഠതകളും അനവധി ആണ്; അവയിൽ നിന്ന് ചിലത് മാത്രമേ ഇവിടെ ഉദ്ധരിക്കൂ.",
+    english:
+      "As for their virtues, they are many; let us mention a brief portion of them.",
     start: 660,
-    end: 668,
-  },
-
-  {
-    id: 87,
-    isBox: false,
-    text: `وَلْنُورِدْ نُبْذَةً مِنْهَا`,
-    malayalam: "അവയിൽ നിന്നു ചിലത് മാത്രമേ ഇവിടെ ഉദ്ധരിക്കൂ.",
-    english: "Let us mention a brief portion of them.",
-    start: 668,
     end: 674,
   },
 
   {
-    id: 88,
+    id: 46,
     isBox: false,
-    text: `رَجَاءَ أَنْ يُنَزِّلَ اللَّهُ عَلَيْنَا مِنْ بَرَكَاتِهِمْ`,
-    malayalam: "അവരുടെ ബർക്കത്തുകൾ അല്ലാഹു നമ്മിലേക്കും ഇറക്കുമെന്ന പ്രതീക്ഷയിൽ.",
-    english: "Hoping that Allah may send down upon us from their blessings.",
+    text:
+      "رَجَاءَ أَنْ يُنَزِّلَ اللَّهُ عَلَيْنَا مِنْ بَرَكَاتِهِمْ\n" +
+      "وَأَنْ يَصُبَّ عَلَيْنَا يَنَابِيعَ نَفَحَاتِهِمْ",
+    malayalam:
+      "അവരുടെ ബർക്കത്തുകൾ അല്ലാഹു നമ്മിലേക്കും ഇറക്കുമെന്നും, അവരുടെ ആത്മീയ നഫഹാത്തുകളുടെ ഉറവകൾ നമ്മിൽ ഒഴുക്കുമെന്നും പ്രതീക്ഷിച്ച്.",
+    english:
+      "Hoping that Allah may send down upon us from their blessings and pour upon us the springs of their spiritual breezes.",
     start: 674,
-    end: 686,
-  },
-
-  {
-    id: 89,
-    isBox: false,
-    text: `وَأَنْ يَصُبَّ عَلَيْنَا يَنَابِيعَ نَفَحَاتِهِمْ`,
-    malayalam: "അവരുടെ ആത്മീയ നഫഹാത്തുകളുടെ ഉറവകൾ നമ്മിൽ ഒഴുക്കുന്നതിനായി.",
-    english: "And that He may pour upon us the springs of their spiritual breezes.",
-    start: 686,
     end: 698,
   },
 
   {
-    id: 90,
+    id: 47,
     isBox: false,
-    text: `فَمِنْهَا مَا رَوَى بَعْضُهُمْ أَنَّهُ خَرَجَ يُرِيدُ`,
-    malayalam: "അവയിൽ ചിലർ روایت ചെയ്ത ഒരു സംഭവമിതാണ്: ഒരാൾ യാത്രയായി പുറപ്പെട്ടു…",
-    english: "Among them is what some narrated: that a man set out intending to go…",
+    text:
+      "فَمِنْهَا مَا رَوَى بَعْضُهُمْ أَنَّهُ خَرَجَ يُرِيدُ\n" +
+      "الْحَجَّ إِلَى بَيْتِ اللَّهِ الْحَرَامِ",
+    malayalam:
+      "അവയിൽ ചിലർ روایت ചെയ്ത ഒരു സംഭവമിതാണ്: ഒരാൾ അല്ലാഹുവിന്റെ വിശുദ്ധ ഭവനത്തിലേക്കുള്ള ഹജ്ജ് ഉദ്ദേശിച്ച് പുറപ്പെട്ടു.",
+    english:
+      "Among them is what some narrated: that a man set out intending the pilgrimage to the Sacred House of Allah.",
     start: 698,
     end: 708,
   },
-    {
-    id: 91,
+
+  {
+    id: 48,
     isBox: false,
-    text: `الْحَجَّ إِلَى بَيْتِ اللَّهِ الْحَرَامِ
-فَكَتَبَ أَسْمَاءَ أَهْلِ بَدْرٍ فِي قِرْطَاسٍ`,
+    text:
+      "فَكَتَبَ أَسْمَاءَ أَهْلِ بَدْرٍ فِي قِرْطَاسٍ\n" +
+      "وَجَعَلَهُ فِي أُسْكُفَّةِ الْبَابِ",
     malayalam:
-      "അല്ലാഹുവിന്റെ വിശുദ്ധ ഭവനത്തിലേക്കുള്ള ഹജ്ജ് ഉദ്ദേശിച്ച് പുറപ്പെട്ട ഒരാൾ, ബദ്ര്‍ അഹ്‌ലുകളുടെ പേരുകൾ ഒരു കാഗിതത്തിൽ എഴുതി.",
+      "അവൻ ബദ്ര്‍ അഹ്‌ലുകളുടെ പേരുകൾ ഒരു കാഗിതത്തിൽ എഴുതി വാതിലിന്റെ മുകളിൽ വെച്ചു.",
     english:
-      "He set out intending the pilgrimage to the Sacred House of Allah and wrote the names of the people of Badr on a sheet.",
+      "He wrote the names of the people of Badr on a sheet and placed it at the doorway.",
     start: 708,
     end: 728,
   },
 
   {
-    id: 92,
+    id: 49,
     isBox: false,
-    text: `وَجَعَلَهُ فِي أُسْكُفَّةِ الْبَابِ
-فَجَاءَتِ اللُّصُوصُ إِلَى بَيْتِهِ`,
+    text:
+      "فَجَاءَتِ اللُّصُوصُ إِلَى بَيْتِهِ\n" +
+      "لِيَأْخُذُوا مَا فِيهِ",
     malayalam:
-      "അത് വാതിലിന്റെ മുകളിൽ വെച്ചു; തുടർന്ന് കള്ളന്മാർ അവന്റെ വീട്ടിലേക്ക് എത്തി.",
+      "തുടർന്ന് കള്ളന്മാർ വീട്ടിലുണ്ടായിരുന്നതു കവർന്നെടുക്കാൻ അവന്റെ വീട്ടിലേക്ക് എത്തി.",
     english:
-      "He placed it at the doorway, and thieves came to his house.",
+      "Then thieves came to his house to take what was inside.",
     start: 728,
     end: 748,
   },
 
   {
-    id: 93,
+    id: 50,
     isBox: false,
-    text: `لِيَأْخُذُوا مَا فِيهِ
-فَلَمَّا صَعِدُوا إِلَى السَّطْحِ سَمِعُوا`,
+    text:
+      "فَلَمَّا صَعِدُوا إِلَى السَّطْحِ سَمِعُوا\n" +
+      "حَدِيثًا وَقَعْقَعَةَ السِّلَاحِ",
     malayalam:
-      "വീട്ടിലുണ്ടായിരുന്നതു കവർന്നെടുക്കാൻ; അവർ മേൽക്കൂരയിൽ കയറിയപ്പോൾ അവർ കേട്ടത്…",
+      "അവർ മേൽക്കൂരയിൽ കയറിയപ്പോൾ സംഭാഷണങ്ങളും ആയുധങ്ങളുടെ മുഴക്കവും കേട്ടു.",
     english:
-      "To take what was inside; when they climbed to the roof, they heard…",
+      "When they climbed to the roof, they heard voices and the clashing of weapons.",
     start: 748,
     end: 768,
   },
 
   {
-    id: 94,
+    id: 51,
     isBox: false,
-    text: `حَدِيثًا وَقَعْقَعَةَ السِّلَاحِ
-فَرَجَعُوا وَأَتَوُا اللَّيْلَةَ الثَّانِيَةَ`,
+    text:
+      "فَرَجَعُوا وَأَتَوُا اللَّيْلَةَ الثَّانِيَةَ\n" +
+      "وَالثَّالِثَةَ فَسَمِعُوا مِثْلَ ذَلِكَ",
     malayalam:
-      "സംഭാഷണങ്ങളും ആയുധങ്ങളുടെ മുഴക്കവും; അതിനാൽ അവർ മടങ്ങിപ്പോയി, പിന്നെ രണ്ടാമത്തെ രാത്രിയിൽ വീണ്ടും വന്നു.",
+      "അവർ മടങ്ങിപ്പോയി; രണ്ടാമത്തെയും മൂന്നാമത്തെയും രാത്രിയിൽ വീണ്ടും വന്നപ്പോൾ അതേ കാര്യങ്ങൾ കേട്ടു.",
     english:
-      "Voices and the clashing of weapons; so they returned and came again the second night.",
+      "They returned, and on the second and third nights they heard the same.",
     start: 768,
-    end: 790,
-  },
-
-  {
-    id: 95,
-    isBox: false,
-    text: `وَالثَّالِثَةَ فَسَمِعُوا مِثْلَ ذَلِكَ
-فَتَعَجَّبُوا وَانْكَفُّوا`,
-    malayalam:
-      "മൂന്നാം രാത്രിയിലും അതേ കാര്യങ്ങൾ കേട്ടപ്പോൾ അവർ അത്ഭുതപ്പെട്ടു പിന്മാറി.",
-    english:
-      "And on the third night they heard the same, so they were astonished and withdrew.",
-    start: 790,
     end: 812,
   },
 
   {
-    id: 96,
+    id: 52,
     isBox: false,
-    text: `حَتَّى جَاءَ الرَّجُلُ مِنَ الْحَجِّ
-فَجَاءَ رَئِيسُ اللُّصُوصِ وَقَالَ لَهُ`,
+    text:
+      "فَتَعَجَّبُوا وَانْكَفُّوا\n" +
+      "حَتَّى جَاءَ الرَّجُلُ مِنَ الْحَجِّ",
     malayalam:
-      "ആ മനുഷ്യൻ ഹജ്ജിൽ നിന്ന് മടങ്ങിവരുന്നതുവരെ; തുടർന്ന് കള്ളന്മാരുടെ തലവൻ അവനടുത്ത് വന്ന് പറഞ്ഞു.",
+      "അവർ അത്ഭുതപ്പെട്ടു പിന്മാറി; ആ മനുഷ്യൻ ഹജ്ജിൽ നിന്ന് മടങ്ങിവരുന്നതുവരെ.",
     english:
-      "Until the man returned from the pilgrimage; then the leader of the thieves came to him and said.",
+      "They were astonished and withdrew, until the man returned from the pilgrimage.",
     start: 812,
     end: 835,
   },
 
   {
-    id: 97,
+    id: 53,
     isBox: false,
-    text: `سَأَلْتُكَ بِاللَّهِ أَنْ تُخْبِرَنِي
-مَا صَنَعْتَ فِي بَيْتِكَ مِنَ التَّحَفُّظَاتِ`,
+    text:
+      "فَجَاءَ رَئِيسُ اللُّصُوصِ وَقَالَ لَهُ\n" +
+      "سَأَلْتُكَ بِاللَّهِ أَنْ تُخْبِرَنِي",
     malayalam:
-      "‘അല്ലാഹുവിനെ സാക്ഷിയായി ചോദിക്കുന്നു; നീ വീട്ടിൽ എന്താണ് സംരക്ഷണമായി ചെയ്തതെന്ന് എന്നോട് പറയൂ.’",
+      "തുടർന്ന് കള്ളന്മാരുടെ തലവൻ അവനടുത്ത് വന്ന് പറഞ്ഞു: അല്ലാഹുവിനെ സാക്ഷിയായി ചോദിക്കുന്നു; എന്നോട് പറയൂ…",
     english:
-      "I ask you by Allah to tell me what precautions you placed in your house.",
+      "Then the leader of the thieves came to him and said: I ask you by Allah to tell me…",
     start: 835,
     end: 860,
   },
 
   {
-    id: 98,
+    id: 54,
     isBox: false,
-    text: `قَالَ مَا صَنَعْتُ فِي بَيْتِي شَيْئًا
-غَيْرَ أَنِّي كَتَبْتُ أَسْمَاءَ أَهْلِ بَدْرٍ`,
+    text:
+      "مَا صَنَعْتَ فِي بَيْتِكَ مِنَ التَّحَفُّظَاتِ\n" +
+      "قَالَ مَا صَنَعْتُ فِي بَيْتِي شَيْئًا",
     malayalam:
-      "അവൻ പറഞ്ഞു: ‘ഞാൻ വീട്ടിൽ ഒന്നും ചെയ്തിട്ടില്ല; ബദ്ര്‍ അഹ്‌ലുകളുടെ പേരുകൾ എഴുതി എന്നതൊഴിച്ചാൽ.’",
+      "‘നീ വീട്ടിൽ എന്താണ് സംരക്ഷണമായി ചെയ്തതെന്ന്?’ അവൻ പറഞ്ഞു: ‘ഞാൻ ഒന്നും ചെയ്തിട്ടില്ല.’",
     english:
-      "He said: I did nothing in my house except that I wrote the names of the people of Badr.",
+      "What precautions did you place in your house? He said: I did nothing in my house.",
     start: 860,
     end: 885,
   },
 
   {
-    id: 99,
+    id: 55,
     isBox: false,
-    text: `وَجَعَلْتُهَا فِي دَارِي
-فَقَالَ اللَّصُّ كَفَانِي ذَلِكَ`,
+    text:
+      "غَيْرَ أَنِّي كَتَبْتُ أَسْمَاءَ أَهْلِ بَدْرٍ\n" +
+      "وَجَعَلْتُهَا فِي دَارِي",
     malayalam:
-      "അവയെ വീട്ടിൽ വെച്ചു; അതിനാൽ കള്ളൻ പറഞ്ഞു: ‘അതെനിക്ക് മതി.’",
+      "‘ബദ്ര്‍ അഹ്‌ലുകളുടെ പേരുകൾ എഴുതി വീട്ടിൽ വെച്ചതൊഴിച്ചാൽ.’",
     english:
-      "And I placed them in my house; so the thief said: That suffices for me.",
+      "Except that I wrote the names of the people of Badr and placed them in my house.",
     start: 885,
     end: 905,
   },
 
   {
-    id: 100,
+    id: 56,
     isBox: false,
-    text: `وَالْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ`,
+    text: "فَقَالَ اللَّصُّ كَفَانِي ذَلِكَ",
+    malayalam:
+      "അപ്പോൾ കള്ളൻ പറഞ്ഞു: ‘അതെനിക്ക് മതി.’",
+    english:
+      "So the thief said: That suffices for me.",
+    start: 905,
+    end: 905,
+  },
+
+  {
+    id: 57,
+    isBox: false,
+    text: "وَالْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
     malayalam:
       "സകല സ്തുതിയും സർവ്വലോകങ്ങളുടെ റബ്ബായ അല്ലാഹുവിനാണ്.",
     english:
