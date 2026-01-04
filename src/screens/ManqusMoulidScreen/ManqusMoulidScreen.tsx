@@ -22,28 +22,25 @@ export default function ManqusMoulidScreen() {
   const [showFontControl, setShowFontControl] =
     useState(false);
 
-const {
-  currentIndex,
-  currentTime,
-  duration,
-  fontSize,
-  isPlaying,
-  playbackRate,
-  showPlayer,
-  currentDuaList,
-  scrollY,
-  title,                    // 🔥 ADD THIS
-  setShowPlayer,
-  setFontSize,
-  playAudio,
-  onSeek,
-  onChangeRate,
-} = useDhikrAudio({ mode: "manqus" });
+  const {
+    currentIndex,
+    currentTime,
+    duration,
+    fontSize,
+    isPlaying,
+    playbackRate,
+    showPlayer,
+    currentDuaList,
+    scrollY,
+    title,
+    setShowPlayer,
+    setFontSize,
+    playAudio,
+    onSeek,
+    onChangeRate,
+  } = useDhikrAudio({ mode: "manqus" });
 
-
-  /* -----------------------------
-     🌀 Header Animation (SAFE)
-  ------------------------------*/
+  /* 🌀 Header Animation */
   const headerAnimatedStyle = {
     transform: [
       {
@@ -68,7 +65,7 @@ const {
         localStyles.screen,
         { backgroundColor: colors.background },
       ]}
-      edges={["top", "left", "right", "bottom"]}   // ✅ FIX
+      edges={["top", "left", "right", "bottom"]}
     >
       <StatusBar
         backgroundColor={isDark ? "#000" : "#fff"}
@@ -76,23 +73,21 @@ const {
       />
 
       {/* 🕌 HEADER */}
-<HeaderSection
-  navigation={navigation}
-  textColor={colors.text}
-  isDark={isDark}
-  toggleTheme={toggleTheme}
-  isPlaying={isPlaying}
-  setShowPlayer={setShowPlayer}
-  playAudio={playAudio}
-  type="manqus"
-  title={title}          // 🔥 MUST
-  languageMode={languageMode}
-  setLanguageMode={setLanguageMode}
-  headerAnimatedStyle={headerAnimatedStyle}
-  onFontPress={() => setShowFontControl(!showFontControl)}
-/>
-
-
+      <HeaderSection
+        textColor={colors.text}
+        isDark={isDark}
+        toggleTheme={toggleTheme}
+        isPlaying={isPlaying}
+        setShowPlayer={setShowPlayer}
+        playAudio={playAudio}
+        type="manqus"
+        title={title}
+        languageMode={languageMode}
+        setLanguageMode={setLanguageMode}
+        headerAnimatedStyle={headerAnimatedStyle}
+        onFontPress={() => setShowFontControl(!showFontControl)}
+        onBack={() => navigation.goBack()}   // ✅ ONLY THIS
+      />
 
       {/* 🔠 FONT CONTROL */}
       {showFontControl && (

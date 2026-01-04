@@ -6,6 +6,7 @@ export const createTables = async () => {
 
   /* ⚠️ DEV ONLY — DROP TABLES */
   await database.executeSql(`DROP TABLE IF EXISTS manqus_moulid;`);
+  await database.executeSql(`DROP TABLE IF EXISTS bader_moulid;`);
   await database.executeSql(`DROP TABLE IF EXISTS dhikr;`);
 
   /* =====================================================
@@ -39,5 +40,20 @@ export const createTables = async () => {
     );
   `);
 
-  console.log("✅ Tables created");
+  /* =====================================================
+     🌙 BADER MOULID (AHL-E-BADR DUA)
+  ===================================================== */
+  await database.executeSql(`
+    CREATE TABLE bader_moulid (
+      id INTEGER PRIMARY KEY,
+      isBox INTEGER,
+      arabic TEXT,
+      malayalam TEXT,
+      english TEXT,
+      start REAL,
+      end REAL
+    );
+  `);
+
+  console.log("✅ Tables created (dhikr + manqus + bader)");
 };

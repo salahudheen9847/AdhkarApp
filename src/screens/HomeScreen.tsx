@@ -32,6 +32,7 @@ export default function HomeScreen() {
   };
 
   /* ---------------- DATA ---------------- */
+
   const duaItems: HomeItem[] = [
     {
       id: "duaMarichavark",
@@ -47,12 +48,19 @@ export default function HomeScreen() {
     },
   ];
 
+  /* 🌙 MOULID COLLECTION (UPDATED) */
   const moulidItems: HomeItem[] = [
     {
       id: "manqusMoulid",
       title: "Manqus Moulid",
       image: require("../assets/manqus.png"),
       gradient: ["#e0f2fe", "#bae6fd"],
+    },
+    {
+      id: "baderMoulid",
+      title: "Bader Moulid",
+      image: require("../assets/bader.png"), // 🔥 ADD IMAGE
+      gradient: ["#ecfeff", "#cffafe"],
     },
   ];
 
@@ -106,7 +114,9 @@ export default function HomeScreen() {
                 style={styles.card}
               >
                 <Image source={item.image} style={styles.icon} />
-                <Text style={[styles.cardText, { color: colors.text }]}>
+                <Text
+                  style={[styles.cardText, { color: colors.text }]}
+                >
                   {item.title}
                 </Text>
               </LinearGradient>
@@ -143,32 +153,46 @@ export default function HomeScreen() {
         />
       </View>
 
-      {/* ✅ SCROLL FIXED */}
-  <ScrollView
-  contentContainerStyle={[
-    styles.scrollContent,
-    styles.scrollContentWithPadding,
-  ]}
-  showsVerticalScrollIndicator={false}
->
-
-        {renderSection("📿 Dua Collection", duaItems, id =>
-          navigation.navigate("Dhikr", { type: id }),
+      {/* 📜 CONTENT */}
+      <ScrollView
+        contentContainerStyle={[
+          styles.scrollContent,
+          styles.scrollContentWithPadding,
+        ]}
+        showsVerticalScrollIndicator={false}
+      >
+        {renderSection(
+          "📿 Dua Collection",
+          duaItems,
+          id => navigation.navigate("Dhikr", { type: id }),
           "dua"
         )}
 
-        {renderSection("🌙 Moulid Collection", moulidItems, () =>
-          navigation.navigate("ManqusMoulid"),
+        {/* 🌙 MOULID NAVIGATION LOGIC */}
+        {renderSection(
+          "🌙 Moulid Collection",
+          moulidItems,
+          id => {
+            if (id === "manqusMoulid") {
+              navigation.navigate("ManqusMoulid");
+            } else if (id === "baderMoulid") {
+              navigation.navigate("BaderMoulid");
+            }
+          },
           "moulid"
         )}
 
-        {renderSection("📖 Ratib Collection", ratibItems, id =>
-          navigation.navigate("Dhikr", { type: id }),
+        {renderSection(
+          "📖 Ratib Collection",
+          ratibItems,
+          id => navigation.navigate("Dhikr", { type: id }),
           "ratib"
         )}
 
-        {renderSection("🕋 Asmaul Husna Collection", asmaulHusnaItems, id =>
-          navigation.navigate("Dhikr", { type: id }),
+        {renderSection(
+          "🕋 Asmaul Husna Collection",
+          asmaulHusnaItems,
+          id => navigation.navigate("Dhikr", { type: id }),
           "asma"
         )}
       </ScrollView>

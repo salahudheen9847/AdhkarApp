@@ -1,13 +1,21 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { styles as baseStyles } from "../../styles/dhikrscreenstyle";
-import { ManqusMoulidItem } from "../../data/ManqusMoulid/manqusMoulid.data";
 
 /* 🌍 Language Mode */
 export type LanguageMode =
   | "arabic"
   | "arabic_malayalam"
   | "arabic_english";
+
+/* 🔹 Generic Dua Item (Manqus + Bader + reuse) */
+export type DuaItem = {
+  id: number;
+  isBox?: boolean;
+  text: string | string[];
+  malayalam?: string | string[];
+  english?: string | string[];
+};
 
 /* 🔧 Normalize helper */
 const normalizeText = (value?: string | string[]) => {
@@ -16,8 +24,8 @@ const normalizeText = (value?: string | string[]) => {
 };
 
 export const renderDuaItem = (
-  item: ManqusMoulidItem,
-  currentIndex: number, // 🔑 audio index (1-based)
+  item: DuaItem,
+  currentIndex: number, // 🔑 audio active id
   fontSize: number,
   languageMode: LanguageMode,
   highlightColor: string,
@@ -25,25 +33,31 @@ export const renderDuaItem = (
   textColor: string
 ) => {
   const isActive = item.id === currentIndex;
-  const isBox = item.isBox === true; // ✅ BOX CHECK
+  const isBox = item.isBox === true; // ✅ SAFE
   const safeFontSize = Math.max(12, fontSize);
 
   let content = "";
 
-  if (languageMode === "arabic") {
-    content = normalizeText(item.text);
-  }
+  switch (languageMode) {
+    case "arabic":
+      content = normalizeText(item.text);
+      break;
 
-  if (languageMode === "arabic_malayalam") {
-    content = item.malayalam
-      ? `${normalizeText(item.text)}\n\n${normalizeText(item.malayalam)}`
-      : normalizeText(item.text);
-  }
+    case "arabic_malayalam":
+      content = item.malayalam
+        ? `${normalizeText(item.text)}\n\n${normalizeText(
+            item.malayalam
+          )}`
+        : normalizeText(item.text);
+      break;
 
-  if (languageMode === "arabic_english") {
-    content = item.english
-      ? `${normalizeText(item.text)}\n\n${normalizeText(item.english)}`
-      : normalizeText(item.text);
+    case "arabic_english":
+      content = item.english
+        ? `${normalizeText(item.text)}\n\n${normalizeText(
+            item.english
+          )}`
+        : normalizeText(item.text);
+      break;
   }
 
   if (!content) return null;
@@ -52,7 +66,7 @@ export const renderDuaItem = (
     <View
       style={[
         localStyles.container,
-        isBox && localStyles.manqusBoxContainer, // 🔥 box only
+        isBox && localStyles.boxContainer,          // 🔥 only when box
         isActive && localStyles.activeContainer,
         isActive && { backgroundColor: highlightColor },
       ]}
@@ -80,7 +94,7 @@ export const renderDuaItem = (
 };
 
 /* ===============================
-   🎨 LOCAL STYLES (ERROR-FREE)
+   🎨 LOCAL STYLES
 ================================ */
 const localStyles = StyleSheet.create({
   container: {
@@ -88,8 +102,8 @@ const localStyles = StyleSheet.create({
     paddingVertical: 15,
   },
 
-  /* 🔥 MANQUS BOX ONLY */
-  manqusBoxContainer: {
+  /* 📦 BOX (Manqus / Bader only) */
+  boxContainer: {
     backgroundColor: "#92962aff",
     borderRadius: 14,
     paddingHorizontal: 12,

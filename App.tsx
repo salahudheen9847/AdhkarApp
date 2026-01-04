@@ -26,6 +26,7 @@ import HomeScreen from "./src/screens/HomeScreen";
 import DhikrScreen from "./src/screens/DhikrScreen/DhikrScreen";
 import TranslationScreen from "./src/screens/TranslationScreen";
 import ManqusMoulidScreen from "./src/screens/ManqusMoulidScreen/ManqusMoulidScreen";
+import BaderMoulidScreen from "./src/screens/BaderMoulidScreen/BaderMoulidScreen";
 
 // 🗄️ SQLite DB
 import {
@@ -33,11 +34,28 @@ import {
   seedDhikr,
   seedManqusMoulid,
 } from "./src/db";
+import { seedBaderMoulid } from "./src/db/seedBaderMoulid";
 
 const Stack = createNativeStackNavigator();
 
 /* ------------------------------
-   🌗 Root Navigator
+   🔢 Version Compare Helper
+--------------------------------*/
+const isNewerVersion = (latest: string, current: string) => {
+  const l = latest.split(".").map(Number);
+  const c = current.split(".").map(Number);
+
+  for (let i = 0; i < Math.max(l.length, c.length); i++) {
+    const lv = l[i] || 0;
+    const cv = c[i] || 0;
+    if (lv > cv) return true;
+    if (lv < cv) return false;
+  }
+  return false;
+};
+
+/* ------------------------------
+   🌗 Root Navigator (ALWAYS MOUNTED)
 --------------------------------*/
 function RootNavigator() {
   const { isDark } = useThemeContext();
@@ -64,6 +82,12 @@ function RootNavigator() {
         />
 
         <Stack.Screen
+          name="BaderMoulid"
+          component={BaderMoulidScreen}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
           name="Translation"
           component={TranslationScreen}
           options={{
@@ -80,26 +104,27 @@ function RootNavigator() {
 }
 
 /* ------------------------------
-   🚀 Main App Component
+   🚀 Main App
 --------------------------------*/
 export default function App() {
   const [loading, setLoading] = useState(true);
 
-  /* 🔔 ONE-TIME UPDATE CHECK */
+  /* 🔔 UPDATE CHECK */
   useEffect(() => {
-    const checkUpdateOnce = async () => {
+    const checkUpdate = async () => {
       try {
-        const currentVersion = DeviceInfo.getVersion(); // e.g. 1.0.5
-
+        const currentVersion = DeviceInfo.getVersion();
         const res = await fetch(
-          "https://raw.githubusercontent.com/salahudheen9847/adhkar-version/main/version.json"
+          "https://raw.githubusercontent.com/salahudheen9847/adhkar-version/main/version.json?ts=" +
+            Date.now()
         );
         const data = await res.json();
+
         const latestVersion = data.latestVersion;
+        const key = `update_shown_${latestVersion}`;
+        const shown = await AsyncStorage.getItem(key);
 
-        const shown = await AsyncStorage.getItem("update_shown");
-
-        if (latestVersion !== currentVersion && !shown) {
+        if (isNewerVersion(latestVersion, currentVersion) && !shown) {
           Alert.alert(
             "Update Available",
             "New version available. Please update from Play Store.",
@@ -107,35 +132,34 @@ export default function App() {
               { text: "Later", style: "cancel" },
               {
                 text: "Update",
-                onPress: () => {
+                onPress: () =>
                   Linking.openURL(
                     "https://play.google.com/store/apps/details?id=salahudheen.adhkar"
-                  );
-                },
+                  ),
               },
             ]
           );
-
-          await AsyncStorage.setItem("update_shown", "yes");
+          await AsyncStorage.setItem(key, "yes");
         }
-      } catch (e) {
-        // silent fail
+      } catch {
+        // silent
       }
     };
 
-    checkUpdateOnce();
+    checkUpdate();
   }, []);
 
-  /* 🗄️ SQLite INIT — RUNS ONLY ONCE */
+  /* 🗄️ SQLite INIT */
   useEffect(() => {
     const initDB = async () => {
       try {
         await createTables();
         await seedDhikr();
         await seedManqusMoulid();
+        await seedBaderMoulid();
         console.log("✅ SQLite DB ready");
-      } catch (error) {
-        console.log("❌ DB init error:", error);
+      } catch (e) {
+        console.log("❌ DB init error:", e);
       } finally {
         setLoading(false);
       }
@@ -147,13 +171,15 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <ThemeProvider>
-        {loading ? (
-          <View style={styles.loaderContainer}>
+        {/* 🚦 Navigator ALWAYS */}
+        <RootNavigator />
+
+        {/* ⏳ Loader OVERLAY */}
+        {loading && (
+          <View style={styles.loaderOverlay}>
             <StatusBar barStyle="dark-content" />
             <ActivityIndicator size="large" color="#22c55e" />
           </View>
-        ) : (
-          <RootNavigator />
         )}
       </ThemeProvider>
     </SafeAreaProvider>
@@ -164,10 +190,15 @@ export default function App() {
    🎨 Styles
 --------------------------------*/
 const styles = StyleSheet.create({
-  loaderContainer: {
-    flex: 1,
+  loaderOverlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "#ffffff",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#ffffff",
+    zIndex: 9999,
   },
 });

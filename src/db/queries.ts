@@ -1,6 +1,8 @@
 import { db } from "./db";
 
-/* 🔹 NORMAL DHIKR */
+/* =====================================================
+   🔹 NORMAL DHIKR
+===================================================== */
 export const getDhikrByType = async (type: string) => {
   const database = await db;
 
@@ -12,11 +14,12 @@ export const getDhikrByType = async (type: string) => {
   return res[0].rows.raw();
 };
 
-/* 🔹 MANQUS MOULID (FINAL – isBox based) */
+/* =====================================================
+   🔹 MANQUS MOULID
+===================================================== */
 export const getManqusMoulid = async () => {
   const database = await db;
 
-  // ❌ text → ✅ arabic
   const res = await database.executeSql(`
     SELECT
       id,
@@ -32,15 +35,44 @@ export const getManqusMoulid = async () => {
 
   const rawRows = res[0].rows.raw();
 
-  // ✅ NORMALIZED DATA FOR UI
   return rawRows.map((r: any) => ({
     id: r.id,
-    isBox: r.isBox === 1,   // INTEGER → BOOLEAN
-
-    text: r.arabic ?? "",  // 🔥 DB arabic → UI text
+    isBox: r.isBox === 1,
+    text: r.arabic ?? "",
     malayalam: r.malayalam ?? "",
     english: r.english ?? "",
+    start: r.start,
+    end: r.end,
+  }));
+};
 
+/* =====================================================
+   🔹 BADER MOULID
+===================================================== */
+export const getBaderMoulid = async () => {
+  const database = await db;
+
+  const res = await database.executeSql(`
+    SELECT
+      id,
+      isBox,
+      arabic,
+      malayalam,
+      english,
+      start,
+      end
+    FROM bader_moulid
+    ORDER BY id ASC
+  `);
+
+  const rawRows = res[0].rows.raw();
+
+  return rawRows.map((r: any) => ({
+    id: r.id,
+    isBox: r.isBox === 1,
+    text: r.arabic ?? "",
+    malayalam: r.malayalam ?? "",
+    english: r.english ?? "",
     start: r.start,
     end: r.end,
   }));

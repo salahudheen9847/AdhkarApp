@@ -1973,7 +1973,7 @@ export const ManqusMoulidData: ManqusMoulidItem[] = [
   malayalam: "🤲 ദുആ",
   english: "🤲 Supplication",
   start: 1196,
-  end: 11,
+  end: 1197,
 },
 {
   id: 124,

@@ -2,7 +2,11 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { Animated, Platform } from "react-native";
 import Sound from "react-native-sound";
 
-import { getDhikrByType, getManqusMoulid } from "../db/queries";
+import {
+  getDhikrByType,
+  getManqusMoulid,
+  getBaderMoulid,   // 🔥 ADD
+} from "../db/queries";
 
 try {
   Sound.setCategory("Playback");
@@ -12,7 +16,7 @@ try {
    🔹 Types
 ---------------------------------*/
 type UseDhikrAudioParams = {
-  mode: "dhikr" | "manqus";
+  mode: "dhikr" | "manqus" | "bader"; // 🔥 ADD
   type?: string;
 };
 
@@ -43,7 +47,7 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
   const [title, setTitle] = useState("");
 
   const soundRef = useRef<Sound | null>(null);
-const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const scrollY = useRef(new Animated.Value(0)).current;
 
   /* --------------------------------
@@ -63,10 +67,14 @@ const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
         rows = await getManqusMoulid();
       }
 
+      if (mode === "bader") {
+        rows = await getBaderMoulid();   // 🔥 ADD
+      }
+
       if (!mounted) return;
 
       const mapped: DuaItem[] = rows
-        .map((r) => {
+        .map(r => {
           if (mode === "dhikr") {
             return {
               id: r.id,
@@ -79,7 +87,7 @@ const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
             };
           }
 
-          if (mode === "manqus") {
+          if (mode === "manqus" || mode === "bader") {
             return {
               id: r.id,
               isBox: r.isBox === 1 || r.isBox === true,
@@ -123,6 +131,11 @@ const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
         setAudioFileName("manqus_moulid.mp3");
         setTitle("📖 മൻഖൂസ് മൗലിദ്");
       }
+
+      if (mode === "bader") {
+        setAudioFileName("bader_moulid.mp3");   // 🔥 ADD AUDIO
+        setTitle("🌙 അഹ്‌ലുൽ ബദർ മൗലിദ്");
+      }
     })();
 
     return () => {
@@ -131,15 +144,15 @@ const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   }, [mode, type]);
 
   /* --------------------------------
-     ⏱️ Highlight logic (SAFE)
+     ⏱️ Highlight logic
   ---------------------------------*/
   const updateTime = useCallback(
     (sound: Sound) => {
-      sound.getCurrentTime((seconds) => {
+      sound.getCurrentTime(seconds => {
         setCurrentTime(seconds);
 
         const active = currentDuaList.find(
-          (d) =>
+          d =>
             typeof d.start === "number" &&
             typeof d.end === "number" &&
             seconds >= d.start &&
@@ -179,7 +192,6 @@ const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const playAudio = useCallback(() => {
     if (!audioFileName) return;
 
-    // pause
     if (soundRef.current && isPlaying) {
       soundRef.current.pause();
       setIsPlaying(false);
@@ -187,18 +199,16 @@ const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
       return;
     }
 
-    // clear old interval (safety)
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
 
-    // first play
     if (!soundRef.current) {
       const sound = new Sound(
         audioFileName,
         Platform.OS === "ios" ? Sound.MAIN_BUNDLE : undefined,
-        (error) => {
+        error => {
           if (error) {
             console.log("❌ AUDIO LOAD ERROR:", error);
             return;
@@ -208,7 +218,6 @@ const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
           setDuration(sound.getDuration());
           sound.setSpeed(playbackRate);
           setIsPlaying(true);
-
           sound.play(cleanupPlayback);
 
           intervalRef.current = setInterval(

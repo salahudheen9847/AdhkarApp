@@ -3,8 +3,19 @@ import { Animated, StyleSheet } from "react-native";
 import { renderDuaItem, LanguageMode } from "./renderDuaItem";
 import { useThemeContext } from "../../context/theme";
 
+/* 🔹 Generic Dua Item */
+type DuaItem = {
+  id: number;
+  isBox?: boolean;
+  text: string | string[];
+  malayalam?: string | string[];
+  english?: string | string[];
+  start?: number;
+  end?: number;
+};
+
 type Props = {
-  currentDuaList: any[];
+  currentDuaList: DuaItem[];
   currentIndex: number;
   fontSize: number;
   languageMode: LanguageMode;
@@ -18,18 +29,18 @@ export const DuaListSection: React.FC<Props> = ({
   languageMode,
   scrollY,
 }) => {
-  /* ✅ HOOK ALWAYS AT TOP */
+  /* ✅ HOOK AT TOP (RULE SAFE) */
   const { colors } = useThemeContext();
 
   const renderItem = useCallback(
-    ({ item }: { item: any }) =>
+    ({ item }: { item: DuaItem }) =>
       renderDuaItem(
         item,
         currentIndex,
         fontSize,
         languageMode,
         colors.highlightBox, // 🔵 active highlight bg
-        colors.accent,       // 🔵 divider line color
+        colors.accent,       // 🔵 divider color
         colors.text          // 📝 text color
       ),
     [
@@ -47,14 +58,15 @@ export const DuaListSection: React.FC<Props> = ({
       style={localStyles.list}
       contentContainerStyle={localStyles.content}
       data={currentDuaList}
-      keyExtractor={(item, index) => `${item.id}-${index}`}
+      keyExtractor={(item) => item.id.toString()}
       renderItem={renderItem}
       extraData={currentIndex}
       onScroll={Animated.event(
         [{ nativeEvent: { contentOffset: { y: scrollY } } }],
-        { useNativeDriver: true }
+        { useNativeDriver: false } // ⚠️ must be false for height/opacity usage
       )}
       scrollEventThrottle={16}
+      showsVerticalScrollIndicator={false}
     />
   );
 };
@@ -64,7 +76,7 @@ const localStyles = StyleSheet.create({
     flex: 1,
   },
   content: {
-    paddingTop: 180,
-    paddingBottom: 140,
+    paddingTop: 180,   // 🔝 header space
+    paddingBottom: 140 // 🔽 player space
   },
 });

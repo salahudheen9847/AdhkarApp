@@ -1,22 +1,24 @@
 import React, { useState } from "react";
-import { StatusBar, View, StyleSheet } from "react-native";
+import {
+  StatusBar,
+  View,
+  StyleSheet,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 import { useThemeContext } from "../../context/theme";
 import { useDhikrAudio } from "../../hooks/useDhikrAudio";
 
-import HeaderSection from "./HeaderSection";
-import { DuaListSection } from "./DuaListSection";
+import { styles } from "../../styles/dhikrscreenstyle";
 import { PlayerControls } from "../../component/PlayerControls";
 import { FontControl } from "../../component/FontControl";
-import { LanguageMode } from "./renderDuaItem";
-import { styles as screenStyles } from "../../styles/dhikrscreenstyle";
+import HeaderSection from "../DhikrScreen/HeaderSection";
+import { DuaListSection } from "../DhikrScreen/DuaListSection";
+import { LanguageMode } from "../DhikrScreen/renderDuaItem";
 
-export default function DhikrScreen() {
+const BaderMoulidScreen: React.FC = () => {
   const navigation = useNavigation<any>();
-  const route = useRoute<any>();
-
   const { isDark, toggleTheme, colors } = useThemeContext();
 
   const [languageMode, setLanguageMode] =
@@ -24,15 +26,7 @@ export default function DhikrScreen() {
   const [showFontControl, setShowFontControl] =
     useState(false);
 
-  /* 🔒 SAFE TYPE */
-  const type:
-    | "duaMarichavark"
-    | "duaQabar"
-    | "haddad"
-    | "asmaulHusna" =
-    route.params?.type ?? "duaMarichavark";
-
-  /* 🎧 AUDIO HOOK */
+  /* 🎧 AUDIO + DATA */
   const {
     currentIndex,
     currentTime,
@@ -49,12 +43,9 @@ export default function DhikrScreen() {
     playAudio,
     onSeek,
     onChangeRate,
-  } = useDhikrAudio({
-    mode: "dhikr",
-    type,
-  });
+  } = useDhikrAudio({ mode: "bader" });
 
-  /* 🌀 Header Animation */
+  /* 🌀 Header animation */
   const headerAnimatedStyle = {
     transform: [
       {
@@ -75,7 +66,7 @@ export default function DhikrScreen() {
   return (
     <SafeAreaView
       style={[
-        screenStyles.container,
+        styles.container,
         localStyles.screen,
         { backgroundColor: colors.background },
       ]}
@@ -88,19 +79,21 @@ export default function DhikrScreen() {
 
       {/* 🕌 HEADER */}
       <HeaderSection
+        onBack={() => navigation.goBack()}   // ✅ FIX
         textColor={colors.text}
         isDark={isDark}
         toggleTheme={toggleTheme}
         isPlaying={isPlaying}
         setShowPlayer={setShowPlayer}
         playAudio={playAudio}
-        type={type}
+        type="bader"                        // ✅ FIX
         title={title}
         languageMode={languageMode}
         setLanguageMode={setLanguageMode}
         headerAnimatedStyle={headerAnimatedStyle}
-        onFontPress={() => setShowFontControl(!showFontControl)}
-        onBack={() => navigation.goBack()}   // ✅ FIXED
+        onFontPress={() =>
+          setShowFontControl(!showFontControl)
+        }
       />
 
       {/* 🔠 FONT CONTROL */}
@@ -142,7 +135,9 @@ export default function DhikrScreen() {
       )}
     </SafeAreaView>
   );
-}
+};
+
+export default BaderMoulidScreen;
 
 /* 🎨 Local Styles */
 const localStyles = StyleSheet.create({

@@ -20,22 +20,26 @@ export type LanguageMode =
   | "arabic_malayalam"
   | "arabic_english";
 
-/* 🔹 Props TYPE */
+/* 🔹 HEADER TYPE */
+export type HeaderType =
+  | "duaMarichavark"
+  | "duaQabar"
+  | "haddad"
+  | "asmaulHusna"
+  | "manqus"
+  | "bader";
+
+/* 🔹 Props */
 export type HeaderSectionProps = {
-  navigation: any;
   textColor: string;
   isDark: boolean;
   toggleTheme: () => void;
+
   isPlaying: boolean;
   setShowPlayer: (val: boolean) => void;
   playAudio: () => void;
-  type:
-    | "duaMarichavark"
-    | "duaQabar"
-    | "haddad"
-    | "asmaulHusna"
-    | "manqus";
 
+  type: HeaderType;
   title: string;
 
   languageMode: LanguageMode;
@@ -45,10 +49,10 @@ export type HeaderSectionProps = {
 
   headerAnimatedStyle: any;
   onFontPress: () => void;
+  onBack: () => void;
 };
 
 const HeaderSection: React.FC<HeaderSectionProps> = ({
-  navigation,
   textColor,
   isDark,
   toggleTheme,
@@ -61,6 +65,7 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
   setLanguageMode,
   headerAnimatedStyle,
   onFontPress,
+  onBack,
 }) => {
   return (
     <Animated.View
@@ -75,9 +80,10 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
       {/* 🔹 ROW 1 */}
       <View style={styles.row1}>
         <View style={styles.leftGroup}>
+          {/* 🔙 BACK */}
           <TouchableOpacity
             style={styles.backButton}
-            onPress={() => navigation.goBack()}
+            onPress={onBack}
           >
             <Icon name="arrow-back" size={22} color={textColor} />
             <Text style={[styles.backText, { color: textColor }]}>
@@ -85,6 +91,7 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
             </Text>
           </TouchableOpacity>
 
+          {/* ▶️ PLAY */}
           <TouchableOpacity
             style={styles.playButtonContainer}
             activeOpacity={0.8}
@@ -108,6 +115,7 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
           </TouchableOpacity>
         </View>
 
+        {/* 🔧 ACTIONS */}
         <View style={styles.rightGroup}>
           <TouchableOpacity onPress={onFontPress}>
             <Icon name="text-fields" size={30} color={textColor} />
@@ -142,7 +150,6 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.langRow}
       >
-        {/* Arabic */}
         <TouchableOpacity
           style={[
             styles.languageBox,
@@ -153,7 +160,6 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
           <Text style={styles.langText}>Arabic</Text>
         </TouchableOpacity>
 
-        {/* Malayalam */}
         <TouchableOpacity
           style={[
             styles.languageBox,
@@ -164,7 +170,6 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
           <Text style={styles.langText}>Malayalam</Text>
         </TouchableOpacity>
 
-        {/* English */}
         <TouchableOpacity
           style={[
             styles.languageBox,
@@ -205,12 +210,8 @@ const styles = StyleSheet.create({
     elevation: 20,
   },
 
-  headerDark: {
-    backgroundColor: "#000000ee",
-  },
-  headerLight: {
-    backgroundColor: "#ffffffee",
-  },
+  headerDark: { backgroundColor: "#000000ee" },
+  headerLight: { backgroundColor: "#ffffffee" },
 
   row1: {
     flexDirection: "row",
@@ -236,15 +237,14 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     borderRadius: 10,
   },
-  backText: {
-    marginLeft: 6,
-    fontSize: 16,
-  },
+  backText: { marginLeft: 6, fontSize: 16 },
 
+  /* ✅ FIX ADDED */
   playButtonContainer: {
     justifyContent: "center",
     alignItems: "center",
   },
+
   playButtonInner: {
     width: 58,
     height: 58,
@@ -255,21 +255,10 @@ const styles = StyleSheet.create({
   playingBg: { backgroundColor: "#16a34a20" },
   pausedBg: { backgroundColor: "#27d66720" },
 
-  titleWrapper: {
-    marginTop: 6,
-    alignItems: "center",
-  },
-  titleText: {
-    fontSize: 18,
-    fontWeight: "600",
-    textAlign: "center",
-  },
+  titleWrapper: { marginTop: 6, alignItems: "center" },
+  titleText: { fontSize: 18, fontWeight: "600" },
 
-  /* 🌐 Language selector */
-  langRow: {
-    gap: 20,
-    paddingVertical: 5,
-  },
+  langRow: { gap: 20, paddingVertical: 5 },
   languageBox: {
     minWidth: 110,
     paddingVertical: 8,
@@ -278,13 +267,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#1f2937",
     alignItems: "center",
   },
-  activeBox: {
-    borderWidth: 1,
-    borderColor: "#22c55e",
-  },
-  langText: {
-    fontSize: 18,
-    color: "#ffffff",
-    fontWeight: "500",
-  },
+  activeBox: { borderWidth: 1, borderColor: "#22c55e" },
+  langText: { fontSize: 18, color: "#fff", fontWeight: "500" },
 });
