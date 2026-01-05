@@ -23,7 +23,7 @@ import { ThemeProvider, useThemeContext } from "./src/context/theme";
 import { LanguageProvider } from "./src/context/language";
 
 /* 📱 SCREENS */
-import HomeScreen from "./src/screens/HomeScreen";
+import HomeScreen from "./src/screens/HomeScreen/HomeScreen";
 import DhikrScreen from "./src/screens/DhikrScreen/DhikrScreen";
 import TranslationScreen from "./src/screens/TranslationScreen";
 import ManqusMoulidScreen from "./src/screens/ManqusMoulidScreen/ManqusMoulidScreen";

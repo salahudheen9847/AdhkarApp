@@ -104,5 +104,35 @@ export const homeStyles = StyleSheet.create({
   scrollContentWithPadding: {
   paddingBottom: 40,
 },
+languageSwitch: {
+    flexDirection: "row",
+    width: "100%",
+    marginBottom: 12,
+    backgroundColor: "#e5e7eb",
+    borderRadius: 14,
+    padding: 4,
+    gap: 6,
+  },
+  langButton: {
+    flex: 1,
+    paddingVertical: 4,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  langActive: {
+    backgroundColor: "#1e293b",
+  },
+  langText: {
+    fontSize: 15,
+    fontWeight: "600",
+    color: "#1e293b",
+  },
+  langTextActive: {
+    color: "#ffffff",
+  },
+  searchInputArabic: {
+    textAlign: "right",
+  },
 
 });
