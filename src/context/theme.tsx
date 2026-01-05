@@ -62,7 +62,7 @@ export const ThemeProvider = ({
 }: {
   children: ReactNode;
 }) => {
-  const [isDark, setIsDark] = useState(true); // default: dark mode
+const [isDark, setIsDark] = useState(false); // default: light mode
 
   const toggleTheme = () => setIsDark(prev => !prev);
 

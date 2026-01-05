@@ -18,17 +18,18 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import DeviceInfo from "react-native-device-info";
 
-// 🧩 Theme Context
+/* 🧩 CONTEXTS */
 import { ThemeProvider, useThemeContext } from "./src/context/theme";
+import { LanguageProvider } from "./src/context/language";
 
-// 📱 Screens
+/* 📱 SCREENS */
 import HomeScreen from "./src/screens/HomeScreen";
 import DhikrScreen from "./src/screens/DhikrScreen/DhikrScreen";
 import TranslationScreen from "./src/screens/TranslationScreen";
 import ManqusMoulidScreen from "./src/screens/ManqusMoulidScreen/ManqusMoulidScreen";
 import BaderMoulidScreen from "./src/screens/BaderMoulidScreen/BaderMoulidScreen";
 
-// 🗄️ SQLite DB
+/* 🗄️ DATABASE */
 import {
   createTables,
   seedDhikr,
@@ -55,7 +56,7 @@ const isNewerVersion = (latest: string, current: string) => {
 };
 
 /* ------------------------------
-   🌗 Root Navigator
+   🌗 ROOT NAVIGATOR
 --------------------------------*/
 function RootNavigator() {
   const { isDark } = useThemeContext();
@@ -104,12 +105,12 @@ function RootNavigator() {
 }
 
 /* ------------------------------
-   🚀 Main App
+   🚀 MAIN APP
 --------------------------------*/
 export default function App() {
   const [loading, setLoading] = useState(true);
 
-  /* 🔔 UPDATE CHECK (OPTIONAL – MAX 3 TIMES) */
+  /* 🔔 UPDATE CHECK (MAX 3 TIMES PER VERSION) */
   useEffect(() => {
     const checkUpdate = async () => {
       try {
@@ -122,7 +123,6 @@ export default function App() {
         const data = await res.json();
 
         const latestVersion = data.latestVersion;
-
         const key = `update_count_${latestVersion}`;
         const countStr = await AsyncStorage.getItem(key);
         const count = countStr ? parseInt(countStr, 10) : 0;
@@ -159,7 +159,7 @@ export default function App() {
     checkUpdate();
   }, []);
 
-  /* 🗄️ SQLite INIT */
+  /* 🗄️ SQLITE INIT */
   useEffect(() => {
     const initDB = async () => {
       try {
@@ -180,24 +180,28 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <ThemeProvider>
-        {/* 🚦 Navigator */}
-        <RootNavigator />
+      <LanguageProvider>
+        <ThemeProvider>
+          <RootNavigator />
 
-        {/* ⏳ Loader */}
-        {loading && (
-          <View style={styles.loaderOverlay}>
-            <StatusBar barStyle="dark-content" />
-            <ActivityIndicator size="large" color="#22c55e" />
-          </View>
-        )}
-      </ThemeProvider>
+          {/* ⏳ LOADING OVERLAY */}
+          {loading && (
+            <View style={styles.loaderOverlay}>
+              <StatusBar barStyle="dark-content" />
+              <ActivityIndicator
+                size="large"
+                color="#22c55e"
+              />
+            </View>
+          )}
+        </ThemeProvider>
+      </LanguageProvider>
     </SafeAreaProvider>
   );
 }
 
 /* ------------------------------
-   🎨 Styles
+   🎨 STYLES
 --------------------------------*/
 const styles = StyleSheet.create({
   loaderOverlay: {

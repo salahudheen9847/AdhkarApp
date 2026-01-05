@@ -4,12 +4,12 @@ import {
   Text,
   TouchableOpacity,
   Animated,
-  StyleSheet,
-  StatusBar,
-  Platform,
   ScrollView,
+  Share,
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
+
+import { headerStyles as styles } from "../../styles/headerStyle";
 
 import { YoutubeButton } from "../../component/YoutubeButton";
 import { WhatsappButton } from "../../component/WhatsappButton";
@@ -67,6 +67,23 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
   onFontPress,
   onBack,
 }) => {
+  /* 🔙 Back button color */
+  const backColor = isDark ? textColor : "#ffffff";
+
+  /* 📤 SHARE APP LINK */
+  const onShareApp = async () => {
+    try {
+      await Share.share({
+        message:
+          "Adhkar App 📿\n\n" +
+          "Download from Play Store:\n" +
+          "https://play.google.com/store/apps/details?id=salahudheen.adhkar",
+      });
+    } catch (e) {
+      console.log("Share error", e);
+    }
+  };
+
   return (
     <Animated.View
       style={[
@@ -85,8 +102,17 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
             style={styles.backButton}
             onPress={onBack}
           >
-            <Icon name="arrow-back" size={22} color={textColor} />
-            <Text style={[styles.backText, { color: textColor }]}>
+            <Icon
+              name="arrow-back"
+              size={22}
+              color={backColor}
+            />
+            <Text
+              style={[
+                styles.backText,
+                { color: backColor },
+              ]}
+            >
               Back
             </Text>
           </TouchableOpacity>
@@ -103,13 +129,19 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
             <View
               style={[
                 styles.playButtonInner,
-                isPlaying ? styles.playingBg : styles.pausedBg,
+                isPlaying
+                  ? styles.playingBg
+                  : styles.pausedBg,
               ]}
             >
               <Icon
-                name={isPlaying ? "pause" : "play-arrow"}
+                name={
+                  isPlaying ? "pause" : "play-arrow"
+                }
                 size={46}
-                color={isPlaying ? "#16a34a" : "#22c55e"}
+                color={
+                  isPlaying ? "#16a34a" : "#22c55e"
+                }
               />
             </View>
           </TouchableOpacity>
@@ -117,18 +149,37 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
 
         {/* 🔧 ACTIONS */}
         <View style={styles.rightGroup}>
+          {/* 🔤 FONT */}
           <TouchableOpacity onPress={onFontPress}>
-            <Icon name="text-fields" size={30} color={textColor} />
+            <Icon
+              name="text-fields"
+              size={30}
+              color={textColor}
+            />
           </TouchableOpacity>
 
           <YoutubeButton type={type} />
           <WhatsappButton />
 
+          {/* 🌗 THEME TOGGLE */}
           <TouchableOpacity onPress={toggleTheme}>
             <Icon
-              name={isDark ? "wb-sunny" : "dark-mode"}
+              name={
+                isDark ? "wb-sunny" : "dark-mode"
+              }
               size={30}
-              color={isDark ? "#ffcc00" : textColor}
+              color={
+                isDark ? "#ffcc00" : textColor
+              }
+            />
+          </TouchableOpacity>
+
+          {/* 📤 SHARE APP (LAST) */}
+          <TouchableOpacity onPress={onShareApp}>
+            <Icon
+              name="share"
+              size={28}
+              color={textColor}
             />
           </TouchableOpacity>
         </View>
@@ -137,7 +188,10 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
       {/* 🏷️ TITLE */}
       <View style={styles.titleWrapper}>
         <Text
-          style={[styles.titleText, { color: textColor }]}
+          style={[
+            styles.titleText,
+            { color: textColor },
+          ]}
           numberOfLines={1}
         >
           {title}
@@ -153,31 +207,50 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
         <TouchableOpacity
           style={[
             styles.languageBox,
-            languageMode === "arabic" && styles.activeBox,
+            languageMode === "arabic" &&
+              styles.activeBox,
           ]}
-          onPress={() => setLanguageMode("arabic")}
+          onPress={() =>
+            setLanguageMode("arabic")
+          }
         >
-          <Text style={styles.langText}>Arabic</Text>
+          <Text style={styles.langText}>
+            Arabic
+          </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={[
             styles.languageBox,
-            languageMode === "arabic_malayalam" && styles.activeBox,
+            languageMode ===
+              "arabic_malayalam" &&
+              styles.activeBox,
           ]}
-          onPress={() => setLanguageMode("arabic_malayalam")}
+          onPress={() =>
+            setLanguageMode(
+              "arabic_malayalam"
+            )
+          }
         >
-          <Text style={styles.langText}>Malayalam</Text>
+          <Text style={styles.langText}>
+            Malayalam
+          </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={[
             styles.languageBox,
-            languageMode === "arabic_english" && styles.activeBox,
+            languageMode ===
+              "arabic_english" &&
+              styles.activeBox,
           ]}
-          onPress={() => setLanguageMode("arabic_english")}
+          onPress={() =>
+            setLanguageMode("arabic_english")
+          }
         >
-          <Text style={styles.langText}>English</Text>
+          <Text style={styles.langText}>
+            English
+          </Text>
         </TouchableOpacity>
       </ScrollView>
     </Animated.View>
@@ -185,88 +258,3 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
 };
 
 export default HeaderSection;
-
-/* 🎨 Styles */
-const styles = StyleSheet.create({
-  headerBase: {
-    borderBottomWidth: 1,
-    borderBottomColor: "#333",
-    paddingHorizontal: 10,
-    paddingTop:
-      Platform.OS === "android"
-        ? (StatusBar.currentHeight ?? 25) + 10
-        : 45,
-  },
-  headerFixedPadding: {
-    paddingVertical: 8,
-  },
-  headerPosition: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    height: 190,
-    zIndex: 50,
-    elevation: 20,
-  },
-
-  headerDark: { backgroundColor: "#000000ee" },
-  headerLight: { backgroundColor: "#ffffffee" },
-
-  row1: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  leftGroup: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 14,
-  },
-  rightGroup: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 14,
-  },
-
-  backButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#374151",
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 10,
-  },
-  backText: { marginLeft: 6, fontSize: 16 },
-
-  /* ✅ FIX ADDED */
-  playButtonContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  playButtonInner: {
-    width: 58,
-    height: 58,
-    borderRadius: 40,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  playingBg: { backgroundColor: "#16a34a20" },
-  pausedBg: { backgroundColor: "#27d66720" },
-
-  titleWrapper: { marginTop: 6, alignItems: "center" },
-  titleText: { fontSize: 18, fontWeight: "600" },
-
-  langRow: { gap: 20, paddingVertical: 5 },
-  languageBox: {
-    minWidth: 110,
-    paddingVertical: 8,
-    paddingHorizontal: 7,
-    borderRadius: 5,
-    backgroundColor: "#1f2937",
-    alignItems: "center",
-  },
-  activeBox: { borderWidth: 1, borderColor: "#22c55e" },
-  langText: { fontSize: 18, color: "#fff", fontWeight: "500" },
-});
