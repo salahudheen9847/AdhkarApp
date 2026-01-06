@@ -9,6 +9,7 @@ import { duaQabarData } from "../data/duaQabar/duaQabarData";
 import { haddadData } from "../data/haddad/haddadData";
 import { nariyathSwalath } from "../data/swalath/nariyathSwalath";
 import { salawatAlFatih } from "../data/swalath/salawatAlFatih"; // ✅ ADD
+import { thajuSwalath } from "../data/swalath/thajuSwalath";
 
 /* 🔧 helper */
 const normalize = (v?: string | string[]) =>
@@ -62,6 +63,11 @@ export const seedDhikr = async () => {
         // 🌸 NARIYATH SWALATH
         nariyathSwalath.forEach(i =>
           insertDhikr(tx, "nariyathSwalath", i)
+        );
+
+        // 🤍 THAJU SWALATH
+        thajuSwalath.forEach(i =>
+          insertDhikr(tx, "thajuSwalath", i)
         );
 
         // 🌟 SALAWAT AL-FATIH

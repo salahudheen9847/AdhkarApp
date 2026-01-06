@@ -134,6 +134,12 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
             setTitle("🤍 നിര്യത്ത് സ്വലാത്ത്");
             break;
 
+          /* 🤍 THAJU SWALATH (no audio asset yet) */
+          case "thajuSwalath":
+            setAudioFileName("");
+            setTitle("🤍 താജു സ്വലാത്ത്");
+            break;
+
           /* 🌟 SALAWAT AL-FATIH */
           case "salawatAlFatih":
             setAudioFileName("salawat_al_fatih.mp3");

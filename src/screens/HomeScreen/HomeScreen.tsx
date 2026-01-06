@@ -105,6 +105,11 @@ export default function HomeScreen() {
       gradient: ["#f3e8ff", "#d8b4fe"], // Soft purple
     },
     {
+      id: "thajuSwalath",
+      image: require("../../assets/adhkar_icon.png"),
+      gradient: ["#e0f2fe", "#7dd3fc"], // Light sky blue
+    },
+    {
       id: "salawatAlFatih",
       image: require("../../assets/nariyathSwalath_icon.png"), // Using same icon for now
       gradient: ["#fce7f3", "#fbcfe8"], // Soft pink-rose

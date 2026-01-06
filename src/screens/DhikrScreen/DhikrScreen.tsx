@@ -31,7 +31,8 @@ export default function DhikrScreen() {
     | "haddad"
     | "asmaulHusna"
     | "nariyathSwalath"
-    | "salawatAlFatih" =
+    | "salawatAlFatih"
+    | "thajuSwalath" =
     route.params?.type ?? "duaMarichavark";
 
   /* 🎧 AUDIO HOOK */

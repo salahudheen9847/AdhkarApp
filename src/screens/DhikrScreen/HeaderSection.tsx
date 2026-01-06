@@ -31,7 +31,8 @@ export type HeaderType =
   | "manqus"
   | "bader"
   | "nariyathSwalath"
-  | "salawatAlFatih";
+  | "salawatAlFatih"
+  | "thajuSwalath";
 
 /* 🔹 Props */
 export type HeaderSectionProps = {
