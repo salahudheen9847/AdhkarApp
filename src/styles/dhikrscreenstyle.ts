@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
   /* 🌿 Screen */
   container: {
     flex: 1,
-    backgroundColor: "#111827",
+    backgroundColor: "#0f172a", // Softer dark blue-gray
   },
 
   fullFlex: {
@@ -15,30 +15,38 @@ export const styles = StyleSheet.create({
   },
 
   flatListContent: {
-    padding: 16,
-    paddingBottom: 120,
+    padding: 20,
+    paddingBottom: 140,
   },
 
   /* 🔹 Each item wrapper */
   textContainer: {
-    marginBottom: 16,
-    padding: 14,
-    borderRadius: 12,
-    backgroundColor: "transparent", // ✅ IMPORTANT
-  },
-
-  /* ✨ Active ayah border (optional) */
-  activeTextContainer: {
+    marginBottom: 20,
+    padding: 18,
+    borderRadius: 16,
+    backgroundColor: "rgba(255, 255, 255, 0.03)", // Subtle glass effect
     borderWidth: 1,
-    borderColor: "#2563eb50",
+    borderColor: "rgba(255, 255, 255, 0.05)",
   },
 
-  /* 🔹 Arabic text (COLOR REMOVED) */
+  /* ✨ Active ayah border */
+  activeTextContainer: {
+    borderWidth: 2,
+    borderColor: "#22c55e40",
+    backgroundColor: "rgba(34, 197, 94, 0.05)",
+    shadowColor: "#22c55e",
+    shadowOpacity: 0.2,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 8,
+    elevation: 4,
+  },
+
+  /* 🔹 Arabic text */
   text: {
     textAlign: "center",
     fontFamily: "ScheherazadeNew-Regular",
     fontSize: 28,
-    lineHeight: 46,
+    lineHeight: 48,
     writingDirection: "rtl",
   },
 
@@ -47,10 +55,11 @@ export const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 22,
-    color: "#f9fafb",
-    fontWeight: "bold",
+    fontSize: 24,
+    color: "#f8fafc",
+    fontWeight: "700",
     textAlign: "center",
+    letterSpacing: -0.5,
   },
 
   bottomControls: {
@@ -67,28 +76,28 @@ export const styles = StyleSheet.create({
      =============================== */
 
   manqusBoxWrapper: {
-    paddingVertical: 18,
-    marginVertical: 18,
-    borderRadius: 14,
+    paddingVertical: 20,
+    marginVertical: 20,
+    borderRadius: 16,
   },
 
   manqusBoxContainer: {
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: "#334155",
-    borderRadius: 12,
-    paddingVertical: 16,
-    paddingHorizontal: 14,
+    borderRadius: 16,
+    paddingVertical: 20,
+    paddingHorizontal: 18,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "transparent", // ✅ IMPORTANT
+    backgroundColor: "rgba(51, 65, 85, 0.1)",
   },
 
-  /* 🔹 Manqus box text (COLOR REMOVED) */
+  /* 🔹 Manqus box text */
   manqusBoxText: {
     fontFamily: "ScheherazadeNew-Regular",
     textAlign: "center",
     fontSize: 26,
-    lineHeight: 40,
+    lineHeight: 42,
     writingDirection: "rtl",
   },
 });
@@ -108,17 +117,22 @@ export const localStyles = StyleSheet.create({
 
   headerTitleContainer: {
     alignItems: "center",
-    marginVertical: 12,
+    marginVertical: 16,
   },
 
   playButton: {
     backgroundColor: "#22c55e",
-    padding: 15,
-    borderRadius: 90,
+    padding: 18,
+    borderRadius: 100,
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "center",
     marginTop: -10,
+    shadowColor: "#22c55e",
+    shadowOpacity: 0.4,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 12,
+    elevation: 8,
   },
 
   playIcon: {
@@ -127,14 +141,20 @@ export const localStyles = StyleSheet.create({
 
   langButton: {
     backgroundColor: "#334155",
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 8,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: 10,
+    shadowColor: "#000",
+    shadowOpacity: 0.2,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+    elevation: 3,
   },
 
   langText: {
     color: "#fff",
     fontSize: 14,
+    fontWeight: "600",
   },
 
   langRow: {
@@ -159,8 +179,8 @@ export const localStyles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: 12,
-    paddingVertical: 10,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
     position: "relative",
     zIndex: 5,
   },
@@ -171,25 +191,26 @@ export const localStyles = StyleSheet.create({
   },
 
   playButtonInner: {
-    width: 42,
-    height: 42,
-    borderRadius: 21,
+    width: 48,
+    height: 48,
+    borderRadius: 24,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#22c55e20",
-    borderWidth: 1,
-    borderColor: "#22c55e50",
+    borderWidth: 2,
+    borderColor: "#22c55e60",
     shadowColor: "#22c55e",
-    shadowOpacity: 0.3,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
-    elevation: 4,
+    shadowOpacity: 0.4,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 8,
+    elevation: 6,
   },
 
   playLabel: {
     color: "#22c55e",
-    fontSize: 12,
-    fontWeight: "600",
-    marginTop: 4,
+    fontSize: 13,
+    fontWeight: "700",
+    marginTop: 6,
+    letterSpacing: 0.5,
   },
 });

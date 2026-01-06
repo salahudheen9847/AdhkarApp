@@ -5,134 +5,183 @@ export const homeStyles = StyleSheet.create({
 
   container: {
     flex: 1,
-    backgroundColor: "#fffaf3",
+    backgroundColor: "#fafaf9", // Premium neutral background
     alignItems: "center",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight || 40 : 20,
   },
 
-  // 🔍 Search Bar Styles
+  // 🔍 Enhanced Search Bar with Premium Design
   searchContainer: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#ffe8b0", // 👀 Slightly darker, visible background
-    borderRadius: 25,
-    paddingHorizontal: 15,
-    paddingVertical: 8,
+    backgroundColor: "#ffffff",
+    borderRadius: 16,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
     width: "90%",
     marginBottom: 20,
-    elevation: 3,
+    marginTop: 8,
+    // Premium shadow
     shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.08,
+    shadowRadius: 12,
+    elevation: 4,
+    borderWidth: 1,
+    borderColor: "#f0f0f0",
   },
 
-  // ✨ Optional lighter variant (used in your code)
   searchContainerLight: {
-    backgroundColor: "#ffefc2",
+    backgroundColor: "#ffffff",
     marginTop: 10,
   },
 
   searchIcon: {
-    marginRight: 8,
+    marginRight: 10,
+    opacity: 0.6,
   },
 
   searchInput: {
     flex: 1,
     fontSize: 16,
-    color: "#78350f",
+    color: "#262626",
+    fontWeight: "400",
   },
 
-  // 📜 Scroll & Section
+  // 📜 Scroll & Section with Better Spacing
   scrollContent: {
     alignItems: "center",
     paddingBottom: 40,
   },
 
   sectionTitle: {
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: "700",
-    color: "#b45309",
-    marginBottom: 12,
+    color: "#171717",
+    marginBottom: 16,
+    marginTop: 24,
     alignSelf: "flex-start",
-    marginLeft: 30,
+    marginLeft: 20,
+    letterSpacing: -0.5,
   },
 
-  // 🟫 Grid
+  // 🟫 Modern Grid with Better Spacing
   innerGrid: {
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
-    gap: 15,
+    gap: 16,
+    paddingHorizontal: 12,
+    marginBottom: 8,
   },
 
-  // 🧿 Cards
+  // 🧿 Premium Cards with Glassmorphism
   card: {
-    width: 140,
-    height: 150,
-    borderRadius: 20,
+    width: 160,
+    height: 170,
+    borderRadius: 24,
     alignItems: "center",
     justifyContent: "center",
-    elevation: 5,
-    backgroundColor: "#fff",
+    // Premium shadow system
     shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    shadowOffset: { width: 0, height: 3 },
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.12,
+    shadowRadius: 16,
+    elevation: 6,
+    backgroundColor: "#ffffff",
+    // Subtle border for depth
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.8)",
+    overflow: "hidden",
   },
 
   icon: {
-    width: 70, // Slightly bigger
-    height: 70,
-    marginBottom: 10,
+    width: 80,
+    height: 80,
+    marginBottom: 12,
     resizeMode: "contain",
   },
 
   cardText: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: "600",
-    color: "#78350f",
+    color: "#262626",
     textAlign: "center",
+    paddingHorizontal: 8,
+    lineHeight: 20,
   },
 
-  // ❌ No result message
+  // ❌ No result message with better styling
   noResultText: {
     fontSize: 16,
-    color: "#9ca3af",
-    marginTop: 30,
+    color: "#a3a3a3",
+    marginTop: 40,
+    fontWeight: "500",
   },
+
   scrollContentWithPadding: {
-  paddingBottom: 40,
-},
-languageSwitch: {
-    flexDirection: "row",
-    width: "100%",
-    marginBottom: 12,
-    backgroundColor: "#e5e7eb",
-    borderRadius: 14,
-    padding: 4,
-    gap: 6,
+    paddingBottom: 40,
   },
+
+  // 🌐 Modern Language Switch
+  languageSwitch: {
+    flexDirection: "row",
+    width: "90%",
+    marginBottom: 16,
+    backgroundColor: "#f5f5f5",
+    borderRadius: 16,
+    padding: 4,
+    gap: 4,
+    // Subtle shadow
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+
   langButton: {
     flex: 1,
-    paddingVertical: 4,
+    paddingVertical: 10,
     borderRadius: 12,
     alignItems: "center",
     justifyContent: "center",
+    // Smooth transition effect
+    backgroundColor: "transparent",
   },
+
   langActive: {
-    backgroundColor: "#1e293b",
+    backgroundColor: "#16a34a", // Islamic green
+    shadowColor: "#16a34a",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 3,
   },
+
   langText: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: "600",
-    color: "#1e293b",
+    color: "#525252",
   },
+
   langTextActive: {
     color: "#ffffff",
+    fontWeight: "700",
   },
+
   searchInputArabic: {
     textAlign: "right",
   },
 
+  // 🎨 Gradient Overlay for Cards (optional enhancement)
+  cardGradientOverlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    borderRadius: 24,
+    opacity: 0.05,
+  },
 });

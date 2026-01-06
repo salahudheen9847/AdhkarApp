@@ -8,7 +8,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useLanguage } from "../../context/language";
 import { commonStyles } from "../../styles/common";
 
-import { HomeSection } from "./HomeSection";
+import { HomeSection } from "./HomeSectionEnhanced";
 import { LanguageSwitch } from "./LanguageSwitch";
 import { SearchBar } from "./SearchBar";
 
@@ -38,8 +38,8 @@ export default function HomeScreen() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const colors = {
-    background: "#fefce8",
-    text: "#1e293b",
+    background: "#fafaf9", // Premium neutral background
+    text: "#171717", // Modern dark gray for better contrast
   };
 
   /* ---------------- SEARCH HELPERS ---------------- */
@@ -68,12 +68,12 @@ export default function HomeScreen() {
     {
       id: "duaMarichavark",
       image: require("../../assets/adhkar_icon.png"),
-      gradient: ["#fff8e1", "#ffedd5"],
+      gradient: ["#fef3c7", "#fde047"], // Warm golden yellow
     },
     {
       id: "duaQabar",
       image: require("../../assets/duaQabar.png"),
-      gradient: ["#fef3c7", "#fde68a"],
+      gradient: ["#fef08a", "#facc15"], // Rich gold
     },
   ]);
 
@@ -81,12 +81,12 @@ export default function HomeScreen() {
     {
       id: "manqusMoulid",
       image: require("../../assets/manqus.png"),
-      gradient: ["#e0f2fe", "#bae6fd"],
+      gradient: ["#dbeafe", "#93c5fd"], // Sky blue
     },
     {
       id: "baderMoulid",
       image: require("../../assets/bader.png"),
-      gradient: ["#ecfeff", "#cffafe"],
+      gradient: ["#a5f3fc", "#67e8f9"], // Cyan
     },
   ]);
 
@@ -94,7 +94,7 @@ export default function HomeScreen() {
     {
       id: "haddad",
       image: require("../../assets/haddad_icon.png"),
-      gradient: ["#fef9c3", "#fef08a"],
+      gradient: ["#fde68a", "#fbbf24"], // Vibrant gold
     },
   ]);
 
@@ -102,7 +102,7 @@ export default function HomeScreen() {
     {
       id: "nariyathSwalath",
       image: require("../../assets/nariyathSwalath_icon.png"),
-      gradient: ["#fdf4ff", "#fae8ff"],
+      gradient: ["#f3e8ff", "#d8b4fe"], // Soft purple
     },
   ]);
 
@@ -110,7 +110,7 @@ export default function HomeScreen() {
     {
       id: "asmaulHusna",
       image: require("../../assets/asmaulhusna_icon.png"),
-      gradient: ["#fff7ed", "#ffedd5"],
+      gradient: ["#fed7aa", "#fdba74"], // Warm orange
     },
   ]);
 
@@ -136,8 +136,8 @@ export default function HomeScreen() {
           language === "malayalam"
             ? "മലയാളം / Manglish ഉപയോഗിച്ച് തിരയൂ..."
             : language === "english"
-            ? "Search (supports Manglish)"
-            : "ابحث (Malayalam / English)"
+              ? "Search (supports Manglish)"
+              : "ابحث (Malayalam / English)"
         }
       />
 
