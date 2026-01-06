@@ -61,7 +61,6 @@ react {
 /**
  * Set this to true to Run Proguard on Release builds to minify the Java bytecode.
  */
-def enableProguardInReleaseBuilds = false
 
 /**
  * The preferred build flavor of JavaScriptCore (JSC)
@@ -106,9 +105,11 @@ android {
     buildTypes {
          release {
         signingConfig signingConfigs.release
-        minifyEnabled false
-        shrinkResources false
-        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        minifyEnabled true
+        shrinkResources true
+proguardFiles getDefaultProguardFile(
+    'proguard-android-optimize.txt'
+), 'proguard-rules.pro'
     }
         debug {
             signingConfig signingConfigs.debug

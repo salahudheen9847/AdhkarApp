@@ -33,7 +33,6 @@ import { createTables } from "./src/db/createTables";
 import { seedDhikr } from "./src/db/seedDhikr";
 import { seedManqusMoulid } from "./src/db/seedManqusMoulid";
 import { seedBaderMoulid } from "./src/db/seedBaderMoulid";
-import { seedNariyathSwalath } from "./src/db/seedseedDhikr"; // ✅ IMPORTANT FIX
 
 const Stack = createNativeStackNavigator();
 
@@ -152,7 +151,6 @@ export default function App() {
         await seedDhikr();
         await seedManqusMoulid();
         await seedBaderMoulid();
-        await seedNariyathSwalath(); // ✅ NOW FOUND
         console.log("✅ SQLite DB ready");
       } catch (e) {
         console.log("❌ DB init error:", e);
@@ -168,14 +166,22 @@ export default function App() {
     <SafeAreaProvider>
       <LanguageProvider>
         <ThemeProvider>
+
+          {/* ✅ EDGE-TO-EDGE STATUS BAR (IMPORTANT) */}
+          <StatusBar
+            translucent
+            backgroundColor="transparent"
+            barStyle="light-content"
+          />
+
           <RootNavigator />
 
           {loading && (
             <View style={styles.loaderOverlay}>
-              <StatusBar barStyle="dark-content" />
               <ActivityIndicator size="large" color="#22c55e" />
             </View>
           )}
+
         </ThemeProvider>
       </LanguageProvider>
     </SafeAreaProvider>
