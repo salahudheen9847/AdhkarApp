@@ -104,6 +104,11 @@ export default function HomeScreen() {
       image: require("../../assets/nariyathSwalath_icon.png"),
       gradient: ["#f3e8ff", "#d8b4fe"], // Soft purple
     },
+    {
+      id: "salawatAlFatih",
+      image: require("../../assets/nariyathSwalath_icon.png"), // Using same icon for now
+      gradient: ["#fce7f3", "#fbcfe8"], // Soft pink-rose
+    },
   ]);
 
   const asmaItems = filter([

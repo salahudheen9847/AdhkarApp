@@ -24,13 +24,14 @@ export default function DhikrScreen() {
   const [showFontControl, setShowFontControl] =
     useState(false);
 
-  /* 🔒 SAFE TYPE — ✅ nariyathSwalath ADDED */
+  /* 🔒 SAFE TYPE — ✅ nariyathSwalath & salawatAlFatih ADDED */
   const type:
     | "duaMarichavark"
     | "duaQabar"
     | "haddad"
     | "asmaulHusna"
-    | "nariyathSwalath" =
+    | "nariyathSwalath"
+    | "salawatAlFatih" =
     route.params?.type ?? "duaMarichavark";
 
   /* 🎧 AUDIO HOOK */

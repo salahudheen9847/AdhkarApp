@@ -7,7 +7,8 @@ import { asmaulHusnaData } from "../data/asmaulHusna/asmaulHusnaData";
 import { duaMarichavarkData } from "../data/duaMarichavark/duaMarichavarkData";
 import { duaQabarData } from "../data/duaQabar/duaQabarData";
 import { haddadData } from "../data/haddad/haddadData";
-import { nariyathSwalath } from "../data/swalath/nariyathSwalath"; // ✅ ADD
+import { nariyathSwalath } from "../data/swalath/nariyathSwalath";
+import { salawatAlFatih } from "../data/swalath/salawatAlFatih"; // ✅ ADD
 
 /* 🔧 helper */
 const normalize = (v?: string | string[]) =>
@@ -58,14 +59,19 @@ export const seedDhikr = async () => {
           insertDhikr(tx, "haddad", i)
         );
 
-        // 🌸 NARIYATH SWALATH — THIS WAS MISSING
+        // 🌸 NARIYATH SWALATH
         nariyathSwalath.forEach(i =>
           insertDhikr(tx, "nariyathSwalath", i)
+        );
+
+        // 🌟 SALAWAT AL-FATIH
+        salawatAlFatih.forEach(i =>
+          insertDhikr(tx, "salawatAlFatih", i)
         );
       },
       err => reject(err),
       () => {
-        console.log("✅ All dhikr seeded (including Nariyath Swalath)");
+        console.log("✅ All dhikr seeded (including Nariyath Swalath & Salawat Al-Fatih)");
         resolve();
       }
     );

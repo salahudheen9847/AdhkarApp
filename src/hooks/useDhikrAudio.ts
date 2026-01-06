@@ -10,7 +10,7 @@ import {
 
 try {
   Sound.setCategory("Playback");
-} catch {}
+} catch { }
 
 /* --------------------------------
    🔹 Types
@@ -132,6 +132,12 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
           case "nariyathSwalath":
             setAudioFileName("nariyath_swalath.mp3");
             setTitle("🤍 നിര്യത്ത് സ്വലാത്ത്");
+            break;
+
+          /* 🌟 SALAWAT AL-FATIH */
+          case "salawatAlFatih":
+            setAudioFileName("salawat_al_fatih.mp3");
+            setTitle("🤍 സലവാത്ത് അൽ ഫാത്തിഹ്");
             break;
         }
       }

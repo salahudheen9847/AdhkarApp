@@ -30,7 +30,8 @@ export type HeaderType =
   | "asmaulHusna"
   | "manqus"
   | "bader"
-  | "nariyathSwalath";
+  | "nariyathSwalath"
+  | "salawatAlFatih";
 
 /* 🔹 Props */
 export type HeaderSectionProps = {
@@ -66,7 +67,8 @@ const isYoutubeType = (
     type === "asmaulHusna" ||
     type === "manqus" ||
     type === "bader" ||
-    type === "nariyathSwalath"
+    type === "nariyathSwalath" ||
+    type === "salawatAlFatih"
   );
 };
 
@@ -230,7 +232,7 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
           style={[
             styles.languageBox,
             languageMode === "arabic" &&
-              styles.activeBox,
+            styles.activeBox,
           ]}
           onPress={() =>
             setLanguageMode("arabic")
@@ -245,8 +247,8 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
           style={[
             styles.languageBox,
             languageMode ===
-              "arabic_malayalam" &&
-              styles.activeBox,
+            "arabic_malayalam" &&
+            styles.activeBox,
           ]}
           onPress={() =>
             setLanguageMode(
@@ -263,8 +265,8 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
           style={[
             styles.languageBox,
             languageMode ===
-              "arabic_english" &&
-              styles.activeBox,
+            "arabic_english" &&
+            styles.activeBox,
           ]}
           onPress={() =>
             setLanguageMode("arabic_english")

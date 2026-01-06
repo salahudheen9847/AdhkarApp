@@ -22,7 +22,8 @@ export type HomeLabelKey =
   | "baderMoulid"
   | "haddad"
   | "asmaulHusna"
-  | "nariyathSwalath";
+  | "nariyathSwalath"
+  | "salawatAlFatih";
 
 /* ---------------- HOME LABELS ---------------- */
 
@@ -74,6 +75,13 @@ export const HOME_LABELS: Record<HomeLabelKey, HomeLabel> = {
     manglish: "nariyath swalath",
     english: "Niyyath Swalath",
     arabic: "صلاة النية",
+  },
+
+  salawatAlFatih: {
+    malayalam: "സലവാത്ത് അൽ ഫാത്തിഹ്",
+    manglish: "salawat al fatih",
+    english: "Salawat Al-Fatih",
+    arabic: "صلوات الفاتح",
   },
 };
 
