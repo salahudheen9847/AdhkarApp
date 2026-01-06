@@ -71,14 +71,14 @@ export const HOME_LABELS: Record<HomeLabelKey, HomeLabel> = {
   },
 
   nariyathSwalath: {
-    malayalam: "നിര്യത്ത് സ്വലാത്ത്",
+    malayalam: "നാരിയത് സ്വലാത്ത്",
     manglish: "nariyath swalath",
-    english: "Niyyath Swalath",
+    english: "nariyath Swalath",
     arabic: "صلاة النية",
   },
 
   salawatAlFatih: {
-    malayalam: "സലവാത്ത് അൽ ഫാത്തിഹ്",
+    malayalam: "സ്വലാത്ത് അൽ ഫാത്തിഹ്",
     manglish: "salawat al fatih",
     english: "Salawat Al-Fatih",
     arabic: "صلوات الفاتح",
