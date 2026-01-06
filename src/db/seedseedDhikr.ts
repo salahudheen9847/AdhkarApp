@@ -2,6 +2,8 @@ import { db } from "./db";
 import type { Transaction, SQLiteDatabase } from "react-native-sqlite-storage";
 
 import { DhikrItem } from "../data/types";
+import { nariyathSwalath } from "../data/swalath/nariyathSwalath";
+
 
 import { asmaulHusnaData } from "../data/asmaulHusna/asmaulHusnaData";
 import { duaMarichavarkData } from "../data/duaMarichavark/duaMarichavarkData";
@@ -29,8 +31,9 @@ const insertDhikr = (
       Array.isArray(item.english)
         ? item.english.join("\n")
         : item.english ?? "",
-      item.start,
-      item.end,
+item.start ?? null,
+item.end ?? null,
+
     ]
   );
 };
@@ -59,6 +62,21 @@ export const seedDuaMarichavark = async () => {
       tx => {
         duaMarichavarkData.forEach(item =>
           insertDhikr(tx, "duaMarichavark", item)
+        );
+      },
+      err => reject(err),
+      () => resolve()
+    );
+  });
+};
+export const seedNariyathSwalath = async () => {
+  const database: SQLiteDatabase = await db;
+
+  return new Promise<void>((resolve, reject) => {
+    database.transaction(
+      tx => {
+        nariyathSwalath.forEach(item =>
+          insertDhikr(tx, "nariyathSwalath", item)
         );
       },
       err => reject(err),

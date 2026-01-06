@@ -13,18 +13,34 @@ export const YoutubeButton: React.FC<YoutubeButtonProps> = ({
 }) => {
   const handlePress = async () => {
     const url = youtubeLinks[type];
-    if (!url) return;
+
+    // 🔐 Safety guard
+    if (!url) {
+      console.log("ℹ️ No YouTube link for type:", type);
+      return;
+    }
 
     try {
       await Linking.openURL(url);
     } catch (error) {
-      console.error("❌ YouTube link തുറക്കാൻ പറ്റിയില്ല:", error);
+      console.error(
+        "❌ YouTube link തുറക്കാൻ പറ്റിയില്ല:",
+        error
+      );
     }
   };
 
   return (
-    <TouchableOpacity style={styles.youtubeButton} onPress={handlePress}>
-      <Icon name="youtube-play" size={24} color="#fff" />
+    <TouchableOpacity
+      style={styles.youtubeButton}
+      onPress={handlePress}
+      activeOpacity={0.7}
+    >
+      <Icon
+        name="youtube-play"
+        size={24}
+        color="#ffffff"
+      />
     </TouchableOpacity>
   );
 };

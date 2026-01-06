@@ -5,7 +5,7 @@ import Sound from "react-native-sound";
 import {
   getDhikrByType,
   getManqusMoulid,
-  getBaderMoulid,   // 🔥 ADD
+  getBaderMoulid,
 } from "../db/queries";
 
 try {
@@ -16,7 +16,7 @@ try {
    🔹 Types
 ---------------------------------*/
 type UseDhikrAudioParams = {
-  mode: "dhikr" | "manqus" | "bader"; // 🔥 ADD
+  mode: "dhikr" | "manqus" | "bader";
   type?: string;
 };
 
@@ -68,7 +68,7 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
       }
 
       if (mode === "bader") {
-        rows = await getBaderMoulid();   // 🔥 ADD
+        rows = await getBaderMoulid();
       }
 
       if (!mounted) return;
@@ -112,17 +112,26 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
             setAudioFileName("dua_marichavark.mp3");
             setTitle("📿 ദുഅ മരിച്ചവർക്കായി");
             break;
+
           case "duaQabar":
             setAudioFileName("dua_qabar_full.mp3");
             setTitle("🕋 ദുഅ കബറിന്");
             break;
+
           case "haddad":
             setAudioFileName("haddad_full.mp3");
             setTitle("📖 റാതിബ് അൽ ഹദ്ദാദ്");
             break;
+
           case "asmaulHusna":
             setAudioFileName("asmaul_husna.mp3");
             setTitle("🕋 അസ്മൗൽ ഹുസ്ന");
+            break;
+
+          /* 🌸 NARIYATH SWALATH */
+          case "nariyathSwalath":
+            setAudioFileName("nariyath_swalath.mp3");
+            setTitle("🤍 നിര്യത്ത് സ്വലാത്ത്");
             break;
         }
       }
@@ -133,7 +142,7 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
       }
 
       if (mode === "bader") {
-        setAudioFileName("bader_moulid.mp3");   // 🔥 ADD AUDIO
+        setAudioFileName("bader_moulid.mp3");
         setTitle("🌙 അഹ്‌ലുൽ ബദർ മൗലിദ്");
       }
     })();

@@ -7,6 +7,7 @@ import { asmaulHusnaData } from "../data/asmaulHusna/asmaulHusnaData";
 import { duaMarichavarkData } from "../data/duaMarichavark/duaMarichavarkData";
 import { duaQabarData } from "../data/duaQabar/duaQabarData";
 import { haddadData } from "../data/haddad/haddadData";
+import { nariyathSwalath } from "../data/swalath/nariyathSwalath"; // ✅ ADD
 
 /* 🔧 helper */
 const normalize = (v?: string | string[]) =>
@@ -29,8 +30,8 @@ const insertDhikr = (
       normalize(item.text),
       normalize(item.malayalam),
       normalize(item.english),
-      item.start,
-      item.end,
+      item.start ?? null,
+      item.end ?? null,
     ]
   );
 };
@@ -56,10 +57,15 @@ export const seedDhikr = async () => {
         haddadData.forEach(i =>
           insertDhikr(tx, "haddad", i)
         );
+
+        // 🌸 NARIYATH SWALATH — THIS WAS MISSING
+        nariyathSwalath.forEach(i =>
+          insertDhikr(tx, "nariyathSwalath", i)
+        );
       },
       err => reject(err),
       () => {
-        console.log("✅ All dhikr seeded");
+        console.log("✅ All dhikr seeded (including Nariyath Swalath)");
         resolve();
       }
     );

@@ -15,7 +15,6 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import DeviceInfo from "react-native-device-info";
 
 /* 🧩 CONTEXTS */
@@ -30,12 +29,11 @@ import ManqusMoulidScreen from "./src/screens/ManqusMoulidScreen/ManqusMoulidScr
 import BaderMoulidScreen from "./src/screens/BaderMoulidScreen/BaderMoulidScreen";
 
 /* 🗄️ DATABASE */
-import {
-  createTables,
-  seedDhikr,
-  seedManqusMoulid,
-} from "./src/db";
+import { createTables } from "./src/db/createTables";
+import { seedDhikr } from "./src/db/seedDhikr";
+import { seedManqusMoulid } from "./src/db/seedManqusMoulid";
 import { seedBaderMoulid } from "./src/db/seedBaderMoulid";
+import { seedNariyathSwalath } from "./src/db/seedseedDhikr"; // ✅ IMPORTANT FIX
 
 const Stack = createNativeStackNavigator();
 
@@ -110,7 +108,7 @@ function RootNavigator() {
 export default function App() {
   const [loading, setLoading] = useState(true);
 
-  /* 🔔 UPDATE CHECK (MAX 3 TIMES PER VERSION) */
+  /* 🔔 UPDATE CHECK */
   useEffect(() => {
     const checkUpdate = async () => {
       try {
@@ -122,15 +120,7 @@ export default function App() {
         );
         const data = await res.json();
 
-        const latestVersion = data.latestVersion;
-        const key = `update_count_${latestVersion}`;
-        const countStr = await AsyncStorage.getItem(key);
-        const count = countStr ? parseInt(countStr, 10) : 0;
-
-        if (
-          isNewerVersion(latestVersion, currentVersion) &&
-          count < 3
-        ) {
+        if (isNewerVersion(data.latestVersion, currentVersion)) {
           Alert.alert(
             "Update Available",
             "New version available. Please update from Play Store.",
@@ -144,11 +134,6 @@ export default function App() {
                   ),
               },
             ]
-          );
-
-          await AsyncStorage.setItem(
-            key,
-            String(count + 1)
           );
         }
       } catch {
@@ -167,6 +152,7 @@ export default function App() {
         await seedDhikr();
         await seedManqusMoulid();
         await seedBaderMoulid();
+        await seedNariyathSwalath(); // ✅ NOW FOUND
         console.log("✅ SQLite DB ready");
       } catch (e) {
         console.log("❌ DB init error:", e);
@@ -184,14 +170,10 @@ export default function App() {
         <ThemeProvider>
           <RootNavigator />
 
-          {/* ⏳ LOADING OVERLAY */}
           {loading && (
             <View style={styles.loaderOverlay}>
               <StatusBar barStyle="dark-content" />
-              <ActivityIndicator
-                size="large"
-                color="#22c55e"
-              />
+              <ActivityIndicator size="large" color="#22c55e" />
             </View>
           )}
         </ThemeProvider>

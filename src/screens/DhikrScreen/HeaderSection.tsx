@@ -12,6 +12,8 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import { headerStyles as styles } from "../../styles/headerStyle";
 
 import { YoutubeButton } from "../../component/YoutubeButton";
+import type { YoutubeType } from "../../data/youtubeLinks";
+
 import { WhatsappButton } from "../../component/WhatsappButton";
 
 /* 🌍 Language Mode */
@@ -27,7 +29,8 @@ export type HeaderType =
   | "haddad"
   | "asmaulHusna"
   | "manqus"
-  | "bader";
+  | "bader"
+  | "nariyathSwalath";
 
 /* 🔹 Props */
 export type HeaderSectionProps = {
@@ -52,6 +55,22 @@ export type HeaderSectionProps = {
   onBack: () => void;
 };
 
+/* 🔐 Type guard — ONLY items with YouTube */
+const isYoutubeType = (
+  type: HeaderType
+): type is YoutubeType => {
+  return (
+    type === "duaMarichavark" ||
+    type === "duaQabar" ||
+    type === "haddad" ||
+    type === "asmaulHusna" ||
+    type === "manqus" ||
+    type === "bader" ||
+    type === "nariyathSwalath"
+  );
+};
+
+
 const HeaderSection: React.FC<HeaderSectionProps> = ({
   textColor,
   isDark,
@@ -67,7 +86,6 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
   onFontPress,
   onBack,
 }) => {
-  /* 🔙 Back button color */
   const backColor = isDark ? textColor : "#ffffff";
 
   /* 📤 SHARE APP LINK */
@@ -158,7 +176,11 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
             />
           </TouchableOpacity>
 
-          <YoutubeButton type={type} />
+          {/* ▶️ YOUTUBE (ONLY IF SUPPORTED) */}
+          {isYoutubeType(type) && (
+            <YoutubeButton type={type} />
+          )}
+
           <WhatsappButton />
 
           {/* 🌗 THEME TOGGLE */}
@@ -174,7 +196,7 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
             />
           </TouchableOpacity>
 
-          {/* 📤 SHARE APP (LAST) */}
+          {/* 📤 SHARE APP */}
           <TouchableOpacity onPress={onShareApp}>
             <Icon
               name="share"

@@ -21,7 +21,8 @@ export type HomeLabelKey =
   | "manqusMoulid"
   | "baderMoulid"
   | "haddad"
-  | "asmaulHusna";
+  | "asmaulHusna"
+  | "nariyathSwalath";
 
 /* ---------------- HOME LABELS ---------------- */
 
@@ -67,12 +68,19 @@ export const HOME_LABELS: Record<HomeLabelKey, HomeLabel> = {
     english: "Asmaul Husna",
     arabic: "أسماء الله الحسنى",
   },
+
+  nariyathSwalath: {
+    malayalam: "നിര്യത്ത് സ്വലാത്ത്",
+    manglish: "nariyath swalath",
+    english: "Niyyath Swalath",
+    arabic: "صلاة النية",
+  },
 };
 
 /* ---------------- SECTION TITLES ---------------- */
 
 export const SECTION_TITLES: Record<
-  "dua" | "moulid" | "ratib" | "asma",
+  "dua" | "moulid" | "ratib" | "swalath" | "asma",
   Record<AppLanguage, string>
 > = {
   dua: {
@@ -91,6 +99,12 @@ export const SECTION_TITLES: Record<
     malayalam: "📖 റാത്തിബ് ശേഖരം",
     english: "📖 Ratib Collection",
     arabic: "📖 مجموعة الراتب",
+  },
+
+  swalath: {
+    malayalam: "🤍 സ്വലാത്ത് ശേഖരം",
+    english: "🤍 Swalath Collection",
+    arabic: "🤍 مجموعة الصلوات",
   },
 
   asma: {

@@ -30,7 +30,6 @@ type HomeItem = {
 export default function HomeScreen() {
   const navigation = useNavigation<any>();
 
-  // 🔒 type-safe language
   const { language, setLanguage } = useLanguage() as {
     language: AppLanguage;
     setLanguage: (lang: AppLanguage) => void;
@@ -50,23 +49,15 @@ export default function HomeScreen() {
 
   const filter = (items: HomeItem[]) => {
     const query = normalize(searchQuery);
-
-    // empty search → show all
     if (!query) return items;
 
     return items.filter(item => {
       const label = HOME_LABELS[item.id];
-
-      const malayalam = normalize(label.malayalam);
-      const manglish = normalize(label.manglish);
-      const english = normalize(label.english);
-      const arabic = normalize(label.arabic);
-
       return (
-        malayalam.includes(query) ||
-        manglish.includes(query) ||
-        english.includes(query) ||
-        arabic.includes(query)
+        normalize(label.malayalam).includes(query) ||
+        normalize(label.manglish).includes(query) ||
+        normalize(label.english).includes(query) ||
+        normalize(label.arabic).includes(query)
       );
     });
   };
@@ -107,6 +98,14 @@ export default function HomeScreen() {
     },
   ]);
 
+  const swalathItems = filter([
+    {
+      id: "nariyathSwalath",
+      image: require("../../assets/nariyathSwalath_icon.png"),
+      gradient: ["#fdf4ff", "#fae8ff"],
+    },
+  ]);
+
   const asmaItems = filter([
     {
       id: "asmaulHusna",
@@ -126,10 +125,7 @@ export default function HomeScreen() {
     >
       <StatusBar barStyle="dark-content" />
 
-      <LanguageSwitch
-        language={language}
-        setLanguage={setLanguage}
-      />
+      <LanguageSwitch language={language} setLanguage={setLanguage} />
 
       <SearchBar
         language={language}
@@ -171,6 +167,16 @@ export default function HomeScreen() {
         <HomeSection
           title={SECTION_TITLES.ratib[language]}
           items={ratibItems}
+          language={language}
+          colors={colors}
+          onPress={id =>
+            navigation.navigate("Dhikr", { type: id })
+          }
+        />
+
+        <HomeSection
+          title={SECTION_TITLES.swalath[language]}
+          items={swalathItems}
           language={language}
           colors={colors}
           onPress={id =>

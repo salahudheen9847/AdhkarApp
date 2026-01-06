@@ -24,12 +24,13 @@ export default function DhikrScreen() {
   const [showFontControl, setShowFontControl] =
     useState(false);
 
-  /* 🔒 SAFE TYPE */
+  /* 🔒 SAFE TYPE — ✅ nariyathSwalath ADDED */
   const type:
     | "duaMarichavark"
     | "duaQabar"
     | "haddad"
-    | "asmaulHusna" =
+    | "asmaulHusna"
+    | "nariyathSwalath" =
     route.params?.type ?? "duaMarichavark";
 
   /* 🎧 AUDIO HOOK */
@@ -100,7 +101,7 @@ export default function DhikrScreen() {
         setLanguageMode={setLanguageMode}
         headerAnimatedStyle={headerAnimatedStyle}
         onFontPress={() => setShowFontControl(!showFontControl)}
-        onBack={() => navigation.goBack()}   // ✅ FIXED
+        onBack={() => navigation.goBack()}
       />
 
       {/* 🔠 FONT CONTROL */}
