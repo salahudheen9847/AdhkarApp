@@ -26,8 +26,10 @@ export const youtubeLinks: Record<YoutubeType, string> = {
   manqus:
     "https://youtu.be/U8e-APdqysY?si=1J0ei6fpYxJB64gp",
 
-  bader:
-    "https://youtu.be/NcDoz7-r6ng?si=VeQbxNpWRVV4FdJy",
-      nariyathSwalath:
-    "https://youtu.be/yr11IeXvtC4?si=_oirmIHSQ-ZVdC3n",
+ bader:
+  "https://youtu.be/NcDoz7-r6ng?si=VeQbxNpWRVV4FdJy",
+
+ nariyathSwalath:
+  "https://youtu.be/yr11IeXvtC4?si=_oirmIHSQ-ZVdC3n",
+
 };
