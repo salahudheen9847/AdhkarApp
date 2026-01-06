@@ -40,7 +40,7 @@ export const HOME_LABELS: Record<HomeLabelKey, HomeLabel> = {
     malayalam: "ഖബറിലെ ദുആ",
     manglish: "kabarile dua",
     english: "Dua in the Grave",
-    arabic: "دعاء القبر",
+    arabic: "دعاء\nالقبر",
   },
 
   manqusMoulid: {
@@ -51,10 +51,12 @@ export const HOME_LABELS: Record<HomeLabelKey, HomeLabel> = {
   },
 
   baderMoulid: {
-    malayalam: "ബദർ മൗലിദ്",
-    manglish: "badar moulid",
-    english: "Bader Moulid",
-    arabic: "مولد بدر",
+    // രണ്ട് വരിയിലാക്കി full name കാണിക്കാൻ newline ഉപയോഗിക്കുന്നു
+    malayalam: "ബദർ\nമൗലിദ്",
+    manglish: "badr moulid",
+    english: "Badr Moulid",
+    // Arabic-ിലും രണ്ട് വരി
+    arabic: "مولد\nبدر",
   },
 
   haddad: {
@@ -79,9 +81,9 @@ export const HOME_LABELS: Record<HomeLabelKey, HomeLabel> = {
   },
 
   thajuSwalath: {
-    malayalam: "താജു സ്വലാത്ത്",
-    manglish: "thaju swalath",
-    english: "Thaju Swalath",
+    malayalam: "താജുസ്സ്വലാത്ത്",
+    manglish: "tajus swalath",
+    english: "Tajus Swalath",
     arabic: "صلاة التاج",
   },
 

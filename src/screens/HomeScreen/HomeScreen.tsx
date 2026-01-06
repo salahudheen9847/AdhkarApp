@@ -38,8 +38,8 @@ export default function HomeScreen() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const colors = {
-    background: "#fafaf9", // Premium neutral background
-    text: "#171717", // Modern dark gray for better contrast
+    background: "#fafaf9",
+    text: "#171717",
   };
 
   /* ---------------- SEARCH HELPERS ---------------- */
@@ -49,10 +49,15 @@ export default function HomeScreen() {
 
   const filter = (items: HomeItem[]) => {
     const query = normalize(searchQuery);
-    if (!query) return items;
+
+    // 🔥 2 characters-ൽ താഴെ ആണെങ്കിൽ filter വേണ്ട
+    if (!query || query.length < 2) {
+      return items;
+    }
 
     return items.filter(item => {
       const label = HOME_LABELS[item.id];
+
       return (
         normalize(label.malayalam).includes(query) ||
         normalize(label.manglish).includes(query) ||
@@ -68,12 +73,12 @@ export default function HomeScreen() {
     {
       id: "duaMarichavark",
       image: require("../../assets/adhkar_icon.png"),
-      gradient: ["#fef3c7", "#fde047"], // Warm golden yellow
+      gradient: ["#fef3c7", "#fde047"],
     },
     {
       id: "duaQabar",
       image: require("../../assets/duaQabar.png"),
-      gradient: ["#fef08a", "#facc15"], // Rich gold
+      gradient: ["#fef08a", "#facc15"],
     },
   ]);
 
@@ -81,12 +86,12 @@ export default function HomeScreen() {
     {
       id: "manqusMoulid",
       image: require("../../assets/manqus.png"),
-      gradient: ["#dbeafe", "#93c5fd"], // Sky blue
+      gradient: ["#dbeafe", "#93c5fd"],
     },
     {
       id: "baderMoulid",
       image: require("../../assets/bader.png"),
-      gradient: ["#a5f3fc", "#67e8f9"], // Cyan
+      gradient: ["#a5f3fc", "#67e8f9"],
     },
   ]);
 
@@ -94,7 +99,7 @@ export default function HomeScreen() {
     {
       id: "haddad",
       image: require("../../assets/haddad_icon.png"),
-      gradient: ["#fde68a", "#fbbf24"], // Vibrant gold
+      gradient: ["#fde68a", "#fbbf24"],
     },
   ]);
 
@@ -102,17 +107,17 @@ export default function HomeScreen() {
     {
       id: "nariyathSwalath",
       image: require("../../assets/nariyathSwalath_icon.png"),
-      gradient: ["#f3e8ff", "#d8b4fe"], // Soft purple
+      gradient: ["#f3e8ff", "#d8b4fe"],
     },
     {
       id: "thajuSwalath",
       image: require("../../assets/adhkar_icon.png"),
-      gradient: ["#e0f2fe", "#7dd3fc"], // Light sky blue
+      gradient: ["#e0f2fe", "#7dd3fc"],
     },
     {
       id: "salawatAlFatih",
-      image: require("../../assets/nariyathSwalath_icon.png"), // Using same icon for now
-      gradient: ["#fce7f3", "#fbcfe8"], // Soft pink-rose
+      image: require("../../assets/nariyathSwalath_icon.png"),
+      gradient: ["#fce7f3", "#fbcfe8"],
     },
   ]);
 
@@ -120,7 +125,7 @@ export default function HomeScreen() {
     {
       id: "asmaulHusna",
       image: require("../../assets/asmaulhusna_icon.png"),
-      gradient: ["#fed7aa", "#fdba74"], // Warm orange
+      gradient: ["#fed7aa", "#fdba74"],
     },
   ]);
 
@@ -135,7 +140,10 @@ export default function HomeScreen() {
     >
       <StatusBar barStyle="dark-content" />
 
-      <LanguageSwitch language={language} setLanguage={setLanguage} />
+      <LanguageSwitch
+        language={language}
+        setLanguage={setLanguage}
+      />
 
       <SearchBar
         language={language}
@@ -144,10 +152,10 @@ export default function HomeScreen() {
         textColor={colors.text}
         placeholder={
           language === "malayalam"
-            ? "മലയാളം / Manglish ഉപയോഗിച്ച് തിരയൂ..."
+            ? "ദുആ / മൗലിദ് / സ്വലാത്ത് (Malayalam / Manglish)..."
             : language === "english"
-              ? "Search (supports Manglish)"
-              : "ابحث (Malayalam / English)"
+            ? "Search dua, moulid, swalath..."
+            : "ابحث عن دعاء أو مولد"
         }
       />
 
