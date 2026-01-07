@@ -25,7 +25,9 @@ export type HomeLabelKey =
   | "nariyathSwalath"
   | "salawatAlFatih"
   | "ramadanAdhkar"
-  | "thajuSwalath";
+  | "thajuSwalath"
+  | "adhkarAfterSalah"
+  | "adhkarAfterSalah2";
 
 /* ---------------- HOME LABELS ---------------- */
 
@@ -101,12 +103,26 @@ export const HOME_LABELS: Record<HomeLabelKey, HomeLabel> = {
     english: "Ramadan Adhkar",
     arabic: "أذكار رمضان",
   },
+
+  adhkarAfterSalah: {
+    malayalam: "നിസ്കാര ശേഷം ദിക്‌ർ",
+    manglish: "niskar shesham dhikr",
+    english: "Adhkar After Salah",
+    arabic: "أذكار بعد الصلاة",
+  },
+
+  adhkarAfterSalah2: {
+    malayalam: "പ്രാർത്ഥനകൾ",
+    manglish: "prarthanakal",
+    english: "Supplications",
+    arabic: "الأدعية",
+  },
 };
 
 /* ---------------- SECTION TITLES ---------------- */
 
 export const SECTION_TITLES: Record<
-  "dua" | "moulid" | "ratib" | "swalath" | "asma" | "ramadan",
+  "dua" | "moulid" | "ratib" | "swalath" | "asma" | "ramadan" | "salah",
   Record<AppLanguage, string>
 > = {
   dua: {
@@ -143,5 +159,11 @@ export const SECTION_TITLES: Record<
     malayalam: "🌙 റമദാൻ ശേഖരം",
     english: "🌙 Ramadan Collection",
     arabic: "🌙 مجموعة رمضان",
+  },
+
+  salah: {
+    malayalam: "🕌 നിസ്കാര ശേഷം ശേഖരം",
+    english: "🕌 After Salah Collection",
+    arabic: "🕌 مجموعة بعد الصلاة",
   },
 };

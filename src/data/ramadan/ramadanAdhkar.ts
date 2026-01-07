@@ -5,7 +5,6 @@ export const ramadanAdhkar: DhikrItem[] = [
   {
     id: 1,
     isHeading: true,
-    isBox: true,
     text: "نِيَّةُ الصِّيَامِ لِكُلِّ لَيْلَةٍ مِنْ رَمَضَانَ",
     malayalam: "റമളാനിലെ ഓരോ രാത്രിയും നിയ്യത്ത് ചെയ്യേണ്ടത്",
     english: "Intention (Niyyah) to be made every night of Ramadan",
@@ -28,7 +27,6 @@ export const ramadanAdhkar: DhikrItem[] = [
   {
     id: 3,
     isHeading: true,
-    isBox: true,
     text: "دُعَاءُ الْإِفْطَارِ",
     malayalam: "നോമ്പ് തുറന്നാൽ ചൊല്ലേണ്ട ദുആ",
     english: "Dua to be recited at the time of breaking the fast",
@@ -51,7 +49,6 @@ export const ramadanAdhkar: DhikrItem[] = [
   {
     id: 5,
     isHeading: true,
-    isBox: true,
     text: "مِمَّا يُقَالُ فِي رَمَضَانَ دَائِمًا",
     malayalam: "റമളാനിൽ എപ്പോഴും ചൊല്ലാവുന്ന ദുആ",
     english: "Supplications to be recited frequently during Ramadan",
@@ -74,7 +71,6 @@ export const ramadanAdhkar: DhikrItem[] = [
   {
     id: 7,
     isHeading: true,
-    isBox: true,
     text: "عَشْرَةُ الرَّحْمَةِ",
     malayalam: "ഒന്നാം പത്ത് (റഹ്മ)",
     english: "The first ten days (Days of Mercy)",
@@ -96,7 +92,6 @@ export const ramadanAdhkar: DhikrItem[] = [
   {
     id: 9,
     isHeading: true,
-    isBox: true,
     text: "عَشْرَةُ الْمَغْفِرَةِ",
     malayalam: "രണ്ടാം പത്ത് (മഗ്ഫിര)",
     english: "The second ten days (Days of Forgiveness)",
@@ -118,7 +113,6 @@ export const ramadanAdhkar: DhikrItem[] = [
   {
     id: 11,
     isHeading: true,
-    isBox: true,
     text: "عَشْرَةُ النَّجَاةِ",
     malayalam: "മൂന്നാം പത്ത് (നജാത്ത്)",
     english: "The third ten days (Days of Salvation)",
@@ -141,7 +135,6 @@ export const ramadanAdhkar: DhikrItem[] = [
   {
     id: 13,
     isHeading: true,
-    isBox: true,
     text: "دُعَاءُ رَمَضَانَ",
     malayalam: "റമളാനിലെ ദുആ",
     english: "Supplication of Ramadan",

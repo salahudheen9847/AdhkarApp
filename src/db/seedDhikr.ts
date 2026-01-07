@@ -10,6 +10,7 @@ import { haddadData } from "../data/haddad/haddadData";
 import { nariyathSwalath } from "../data/swalath/nariyathSwalath";
 import { salawatAlFatih } from "../data/swalath/salawatAlFatih"; // ✅ ADD
 import { thajuSwalath } from "../data/swalath/thajuSwalath";
+import { adhkarAfterSalah } from "../data/salah/adhkarAfterSalah";
 
 /* 🔧 helper */
 const normalize = (v?: string | string[]) =>
@@ -74,10 +75,15 @@ export const seedDhikr = async () => {
         salawatAlFatih.forEach(i =>
           insertDhikr(tx, "salawatAlFatih", i)
         );
+
+        // 🕌 ADHKAR AFTER SALAH
+        adhkarAfterSalah.forEach(i =>
+          insertDhikr(tx, "adhkarAfterSalah", i)
+        );
       },
       err => reject(err),
       () => {
-        console.log("✅ All dhikr seeded (including Nariyath Swalath & Salawat Al-Fatih)");
+        console.log("✅ All dhikr seeded (including Nariyath Swalath, Salawat Al-Fatih & Adhkar After Salah)");
         resolve();
       }
     );

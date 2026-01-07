@@ -33,6 +33,8 @@ export default function DhikrScreen() {
     | "nariyathSwalath"
     | "salawatAlFatih"
     | "ramadanAdhkar"
+    | "adhkarAfterSalah"
+    | "adhkarAfterSalah2"
     | "thajuSwalath" =
     route.params?.type ?? "duaMarichavark";
 

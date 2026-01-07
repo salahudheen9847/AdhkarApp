@@ -7,11 +7,14 @@ import {
   getManqusMoulid,
   getBaderMoulid,
 } from "../db/queries";
+
 import { ramadanAdhkar } from "../data/ramadan/ramadanAdhkar";
+import { duaAfterSalah } from "../data/salah/duaAfterSalah";
+import { adhkarAfterSalah } from "../data/salah/adhkarAfterSalah";
 
 try {
   Sound.setCategory("Playback");
-} catch { }
+} catch {}
 
 /* --------------------------------
    🔹 Types
@@ -53,146 +56,118 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
   const scrollY = useRef(new Animated.Value(0)).current;
 
   /* --------------------------------
-     🔊 Load DB data
+     🔊 Load Data + Audio
   ---------------------------------*/
   useEffect(() => {
-    let mounted = true;
+    let cancelled = false;
 
     (async () => {
-      let rows: any[] = [];
+      try {
+        let rows: any[] = [];
 
-      if (mode === "dhikr" && type) {
-        if (type === "ramadanAdhkar") {
-          // Use ramadanAdhkar from TypeScript file
-          rows = ramadanAdhkar;
-        } else {
-          rows = await getDhikrByType(type);
+        // -------- DATA LOAD --------
+        if (mode === "dhikr" && type) {
+          if (type === "ramadanAdhkar") rows = ramadanAdhkar;
+          else if (type === "adhkarAfterSalah") rows = duaAfterSalah;
+          else if (type === "adhkarAfterSalah2") rows = adhkarAfterSalah;
+          else rows = await getDhikrByType(type);
         }
-      }
 
-      if (mode === "manqus") {
-        rows = await getManqusMoulid();
-      }
+        if (mode === "manqus") rows = await getManqusMoulid();
+        if (mode === "bader") rows = await getBaderMoulid();
 
-      if (mode === "bader") {
-        rows = await getBaderMoulid();
-      }
+        if (cancelled) return;
 
-      if (!mounted) return;
+        // -------- MAP DATA --------
+        const mapped: DuaItem[] = rows.map(r => ({
+          id: r.id,
+          isBox: r.isBox === 1 || r.isBox === true,
+          isHeading: r.isHeading,
+          text: r.text ?? r.arabic ?? "",
+          malayalam: r.malayalam ?? "",
+          english: r.english ?? "",
+          start: r.start,
+          end: r.end,
+        }));
 
-      const mapped: DuaItem[] = rows
-        .map(r => {
-          if (mode === "dhikr") {
-            if (type === "ramadanAdhkar") {
-              // ramadanAdhkar already has correct structure
-              return {
-                id: r.id,
-                isBox: r.isBox,
-                isHeading: r.isHeading,
-                text: r.text ?? "",
-                malayalam: r.malayalam ?? "",
-                english: r.english ?? "",
-                start: r.start,
-                end: r.end,
-              };
-            } else {
-              return {
-                id: r.id,
-                isBox: false,
-                text: r.arabic ?? "",
-                malayalam: r.malayalam ?? "",
-                english: r.english ?? "",
-                start: r.start,
-                end: r.end,
-              };
-            }
+        setCurrentDuaList(mapped);
+
+        // -------- AUDIO + TITLE --------
+        if (mode === "dhikr") {
+          switch (type) {
+            case "duaMarichavark":
+              setAudioFileName("dua_marichavark.mp3");
+              setTitle("🙏 ദുആ മറിച്ചാർക്ക്");
+              break;
+
+            case "duaQabar":
+              setAudioFileName("dua_qabar.mp3");
+              setTitle("🪦 ഖബർ സിയാറ");
+              break;
+
+            case "haddad":
+              setAudioFileName("haddad.mp3");
+              setTitle("📿 ഹദ്ദാദ് റത്തീബ്");
+              break;
+
+            case "asmaulHusna":
+              setAudioFileName("asmaul_husna.mp3");
+              setTitle("🌟 അസ്മാഉൽ ഹുസ്ന");
+              break;
+
+            case "nariyathSwalath":
+              setAudioFileName("nariyath_swalath.mp3");
+              setTitle("🕌 നാരിയത്ത് സ്വലാത്ത്");
+              break;
+
+            case "salawatAlFatih":
+              setAudioFileName("salawat_al_fatih.mp3");
+              setTitle("💫 സലവാത്തുൽ ഫാത്വിഹ്");
+              break;
+
+            case "ramadanAdhkar":
+              setAudioFileName("ramadan_adhkar.mp3");
+              setTitle("🌙 റമദാൻ അദ്കാർ");
+              break;
+
+            case "thajuSwalath":
+              setAudioFileName("thaju_swalath.mp3");
+              setTitle("🌙 താജു സ്വലാത്ത്");
+              break;
+
+            case "adhkarAfterSalah":
+              setAudioFileName("");
+              setTitle("🕌 നിസ്കാര ശേഷം ദിക്‌ർ");
+              break;
+
+            case "adhkarAfterSalah2":
+              setAudioFileName("");
+              setTitle("🕌 പ്രാർത്ഥനകൾ");
+              break;
           }
-
-          if (mode === "manqus" || mode === "bader") {
-            return {
-              id: r.id,
-              isBox: r.isBox === 1 || r.isBox === true,
-              text: r.text ?? "",
-              malayalam: r.malayalam ?? "",
-              english: r.english ?? "",
-              start: r.start,
-              end: r.end,
-            };
-          }
-
-          return null;
-        })
-        .filter(Boolean) as DuaItem[];
-
-      setCurrentDuaList(mapped);
-
-      /* 🎧 Audio + Title */
-      if (mode === "dhikr") {
-        switch (type) {
-          case "duaMarichavark":
-            setAudioFileName("dua_marichavark.mp3");
-            setTitle("📿 ദുഅ മരിച്ചവർക്കായി");
-            break;
-
-          case "duaQabar":
-            setAudioFileName("dua_qabar_full.mp3");
-            setTitle("🕋 ദുഅ കബറിന്");
-            break;
-
-          case "haddad":
-            setAudioFileName("haddad_full.mp3");
-            setTitle("📖 റാതിബ് അൽ ഹദ്ദാദ്");
-            break;
-
-          case "asmaulHusna":
-            setAudioFileName("asmaul_husna.mp3");
-            setTitle("🕋 അസ്മൗൽ ഹുസ്ന");
-            break;
-
-          /* 🌸 NARIYATH SWALATH */
-          case "nariyathSwalath":
-            setAudioFileName("nariyath_swalath.mp3");
-            setTitle("🤍 നിര്യത്ത് സ്വലാത്ത്");
-            break;
-
-          /* 🤍 THAJU SWALATH (no audio asset yet) */
-          case "thajuSwalath":
-            setAudioFileName("");
-            setTitle("🤍 താജു സ്വലാത്ത്");
-            break;
-
-          /* 🌙 RAMADAN ADHKAR (no audio asset yet) */
-          case "ramadanAdhkar":
-            setAudioFileName("ramadan_adhkar.mp3");
-            setTitle("🌙 റമദാൻ അദ്കാർ");
-            break;
-
-          /* 🌟 SALAWAT AL-FATIH */
-          case "salawatAlFatih":
-            setAudioFileName("salawat_al_fatih.mp3");
-            setTitle("🤍 സലവാത്ത് അൽ ഫാത്തിഹ്");
-            break;
         }
-      }
 
-      if (mode === "manqus") {
-        setAudioFileName("manqus_moulid.mp3");
-        setTitle("📖 മൻഖൂസ് മൗലിദ്");
-      }
+        if (mode === "manqus") {
+          setAudioFileName("manqus_moulid.mp3");
+          setTitle("📖 മൻഖൂസ് മൗലിദ്");
+        }
 
-      if (mode === "bader") {
-        setAudioFileName("bader_moulid.mp3");
-        setTitle("🌙 അഹ്‌ലുൽ ബദർ മൗലിദ്");
+        if (mode === "bader") {
+          setAudioFileName("bader_moulid.mp3");
+          setTitle("📜 ബാദർ മൗലിദ്");
+        }
+      } catch (e) {
+        console.error("❌ Data/Audio load error:", e);
       }
     })();
 
     return () => {
-      mounted = false;
+      cancelled = true;
     };
   }, [mode, type]);
 
   /* --------------------------------
-     ⏱️ Highlight logic
+     ⏱️ Highlight Sync
   ---------------------------------*/
   const updateTime = useCallback(
     (sound: Sound) => {
@@ -219,10 +194,8 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
      🧹 Cleanup
   ---------------------------------*/
   const cleanupPlayback = useCallback(() => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
+    intervalRef.current && clearInterval(intervalRef.current);
+    intervalRef.current = null;
 
     soundRef.current?.stop(() => {
       soundRef.current?.release();
@@ -245,11 +218,6 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
       setIsPlaying(false);
       intervalRef.current && clearInterval(intervalRef.current);
       return;
-    }
-
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
     }
 
     if (!soundRef.current) {
@@ -284,16 +252,10 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
         500
       );
     }
-  }, [
-    audioFileName,
-    isPlaying,
-    playbackRate,
-    updateTime,
-    cleanupPlayback,
-  ]);
+  }, [audioFileName, isPlaying, playbackRate, updateTime, cleanupPlayback]);
 
   /* --------------------------------
-     🎚️ Seek / Speed
+     🎚️ Controls
   ---------------------------------*/
   const onSeek = (value: number) => {
     soundRef.current?.setCurrentTime(value);
@@ -305,12 +267,7 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
     soundRef.current?.setSpeed(rate);
   };
 
-  /* --------------------------------
-     🔚 Unmount cleanup
-  ---------------------------------*/
-  useEffect(() => {
-    return () => cleanupPlayback();
-  }, [cleanupPlayback]);
+  useEffect(() => () => cleanupPlayback(), [cleanupPlayback]);
 
   /* --------------------------------
      ✅ RETURN

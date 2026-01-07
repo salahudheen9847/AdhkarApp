@@ -1,7 +1,7 @@
 // HomeScreen/HomeSectionEnhanced.tsx
-// FINAL – TypeScript + ESLint SAFE
+// FINAL – TypeScript + ESLint SAFE + PERFORMANCE OPTIMIZED
 
-import React from "react";
+import React, { memo } from "react";
 import {
   View,
   Text,
@@ -37,9 +37,9 @@ type Props = {
   onPress: (id: HomeLabelKey) => void;
 };
 
-/* ---------------- Animated Card ---------------- */
+/* ---------------- Animated Card (Optimized) ---------------- */
 
-function AnimatedCard({
+const AnimatedCard = memo(function AnimatedCard({
   item,
   language,
   colors,
@@ -52,12 +52,13 @@ function AnimatedCard({
 }) {
   const scaleAnim = React.useRef(new Animated.Value(1)).current;
 
-  const title =
-    language === "arabic"
+  const title = React.useMemo(() => {
+    return language === "arabic"
       ? HOME_LABELS[item.id].arabic
       : language === "english"
       ? HOME_LABELS[item.id].english
       : HOME_LABELS[item.id].malayalam;
+  }, [language, item.id]);
 
   return (
     <TouchableOpacity
@@ -102,11 +103,11 @@ function AnimatedCard({
       </Animated.View>
     </TouchableOpacity>
   );
-}
+}); // ✅ THIS WAS MISSING
 
-/* ---------------- Section ---------------- */
+/* ---------------- Section (Optimized) ---------------- */
 
-export function HomeSection({
+export const HomeSection = memo(function HomeSection({
   title,
   items,
   language,
@@ -134,7 +135,7 @@ export function HomeSection({
       </View>
     </>
   );
-}
+});
 
 /* ---------------- LOCAL STYLES ---------------- */
 
