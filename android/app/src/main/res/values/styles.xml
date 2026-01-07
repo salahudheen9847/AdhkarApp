@@ -1,13 +1,13 @@
 <resources>
 
     <!-- Base application theme -->
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
-
-        <!-- Edge-to-edge & transparent bars -->
-        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+    <style name="AppTheme.Base" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Standard theme without edge-to-edge -->
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
-
     </style>
+
+    <!-- Default theme for older versions -->
+    <style name="AppTheme" parent="AppTheme.Base" />
 
 </resources>

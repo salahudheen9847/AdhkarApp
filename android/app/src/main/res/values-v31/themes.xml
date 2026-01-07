@@ -1,0 +1,9 @@
+<resources>
+
+    <!-- Theme overlay for Android 12+ (API 31+) to handle edge-to-edge properly -->
+    <style name="AppTheme" parent="AppTheme.Base">
+        <!-- Disable edge-to-edge enforcement for Android 12+ -->
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+    </style>
+
+</resources>
