@@ -7,6 +7,7 @@ import {
   getManqusMoulid,
   getBaderMoulid,
 } from "../db/queries";
+import { ramadanAdhkar } from "../data/ramadan/ramadanAdhkar";
 
 try {
   Sound.setCategory("Playback");
@@ -22,7 +23,8 @@ type UseDhikrAudioParams = {
 
 type DuaItem = {
   id: number;
-  isBox: boolean;
+  isBox?: boolean;
+  isHeading?: boolean;
   text: string;
   malayalam?: string;
   english?: string;
@@ -60,7 +62,12 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
       let rows: any[] = [];
 
       if (mode === "dhikr" && type) {
-        rows = await getDhikrByType(type);
+        if (type === "ramadanAdhkar") {
+          // Use ramadanAdhkar from TypeScript file
+          rows = ramadanAdhkar;
+        } else {
+          rows = await getDhikrByType(type);
+        }
       }
 
       if (mode === "manqus") {
@@ -76,15 +83,29 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
       const mapped: DuaItem[] = rows
         .map(r => {
           if (mode === "dhikr") {
-            return {
-              id: r.id,
-              isBox: false,
-              text: r.arabic ?? "",
-              malayalam: r.malayalam ?? "",
-              english: r.english ?? "",
-              start: r.start,
-              end: r.end,
-            };
+            if (type === "ramadanAdhkar") {
+              // ramadanAdhkar already has correct structure
+              return {
+                id: r.id,
+                isBox: r.isBox,
+                isHeading: r.isHeading,
+                text: r.text ?? "",
+                malayalam: r.malayalam ?? "",
+                english: r.english ?? "",
+                start: r.start,
+                end: r.end,
+              };
+            } else {
+              return {
+                id: r.id,
+                isBox: false,
+                text: r.arabic ?? "",
+                malayalam: r.malayalam ?? "",
+                english: r.english ?? "",
+                start: r.start,
+                end: r.end,
+              };
+            }
           }
 
           if (mode === "manqus" || mode === "bader") {
@@ -138,6 +159,12 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
           case "thajuSwalath":
             setAudioFileName("");
             setTitle("🤍 താജു സ്വലാത്ത്");
+            break;
+
+          /* 🌙 RAMADAN ADHKAR (no audio asset yet) */
+          case "ramadanAdhkar":
+            setAudioFileName("");
+            setTitle("🌙 റമദാൻ അദ്കാർ");
             break;
 
           /* 🌟 SALAWAT AL-FATIH */

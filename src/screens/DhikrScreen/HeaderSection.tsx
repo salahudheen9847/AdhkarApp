@@ -32,6 +32,7 @@ export type HeaderType =
   | "bader"
   | "nariyathSwalath"
   | "salawatAlFatih"
+  | "ramadanAdhkar"
   | "thajuSwalath";
 
 /* 🔹 Props */

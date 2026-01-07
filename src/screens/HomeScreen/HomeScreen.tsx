@@ -121,6 +121,14 @@ export default function HomeScreen() {
     },
   ]);
 
+  const ramadanItems = filter([
+    {
+      id: "ramadanAdhkar",
+      image: require("../../assets/adhkar_icon.png"),
+      gradient: ["#ecfccb", "#bef264"],
+    },
+  ]);
+
   const asmaItems = filter([
     {
       id: "asmaulHusna",
@@ -195,6 +203,16 @@ export default function HomeScreen() {
         <HomeSection
           title={SECTION_TITLES.swalath[language]}
           items={swalathItems}
+          language={language}
+          colors={colors}
+          onPress={id =>
+            navigation.navigate("Dhikr", { type: id })
+          }
+        />
+
+        <HomeSection
+          title={SECTION_TITLES.ramadan[language]}
+          items={ramadanItems}
           language={language}
           colors={colors}
           onPress={id =>

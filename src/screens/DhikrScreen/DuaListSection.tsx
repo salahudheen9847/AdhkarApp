@@ -6,6 +6,7 @@ import { useThemeContext } from "../../context/theme";
 /* 🔹 Generic Dua Item */
 type DuaItem = {
   id: number;
+  isHeading?: boolean;   // ⭐⭐⭐ ADD THIS
   isBox?: boolean;
   text: string | string[];
   malayalam?: string | string[];
@@ -13,6 +14,7 @@ type DuaItem = {
   start?: number;
   end?: number;
 };
+
 
 type Props = {
   currentDuaList: DuaItem[];

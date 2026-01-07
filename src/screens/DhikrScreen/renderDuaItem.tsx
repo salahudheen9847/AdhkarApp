@@ -12,6 +12,7 @@ export type LanguageMode =
 export type DuaItem = {
   id: number;
   isBox?: boolean;
+  isHeading?: boolean;
   text: string | string[];
   malayalam?: string | string[];
   english?: string | string[];
@@ -33,7 +34,8 @@ export const renderDuaItem = (
   textColor: string
 ) => {
   const isActive = item.id === currentIndex;
-  const isBox = item.isBox === true; // ✅ SAFE
+  const isBox = item.isBox === true;
+  const isHeading = item.isHeading === true;
   const safeFontSize = Math.max(12, fontSize);
 
   let content = "";
@@ -66,7 +68,8 @@ export const renderDuaItem = (
     <View
       style={[
         localStyles.container,
-        isBox && localStyles.boxContainer,          // 🔥 only when box
+        isHeading && localStyles.headingContainer,
+        isBox && localStyles.boxContainer,
         isActive && localStyles.activeContainer,
         isActive && { backgroundColor: highlightColor },
       ]}
@@ -74,21 +77,33 @@ export const renderDuaItem = (
       {/* 📝 TEXT */}
       <Text
         style={[
-          isBox ? baseStyles.manqusBoxText : baseStyles.text,
+          isHeading 
+            ? localStyles.headingText 
+            : isBox 
+              ? baseStyles.manqusBoxText 
+              : baseStyles.text,
           isActive ? localStyles.activeText : { color: textColor },
-          { fontSize: isBox ? safeFontSize * 0.9 : safeFontSize },
+          { 
+            fontSize: isHeading 
+              ? safeFontSize * 1.1 
+              : isBox 
+                ? safeFontSize * 0.9 
+                : safeFontSize 
+          },
         ]}
       >
         {content}
       </Text>
 
-      {/* 🔵 DIVIDER */}
-      <View
-        style={[
-          localStyles.divider,
-          { backgroundColor: dividerColor },
-        ]}
-      />
+      {/* 🔵 DIVIDER - Don't show for headings */}
+      {!isHeading && (
+        <View
+          style={[
+            localStyles.divider,
+            { backgroundColor: dividerColor },
+          ]}
+        />
+      )}
     </View>
   );
 };
@@ -100,6 +115,21 @@ const localStyles = StyleSheet.create({
   container: {
     width: "100%",
     paddingVertical: 15,
+  },
+
+  /* 📦 HEADING */
+  headingContainer: {
+    backgroundColor: "#1e40af",
+    borderRadius: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    marginVertical: 8,
+  },
+
+  headingText: {
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "#ffffff",
   },
 
   /* 📦 BOX (Manqus / Bader only) */
