@@ -163,7 +163,7 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
 
           /* 🌙 RAMADAN ADHKAR (no audio asset yet) */
           case "ramadanAdhkar":
-            setAudioFileName("");
+            setAudioFileName("ramadan_adhkar.mp3");
             setTitle("🌙 റമദാൻ അദ്കാർ");
             break;
 

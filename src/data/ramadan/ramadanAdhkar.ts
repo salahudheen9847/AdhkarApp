@@ -45,7 +45,7 @@ export const ramadanAdhkar: DhikrItem[] = [
     english:
       "O Allah, for You I have fasted and with Your provision I break the fast. The thirst is gone, the veins are moistened, and the reward is assured, if Allah wills.",
     start: 8,
-    end: 16,
+    end: 23,
   },
 
   {
@@ -67,8 +67,8 @@ export const ramadanAdhkar: DhikrItem[] = [
       "റമളാനിൽ ആവർത്തിക്കാവുന്ന ദുആ: അശ്‌ഹദു അൻ ലാ ഇലാഹ ഇല്ലല്ലാഹ്, അസ്തഗ്ഫിരുല്ലാഹ, വ അസ്അലുകൽ ജന്നത, വ അഊദു ബിക മിനന്നാർ.",
     english:
       "I bear witness there is no god but Allah. I seek Allah’s forgiveness, ask You for Paradise, and seek refuge in You from the Fire.",
-    start: 16,
-    end: 24,
+    start: 23,
+    end: 31,
   },
 
   {
@@ -89,8 +89,8 @@ export const ramadanAdhkar: DhikrItem[] = [
     malayalam:
       "ഒന്നാം പത്ത് (റഹ്മ): അല്ലാഹുമ്മിർഹംനി യാ അർഹമർ റാഹിമീൻ.",
     english: "O Allah, have mercy on me, O Most Merciful of the merciful.",
-    start: 24,
-    end: 30,
+    start: 31,
+    end: 35,
   },
 
   {
@@ -111,8 +111,8 @@ export const ramadanAdhkar: DhikrItem[] = [
     malayalam:
       "രണ്ടാം പത്ത് (മഗ്ഫിര): അല്ലാഹുമ്മഗ്‌ഫിർലി ധുനൂബി യാ റബ്‌ബൽ ആലമീൻ.",
     english: "O Allah, forgive my sins, O Lord of the worlds.",
-    start: 30,
-    end: 36,
+    start: 35,
+    end: 40,
   },
 
   {
@@ -134,8 +134,8 @@ export const ramadanAdhkar: DhikrItem[] = [
       "മൂന്നാം പത്ത് (നജാത്ത്): അല്ലാഹുമ്മ ഇന്നക അഫുവ്വുൻ തുഹിബ്ബുല അഫ്വ ഫഅ്ഫു അണ്ണി. അല്ലാഹുമ്മ അഅ്‌തിഖ്‍നീ മിനന്നാർ വ അദ്‌ഖിൽനിൽ ജന്നത യാ റബ്‌ബൽ ആലമീൻ.",
     english:
       "O Allah, You are Pardoning and love to pardon, so pardon me. O Allah, free me from the Fire and admit me to Paradise, O Lord of the worlds.",
-    start: 36,
-    end: 44,
+    start: 40,
+    end: 50,
   },
 
   {
@@ -157,7 +157,7 @@ export const ramadanAdhkar: DhikrItem[] = [
       "റമളാൻ ദുആ: അല്ലാഹുമ്മ ഇജ്അൽ ഹാഝാഷ് ഷഹ്‌രശ്‌ഷരീഫൽ അഝീമ ഷാഹിദൻ ലനാ ലാ ഷാഹിദൻ അലൈനാ, വജ്അൽഹു ഹുജ്ജതൻ ലനാ ലാ ഹുജ്ജതൻ അലൈനാ, അല്ലാഹുമ്മ അഅ്‌തിഖ്‌ റിഖാബനാ വ റിഖാബ അബാഇനാ വ ഉമ്മഹാതിനാ വ മൻ തഅല്ലഖൂ ബിനാ മിനദ്ദുയൂനിവൽ മസാലിമി വന്നാർ.",
     english:
       "O Allah, make this noble, great month a witness for us, not against us, and make it a proof for us, not against us. O Allah, free our necks and the necks of our fathers, mothers, and all connected to us from debts, injustices, and the Fire.",
-    start: 44,
-    end: 54,
+    start: 50,
+    end: 74,
   },
 ];
