@@ -93,6 +93,11 @@ export default function HomeScreen() {
       image: require("../../assets/bader.png"),
       gradient: ["#a5f3fc", "#67e8f9"],
     },
+    {
+      id: "qaseedathulBurda",
+      image: require("../../assets/qaseeda.png"),
+      gradient: ["#f3e8ff", "#c084fc"],
+    },
   ]);
 
   const ratibItems = filter([
@@ -199,7 +204,9 @@ export default function HomeScreen() {
           onPress={id =>
             id === "manqusMoulid"
               ? navigation.navigate("ManqusMoulid")
-              : navigation.navigate("BaderMoulid")
+              : id === "baderMoulid"
+              ? navigation.navigate("BaderMoulid")
+              : navigation.navigate("Dhikr", { mode: "qaseeda", type: "qaseedathulBurda" })
           }
         />
 

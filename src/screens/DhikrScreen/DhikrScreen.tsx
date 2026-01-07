@@ -25,6 +25,7 @@ export default function DhikrScreen() {
     useState(false);
 
   /* 🔒 SAFE TYPE — ✅ nariyathSwalath & salawatAlFatih ADDED */
+  const mode: "dhikr" | "manqus" | "bader" | "qaseeda" = route.params?.mode ?? "dhikr";
   const type:
     | "duaMarichavark"
     | "duaQabar"
@@ -35,7 +36,8 @@ export default function DhikrScreen() {
     | "ramadanAdhkar"
     | "adhkarAfterSalah"
     | "adhkarAfterSalah2"
-    | "thajuSwalath" =
+    | "thajuSwalath"
+    | "qaseedathulBurda" =
     route.params?.type ?? "duaMarichavark";
 
   /* 🎧 AUDIO HOOK */
@@ -56,7 +58,7 @@ export default function DhikrScreen() {
     onSeek,
     onChangeRate,
   } = useDhikrAudio({
-    mode: "dhikr",
+    mode,
     type,
   });
 

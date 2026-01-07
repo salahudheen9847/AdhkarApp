@@ -30,6 +30,7 @@ export type HeaderType =
   | "asmaulHusna"
   | "manqus"
   | "bader"
+  | "qaseedathulBurda"
   | "nariyathSwalath"
   | "salawatAlFatih"
   | "ramadanAdhkar"

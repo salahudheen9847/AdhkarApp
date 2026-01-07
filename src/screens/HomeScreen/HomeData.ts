@@ -20,6 +20,7 @@ export type HomeLabelKey =
   | "duaQabar"
   | "manqusMoulid"
   | "baderMoulid"
+  | "qaseedathulBurda"
   | "haddad"
   | "asmaulHusna"
   | "nariyathSwalath"
@@ -60,6 +61,13 @@ export const HOME_LABELS: Record<HomeLabelKey, HomeLabel> = {
     english: "Badr Moulid",
     // Arabic-ിലും രണ്ട് വരി
     arabic: "مولد\nبدر",
+  },
+
+  qaseedathulBurda: {
+    malayalam: "ഖസീദത്തുൽ\nബുർദ",
+    manglish: "qaseedathul burda",
+    english: "Qaseedathul Burda",
+    arabic: "قصيدة\nالبردة",
   },
 
   haddad: {
@@ -122,7 +130,7 @@ export const HOME_LABELS: Record<HomeLabelKey, HomeLabel> = {
 /* ---------------- SECTION TITLES ---------------- */
 
 export const SECTION_TITLES: Record<
-  "dua" | "moulid" | "ratib" | "swalath" | "asma" | "ramadan" | "salah",
+  "dua" | "moulid" | "qaseeda" | "ratib" | "swalath" | "asma" | "ramadan" | "salah",
   Record<AppLanguage, string>
 > = {
   dua: {
@@ -135,6 +143,12 @@ export const SECTION_TITLES: Record<
     malayalam: "🌙 മൗലിദ് ശേഖരം",
     english: "🌙 Moulid Collection",
     arabic: "🌙 مجموعة المولد",
+  },
+
+  qaseeda: {
+    malayalam: "📜 ഖസീദ ശേഖരം",
+    english: "📜 Qaseeda Collection",
+    arabic: "📜 مجموعة القصائد",
   },
 
   ratib: {
@@ -166,4 +180,22 @@ export const SECTION_TITLES: Record<
     english: "🕌 After Salah Collection",
     arabic: "🕌 مجموعة بعد الصلاة",
   },
+};
+
+/* ---------------- SECTION MAPPING ---------------- */
+
+export const SECTION_MAPPING: Record<HomeLabelKey, keyof typeof SECTION_TITLES> = {
+  duaMarichavark: "dua",
+  duaQabar: "dua",
+  manqusMoulid: "moulid",
+  baderMoulid: "moulid",
+  qaseedathulBurda: "qaseeda",
+  haddad: "ratib",
+  asmaulHusna: "asma",
+  nariyathSwalath: "swalath",
+  salawatAlFatih: "swalath",
+  ramadanAdhkar: "ramadan",
+  thajuSwalath: "swalath",
+  adhkarAfterSalah: "salah",
+  adhkarAfterSalah2: "salah",
 };

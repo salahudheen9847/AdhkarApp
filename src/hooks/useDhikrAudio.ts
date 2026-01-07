@@ -11,6 +11,7 @@ import {
 import { ramadanAdhkar } from "../data/ramadan/ramadanAdhkar";
 import { duaAfterSalah } from "../data/salah/duaAfterSalah";
 import { adhkarAfterSalah } from "../data/salah/adhkarAfterSalah";
+import { qaseedathulBurda } from "../data/qaseeda";
 
 try {
   Sound.setCategory("Playback");
@@ -20,7 +21,7 @@ try {
    🔹 Types
 ---------------------------------*/
 type UseDhikrAudioParams = {
-  mode: "dhikr" | "manqus" | "bader";
+  mode: "dhikr" | "manqus" | "bader" | "qaseeda";
   type?: string;
 };
 
@@ -75,20 +76,52 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
 
         if (mode === "manqus") rows = await getManqusMoulid();
         if (mode === "bader") rows = await getBaderMoulid();
+        if (mode === "qaseeda") rows = qaseedathulBurda;
 
         if (cancelled) return;
 
         // -------- MAP DATA --------
-        const mapped: DuaItem[] = rows.map(r => ({
-          id: r.id,
-          isBox: r.isBox === 1 || r.isBox === true,
-          isHeading: r.isHeading,
-          text: r.text ?? r.arabic ?? "",
-          malayalam: r.malayalam ?? "",
-          english: r.english ?? "",
-          start: r.start,
-          end: r.end,
-        }));
+        const mapped: DuaItem[] = rows.map(r => {
+          if (mode === "dhikr") {
+            if (type === "ramadanAdhkar" || type === "adhkarAfterSalah" || type === "adhkarAfterSalah2") {
+              return {
+                id: r.id,
+                isBox: r.isBox,
+                isHeading: r.isHeading,
+                text: r.text ?? "",
+                malayalam: r.malayalam ?? "",
+                english: r.english ?? "",
+                start: r.start,
+                end: r.end,
+              };
+            }
+            return {
+              id: r.id,
+              isBox: r.isBox === 1 || r.isBox === true,
+              isHeading: r.isHeading,
+              text: r.text ?? r.arabic ?? "",
+              malayalam: r.malayalam ?? "",
+              english: r.english ?? "",
+              start: r.start,
+              end: r.end,
+            };
+          }
+
+          if (mode === "manqus" || mode === "bader" || mode === "qaseeda") {
+            return {
+              id: r.id,
+              isBox: r.isBox === 1 || r.isBox === true,
+              isHeading: r.isHeading,
+              text: r.text ?? r.arabic ?? "",
+              malayalam: r.malayalam ?? "",
+              english: r.english ?? "",
+              start: r.start,
+              end: r.end,
+            };
+          }
+
+          return null;
+        }).filter(Boolean) as DuaItem[];
 
         setCurrentDuaList(mapped);
 
@@ -155,6 +188,11 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
         if (mode === "bader") {
           setAudioFileName("bader_moulid.mp3");
           setTitle("📜 ബാദർ മൗലിദ്");
+        }
+
+        if (mode === "qaseeda") {
+          setAudioFileName("qaseedathul_burda.mp3");
+          setTitle("📜 ഖസീദത്തുൽ ബുർദ");
         }
       } catch (e) {
         console.error("❌ Data/Audio load error:", e);
