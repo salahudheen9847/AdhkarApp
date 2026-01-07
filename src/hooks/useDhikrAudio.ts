@@ -112,7 +112,7 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
               id: r.id,
               isBox: r.isBox === 1 || r.isBox === true,
               isHeading: r.isHeading,
-              text: r.text ?? r.arabic ?? "",
+              text: r.text ?? "",
               malayalam: r.malayalam ?? "",
               english: r.english ?? "",
               start: r.start,

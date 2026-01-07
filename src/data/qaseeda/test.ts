@@ -1,24 +1,20 @@
 // Test file for Qaseedathul Burda module
-import { validateQaseedaData, getQaseedaStats, qaseedathulBurda } from './index';
+import { qaseedathulBurda } from './index';
 
-// Run validation
-const validation = validateQaseedaData();
-console.log('✅ Validation Results:');
-console.log('Valid:', validation.isValid);
-console.log('Errors:', validation.errors);
-console.log('Warnings:', validation.warnings);
+// Test basic structure
+console.log('✅ Total verses:', qaseedathulBurda.length);
+console.log('✅ First verse ID:', qaseedathulBurda[0]?.id);
+console.log('✅ Last verse ID:', qaseedathulBurda[qaseedathulBurda.length - 1]?.id);
 
-// Get statistics
-const stats = getQaseedaStats();
-console.log('\n📊 Statistics:');
-console.log('Total Verses:', stats.totalVerses);
-console.log('Total Duration:', stats.totalDuration, 'seconds');
-console.log('Average Duration:', stats.averageVerseDuration.toFixed(2), 'seconds');
+// Test verse structure
+const firstVerse = qaseedathulBurda[0];
+if (firstVerse) {
+  console.log('✅ First verse has required fields:');
+  console.log('  - text:', firstVerse.text ? '✓' : '✗');
+  console.log('  - malayalam:', firstVerse.malayalam ? '✓' : '✗');
+  console.log('  - english:', firstVerse.english ? '✓' : '✗');
+  console.log('  - start:', typeof firstVerse.start === 'number' ? '✓' : '✗');
+  console.log('  - end:', typeof firstVerse.end === 'number' ? '✓' : '✗');
+}
 
-// Test first verse
-console.log('\n📖 First Verse:');
-console.log('ID:', qaseedathulBurda[0].id);
-console.log('Text:', qaseedathulBurda[0].text.substring(0, 30) + '...');
-console.log('Malayalam:', qaseedathulBurda[0].malayalam.substring(0, 30) + '...');
-
-export { validation, stats };
+export { qaseedathulBurda };

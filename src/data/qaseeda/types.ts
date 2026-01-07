@@ -4,6 +4,7 @@ export interface QaseedaVerse {
   id: number;
   text: string;
   malayalam: string;
+  english: string;
   start: number;
   end: number;
   isHeading?: boolean;
