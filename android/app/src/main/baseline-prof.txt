@@ -1,0 +1,26 @@
+# Startup profile for AdhkarApp
+# This file contains rules for R8 to optimize app startup performance
+
+# Core React Native classes
+HSPLandroid/app/ActivityThread->main()V
+HSPLandroid/app/LoadedApk->makeApplication(Landroid/content/Context;Landroid/app/Instrumentation;)Landroid/app/Application;
+HSPLcom/facebook/react/ReactActivity->onCreate()V
+HSPLcom/facebook/react/ReactActivityDelegate->loadApp()V
+HSPLcom/facebook/react/ReactActivityDelegate->getReactNativeHost()Lcom/facebook/react/ReactNativeHost;
+HSPLcom/facebook/react/ReactInstanceManager->createReactContextInBackground()V
+HSPLcom/facebook/react/bridge/ReactContext->initializeWithInstance(Lcom/facebook/react/bridge/ReactInstanceManager;)V
+
+# AdhkarApp specific classes
+HSPLsalahudheen/adhkar/MainActivity->onCreate()V
+HSPLsalahudheen/adhkar/MainApplication->onCreate()V
+
+# Common Android framework classes used during startup
+HSPLandroid/os/Looper->loop()V
+HSPLandroid/os/Handler-><init>()V
+HSPLandroid/view/View-><init>(Landroid/content/Context;)V
+HSPLandroid/widget/FrameLayout-><init>(Landroid/content/Context;)V
+
+# React Native bridge classes
+HSPLcom/facebook/react/bridge/CatalystInstance-><init>()V
+HSPLcom/facebook/react/bridge/JavaScriptExecutor-><init>()V
+HSPLcom/facebook/react/uimanager/UIManagerModule-><init>()V
