@@ -12,6 +12,10 @@ import { ramadanAdhkar } from "../data/ramadan/ramadanAdhkar";
 import { duaAfterSalah } from "../data/salah/duaAfterSalah";
 import { adhkarAfterSalah } from "../data/salah/adhkarAfterSalah";
 import { qaseedathulBurda } from "../data/qaseeda/qaseedathulBurda";
+import { talqeenForMen } from "../data/TalqeenMen";
+import { salawatOnProphet } from "../data/salathuIbrahim";
+import { atTahiyyat } from "../data/at-tahiyyat";
+import { duaUlQunoot } from "../data/dua-ul-qunoot";
 
 try {
   Sound.setCategory("Playback");
@@ -71,6 +75,10 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
           if (type === "ramadanAdhkar") rows = ramadanAdhkar;
           else if (type === "adhkarAfterSalah") rows = duaAfterSalah;
           else if (type === "adhkarAfterSalah2") rows = adhkarAfterSalah;
+          else if (type === "talqeenMen") rows = talqeenForMen.content;
+          else if (type === "salawatulIbrahimiyya") rows = salawatOnProphet.content;
+          else if (type === "atTahiyyat") rows = atTahiyyat.content;
+          else if (type === "duaUlQunoot") rows = duaUlQunoot.content;
           else rows = await getDhikrByType(type);
         }
 
@@ -176,6 +184,26 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
             case "adhkarAfterSalah2":
               setAudioFileName("");
               setTitle("🕌 പ്രാർത്ഥനകൾ");
+              break;
+
+            case "talqeenMen":
+              setAudioFileName("");
+              setTitle("🙏 പുരുഷന്മാർക്കുള്ള തൽഖീൻ");
+              break;
+
+            case "salawatulIbrahimiyya":
+              setAudioFileName("");
+              setTitle("🤲 സ്വലാത്തുൽ ഇബ്രാഹീമിയ്യ");
+              break;
+
+            case "atTahiyyat":
+              setAudioFileName("");
+              setTitle("🙏 അത്തഹിയ്യാത്ത് (തഷഹ്‌ഹുദ്)");
+              break;
+
+            case "duaUlQunoot":
+              setAudioFileName("");
+              setTitle("🤲 ദുആ-ഉൽ ഖുനൂത്");
               break;
           }
         }

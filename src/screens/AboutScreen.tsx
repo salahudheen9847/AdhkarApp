@@ -2,15 +2,15 @@ import React from "react";
 import {
   View,
   Text,
-  ScrollView,
-  StyleSheet,
-  Linking,
   TouchableOpacity,
+  StyleSheet,
+  ScrollView,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "react-native";
+import Icon from "react-native-vector-icons/MaterialIcons";
 
-export default function AboutScreen() {
+export default function AboutScreen({ navigation }: any) {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" />
@@ -18,7 +18,13 @@ export default function AboutScreen() {
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* HEADER */}
         <View style={styles.header}>
-          <Text style={styles.title}>ℹ️ About</Text>
+          <View style={styles.headerContent}>
+            <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+              <Icon name="arrow-back" size={22} color="#171717" />
+              <Text style={styles.backText}>Back</Text>
+            </TouchableOpacity>
+            <Text style={styles.title}>ℹ️ About</Text>
+          </View>
         </View>
 
         {/* CONTENT */}
@@ -98,6 +104,24 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderBottomWidth: 1,
     borderBottomColor: "#e5e7eb",
+  },
+  headerContent: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  backButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 20,
+  },
+  backText: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#171717",
+    marginLeft: 8,
   },
   title: {
     fontSize: 24,

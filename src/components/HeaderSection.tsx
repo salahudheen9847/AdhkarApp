@@ -9,13 +9,11 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
-import { headerStyles as styles } from "../../styles/headerStyle";
-
-import { YoutubeButton } from "../../component/YoutubeButton";
-import type { YoutubeType } from "../../data/youtubeLinks";
-
-import { WhatsappButton } from "../../component/WhatsappButton";
-import { ShareButton } from "../../components/ShareButton";
+import { headerStyles as styles } from "../styles/headerStyle";
+import { YoutubeButton } from "../component/YoutubeButton";
+import type { YoutubeType } from "../data/youtubeLinks";
+import { WhatsappButton } from "../component/WhatsappButton";
+import { ShareButton } from "./ShareButton";
 
 /* 🌍 Language Mode */
 export type LanguageMode =
@@ -78,10 +76,13 @@ const isYoutubeType = (
     type === "manqus" ||
     type === "bader" ||
     type === "nariyathSwalath" ||
-    type === "salawatAlFatih"
+    type === "salawatAlFatih" ||
+    type === "ramadanAdhkar" ||
+    type === "adhkarAfterSalah" ||
+    type === "adhkarAfterSalah2" ||
+    type === "thajuSwalath"
   );
 };
-
 
 const HeaderSection: React.FC<HeaderSectionProps> = ({
   textColor,
@@ -189,10 +190,8 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
           </TouchableOpacity>
 
           {/* ▶️ YOUTUBE (ONLY IF SUPPORTED) */}
-          {isYoutubeType(type) && (
-            <YoutubeButton type={type} />
-          )}
-
+          {isYoutubeType(type) && <YoutubeButton type={type} />}
+          
           <WhatsappButton />
           
           <ShareButton />

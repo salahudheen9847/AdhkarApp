@@ -9,8 +9,9 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "react-native";
+import Icon from "react-native-vector-icons/MaterialIcons";
 
-export default function SettingsScreen() {
+export default function SettingsScreen({ navigation }: any) {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
   const [notifications, setNotifications] = useState(true);
   const [autoPlay, setAutoPlay] = useState(false);
@@ -23,7 +24,13 @@ export default function SettingsScreen() {
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* HEADER */}
         <View style={styles.header}>
-          <Text style={styles.title}>⚙️ Settings</Text>
+          <View style={styles.headerContent}>
+            <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+              <Icon name="arrow-back" size={22} color="#171717" />
+              <Text style={styles.backText}>Back</Text>
+            </TouchableOpacity>
+            <Text style={styles.title}>⚙️ Settings</Text>
+          </View>
         </View>
 
         {/* SETTINGS OPTIONS */}
@@ -40,11 +47,11 @@ export default function SettingsScreen() {
             />
           </View>
 
-          {/* Notifications Setting */}
+          {/* YouTube Setting */}
           <View style={styles.settingItem}>
             <View style={styles.settingInfo}>
-              <Text style={styles.settingTitle}>🔔 Notifications</Text>
-              <Text style={styles.settingDescription}>Enable notifications</Text>
+              <Text style={styles.settingTitle}>� YouTube</Text>
+              <Text style={styles.settingDescription}>Open YouTube links</Text>
             </View>
             <Switch
               value={notifications}
@@ -52,11 +59,11 @@ export default function SettingsScreen() {
             />
           </View>
 
-          {/* Auto Play Setting */}
+          {/* WhatsApp Setting */}
           <View style={styles.settingItem}>
             <View style={styles.settingInfo}>
-              <Text style={styles.settingTitle}>▶️ Auto Play</Text>
-              <Text style={styles.settingDescription}>Auto play audio</Text>
+              <Text style={styles.settingTitle}>📱 WhatsApp</Text>
+              <Text style={styles.settingDescription}>Share via WhatsApp</Text>
             </View>
             <Switch
               value={autoPlay}
@@ -106,6 +113,24 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderBottomWidth: 1,
     borderBottomColor: "#e5e7eb",
+  },
+  headerContent: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  backButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 20,
+  },
+  backText: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#171717",
+    marginLeft: 8,
   },
   title: {
     fontSize: 24,

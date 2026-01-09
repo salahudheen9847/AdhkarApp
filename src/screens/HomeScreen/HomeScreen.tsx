@@ -32,10 +32,10 @@ type Category = {
 const categories: Category[] = [
   {
     id: "duaMarichavark",
-    emoji: "🕌",
+    emoji: "🤲",
     title: {
       malayalam: "മരിച്ചവർക്കുള്ള ദുആ",
-      english: "Dua for the Deceased",
+      english: "Dua for Deceased",
       arabic: "دعاء للميت",
     },
   },
@@ -44,7 +44,7 @@ const categories: Category[] = [
     emoji: "🪦",
     title: {
       malayalam: "ഖബറിലെ ദുആ",
-      english: "Dua in the Grave",
+      english: "Dua in Grave",
       arabic: "دعاء في القبر",
     },
   },
@@ -86,7 +86,7 @@ const categories: Category[] = [
   },
   {
     id: "nariyathSwalath",
-    emoji: "🙏",
+    emoji: "🤲",
     title: {
       malayalam: "നാരിയത്ത് സ്വലാത്ത്",
       english: "Nariyath Swalath",
@@ -95,7 +95,7 @@ const categories: Category[] = [
   },
   {
     id: "thajuSwalath",
-    emoji: "🙏",
+    emoji: "🤲",
     title: {
       malayalam: "താജു സ്വലാത്ത്",
       english: "Thaju Swalath",
@@ -104,7 +104,7 @@ const categories: Category[] = [
   },
   {
     id: "salawatAlFatih",
-    emoji: "🙏",
+    emoji: "🤲",
     title: {
       malayalam: "സ്വലാത്ത് അൽ ഫാത്തിഹ്",
       english: "Salawat al-Fatih",
@@ -122,7 +122,7 @@ const categories: Category[] = [
   },
   {
     id: "adhkarAfterSalah",
-    emoji: "🕌",
+    emoji: "🤲",
     title: {
       malayalam: "നിസ്കാരത്തിന് ശേഷം ദിക്‌ർ",
       english: "Adhkar After Salah",
@@ -140,11 +140,47 @@ const categories: Category[] = [
   },
   {
     id: "asmaulHusna",
-    emoji: "✨",
+    emoji: "🌟",
     title: {
       malayalam: "അസ്മാഉൽ ഹുസ്ന",
       english: "Asmaul Husna",
       arabic: "أسماء الله الحسنى",
+    },
+  },
+  {
+    id: "talqeenMen",
+    emoji: "🙏",
+    title: {
+      malayalam: "പുരുഷന്മാർക്കുള്ള തൽഖീൻ",
+      english: "Talqeen for Men",
+      arabic: "تَلْقِينُ الْمَيِّتِ",
+    },
+  },
+  {
+    id: "salawatulIbrahimiyya",
+    emoji: "🤲",
+    title: {
+      malayalam: "സ്വലാത്തുൽ ഇബ്രാഹീമിയ്യ",
+      english: "Swalathul Ibrahimiyya",
+      arabic: "الصَّلَاةُ الإِبْرَاهِيمِيَّةُ",
+    },
+  },
+  {
+    id: "atTahiyyat",
+    emoji: "🙏",
+    title: {
+      malayalam: "അത്തഹിയ്യാത്ത് (തഷഹ്‌ഹുദ്)",
+      english: "At-Tahiyyat (Tashahhud)",
+      arabic: "التَّحِيَّاتُ",
+    },
+  },
+  {
+    id: "duaUlQunoot",
+    emoji: "🤲",
+    title: {
+      malayalam: "ദുആ-ഉൽ ഖുനൂത്",
+      english: "Dua-ul-Qunoot",
+      arabic: "دُعَاءُ الْقُنُوتِ",
     },
   },
 ];
@@ -173,19 +209,19 @@ export default function HomeScreen() {
   /* ---------------- UI ---------------- */
 
   return (
-    <SafeAreaView style={[styles.container, isDarkTheme && { backgroundColor: "#1f2937" }]}>
+    <SafeAreaView style={[styles.container, isDarkTheme && styles.containerDark]}>
       <StatusBar barStyle={isDarkTheme ? "light-content" : "dark-content"} />
 
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* HEADER */}
         <View style={styles.header}>
-          <Text style={[styles.appTitle, isDarkTheme && { color: "#ffffff" }]}>AdhkarApp</Text>
+          <Text style={[styles.appTitle, isDarkTheme && styles.appTitleDark]}>AdhkarApp</Text>
           
           {/* HEADER OPTIONS */}
           <View style={styles.headerOptions}>
             {/* THEME TOGGLE */}
             <TouchableOpacity
-              style={[styles.optionButton, isDarkTheme && { backgroundColor: "#374151" }]}
+              style={[styles.optionButton, isDarkTheme && styles.optionButtonDark]}
               onPress={() => setIsDarkTheme(!isDarkTheme)}
             >
               <Text style={styles.optionIcon}>
@@ -195,7 +231,7 @@ export default function HomeScreen() {
             
             {/* SETTINGS */}
             <TouchableOpacity
-              style={[styles.optionButton, isDarkTheme && { backgroundColor: "#374151" }]}
+              style={[styles.optionButton, isDarkTheme && styles.optionButtonDark]}
               onPress={() => navigation.navigate("Settings")}
             >
               <Text style={styles.optionIcon}>⚙️</Text>
@@ -203,7 +239,7 @@ export default function HomeScreen() {
             
             {/* ABOUT */}
             <TouchableOpacity
-              style={[styles.optionButton, isDarkTheme && { backgroundColor: "#374151" }]}
+              style={[styles.optionButton, isDarkTheme && styles.optionButtonDark]}
               onPress={() => navigation.navigate("About")}
             >
               <Text style={styles.optionIcon}>ℹ️</Text>
@@ -221,7 +257,7 @@ export default function HomeScreen() {
               style={[
                 styles.langButton,
                 language === lang && styles.langActive,
-                isDarkTheme && { backgroundColor: "#374151" }
+                isDarkTheme && styles.langButtonDark
               ]}
               onPress={() => setLanguage(lang)}
             >
@@ -229,7 +265,7 @@ export default function HomeScreen() {
                 style={[
                   styles.langText,
                   language === lang && styles.langTextActive,
-                  isDarkTheme && { color: "#ffffff" }
+                  isDarkTheme && styles.langTextDark
                 ]}
               >
                 {lang === "malayalam" ? "മല" : lang === "english" ? "En" : "ع"}
@@ -256,7 +292,7 @@ export default function HomeScreen() {
           {filteredCategories.map(item => (
             <TouchableOpacity
               key={item.id}
-              style={[styles.card, isDarkTheme && { backgroundColor: "#374151" }]}
+              style={[styles.card, isDarkTheme && styles.cardDark]}
               onPress={() =>
                 item.id === "manqusMoulid"
                   ? navigation.navigate("ManqusMoulid")
@@ -271,14 +307,14 @@ export default function HomeScreen() {
               }
             >
               <Text style={styles.emoji}>{item.emoji}</Text>
-              <Text style={[styles.cardText, isDarkTheme && { color: "#ffffff" }]}>
+              <Text style={[styles.cardText, isDarkTheme && styles.cardTextDark]}>
                 {item.title[language]}
               </Text>
             </TouchableOpacity>
           ))}
 
           {filteredCategories.length === 0 && (
-            <Text style={[styles.noResult, isDarkTheme && { color: "#ffffff" }]}>ഫലം കണ്ടെത്തിയില്ല</Text>
+            <Text style={[styles.noResult, isDarkTheme && styles.noResultDark]}>ഫലം കണ്ടെത്തിയില്ല</Text>
           )}
         </View>
       </ScrollView>
@@ -293,93 +329,112 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fafaf9",
   },
+  containerDark: {
+    backgroundColor: "#1f2937",
+  },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     padding: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: "#e5e7eb",
   },
   appTitle: {
-    fontSize: 22,
-    fontWeight: "700",
-    color: "#171717",
-  },
-  languageToggle: {
-    flexDirection: "row",
-    justifyContent: "center",
-    gap: 8,
-    marginBottom: 10,
-  },
-  langButton: {
-    paddingHorizontal: 14,
-    paddingVertical: 6,
-    borderRadius: 10,
-    backgroundColor: "#e5e7eb",
-  },
-  langActive: {
-    backgroundColor: "#22c55e",
-  },
-  langText: {
-    fontSize: 13,
-    color: "#374151",
-    fontWeight: "600",
-  },
-  langTextActive: {
-    color: "#fff",
-  },
-  sectionTitle: {
     fontSize: 24,
     fontWeight: "700",
-    marginLeft: 20,
-    marginVertical: 16,
     color: "#171717",
   },
-  grid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    paddingBottom: 20,
-  },
-  card: {
-    width: 160,
-    height: 160,
-    backgroundColor: "#ffffff",
-    borderRadius: 20,
-    alignItems: "center",
-    justifyContent: "center",
-    margin: 8,
-    elevation: 4,
-  },
-  emoji: {
-    fontSize: 36,
-    marginBottom: 8,
-  },
-  cardText: {
-    fontSize: 14,
-    fontWeight: "600",
-    color: "#262626",
-    textAlign: "center",
-  },
-  noResult: {
-    marginTop: 20,
-    fontSize: 16,
-    color: "#6b7280",
+  appTitleDark: {
+    color: "#ffffff",
   },
   headerOptions: {
     flexDirection: "row",
     alignItems: "center",
   },
   optionButton: {
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    borderRadius: 16,
+    padding: 8,
+    borderRadius: 8,
     backgroundColor: "#f3f4f6",
-    justifyContent: "center",
-    alignItems: "center",
-    marginRight: 4,
+    marginRight: 8,
+  },
+  optionButtonDark: {
+    backgroundColor: "#374151",
   },
   optionIcon: {
-    fontSize: 18,
+    fontSize: 16,
+  },
+  languageToggle: {
+    flexDirection: "row",
+    padding: 16,
+    gap: 8,
+  },
+  langButton: {
+    flex: 1,
+    padding: 8,
+    borderRadius: 8,
+    backgroundColor: "#f3f4f6",
+    alignItems: "center",
+  },
+  langButtonDark: {
+    backgroundColor: "#374151",
+  },
+  langActive: {
+    backgroundColor: "#22c55e",
+  },
+  langText: {
+    fontSize: 14,
+    fontWeight: "500",
+    color: "#374151",
+  },
+  langTextDark: {
+    color: "#ffffff",
+  },
+  langTextActive: {
+    color: "#ffffff",
+  },
+  grid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    padding: 16,
+    gap: 12,
+  },
+  card: {
+    width: "48%",
+    backgroundColor: "#ffffff",
+    borderRadius: 12,
+    padding: 16,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  cardDark: {
+    backgroundColor: "#374151",
+  },
+  emoji: {
+    fontSize: 32,
+    marginBottom: 8,
+  },
+  cardText: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#171717",
+    textAlign: "center",
+  },
+  cardTextDark: {
+    color: "#ffffff",
+  },
+  noResult: {
+    fontSize: 16,
+    color: "#6b7280",
+    textAlign: "center",
+    marginTop: 32,
+  },
+  noResultDark: {
+    color: "#ffffff",
   },
   themeButton: {
     paddingHorizontal: 12,
@@ -388,6 +443,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#f3f4f6",
     justifyContent: "center",
     alignItems: "center",
+  },
+  themeButtonDark: {
+    backgroundColor: "#374151",
   },
   themeIcon: {
     fontSize: 20,

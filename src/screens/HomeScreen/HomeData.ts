@@ -28,7 +28,11 @@ export type HomeLabelKey =
   | "ramadanAdhkar"
   | "thajuSwalath"
   | "adhkarAfterSalah"
-  | "adhkarAfterSalah2";
+  | "adhkarAfterSalah2"
+  | "talqeenMen"
+  | "salawatulIbrahimiyya"
+  | "atTahiyyat"
+  | "duaUlQunoot";
 
 /* ---------------- HOME LABELS ---------------- */
 
@@ -124,7 +128,35 @@ export const HOME_LABELS: Record<HomeLabelKey, HomeLabel> = {
     malayalam: "പ്രാർത്ഥനകൾ",
     manglish: "prarthanakal",
     english: "Supplications",
-    arabic: "الأدعية",
+    arabic: "أذكار بعد الصلاة",
+  },
+
+  talqeenMen: {
+    malayalam: "പുരുഷന്മാർക്കുള്ള തൽഖീൻ",
+    manglish: "purushanmarkkulla thalqeen",
+    english: "Talqeen for Men",
+    arabic: "تَلْقِينُ الْمَيِّتِ",
+  },
+
+  salawatulIbrahimiyya: {
+    malayalam: "സ്വലാത്തുൽ ഇബ്രാഹീമിയ്യ",
+    manglish: "swalathul ibrahimiyya",
+    english: "Swalathul Ibrahimiyya",
+    arabic: "الصَّلَاةُ الإِبْرَاهِيمِيَّةُ",
+  },
+
+  atTahiyyat: {
+    malayalam: "അത്തഹിയ്യാത്ത് (തഷഹ്‌ഹുദ്)",
+    manglish: "at tahiyyat (tashahhud)",
+    english: "At-Tahiyyat (Tashahhud)",
+    arabic: "التَّحِيَّاتُ",
+  },
+
+  duaUlQunoot: {
+    malayalam: "ദുആ-ഉൽ ഖുനൂത്",
+    manglish: "dwa ul qunoot",
+    english: "Dua-ul-Qunoot",
+    arabic: "دُعَاءُ الْقُنُوتِ",
   },
 };
 
@@ -199,4 +231,8 @@ export const SECTION_MAPPING: Record<HomeLabelKey, keyof typeof SECTION_TITLES> 
   thajuSwalath: "swalath",
   adhkarAfterSalah: "salah",
   adhkarAfterSalah2: "salah",
+  talqeenMen: "dua",
+  salawatulIbrahimiyya: "swalath",
+  atTahiyyat: "salah",
+  duaUlQunoot: "dua",
 };

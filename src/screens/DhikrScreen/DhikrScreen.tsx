@@ -37,7 +37,11 @@ export default function DhikrScreen() {
     | "adhkarAfterSalah"
     | "adhkarAfterSalah2"
     | "thajuSwalath"
-    | "qaseedathulBurda" =
+    | "qaseedathulBurda"
+    | "talqeenMen"
+    | "salawatulIbrahimiyya"
+    | "atTahiyyat"
+    | "duaUlQunoot" =
     route.params?.type ?? "duaMarichavark";
 
   /* 🎧 AUDIO HOOK */
