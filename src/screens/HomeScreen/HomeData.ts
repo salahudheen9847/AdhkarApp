@@ -70,12 +70,13 @@ export const HOME_LABELS: Record<HomeLabelKey, HomeLabel> = {
     arabic: "قصيدة\nالبردة",
   },
 
-  haddad: {
-    malayalam: "റാത്തിബ് അൽ ഹദ്ദാദ്",
-    manglish: "ratib al haddad",
-    english: "Ratib al-Haddad",
-    arabic: "راتب الحداد",
-  },
+ haddad: {
+  malayalam: "റതീബ് അൽ-ഹദ്ദാദ്",
+  manglish: "Ratib al-Haddad",
+  english: "Ratib al-Haddad",
+  arabic: "حزب الحداد",
+},
+
 
   asmaulHusna: {
     malayalam: "അസ്മാഉൽ ഹുസ്ന",

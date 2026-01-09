@@ -65,29 +65,29 @@ export const homeStyles = StyleSheet.create({
     letterSpacing: -0.5,
   },
 
-  // 🟫 Modern Grid with Better Spacing
+  // 🟫 Modern Grid with Better Spacing - Professional Layout
   innerGrid: {
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
-    gap: 16,
-    paddingHorizontal: 12,
+    gap: 12,
+    paddingHorizontal: 16,
     marginBottom: 8,
   },
 
-  // 🧿 Premium Cards with Glassmorphism
+  // 🧿 Premium Cards with Glassmorphism - Professional Look
   card: {
-    width: 160,
-    height: 170,
-    borderRadius: 24,
+    width: 140,
+    height: 150,
+    borderRadius: 20,
     alignItems: "center",
     justifyContent: "center",
     // Premium shadow system
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.12,
-    shadowRadius: 16,
-    elevation: 6,
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.10,
+    shadowRadius: 12,
+    elevation: 5,
     backgroundColor: "#ffffff",
     // Subtle border for depth
     borderWidth: 1,
@@ -96,19 +96,19 @@ export const homeStyles = StyleSheet.create({
   },
 
   icon: {
-    width: 80,
-    height: 80,
-    marginBottom: 12,
+    width: 60,
+    height: 60,
+    marginBottom: 10,
     resizeMode: "contain",
   },
 
   cardText: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: "600",
     color: "#262626",
     textAlign: "center",
     paddingHorizontal: 8,
-    lineHeight: 20,
+    lineHeight: 18,
   },
 
   // ❌ No result message with better styling

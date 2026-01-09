@@ -28,6 +28,19 @@ export const styles = StyleSheet.create({
     fontSize: 16,
   },
 
+  shareButton: {
+    backgroundColor: "#3b82f6",
+    padding: 12,
+    borderRadius: 20,
+    shadowColor: "#3b82f6",
+    shadowOpacity: 0.3,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+    elevation: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
   title: {
     fontSize: 24,
     fontWeight: "700",

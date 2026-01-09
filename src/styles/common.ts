@@ -169,4 +169,20 @@ export const commonStyles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
   },
+
+  // Header Styles
+  headerRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    paddingHorizontal: 16,
+    paddingTop: 16,
+  },
+  headerFlex: {
+    flex: 1,
+    flexDirection: "column",
+  },
+  shareButtonMargin: {
+    marginLeft: 16,
+  },
 });

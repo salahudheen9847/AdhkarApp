@@ -2,4 +2,5 @@
 export * from './types';
 export * from './morning';
 export * from './evening';
-export * from './general';
+// Temporarily commented out until general module is complete
+// export * from './general';

@@ -27,6 +27,8 @@ import DhikrScreen from "./src/screens/DhikrScreen/DhikrScreen";
 import TranslationScreen from "./src/screens/TranslationScreen";
 import ManqusMoulidScreen from "./src/screens/ManqusMoulidScreen/ManqusMoulidScreen";
 import BaderMoulidScreen from "./src/screens/BaderMoulidScreen/BaderMoulidScreen";
+import SettingsScreen from "./src/screens/SettingsScreen";
+import AboutScreen from "./src/screens/AboutScreen";
 
 /* 🗄️ DATABASE */
 import { createTables } from "./src/db/createTables";
@@ -95,6 +97,18 @@ function RootNavigator() {
             },
             headerTintColor: "#ffffff",
           }}
+        />
+
+        <Stack.Screen
+          name="Settings"
+          component={SettingsScreen}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name="About"
+          component={AboutScreen}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>

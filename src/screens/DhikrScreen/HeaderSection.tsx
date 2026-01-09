@@ -15,6 +15,7 @@ import { YoutubeButton } from "../../component/YoutubeButton";
 import type { YoutubeType } from "../../data/youtubeLinks";
 
 import { WhatsappButton } from "../../component/WhatsappButton";
+import { ShareButton } from "../../components/ShareButton";
 
 /* 🌍 Language Mode */
 export type LanguageMode =
@@ -189,6 +190,8 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
           )}
 
           <WhatsappButton />
+          
+          <ShareButton />
 
           {/* 🌗 THEME TOGGLE */}
           <TouchableOpacity onPress={toggleTheme}>

@@ -11,7 +11,7 @@ import {
 import { ramadanAdhkar } from "../data/ramadan/ramadanAdhkar";
 import { duaAfterSalah } from "../data/salah/duaAfterSalah";
 import { adhkarAfterSalah } from "../data/salah/adhkarAfterSalah";
-import { qaseedathulBurda } from "../data/qaseeda";
+import { qaseedathulBurda } from "../data/qaseeda/qaseedathulBurda";
 
 try {
   Sound.setCategory("Playback");
