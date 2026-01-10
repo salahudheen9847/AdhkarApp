@@ -183,6 +183,15 @@ const categories: Category[] = [
       arabic: "دُعَاءُ الْقُنُوتِ",
     },
   },
+  {
+    id: "morningAdhkarComplete",
+    emoji: "🌅",
+    title: {
+      malayalam: "പ്രഭാത ദിക്റുകാ (പൂർണം)",
+      english: "Morning Adhkar (Complete)",
+      arabic: "أَذْكَارُ الصَّبَاحِ",
+    },
+  },
 ];
 
 /* ---------------- SCREEN ---------------- */

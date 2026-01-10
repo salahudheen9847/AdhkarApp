@@ -9,6 +9,7 @@ export * from './TalqeenMen';
 export * from './salathuIbrahim';
 export * from './at-tahiyyat';
 export * from './dua-ul-qunoot';
+export * from './morningAdhkarComplete';
 // Temporarily commented out until modules are complete
 // export * from './salah';
 // export * from './moulid';

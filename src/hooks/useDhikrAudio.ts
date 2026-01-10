@@ -16,6 +16,7 @@ import { talqeenForMen } from "../data/TalqeenMen";
 import { salawatOnProphet } from "../data/salathuIbrahim";
 import { atTahiyyat } from "../data/at-tahiyyat";
 import { duaUlQunoot } from "../data/dua-ul-qunoot";
+import { morningAdhkarComplete } from "../data/morningAdhkarComplete";
 
 try {
   Sound.setCategory("Playback");
@@ -79,6 +80,7 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
           else if (type === "salawatulIbrahimiyya") rows = salawatOnProphet.content;
           else if (type === "atTahiyyat") rows = atTahiyyat.content;
           else if (type === "duaUlQunoot") rows = duaUlQunoot.content;
+          else if (type === "morningAdhkarComplete") rows = morningAdhkarComplete.content;
           else rows = await getDhikrByType(type);
         }
 
@@ -204,6 +206,11 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
             case "duaUlQunoot":
               setAudioFileName("");
               setTitle("🤲 ദുആ-ഉൽ ഖുനൂത്");
+              break;
+
+            case "morningAdhkarComplete":
+              setAudioFileName("");
+              setTitle("🌅 പ്രഭാത ദിക്റുകാ (പൂർണം)");
               break;
           }
         }

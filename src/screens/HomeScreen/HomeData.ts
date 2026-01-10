@@ -32,7 +32,8 @@ export type HomeLabelKey =
   | "talqeenMen"
   | "salawatulIbrahimiyya"
   | "atTahiyyat"
-  | "duaUlQunoot";
+  | "duaUlQunoot"
+  | "morningAdhkarComplete";
 
 /* ---------------- HOME LABELS ---------------- */
 
@@ -158,6 +159,13 @@ export const HOME_LABELS: Record<HomeLabelKey, HomeLabel> = {
     english: "Dua-ul-Qunoot",
     arabic: "دُعَاءُ الْقُنُوتِ",
   },
+
+  morningAdhkarComplete: {
+    malayalam: "പ്രഭാത ദിക്റുകാ (പൂർണം)",
+    manglish: "prabhaadh dhikr (poornam)",
+    english: "Morning Adhkar (Complete)",
+    arabic: "أَذْكَارُ الصَّبَاحِ",
+  },
 };
 
 /* ---------------- SECTION TITLES ---------------- */
@@ -235,4 +243,5 @@ export const SECTION_MAPPING: Record<HomeLabelKey, keyof typeof SECTION_TITLES> 
   salawatulIbrahimiyya: "swalath",
   atTahiyyat: "salah",
   duaUlQunoot: "dua",
+  morningAdhkarComplete: "ramadan",
 };

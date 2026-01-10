@@ -41,7 +41,8 @@ export type HeaderType =
   | "talqeenMen"
   | "salawatulIbrahimiyya"
   | "atTahiyyat"
-  | "duaUlQunoot";
+  | "duaUlQunoot"
+  | "morningAdhkarComplete";
 
 /* 🔹 Props */
 export type HeaderSectionProps = {

@@ -41,7 +41,8 @@ export default function DhikrScreen() {
     | "talqeenMen"
     | "salawatulIbrahimiyya"
     | "atTahiyyat"
-    | "duaUlQunoot" =
+    | "duaUlQunoot"
+    | "morningAdhkarComplete" =
     route.params?.type ?? "duaMarichavark";
 
   /* 🎧 AUDIO HOOK */
