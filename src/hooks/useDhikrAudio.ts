@@ -17,6 +17,37 @@ import { salawatOnProphet } from "../data/salathuIbrahim";
 import { atTahiyyat } from "../data/at-tahiyyat";
 import { duaUlQunoot } from "../data/dua-ul-qunoot";
 import { morningAdhkarComplete } from "../data/morningAdhkarComplete";
+import { eveningAdhkarComplete } from "../data/eveningAdhkarComplete";
+import { beforeSleepAdhkar } from "../data/beforeSleepAdhkar";
+import { wakeUpAdhkar } from "../data/wakeUpAdhkar";
+import { foodDuas } from "../data/foodDuas";
+import { travelDuas } from "../data/travelDuas";
+import { homeDuas } from "../data/homeDuas";
+import { jumuahAdhkar } from "../data/jumuahAdhkar";
+import { protectionDuas } from "../data/protectionDuas";
+import { duaForSick } from "../data/duaForSick";
+import { istikharaDua } from "../data/istikharaDua";
+import { kidsIslamicDuas } from "../data/kidsIslamicDuas";
+import { masjidDuas } from "../data/masjidDuas";
+import { adhanIqamahDuas } from "../data/adhanIqamahDuas";
+import { shortSurahsForKids } from "../data/shortSurahsForKids";
+import { janazahDuas } from "../data/janazahDuas";
+import { zakatDuas } from "../data/zakatDuas";
+import { taubahDuas } from "../data/taubahDuas";
+import { duasForParents } from "../data/duasForParents";
+import { rainDuas } from "../data/rainDuas";
+import { duasForChildren } from "../data/duasForChildren";
+import { sicknessDuas } from "../data/sicknessDuas";
+import { duaForSickness } from "../data/duaForSickness";
+import { anxietyWorryDuas } from "../data/anxietyWorryDuas";
+import { workRizqDuas } from "../data/workRizqDuas";
+import { marriageDuas } from "../data/marriageDuas";
+import { forgivenessDuas } from "../data/forgivenessDuas";
+import { pregnancyDuas } from "../data/pregnancyDuas";
+import { knowledgeDuas } from "../data/knowledgeDuas";
+import { akhirahDuas } from "../data/akhirahDuas";
+import { husbandWifeDuas } from "../data/husbandWifeDuas";
+import { elderlyParentsDuas } from "../data/elderlyParentsDuas";
 
 try {
   Sound.setCategory("Playback");
@@ -81,6 +112,36 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
           else if (type === "atTahiyyat") rows = atTahiyyat.content;
           else if (type === "duaUlQunoot") rows = duaUlQunoot.content;
           else if (type === "morningAdhkarComplete") rows = morningAdhkarComplete.content;
+          else if (type === "eveningAdhkarComplete") rows = eveningAdhkarComplete.content;
+          else if (type === "beforeSleepAdhkar") rows = beforeSleepAdhkar.content;
+          else if (type === "wakeUpAdhkar") rows = wakeUpAdhkar.content;
+          else if (type === "foodDuas") rows = foodDuas.content;
+          else if (type === "travelDuas") rows = travelDuas.content;
+          else if (type === "homeDuas") rows = homeDuas.content;
+          else if (type === "jumuahAdhkar") rows = jumuahAdhkar.content;
+          else if (type === "protectionDuas") rows = protectionDuas.content;
+          else if (type === "duaForSick") rows = duaForSick.content;
+          else if (type === "istikharaDua") rows = istikharaDua.content;
+          else if (type === "kidsIslamicDuas") rows = kidsIslamicDuas.content;
+          else if (type === "masjidDuas") rows = masjidDuas.content;
+          else if (type === "adhanIqamahDuas") rows = adhanIqamahDuas.content;
+          else if (type === "shortSurahsForKids") rows = shortSurahsForKids.content;
+          else if (type === "janazahDuas") rows = janazahDuas.content;
+          else if (type === "zakatDuas") rows = zakatDuas.content;
+          else if (type === "taubahDuas") rows = taubahDuas.content;
+          else if (type === "duasForParents") rows = duasForParents.content;
+          else if (type === "rainDuas") rows = rainDuas.content;
+          else if (type === "duasForChildren") rows = duasForChildren.content;
+          else if (type === "sicknessDuas") rows = sicknessDuas.content;
+          else if (type === "anxietyWorryDuas") rows = anxietyWorryDuas.content;
+          else if (type === "workRizqDuas") rows = workRizqDuas.content;
+          else if (type === "marriageDuas") rows = marriageDuas.content;
+          else if (type === "forgivenessDuas") rows = forgivenessDuas.content;
+          else if (type === "pregnancyDuas") rows = pregnancyDuas.content;
+          else if (type === "knowledgeDuas") rows = knowledgeDuas.content;
+          else if (type === "akhirahDuas") rows = akhirahDuas.content;
+          else if (type === "husbandWifeDuas") rows = husbandWifeDuas.content;
+          else if (type === "elderlyParentsDuas") rows = elderlyParentsDuas.content;
           else rows = await getDhikrByType(type);
         }
 
@@ -211,6 +272,156 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
             case "morningAdhkarComplete":
               setAudioFileName("");
               setTitle("🌅 പ്രഭാത ദിക്റുകാ (പൂർണം)");
+              break;
+
+            case "eveningAdhkarComplete":
+              setAudioFileName("");
+              setTitle("🌆 സന്ധ്യ ദിക്റുകാ (പൂർണ്ണം)");
+              break;
+
+            case "beforeSleepAdhkar":
+              setAudioFileName("");
+              setTitle("🌙 ഉറങ്ങുന്നതിന് മുമ്പുള്ള ദിക്റുകാ");
+              break;
+
+            case "wakeUpAdhkar":
+              setAudioFileName("");
+              setTitle("🌄 ഉണരുമ്പോഴുള്ള ദിക്റുകാ");
+              break;
+
+            case "foodDuas":
+              setAudioFileName("");
+              setTitle("🍽 ഭക്ഷണ ദുആകൾ");
+              break;
+
+            case "travelDuas":
+              setAudioFileName("");
+              setTitle("✈️ യാത്രാ ദുആകൾ");
+              break;
+
+            case "homeDuas":
+              setAudioFileName("");
+              setTitle("🏠 വീട്ടിൽ കയറുമ്പോൾ / ഇറങ്ങുമ്പോൾ ദുആകൾ");
+              break;
+
+            case "jumuahAdhkar":
+              setAudioFileName("");
+              setTitle("🕌 ജുമുഅ ദിവസം പ്രത്യേക്ഷിക്കുന്നു.");
+              break;
+
+            case "protectionDuas":
+              setAudioFileName("");
+              setTitle("🛡️ സംരക്ഷണ ദുആകൾ");
+              break;
+
+            case "duaForSick":
+              setAudioFileName("");
+              setTitle("🏥 രോഗിക്ക് / ബുദ്ധിമുട്ടിൽ ഉള്ളവർക്ക് ദുആകൾ");
+              break;
+
+            case "istikharaDua":
+              setAudioFileName("");
+              setTitle("🤲 ഇസ്തിഖാര ദുആ");
+              break;
+
+            case "kidsIslamicDuas":
+              setAudioFileName("");
+              setTitle("👶 കുട്ടികൾക്കുള്ള ഇസ്‌ലാമിക് ദുആകൾ");
+              break;
+
+            case "masjidDuas":
+              setAudioFileName("");
+              setTitle("🕌 മസ്ജിദ് ദുആകൾ");
+              break;
+
+            case "adhanIqamahDuas":
+              setAudioFileName("");
+              setTitle("📢 അദാൻ & ഇഖാമ ദുആകൾ");
+              break;
+
+            case "shortSurahsForKids":
+              setAudioFileName("");
+              setTitle("📖 കുട്ടികൾക്കുള്ള ചെറിയ സൂറകൾ");
+              break;
+
+            case "janazahDuas":
+              setAudioFileName("");
+              setTitle("⚰️ ജനാസ നമസ്കാര ദുആകൾ");
+              break;
+
+            case "zakatDuas":
+              setAudioFileName("");
+              setTitle("💰 സകാത്ത് ദുആകൾ");
+              break;
+
+            case "taubahDuas":
+              setAudioFileName("");
+              setTitle("🙏 തൗബ (പശ്ചാത്താപ) ദുആകൾ");
+              break;
+
+            case "duasForParents":
+              setAudioFileName("");
+              setTitle("👨‍👩‍👧‍👦 മാതാപിതാക്കൾക്കായുള്ള ദുആകൾ");
+              break;
+
+            case "rainDuas":
+              setAudioFileName("");
+              setTitle("🌧 മഴക്കായുള്ള ദുആകൾ");
+              break;
+
+            case "duasForChildren":
+              setAudioFileName("");
+              setTitle("👶 കുട്ടികൾക്കായുള്ള ദുആകൾ");
+              break;
+
+            case "sicknessDuas":
+              setAudioFileName("");
+              setTitle("🤒 രോഗാവസ്ഥയിൽ ദുആകൾ");
+              break;
+
+            case "anxietyWorryDuas":
+              setAudioFileName("");
+              setTitle("😰 ആകുലതയും ദുഃഖവും മാറാൻ ദുആകൾ");
+              break;
+
+            case "workRizqDuas":
+              setAudioFileName("");
+              setTitle("💼 ജോലിക്കും ഉപജീവനത്തിനും ദുആകൾ");
+              break;
+
+            case "marriageDuas":
+              setAudioFileName("");
+              setTitle("💑 വിവാഹത്തിനായുള്ള ദുആകൾ");
+              break;
+
+            case "forgivenessDuas":
+              setAudioFileName("");
+              setTitle("🙏 ക്ഷമയ്ക്കായുള്ള ദുആകൾ");
+              break;
+
+            case "pregnancyDuas":
+              setAudioFileName("");
+              setTitle("🤰 ഗർഭകാല ദുആകൾ");
+              break;
+
+            case "knowledgeDuas":
+              setAudioFileName("");
+              setTitle("📚 വിദ്യക്കും അറിവിനും വേണ്ട ദുആകൾ");
+              break;
+
+            case "akhirahDuas":
+              setAudioFileName("");
+              setTitle("🌟 ആഖിറത്തിനായുള്ള ദുആകൾ");
+              break;
+
+            case "husbandWifeDuas":
+              setAudioFileName("");
+              setTitle("❤️ ഭർത്താവും ഭാര്യയും തമ്മിലുള്ള ദുആകൾ");
+              break;
+
+            case "elderlyParentsDuas":
+              setAudioFileName("");
+              setTitle("👴 വൃദ്ധ മാതാപിതാക്കാക്കായുള്ള ദുആകൾ");
               break;
           }
         }
