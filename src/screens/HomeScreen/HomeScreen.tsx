@@ -669,6 +669,33 @@ const categories: Category[] = [
       arabic: "أَدْعِيَةُ الْحِفْظِ مِنَ الْحَسَدِ وَالسِّحْرِ",
     },
   },
+  {
+    id: "clothingDuas",
+    emoji: "👔",
+    title: {
+      malayalam: "വസ്ത്രം ധരിക്കുമ്പോർ",
+      english: "Duas for Clothing",
+      arabic: "أَدْعِيَةُ اللِّبَاسِ",
+    },
+  },
+  {
+    id: "salamBaithFull",
+    emoji: "🙏",
+    title: {
+      malayalam: "സലാം ബൈത്ത് (പൂർണ്ണരൂപം)",
+      english: "Assalamu Alaika Baith (Full Version)",
+      arabic: "أَسَّلَامُ عَلَيْكَ - بَيْتُ السَّلَام",
+    },
+  },
+  {
+    id: "ashraqaBaithFull",
+    emoji: "🌙",
+    title: {
+      malayalam: "അശ്റഖ ബൈത്ത്",
+      english: "Ashraqa Baith (Marhaban)",
+      arabic: "أَشْرَقَ الْبَدْرُ عَلَيْنَا - بَيْتُ الأَشْرَق",
+    },
+  },
 ];
 
 /* ---------------- SCREEN ---------------- */
@@ -683,7 +710,7 @@ export default function HomeScreen() {
 
   const filteredCategories = useMemo(() => {
     const q = query.trim().toLowerCase().replace(/\s+/g, "");
-    if (q.length < 2) return categories;
+    if (q.length < 1) return categories;
 
     return categories.filter(item =>
       item.title.malayalam.toLowerCase().replace(/\s+/g, "").includes(q) ||

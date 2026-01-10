@@ -86,7 +86,10 @@ export type HomeLabelKey =
   | "houseLandDuas"
   | "businessLossRecoveryDuas"
   | "courtCaseDuas"
-  | "nazarBlackMagicProtectionDuas";
+  | "nazarBlackMagicProtectionDuas"
+  | "clothingDuas"
+  | "salamBaithFull"
+  | "ashraqaBaithFull";
 
 /* ---------------- HOME LABELS ---------------- */
 
@@ -590,6 +593,27 @@ export const HOME_LABELS: Record<HomeLabelKey, HomeLabel> = {
     english: "Nazar & Black Magic Protection Duas",
     arabic: "أَدْعِيَةُ الْحِفْظِ مِنَ الْحَسَدِ وَالسِّحْرِ",
   },
+
+  clothingDuas: {
+    malayalam: "വസ്ത്രം ധരിക്കുമ്പോർ",
+    manglish: "vesthram dhurikumpoy",
+    english: "Duas for Clothing",
+    arabic: "أَدْعِيَةُ اللِّبَاسِ",
+  },
+
+  salamBaithFull: {
+    malayalam: "സലാം ബൈത്ത് (പൂർണ്ണരൂപം)",
+    manglish: "salam baith (poornna roopam)",
+    english: "Assalamu Alaika Baith (Full Version)",
+    arabic: "أَسَّلَامُ عَلَيْكَ - بَيْتُ السَّلَام",
+  },
+
+  ashraqaBaithFull: {
+    malayalam: "അശ്റഖ ബൈത്ത്",
+    manglish: "ashraqa baith",
+    english: "Ashraqa Baith (Marhaban)",
+    arabic: "أَشْرَقَ الْبَدْرُ عَلَيْنَا - بَيْتُ الأَشْرَق",
+  },
 };
 
 /* ---------------- SECTION TITLES ---------------- */
@@ -727,4 +751,7 @@ export const SECTION_MAPPING: Record<HomeLabelKey, keyof typeof SECTION_TITLES> 
   businessLossRecoveryDuas: "dua",
   courtCaseDuas: "dua",
   nazarBlackMagicProtectionDuas: "dua",
+  clothingDuas: "dua",
+  salamBaithFull: "dua",
+  ashraqaBaithFull: "dua",
 };

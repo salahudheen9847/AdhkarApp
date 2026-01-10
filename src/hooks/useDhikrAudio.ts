@@ -71,6 +71,9 @@ import { houseLandDuas } from "../data/houseLandDuas";
 import { businessLossRecoveryDuas } from "../data/businessLossRecoveryDuas";
 import { courtCaseDuas } from "../data/courtCaseDuas";
 import { nazarBlackMagicProtectionDuas } from "../data/nazarBlackMagicProtectionDuas";
+import { clothingDuas } from "../data/clothingDuas";
+import { salamBaithFull } from "../data/salamBaithFull";
+import { ashraqaBaithFull } from "../data/ashraqaBaithFull";
 
 try {
   Sound.setCategory("Playback");
@@ -188,6 +191,9 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
           else if (type === "businessLossRecoveryDuas") rows = businessLossRecoveryDuas.content;
           else if (type === "courtCaseDuas") rows = courtCaseDuas.content;
           else if (type === "nazarBlackMagicProtectionDuas") rows = nazarBlackMagicProtectionDuas.content;
+          else if (type === "clothingDuas") rows = clothingDuas.content;
+          else if (type === "salamBaithFull") rows = salamBaithFull.content;
+          else if (type === "ashraqaBaithFull") rows = ashraqaBaithFull.content;
           else rows = await getDhikrByType(type);
         }
 
@@ -583,6 +589,21 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
             case "nazarBlackMagicProtectionDuas":
               setAudioFileName("");
               setTitle("🛡️ കണ്ണേറും മന്ത്രവും നിന്ന് സംരക്ഷിക്കാനുള്ള ദുആകൾ");
+              break;
+
+            case "clothingDuas":
+              setAudioFileName("");
+              setTitle("👔 വസ്ത്രം ധരിക്കുമ്പോർ");
+              break;
+
+            case "salamBaithFull":
+              setAudioFileName("");
+              setTitle("🙏 സലാം ബൈത്ത് (പൂർണ്ണരൂപം)");
+              break;
+
+            case "ashraqaBaithFull":
+              setAudioFileName("");
+              setTitle("🌙 അശ്റഖ ബൈത്ത്");
               break;
           }
         }

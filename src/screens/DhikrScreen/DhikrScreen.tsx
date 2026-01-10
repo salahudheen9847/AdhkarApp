@@ -94,7 +94,10 @@ export default function DhikrScreen() {
     | "houseLandDuas"
     | "businessLossRecoveryDuas"
     | "courtCaseDuas"
-    | "nazarBlackMagicProtectionDuas" =
+    | "nazarBlackMagicProtectionDuas"
+    | "clothingDuas"
+    | "salamBaithFull"
+    | "ashraqaBaithFull" =
     route.params?.type ?? "duaMarichavark";
 
   /* 🎧 AUDIO HOOK */

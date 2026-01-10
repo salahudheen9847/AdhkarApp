@@ -95,7 +95,10 @@ export type HeaderType =
   | "houseLandDuas"
   | "businessLossRecoveryDuas"
   | "courtCaseDuas"
-  | "nazarBlackMagicProtectionDuas";
+  | "nazarBlackMagicProtectionDuas"
+  | "clothingDuas"
+  | "salamBaithFull"
+  | "ashraqaBaithFull";
 
 /* 🔹 Props */
 export type HeaderSectionProps = {
