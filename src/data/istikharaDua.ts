@@ -2,9 +2,9 @@ export const istikharaDua = {
   id: "istikhara-dua",
 
   heading: {
-    arabic: "دُعَاءُ الاِسْتِخَارَةِ",
-    malayalam: "ഇസ്തിഖാര ദുആ",
-    english: "Istikhara Dua",
+    arabic: "دُعَاءُ الِاسْتِخَارَةِ",
+    malayalam: "ഇസ്തിഖാറ (തീരുമാനത്തിന് മാർഗ്ഗനിർദ്ദേശം തേടുന്ന) ദുആ",
+    english: "Istikhara (Decision Making) Duas",
   },
 
   isBox: true,

@@ -70,7 +70,30 @@ export type HeaderType =
   | "knowledgeDuas"
   | "akhirahDuas"
   | "husbandWifeDuas"
-  | "elderlyParentsDuas";
+  | "elderlyParentsDuas"
+  | "windStormDuas"
+  | "fearPanicDuas"
+  | "examDuas"
+  | "hospitalSurgeryDuas"
+  | "oppressionJusticeDuas"
+  | "newbornDuas"
+  | "familyUnityDuas"
+  | "griefLossDuas"
+  | "innerPeaceDuas"
+  | "stressReliefDuas"
+  | "badDreamDuas"
+  | "angerControlDuas"
+  | "protectionFromGossipDuas"
+  | "kidsDailyDuas"
+  | "kidsLearningDuas"
+  | "breastfeedingDuas"
+  | "singleParentDuas"
+  | "successMotivationDuas"
+  | "debtReliefDuas"
+  | "houseLandDuas"
+  | "businessLossRecoveryDuas"
+  | "courtCaseDuas"
+  | "nazarBlackMagicProtectionDuas";
 
 /* 🔹 Props */
 export type HeaderSectionProps = {

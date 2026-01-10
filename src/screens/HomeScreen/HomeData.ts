@@ -63,7 +63,30 @@ export type HomeLabelKey =
   | "knowledgeDuas"
   | "akhirahDuas"
   | "husbandWifeDuas"
-  | "elderlyParentsDuas";
+  | "elderlyParentsDuas"
+  | "windStormDuas"
+  | "fearPanicDuas"
+  | "examDuas"
+  | "hospitalSurgeryDuas"
+  | "oppressionJusticeDuas"
+  | "newbornDuas"
+  | "familyUnityDuas"
+  | "griefLossDuas"
+  | "innerPeaceDuas"
+  | "stressReliefDuas"
+  | "badDreamDuas"
+  | "angerControlDuas"
+  | "protectionFromGossipDuas"
+  | "kidsDailyDuas"
+  | "kidsLearningDuas"
+  | "breastfeedingDuas"
+  | "singleParentDuas"
+  | "successMotivationDuas"
+  | "debtReliefDuas"
+  | "houseLandDuas"
+  | "businessLossRecoveryDuas"
+  | "courtCaseDuas"
+  | "nazarBlackMagicProtectionDuas";
 
 /* ---------------- HOME LABELS ---------------- */
 
@@ -406,6 +429,167 @@ export const HOME_LABELS: Record<HomeLabelKey, HomeLabel> = {
     english: "Duas for Elderly Parents",
     arabic: "أَدْعِيَةٌ لِلْوَالِدَيْنِ فِي الْكِبَرِ",
   },
+
+  windStormDuas: {
+    malayalam: "കാറ്റ് / കൊടുങ്കാറ്റ് സമയത്തെ ദുആകൾ",
+    manglish: "katru / kodungatru samayathulla duakal",
+    english: "Wind & Storm Duas",
+    arabic: "أَدْعِيَةُ الرِّيَاحِ وَالْعَوَاصِفِ",
+  },
+
+  fearPanicDuas: {
+    malayalam: "ഭയവും പാനിക്കും സമയത്തെ ദുആകൾ",
+    manglish: "bhayavum panikkum samayathulla duakal",
+    english: "Fear & Panic Duas",
+    arabic: "أَدْعِيَةُ الْخَوْفِ وَالْقَلَقِ",
+  },
+
+  examDuas: {
+    malayalam: "പരീക്ഷയ്ക്കുള്ള ദുആകൾ",
+    manglish: "pareekshaykkulla duakal",
+    english: "Exam Duas",
+    arabic: "أَدْعِيَةُ الِامْتِحَانِ",
+  },
+
+  hospitalSurgeryDuas: {
+    malayalam: "ആശുപത്രി / ശസ്ത്രക്രിയ്ക്കുള്ള ദുആകൾ",
+    manglish: "ashupathra / shasthra prathyaykkulla duakal",
+    english: "Hospital & Surgery Duas",
+    arabic: "أَدْعِيَةُ الْمَرَضِ وَالْعِلَاجِ",
+  },
+
+  oppressionJusticeDuas: {
+    malayalam: "അന്യായവും നീതിയും സംബന്ധിച്ച ദുആകൾ",
+    manglish: "anyayavum ninithyum sambandhichcha duakal",
+    english: "Oppression & Justice Duas",
+    arabic: "أَدْعِيَةُ الظُّلْمِ وَالْعَدْلِ",
+  },
+
+  newbornDuas: {
+    malayalam: "പുതുജാത ശിശുവിനുള്ള ദുആകൾ",
+    manglish: "puthujatha shishuvinulla duakal",
+    english: "Newborn Duas",
+    arabic: "أَدْعِيَةُ الْمَوْلُودِ",
+  },
+
+  familyUnityDuas: {
+    malayalam: "കുടുംബ ഐക്യത്തിനായുള്ള ദുആകൾ",
+    manglish: "kudumba aiyathinulla duakal",
+    english: "Family Unity Duas",
+    arabic: "أَدْعِيَةُ تَمَاسُكِ الْأُسْرَةِ",
+  },
+
+  griefLossDuas: {
+    malayalam: "ദുഃഖവും നഷ്ടവും സമ്പത്തെ ദുആകൾ",
+    manglish: "dukhavum nashtavum sambaththe duakal",
+    english: "Grief & Loss Duas",
+    arabic: "أَدْعِيَةُ الْحُزْنِ وَالْمُصِيبَةِ",
+  },
+
+  innerPeaceDuas: {
+    malayalam: "ഹൃദയ സമാധാനത്തിനുള്ള ദുആകൾ",
+    manglish: "hrudaya samadhanathinulla duakal",
+    english: "Inner Peace Duas",
+    arabic: "أَدْعِيَةُ السَّكِينَةِ وَطُمَأْنِينَةِ الْقَلْبِ",
+  },
+
+  stressReliefDuas: {
+    malayalam: "സമ്മർദ്ദവും മനസ്സിന്റെ ഭാരം മാറാൻ ഉള്ള ദുആകൾ",
+    manglish: "sammerddavum manassinre bharan maran ullulla duakal",
+    english: "Stress Relief Duas",
+    arabic: "أَدْعِيَةُ إِزَالَةِ الضَّغْطِ وَالضِّيقِ",
+  },
+
+  badDreamDuas: {
+    malayalam: "ദുഃസ്വപ്നം കണ്ടാൽ ചൊല്ലേണ്ട ദുആകൾ",
+    manglish: "duswapnam kandal chollenda duakal",
+    english: "Bad Dream Duas",
+    arabic: "أَدْعِيَةُ الرُّؤْيَا السَّيِّئَةِ",
+  },
+
+  angerControlDuas: {
+    malayalam: "കോപം നിയന്ത്രിക്കാൻ ഉള്ള ദുആകൾ",
+    manglish: "kopam niyantrikkanulla duakal",
+    english: "Anger Control Duas",
+    arabic: "أَدْعِيَةُ كَظْمِ الْغَيْظِ",
+  },
+
+  protectionFromGossipDuas: {
+    malayalam: "നാവിന്റെ പാപങ്ങളും നിന്ന് സംരക്ഷിക്കാനുള്ള ദുആകൾ",
+    manglish: "navinre papangalum ninnu samrakshikkayulla duakal",
+    english: "Protection from Gossip Duas",
+    arabic: "أَدْعِيَةُ الْحِفْظِ مِنَ الْغِيبَةِ وَالْأَذَى",
+  },
+
+  kidsDailyDuas: {
+    malayalam: "കുട്ടികൾക്കുള്ള ദിവസേന ദുആകൾ",
+    manglish: "kuttikalkkunulla divasena duakal",
+    english: "Kids Daily Duas",
+    arabic: "أَدْعِيَةُ الْأَطْفَالِ الْيَوْمِيَّةِ",
+  },
+
+  kidsLearningDuas: {
+    malayalam: "കുട്ടികളുടെ പഠനത്തിനുള്ള ദുആകൾ",
+    manglish: "kuttikalkude padanathinulla duakal",
+    english: "Kids Learning Duas",
+    arabic: "أَدْعِيَةُ طَلَبِ الْعِلْمِ لِلْأَطْفَالِ",
+  },
+
+  breastfeedingDuas: {
+    malayalam: "സ്തനപാനം സമയത്തെ ദുആകൾ",
+    manglish: "sthapanam samayatthe duakal",
+    english: "Breastfeeding Duas",
+    arabic: "أَدْعِيَةُ الرِّضَاعَةِ",
+  },
+
+  singleParentDuas: {
+    malayalam: "ഒറ്റ രക്ഷിതാവിനുള്ള ദുആകൾ",
+    manglish: "ottra rakshithavinulla duakal",
+    english: "Single Parent Duas",
+    arabic: "أَدْعِيَةُ الْوَالِدِ/الْوَالِدَةِ الْمُنْفَرِدِ",
+  },
+
+  successMotivationDuas: {
+    malayalam: "വിജയത്തിനും ആത്മവിശ്വാസത്തിനുമുള്ള ദുആകൾ",
+    manglish: "vijayavum athmavishvasastthinulla duakal",
+    english: "Success & Motivation Duas",
+    arabic: "أَدْعِيَةُ النَّجَاحِ وَالتَّحْفِيزِ",
+  },
+
+  debtReliefDuas: {
+    malayalam: "കടം തീരാനും സാമ്പത്തിക ബുദ്ധിമുട്ടുകൾ മാറാനും ദുആകൾ",
+    manglish: "kadam thiranum samapathika budhimuttukal maranum duakal",
+    english: "Debt Relief & Financial Hardship Duas",
+    arabic: "أَدْعِيَةُ قَضَاءِ الدَّيْنِ",
+  },
+
+  houseLandDuas: {
+    malayalam: "വീട് / ഭൂമി ലഭിക്കാൻ ഉള്ള ദുആകൾ",
+    manglish: "veet / bhoomi labikkayulla duakal",
+    english: "House & Land Duas",
+    arabic: "أَدْعِيَةُ السَّكَنِ وَالْمَسْكَنِ",
+  },
+
+  businessLossRecoveryDuas: {
+    malayalam: "വ്യാപാര നഷ്ടം മാറാനും ബറകത്ത് ലഭിക്കാനുമുള്ള ദുആകൾ",
+    manglish: "vyapar nasham maranum barakath labikkayumulla duakal",
+    english: "Business Loss Recovery Duas",
+    arabic: "أَدْعِيَةُ جَبْرِ الْخَسَارَةِ وَالْبَرَكَةِ فِي التِّجَارَةِ",
+  },
+
+  courtCaseDuas: {
+    malayalam: "കോടതി / കേസ് വിഷയങ്ങളിൽ ചൊല്ലേണ്ട ദുആകൾ",
+    manglish: "kottati / kisu vishayangalilin chollenda duakal",
+    english: "Court & Legal Case Duas",
+    arabic: "أَدْعِيَةُ الْقَضَاءِ وَنُصْرَةِ الْحَقِّ",
+  },
+
+  nazarBlackMagicProtectionDuas: {
+    malayalam: "കണ്ണേറും മന്ത്രവും നിന്ന് സംരക്ഷിക്കാനുള്ള ദുആകൾ",
+    manglish: "kannerum mantravum ninnu samrakshikkayulla duakal",
+    english: "Nazar & Black Magic Protection Duas",
+    arabic: "أَدْعِيَةُ الْحِفْظِ مِنَ الْحَسَدِ وَالسِّحْرِ",
+  },
 };
 
 /* ---------------- SECTION TITLES ---------------- */
@@ -520,4 +704,27 @@ export const SECTION_MAPPING: Record<HomeLabelKey, keyof typeof SECTION_TITLES> 
   akhirahDuas: "dua",
   husbandWifeDuas: "dua",
   elderlyParentsDuas: "dua",
+  windStormDuas: "dua",
+  fearPanicDuas: "dua",
+  examDuas: "dua",
+  hospitalSurgeryDuas: "dua",
+  oppressionJusticeDuas: "dua",
+  newbornDuas: "dua",
+  familyUnityDuas: "dua",
+  griefLossDuas: "dua",
+  innerPeaceDuas: "dua",
+  stressReliefDuas: "dua",
+  badDreamDuas: "dua",
+  angerControlDuas: "dua",
+  protectionFromGossipDuas: "dua",
+  kidsDailyDuas: "dua",
+  kidsLearningDuas: "dua",
+  breastfeedingDuas: "dua",
+  singleParentDuas: "dua",
+  successMotivationDuas: "dua",
+  debtReliefDuas: "dua",
+  houseLandDuas: "dua",
+  businessLossRecoveryDuas: "dua",
+  courtCaseDuas: "dua",
+  nazarBlackMagicProtectionDuas: "dua",
 };

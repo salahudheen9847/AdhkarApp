@@ -48,6 +48,29 @@ import { knowledgeDuas } from "../data/knowledgeDuas";
 import { akhirahDuas } from "../data/akhirahDuas";
 import { husbandWifeDuas } from "../data/husbandWifeDuas";
 import { elderlyParentsDuas } from "../data/elderlyParentsDuas";
+import { windStormDuas } from "../data/windStormDuas";
+import { fearPanicDuas } from "../data/fearPanicDuas";
+import { examDuas } from "../data/examDuas";
+import { hospitalSurgeryDuas } from "../data/hospitalSurgeryDuas";
+import { oppressionJusticeDuas } from "../data/oppressionJusticeDuas";
+import { newbornDuas } from "../data/newbornDuas";
+import { familyUnityDuas } from "../data/familyUnityDuas";
+import { griefLossDuas } from "../data/griefLossDuas";
+import { innerPeaceDuas } from "../data/innerPeaceDuas";
+import { stressReliefDuas } from "../data/stressReliefDuas";
+import { badDreamDuas } from "../data/badDreamDuas";
+import { angerControlDuas } from "../data/angerControlDuas";
+import { protectionFromGossipDuas } from "../data/protectionFromGossipDuas";
+import { kidsDailyDuas } from "../data/kidsDailyDuas";
+import { kidsLearningDuas } from "../data/kidsLearningDuas";
+import { breastfeedingDuas } from "../data/breastfeedingDuas";
+import { singleParentDuas } from "../data/singleParentDuas";
+import { successMotivationDuas } from "../data/successMotivationDuas";
+import { debtReliefDuas } from "../data/debtReliefDuas";
+import { houseLandDuas } from "../data/houseLandDuas";
+import { businessLossRecoveryDuas } from "../data/businessLossRecoveryDuas";
+import { courtCaseDuas } from "../data/courtCaseDuas";
+import { nazarBlackMagicProtectionDuas } from "../data/nazarBlackMagicProtectionDuas";
 
 try {
   Sound.setCategory("Playback");
@@ -142,6 +165,29 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
           else if (type === "akhirahDuas") rows = akhirahDuas.content;
           else if (type === "husbandWifeDuas") rows = husbandWifeDuas.content;
           else if (type === "elderlyParentsDuas") rows = elderlyParentsDuas.content;
+          else if (type === "windStormDuas") rows = windStormDuas.content;
+          else if (type === "fearPanicDuas") rows = fearPanicDuas.content;
+          else if (type === "examDuas") rows = examDuas.content;
+          else if (type === "hospitalSurgeryDuas") rows = hospitalSurgeryDuas.content;
+          else if (type === "oppressionJusticeDuas") rows = oppressionJusticeDuas.content;
+          else if (type === "newbornDuas") rows = newbornDuas.content;
+          else if (type === "familyUnityDuas") rows = familyUnityDuas.content;
+          else if (type === "griefLossDuas") rows = griefLossDuas.content;
+          else if (type === "innerPeaceDuas") rows = innerPeaceDuas.content;
+          else if (type === "stressReliefDuas") rows = stressReliefDuas.content;
+          else if (type === "badDreamDuas") rows = badDreamDuas.content;
+          else if (type === "angerControlDuas") rows = angerControlDuas.content;
+          else if (type === "protectionFromGossipDuas") rows = protectionFromGossipDuas.content;
+          else if (type === "kidsDailyDuas") rows = kidsDailyDuas.content;
+          else if (type === "kidsLearningDuas") rows = kidsLearningDuas.content;
+          else if (type === "breastfeedingDuas") rows = breastfeedingDuas.content;
+          else if (type === "singleParentDuas") rows = singleParentDuas.content;
+          else if (type === "successMotivationDuas") rows = successMotivationDuas.content;
+          else if (type === "debtReliefDuas") rows = debtReliefDuas.content;
+          else if (type === "houseLandDuas") rows = houseLandDuas.content;
+          else if (type === "businessLossRecoveryDuas") rows = businessLossRecoveryDuas.content;
+          else if (type === "courtCaseDuas") rows = courtCaseDuas.content;
+          else if (type === "nazarBlackMagicProtectionDuas") rows = nazarBlackMagicProtectionDuas.content;
           else rows = await getDhikrByType(type);
         }
 
@@ -422,6 +468,121 @@ export const useDhikrAudio = ({ mode, type }: UseDhikrAudioParams) => {
             case "elderlyParentsDuas":
               setAudioFileName("");
               setTitle("👴 വൃദ്ധ മാതാപിതാക്കാക്കായുള്ള ദുആകൾ");
+              break;
+
+            case "windStormDuas":
+              setAudioFileName("");
+              setTitle("🌪️ കാറ്റ് / കൊടുങ്കാറ്റ് സമയത്തെ ദുആകൾ");
+              break;
+
+            case "fearPanicDuas":
+              setAudioFileName("");
+              setTitle("😨 ഭയവും പാനിക്കും സമയത്തെ ദുആകൾ");
+              break;
+
+            case "examDuas":
+              setAudioFileName("");
+              setTitle("📝 പരീക്ഷയ്ക്കുള്ള ദുആകൾ");
+              break;
+
+            case "hospitalSurgeryDuas":
+              setAudioFileName("");
+              setTitle("🏥� ആശുപത്രി / ശസ്ത്രക്രിയ്ക്കുള്ള ദുആകൾ");
+              break;
+
+            case "oppressionJusticeDuas":
+              setAudioFileName("");
+              setTitle("⚖️ അന്യായവും നീതിയും സംബന്ധിച്ച ദുആകൾ");
+              break;
+
+            case "newbornDuas":
+              setAudioFileName("");
+              setTitle("👶 പുതുജാത ശിശുവിനുള്ള ദുആകൾ");
+              break;
+
+            case "familyUnityDuas":
+              setAudioFileName("");
+              setTitle("👨‍👩‍👧‍👦 കുടുംബ ഐക്യത്തിനായുള്ള ദുആകൾ");
+              break;
+
+            case "griefLossDuas":
+              setAudioFileName("");
+              setTitle("💔 ദുഃഖവും നഷ്ടവും സമ്പത്തെ ദുആകൾ");
+              break;
+
+            case "innerPeaceDuas":
+              setAudioFileName("");
+              setTitle("🧘 ഹൃദയ സമാധാനത്തിനുള്ള ദുആകൾ");
+              break;
+
+            case "stressReliefDuas":
+              setAudioFileName("");
+              setTitle("😌 സമ്മർദ്ദവും മനസ്സിന്റെ ഭാരം മാറാൻ ഉള്ള ദുആകൾ");
+              break;
+
+            case "badDreamDuas":
+              setAudioFileName("");
+              setTitle("😴 ദുഃസ്വപ്നം കണ്ടാൽ ചൊല്ലേണ്ട ദുആകൾ");
+              break;
+
+            case "angerControlDuas":
+              setAudioFileName("");
+              setTitle("😤 കോപം നിയന്ത്രിക്കാൻ ഉള്ള ദുആകൾ");
+              break;
+
+            case "protectionFromGossipDuas":
+              setAudioFileName("");
+              setTitle("🤫 നാവിന്റെ പാപങ്ങളും നിന്ന് സംരക്ഷിക്കാനുള്ള ദുആകൾ");
+              break;
+
+            case "kidsDailyDuas":
+              setAudioFileName("");
+              setTitle("👶 കുട്ടികൾക്കുള്ള ദിവസേന ദുആകൾ");
+              break;
+
+            case "kidsLearningDuas":
+              setAudioFileName("");
+              setTitle("📚 കുട്ടികളുടെ പഠനത്തിനുള്ള ദുആകൾ");
+              break;
+
+            case "breastfeedingDuas":
+              setAudioFileName("");
+              setTitle("🍼 സ്തനപാനം സമയത്തെ ദുആകൾ");
+              break;
+
+            case "singleParentDuas":
+              setAudioFileName("");
+              setTitle("👨‍👩‍👧‍👦 ഒറ്റ രക്ഷിതാവിനുള്ള ദുആകൾ");
+              break;
+
+            case "successMotivationDuas":
+              setAudioFileName("");
+              setTitle("🎯 വിജയത്തിനും ആത്മവിശ്വാസത്തിനുമുള്ള ദുആകൾ");
+              break;
+
+            case "debtReliefDuas":
+              setAudioFileName("");
+              setTitle("💰 കടം തീരാനും സാമ്പത്തിക ബുദ്ധിമുട്ടുകൾ മാറാനും ദുആകൾ");
+              break;
+
+            case "businessLossRecoveryDuas":
+              setAudioFileName("");
+              setTitle("📈 വ്യാപാര നഷ്ടം മാറാനും ബറകത്ത് ലഭിക്കാനുമുള്ള ദുആകൾ");
+              break;
+
+            case "houseLandDuas":
+              setAudioFileName("");
+              setTitle("🏠 വീട് / ഭൂമി ലഭിക്കാൻ ഉള്ള ദുആകൾ");
+              break;
+
+            case "courtCaseDuas":
+              setAudioFileName("");
+              setTitle("⚖️ കോടതി / കേസ് വിഷയങ്ങളിൽ ചൊല്ലേണ്ട ദുആകൾ");
+              break;
+
+            case "nazarBlackMagicProtectionDuas":
+              setAudioFileName("");
+              setTitle("🛡️ കണ്ണേറും മന്ത്രവും നിന്ന് സംരക്ഷിക്കാനുള്ള ദുആകൾ");
               break;
           }
         }
