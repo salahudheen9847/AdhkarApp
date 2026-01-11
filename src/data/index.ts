@@ -3,7 +3,6 @@ export * from './types';
 export * from './constants';
 
 // Export only existing data modules
-export * from './dhikr';
 export * from './qaseeda';
 export * from './TalqeenMen';
 export * from './salathuIbrahim';

@@ -5,6 +5,52 @@ export const homeStyles = StyleSheet.create({
 
   flexContainer: { flex: 1 },
 
+  backButton: {
+    backgroundColor: "#f8fafc",
+    borderRadius: 20,
+    padding: 8,
+    shadowColor: "#000000",
+    shadowOpacity: 0.15,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 6,
+    elevation: 3,
+    borderWidth: 1,
+    borderColor: "#e2e8f0",
+  },
+
+  headerContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    paddingTop: Platform.OS === "android" ? (StatusBar.currentHeight || 40) + 8 : 20,
+    paddingBottom: 12,
+    backgroundColor: "#ffffff",
+    borderBottomWidth: 1,
+    borderBottomColor: "#e5e7eb",
+    shadowColor: "#000000",
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 8,
+    elevation: 4,
+  },
+
+  appTitle: {
+    fontSize: 22,
+    fontWeight: "700",
+    color: "#111827",
+    textAlign: "center",
+    flex: 1,
+    letterSpacing: -0.5,
+    textShadowColor: "rgba(0, 0, 0, 0.1)",
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 2,
+  },
+
+  placeholder: {
+    width: 40,
+  },
+
   container: {
     flex: 1,
     backgroundColor: "#fafaf9",
@@ -29,12 +75,6 @@ export const homeStyles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-  },
-
-  appTitle: {
-    fontSize: 24,
-    fontWeight: "700",
-    color: "#171717",
   },
 
   headerOptions: {
@@ -139,10 +179,30 @@ searchContainer: {
   cardText: {
     fontSize: 13,
     fontWeight: "600",
-    color: "#262626",
+    color: "#000000",  // ✅ Black text for better visibility
     textAlign: "center",
     paddingHorizontal: 6,
     lineHeight: 16,
+  },
+
+  cardSectionHeading: {
+    fontSize: 18,
+    fontWeight: "600",
+    color: "#1f2937",
+    marginBottom: 12,
+  },
+
+  sectionTitle: {
+    fontSize: 16,
+    fontWeight: "500",
+    color: "#374151",
+    marginBottom: 8,
+  },
+
+  icon: {
+    width: 24,
+    height: 24,
+    resizeMode: "contain",
   },
 
   /* ---------- EMPTY ---------- */
@@ -153,4 +213,20 @@ searchContainer: {
     marginTop: 40,
     fontWeight: "500",
   },
+  favIcon: {
+  position: "absolute",
+  top: 8,
+  right: 8,
+  zIndex: 10,
+},
+
+sectionHeading: {
+  width: "100%",
+  marginVertical: 10,
+  paddingHorizontal: 16,
+  fontSize: 18,
+  fontWeight: "700",
+  color: "#16a34a",
+},
+
 });

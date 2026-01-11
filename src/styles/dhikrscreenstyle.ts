@@ -15,30 +15,35 @@ export const styles = StyleSheet.create({
   },
 
   flatListContent: {
-    padding: 20,
-    paddingBottom: 140,
+    padding: 24,
+    paddingBottom: 160,
   },
 
   /* 🔹 Each item wrapper */
   textContainer: {
-    marginBottom: 20,
-    padding: 18,
-    borderRadius: 16,
-    backgroundColor: "rgba(255, 255, 255, 0.03)", // Subtle glass effect
+    marginBottom: 24,
+    padding: 20,
+    borderRadius: 18,
+    backgroundColor: "rgba(255, 255, 255, 0.04)", // Subtle glass effect
     borderWidth: 1,
-    borderColor: "rgba(255, 255, 255, 0.05)",
+    borderColor: "rgba(255, 255, 255, 0.08)",
+    shadowColor: "#000000",
+    shadowOpacity: 0.15,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 8,
+    elevation: 2,
   },
 
   /* ✨ Active ayah border */
   activeTextContainer: {
     borderWidth: 2,
-    borderColor: "#22c55e40",
-    backgroundColor: "rgba(34, 197, 94, 0.05)",
+    borderColor: "#22c55e60",
+    backgroundColor: "rgba(34, 197, 94, 0.08)",
     shadowColor: "#22c55e",
-    shadowOpacity: 0.2,
-    shadowOffset: { width: 0, height: 4 },
-    shadowRadius: 8,
-    elevation: 4,
+    shadowOpacity: 0.3,
+    shadowOffset: { width: 0, height: 6 },
+    shadowRadius: 16,
+    elevation: 6,
   },
 
   /* 🔹 Arabic text */
@@ -76,20 +81,25 @@ export const styles = StyleSheet.create({
      =============================== */
 
   manqusBoxWrapper: {
-    paddingVertical: 20,
-    marginVertical: 20,
-    borderRadius: 16,
+    paddingVertical: 24,
+    marginVertical: 24,
+    borderRadius: 18,
   },
 
   manqusBoxContainer: {
     borderWidth: 2,
     borderColor: "#334155",
-    borderRadius: 16,
-    paddingVertical: 20,
-    paddingHorizontal: 18,
+    borderRadius: 18,
+    paddingVertical: 24,
+    paddingHorizontal: 20,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "rgba(51, 65, 85, 0.1)",
+    backgroundColor: "rgba(51, 65, 85, 0.15)",
+    shadowColor: "#000000",
+    shadowOpacity: 0.25,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 12,
+    elevation: 4,
   },
 
   /* 🔹 Manqus box text */
@@ -179,10 +189,18 @@ export const localStyles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingHorizontal: 20,
+    paddingVertical: 16,
     position: "relative",
     zIndex: 5,
+    backgroundColor: "rgba(15, 23, 42, 0.95)",
+    borderBottomWidth: 1,
+    borderBottomColor: "rgba(255, 255, 255, 0.1)",
+    shadowColor: "#000000",
+    shadowOpacity: 0.3,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 8,
+    elevation: 4,
   },
 
   playButtonContainer: {

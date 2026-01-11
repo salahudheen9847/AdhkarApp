@@ -8,12 +8,12 @@ export type LanguageMode =
   | "arabic_malayalam"
   | "arabic_english";
 
-/* 🔹 Generic Dua Item (Manqus + Bader + reuse) */
+/* 🔹 Generic Dua Item */
 export type DuaItem = {
   id: number;
   isBox?: boolean;
   isHeading?: boolean;
-  text: string | string[];
+  text?: string | string[];          // ✅ FIX 1
   malayalam?: string | string[];
   english?: string | string[];
 };
@@ -26,7 +26,7 @@ const normalizeText = (value?: string | string[]) => {
 
 export const renderDuaItem = (
   item: DuaItem,
-  currentIndex: number, // 🔑 audio active id
+  currentIndex: number,
   fontSize: number,
   languageMode: LanguageMode,
   highlightColor: string,
@@ -47,22 +47,19 @@ export const renderDuaItem = (
 
     case "arabic_malayalam":
       content = item.malayalam
-        ? `${normalizeText(item.text)}\n\n${normalizeText(
-            item.malayalam
-          )}`
+        ? `${normalizeText(item.text)}\n\n${normalizeText(item.malayalam)}`
         : normalizeText(item.text);
       break;
 
     case "arabic_english":
       content = item.english
-        ? `${normalizeText(item.text)}\n\n${normalizeText(
-            item.english
-          )}`
+        ? `${normalizeText(item.text)}\n\n${normalizeText(item.english)}`
         : normalizeText(item.text);
       break;
   }
 
-  if (!content) return null;
+  // ✅ FIX 2 – headings must render even if content empty
+  if (!content && !isHeading) return null;
 
   return (
     <View
@@ -74,28 +71,26 @@ export const renderDuaItem = (
         isActive && { backgroundColor: highlightColor },
       ]}
     >
-      {/* 📝 TEXT */}
       <Text
         style={[
-          isHeading 
-            ? localStyles.headingText 
-            : isBox 
-              ? baseStyles.manqusBoxText 
-              : baseStyles.text,
+          isHeading
+            ? localStyles.headingText
+            : isBox
+            ? baseStyles.manqusBoxText
+            : baseStyles.text,
           isActive ? localStyles.activeText : { color: textColor },
-          { 
-            fontSize: isHeading 
-              ? safeFontSize * 1.1 
-              : isBox 
-                ? safeFontSize * 0.9 
-                : safeFontSize 
+          {
+            fontSize: isHeading
+              ? safeFontSize * 1.1
+              : isBox
+              ? safeFontSize * 0.9
+              : safeFontSize,
           },
         ]}
       >
         {content}
       </Text>
 
-      {/* 🔵 DIVIDER - Don't show for headings */}
       {!isHeading && (
         <View
           style={[
@@ -108,51 +103,73 @@ export const renderDuaItem = (
   );
 };
 
-/* ===============================
-   🎨 LOCAL STYLES
-================================ */
+/* 🎨 LOCAL STYLES */
 const localStyles = StyleSheet.create({
   container: {
     width: "100%",
-    paddingVertical: 15,
+    paddingVertical: 18,
+    paddingHorizontal: 4,
   },
 
-  /* 📦 HEADING */
   headingContainer: {
     backgroundColor: "#1e40af",
-    borderRadius: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    marginVertical: 8,
+    borderRadius: 16,
+    paddingHorizontal: 20,
+    paddingVertical: 16,
+    marginVertical: 12,
+    shadowColor: "#1e40af",
+    shadowOpacity: 0.3,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 12,
+    elevation: 6,
   },
 
   headingText: {
     fontWeight: "bold",
     textAlign: "center",
     color: "#ffffff",
+    fontSize: 18,
+    letterSpacing: 0.5,
   },
 
-  /* 📦 BOX (Manqus / Bader only) */
   boxContainer: {
-    backgroundColor: "#92962aff",
-    borderRadius: 14,
-    paddingHorizontal: 12,
-    paddingVertical: 16,
-    marginVertical: 6,
+    backgroundColor: "#1e293b",
+    borderRadius: 16,
+    paddingHorizontal: 16,
+    paddingVertical: 20,
+    marginVertical: 8,
+    borderWidth: 1,
+    borderColor: "#334155",
+    shadowColor: "#000000",
+    shadowOpacity: 0.2,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 8,
+    elevation: 3,
   },
 
   activeContainer: {
-    borderRadius: 15,
+    borderRadius: 16,
+    borderWidth: 2,
+    borderColor: "#22c55e40",
+    backgroundColor: "rgba(34, 197, 94, 0.08)",
+    shadowColor: "#22c55e",
+    shadowOpacity: 0.4,
+    shadowOffset: { width: 0, height: 6 },
+    shadowRadius: 16,
+    elevation: 8,
   },
 
   activeText: {
     color: "#ffffff",
+    fontWeight: "600",
   },
 
   divider: {
-    marginTop: 18,
-    height: StyleSheet.hairlineWidth,
-    width: "100%",
-    opacity: 0.6,
+    marginTop: 20,
+    height: 1,
+    width: "85%",
+    alignSelf: "center",
+    opacity: 0.3,
+    backgroundColor: "#475569",
   },
 });

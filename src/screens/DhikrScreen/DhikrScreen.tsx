@@ -6,98 +6,35 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { useThemeContext } from "../../context/theme";
 import { useDhikrAudio } from "../../hooks/useDhikrAudio";
 
-import HeaderSection from "./HeaderSection";
+import HeaderSection, {
+  LanguageMode,
+} from "./HeaderSection";
 import { DuaListSection } from "./DuaListSection";
 import { PlayerControls } from "../../component/PlayerControls";
 import { FontControl } from "../../component/FontControl";
-import { LanguageMode } from "./renderDuaItem";
 import { styles as screenStyles } from "../../styles/dhikrscreenstyle";
 
 export default function DhikrScreen() {
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
 
-  const { isDark, toggleTheme, colors } = useThemeContext();
+  const { isDark, toggleTheme, colors } =
+    useThemeContext();
 
   const [languageMode, setLanguageMode] =
     useState<LanguageMode>("arabic");
   const [showFontControl, setShowFontControl] =
     useState(false);
 
-  /* 🔒 SAFE TYPE — ✅ nariyathSwalath & salawatAlFatih ADDED */
-  const mode: "dhikr" | "manqus" | "bader" | "qaseeda" = route.params?.mode ?? "dhikr";
-  const type:
-    | "duaMarichavark"
-    | "duaQabar"
-    | "haddad"
-    | "asmaulHusna"
-    | "nariyathSwalath"
-    | "salawatAlFatih"
-    | "ramadanAdhkar"
-    | "thajuSwalath"
-    | "adhkarAfterSalah"
-    | "adhkarAfterSalah2"
-    | "talqeenMen"
-    | "salawatulIbrahimiyya"
-    | "atTahiyyat"
-    | "duaUlQunoot"
-    | "morningAdhkarComplete"
-    | "eveningAdhkarComplete"
-    | "beforeSleepAdhkar"
-    | "wakeUpAdhkar"
-    | "foodDuas"
-    | "travelDuas"
-    | "homeDuas"
-    | "jumuahAdhkar"
-    | "protectionDuas"
-    | "duaForSick"
-    | "istikharaDua"
-    | "kidsIslamicDuas"
-    | "masjidDuas"
-    | "adhanIqamahDuas"
-    | "shortSurahsForKids"
-    | "janazahDuas"
-    | "zakatDuas"
-    | "taubahDuas"
-    | "duasForParents"
-    | "rainDuas"
-    | "duasForChildren"
-    | "sicknessDuas"
-    | "anxietyWorryDuas"
-    | "workRizqDuas"
-    | "marriageDuas"
-    | "forgivenessDuas"
-    | "pregnancyDuas"
-    | "knowledgeDuas"
-    | "akhirahDuas"
-    | "husbandWifeDuas"
-    | "elderlyParentsDuas"
-    | "windStormDuas"
-    | "fearPanicDuas"
-    | "examDuas"
-    | "hospitalSurgeryDuas"
-    | "oppressionJusticeDuas"
-    | "newbornDuas"
-    | "familyUnityDuas"
-    | "griefLossDuas"
-    | "innerPeaceDuas"
-    | "stressReliefDuas"
-    | "badDreamDuas"
-    | "angerControlDuas"
-    | "protectionFromGossipDuas"
-    | "kidsDailyDuas"
-    | "kidsLearningDuas"
-    | "breastfeedingDuas"
-    | "singleParentDuas"
-    | "successMotivationDuas"
-    | "debtReliefDuas"
-    | "houseLandDuas"
-    | "businessLossRecoveryDuas"
-    | "courtCaseDuas"
-    | "nazarBlackMagicProtectionDuas"
-    | "clothingDuas"
-    | "salamBaithFull"
-    | "ashraqaBaithFull" =
+  /* 🔒 SAFE MODE */
+  const mode:
+    | "dhikr"
+    | "manqus"
+    | "bader"
+    | "qaseeda" =
+    route.params?.mode ?? "dhikr";
+
+  const type =
     route.params?.type ?? "duaMarichavark";
 
   /* 🎧 AUDIO HOOK */
@@ -119,7 +56,7 @@ export default function DhikrScreen() {
     onChangeRate,
   } = useDhikrAudio({
     mode,
-    type,
+      type: mode === "dhikr" ? type : undefined, // 🔥 IMPORTANT
   });
 
   /* 🌀 Header Animation */
@@ -151,7 +88,9 @@ export default function DhikrScreen() {
     >
       <StatusBar
         backgroundColor={isDark ? "#000" : "#fff"}
-        barStyle={isDark ? "light-content" : "dark-content"}
+        barStyle={
+          isDark ? "light-content" : "dark-content"
+        }
       />
 
       {/* 🕌 HEADER */}
@@ -167,7 +106,9 @@ export default function DhikrScreen() {
         languageMode={languageMode}
         setLanguageMode={setLanguageMode}
         headerAnimatedStyle={headerAnimatedStyle}
-        onFontPress={() => setShowFontControl(!showFontControl)}
+        onFontPress={() =>
+          setShowFontControl(!showFontControl)
+        }
         onBack={() => navigation.goBack()}
       />
 
@@ -177,7 +118,9 @@ export default function DhikrScreen() {
           <FontControl
             fontSize={fontSize}
             onFontSizeChange={setFontSize}
-            onClose={() => setShowFontControl(false)}
+            onClose={() =>
+              setShowFontControl(false)
+            }
             textColor={colors.text}
             backgroundColor={colors.background}
           />

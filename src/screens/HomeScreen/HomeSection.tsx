@@ -3,7 +3,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
-import { homeStyles as styles } from "../../styles/homeStyles";
+import { homeStyles as styles } from "./HomeStyles";
 
 /* ✅ DATA */
 import { HOME_LABELS } from "./data/HomeData";

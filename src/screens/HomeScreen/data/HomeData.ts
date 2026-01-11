@@ -27,3 +27,7 @@ export const HOME_LABELS = {
   ...SALAH_LABELS,
   ...PROTECTION_LABELS,
 } as const;
+
+/* ---------------- TYPES (ADD THIS 👇) ---------------- */
+
+export type HomeKey = keyof typeof HOME_LABELS;

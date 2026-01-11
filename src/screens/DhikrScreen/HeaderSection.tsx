@@ -11,11 +11,12 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 
 import { headerStyles as styles } from "../../styles/headerStyle";
 
+// ✅ keep SAME folder naming (choose ONE)
 import { YoutubeButton } from "../../component/YoutubeButton";
-import type { YoutubeType } from "../../data/youtubeLinks";
-
 import { WhatsappButton } from "../../component/WhatsappButton";
 import { ShareButton } from "../../components/ShareButton";
+
+import type { YoutubeType } from "../../data/youtubeLinks";
 
 /* 🌍 Language Mode */
 export type LanguageMode =
@@ -139,7 +140,6 @@ const isYoutubeType = (
   );
 };
 
-
 const HeaderSection: React.FC<HeaderSectionProps> = ({
   textColor,
   isDark,
@@ -189,17 +189,8 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
             style={styles.backButton}
             onPress={onBack}
           >
-            <Icon
-              name="arrow-back"
-              size={22}
-              color={backColor}
-            />
-            <Text
-              style={[
-                styles.backText,
-                { color: backColor },
-              ]}
-            >
+            <Icon name="arrow-back" size={22} color={backColor} />
+            <Text style={[styles.backText, { color: backColor }]}>
               Back
             </Text>
           </TouchableOpacity>
@@ -216,19 +207,13 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
             <View
               style={[
                 styles.playButtonInner,
-                isPlaying
-                  ? styles.playingBg
-                  : styles.pausedBg,
+                isPlaying ? styles.playingBg : styles.pausedBg,
               ]}
             >
               <Icon
-                name={
-                  isPlaying ? "pause" : "play-arrow"
-                }
+                name={isPlaying ? "pause" : "play-arrow"}
                 size={46}
-                color={
-                  isPlaying ? "#16a34a" : "#22c55e"
-                }
+                color={isPlaying ? "#16a34a" : "#22c55e"}
               />
             </View>
           </TouchableOpacity>
@@ -236,44 +221,25 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
 
         {/* 🔧 ACTIONS */}
         <View style={styles.rightGroup}>
-          {/* 🔤 FONT */}
           <TouchableOpacity onPress={onFontPress}>
-            <Icon
-              name="text-fields"
-              size={30}
-              color={textColor}
-            />
+            <Icon name="text-fields" size={30} color={textColor} />
           </TouchableOpacity>
 
-          {/* ▶️ YOUTUBE (ONLY IF SUPPORTED) */}
-          {isYoutubeType(type) && (
-            <YoutubeButton type={type} />
-          )}
+          {isYoutubeType(type) && <YoutubeButton type={type} />}
 
           <WhatsappButton />
-          
           <ShareButton />
 
-          {/* 🌗 THEME TOGGLE */}
           <TouchableOpacity onPress={toggleTheme}>
             <Icon
-              name={
-                isDark ? "wb-sunny" : "dark-mode"
-              }
+              name={isDark ? "wb-sunny" : "dark-mode"}
               size={30}
-              color={
-                isDark ? "#ffcc00" : textColor
-              }
+              color={isDark ? "#ffcc00" : textColor}
             />
           </TouchableOpacity>
 
-          {/* 📤 SHARE APP */}
           <TouchableOpacity onPress={onShareApp}>
-            <Icon
-              name="share"
-              size={28}
-              color={textColor}
-            />
+            <Icon name="share" size={28} color={textColor} />
           </TouchableOpacity>
         </View>
       </View>
@@ -281,10 +247,7 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
       {/* 🏷️ TITLE */}
       <View style={styles.titleWrapper}>
         <Text
-          style={[
-            styles.titleText,
-            { color: textColor },
-          ]}
+          style={[styles.titleText, { color: textColor }]}
           numberOfLines={1}
         >
           {title}
@@ -300,50 +263,31 @@ const HeaderSection: React.FC<HeaderSectionProps> = ({
         <TouchableOpacity
           style={[
             styles.languageBox,
-            languageMode === "arabic" &&
-            styles.activeBox,
+            languageMode === "arabic" && styles.activeBox,
           ]}
-          onPress={() =>
-            setLanguageMode("arabic")
-          }
+          onPress={() => setLanguageMode("arabic")}
         >
-          <Text style={styles.langText}>
-            Arabic
-          </Text>
+          <Text style={styles.langText}>Arabic</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={[
             styles.languageBox,
-            languageMode ===
-            "arabic_malayalam" &&
-            styles.activeBox,
+            languageMode === "arabic_malayalam" && styles.activeBox,
           ]}
-          onPress={() =>
-            setLanguageMode(
-              "arabic_malayalam"
-            )
-          }
+          onPress={() => setLanguageMode("arabic_malayalam")}
         >
-          <Text style={styles.langText}>
-            Malayalam
-          </Text>
+          <Text style={styles.langText}>Malayalam</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={[
             styles.languageBox,
-            languageMode ===
-            "arabic_english" &&
-            styles.activeBox,
+            languageMode === "arabic_english" && styles.activeBox,
           ]}
-          onPress={() =>
-            setLanguageMode("arabic_english")
-          }
+          onPress={() => setLanguageMode("arabic_english")}
         >
-          <Text style={styles.langText}>
-            English
-          </Text>
+          <Text style={styles.langText}>English</Text>
         </TouchableOpacity>
       </ScrollView>
     </Animated.View>

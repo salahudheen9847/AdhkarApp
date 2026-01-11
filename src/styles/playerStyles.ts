@@ -29,16 +29,18 @@ export const styles = StyleSheet.create({
   },
 
   shareButton: {
-    backgroundColor: "#3b82f6",
-    padding: 12,
+    backgroundColor: "#ffffff",
+    padding: 8,
     borderRadius: 20,
-    shadowColor: "#3b82f6",
-    shadowOpacity: 0.3,
+    shadowColor: "#000000",
+    shadowOpacity: 0.15,
     shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
-    elevation: 4,
+    shadowRadius: 6,
+    elevation: 3,
     alignItems: 'center',
     justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: "#e5e7eb",
   },
 
   title: {

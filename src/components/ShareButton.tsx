@@ -36,7 +36,7 @@ export const ShareButton: React.FC<ShareButtonProps> = ({
       onPress={handleShare}
       style={[styles.shareButton, customStyle]}
     >
-      <Icon name="share-alt" size={20} color="#fff" />
+      <Icon name="share-alt" size={20} color="#6b7280" />
     </TouchableOpacity>
   );
 };
