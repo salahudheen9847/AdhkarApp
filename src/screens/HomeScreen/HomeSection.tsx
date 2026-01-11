@@ -5,11 +5,13 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import { homeStyles as styles } from "../../styles/homeStyles";
 
-import {
-  HOME_LABELS,
-  AppLanguage,
-  HomeLabelKey,
-} from "./HomeData";
+/* ✅ DATA */
+import { HOME_LABELS } from "./data/HomeData";
+
+/* ✅ TYPES */
+import type { AppLanguage, HomeLabelKey } from "./data/types";
+
+/* ---------------- TYPES ---------------- */
 
 type HomeItem = {
   id: HomeLabelKey;
@@ -26,6 +28,8 @@ type Props = {
   };
   onPress: (id: HomeLabelKey) => void;
 };
+
+/* ---------------- COMPONENT ---------------- */
 
 export function HomeSection({
   title,

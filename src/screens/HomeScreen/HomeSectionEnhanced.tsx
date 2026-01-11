@@ -1,7 +1,7 @@
 // HomeScreen/HomeSectionEnhanced.tsx
-// FINAL – TypeScript + ESLint SAFE + PERFORMANCE OPTIMIZED
+// FINAL – TypeScript SAFE + ESLint SAFE + PERFORMANCE OPTIMIZED
 
-import React, { memo } from "react";
+import React, { memo, useRef, useMemo } from "react";
 import {
   View,
   Text,
@@ -11,13 +11,14 @@ import {
   StyleSheet,
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
+
 import { homeStyles as styles } from "../../styles/homeStyles";
 
-import {
-  HOME_LABELS,
-  AppLanguage,
-  HomeLabelKey,
-} from "./HomeData";
+/* ✅ DATA */
+import { HOME_LABELS } from "./data/HomeData";
+
+/* ✅ TYPES */
+import type { AppLanguage, HomeLabelKey } from "./data/types";
 
 /* ---------------- TYPES ---------------- */
 
@@ -37,7 +38,7 @@ type Props = {
   onPress: (id: HomeLabelKey) => void;
 };
 
-/* ---------------- Animated Card (Optimized) ---------------- */
+/* ---------------- Animated Card ---------------- */
 
 const AnimatedCard = memo(function AnimatedCard({
   item,
@@ -50,14 +51,14 @@ const AnimatedCard = memo(function AnimatedCard({
   colors: { text: string };
   onPress: (id: HomeLabelKey) => void;
 }) {
-  const scaleAnim = React.useRef(new Animated.Value(1)).current;
+  const scaleAnim = useRef(new Animated.Value(1)).current;
 
-  const title = React.useMemo(() => {
-    return language === "arabic"
-      ? HOME_LABELS[item.id].arabic
-      : language === "english"
-      ? HOME_LABELS[item.id].english
-      : HOME_LABELS[item.id].malayalam;
+  const title = useMemo(() => {
+    const label = HOME_LABELS[item.id];
+
+    if (language === "arabic") return label.arabic;
+    if (language === "english") return label.english;
+    return label.malayalam;
   }, [language, item.id]);
 
   return (
@@ -90,8 +91,7 @@ const AnimatedCard = memo(function AnimatedCard({
             style={[
               styles.cardText,
               { color: colors.text },
-              language === "malayalam" &&
-                local.cardTextMalayalam,
+              language === "malayalam" && local.cardTextMalayalam,
             ]}
             numberOfLines={3}
             ellipsizeMode="tail"
@@ -103,9 +103,9 @@ const AnimatedCard = memo(function AnimatedCard({
       </Animated.View>
     </TouchableOpacity>
   );
-}); // ✅ THIS WAS MISSING
+});
 
-/* ---------------- Section (Optimized) ---------------- */
+/* ---------------- Section ---------------- */
 
 export const HomeSection = memo(function HomeSection({
   title,
@@ -141,7 +141,7 @@ export const HomeSection = memo(function HomeSection({
 
 const local = StyleSheet.create({
   cardWrapper: {
-    width: 160, // 🔥 critical for Malayalam wrapping
+    width: 160, // Malayalam wrapping correct
   },
   cardTextMalayalam: {
     lineHeight: 22,

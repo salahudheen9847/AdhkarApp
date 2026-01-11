@@ -2,8 +2,14 @@
 
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import type { AppLanguage } from "./data/types";
 
-export function LanguageSwitch({ language, setLanguage }: any) {
+type Props = {
+  language: AppLanguage;
+  setLanguage: (lang: AppLanguage) => void;
+};
+
+export function LanguageSwitch({ language, setLanguage }: Props) {
   return (
     <View style={styles.languageSwitch}>
       {[
@@ -13,7 +19,7 @@ export function LanguageSwitch({ language, setLanguage }: any) {
       ].map(item => (
         <TouchableOpacity
           key={item.key}
-          onPress={() => setLanguage(item.key)}
+          onPress={() => setLanguage(item.key as AppLanguage)}
           style={[
             styles.langButton,
             language === item.key && styles.langActive,
@@ -33,6 +39,7 @@ export function LanguageSwitch({ language, setLanguage }: any) {
   );
 }
 
+/* ✅ STYLES (THIS WAS MISSING) */
 const styles = StyleSheet.create({
   languageSwitch: {
     flexDirection: "row",
