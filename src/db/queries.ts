@@ -1,79 +1,143 @@
 import { db } from "./db";
+import type { SQLiteDatabase } from "react-native-sqlite-storage";
 
-/* =====================================================
-   🔹 NORMAL DHIKR
-===================================================== */
-export const getDhikrByType = async (type: string) => {
-  const database = await db;
+/* ============================
+   TYPES
+============================ */
 
-  const res = await database.executeSql(
-    "SELECT * FROM dhikr WHERE type = ? ORDER BY id ASC",
-    [type]
-  );
-
-  return res[0].rows.raw();
+export type DhikrRow = {
+  id: number;
+  type: string;
+  arabic: string;
+  malayalam: string;
+  english: string;
+  start: number | null;
+  end: number | null;
 };
 
-/* =====================================================
-   🔹 MANQUS MOULID
-===================================================== */
-export const getManqusMoulid = async () => {
-  const database = await db;
-
-  const res = await database.executeSql(`
-    SELECT
-      id,
-      isBox,
-      arabic,
-      malayalam,
-      english,
-      start,
-      end
-    FROM manqus_moulid
-    ORDER BY id ASC
-  `);
-
-  const rawRows = res[0].rows.raw();
-
-  return rawRows.map((r: any) => ({
-    id: r.id,
-    isBox: r.isBox === 1,
-    text: r.arabic ?? "",
-    malayalam: r.malayalam ?? "",
-    english: r.english ?? "",
-    start: r.start,
-    end: r.end,
-  }));
+/* ============================
+   GET DB INSTANCE
+============================ */
+const getDatabase = async (): Promise<SQLiteDatabase> => {
+  return await db;
 };
 
-/* =====================================================
-   🔹 BADER MOULID
-===================================================== */
-export const getBaderMoulid = async () => {
-  const database = await db;
+/* ============================
+   GET ALL UNIQUE CATEGORIES
+   (HomeScreen)
+============================ */
+export const getDhikrCategories = async (): Promise<string[]> => {
+  const database = await getDatabase();
 
-  const res = await database.executeSql(`
-    SELECT
-      id,
-      isBox,
-      arabic,
-      malayalam,
-      english,
-      start,
-      end
-    FROM bader_moulid
-    ORDER BY id ASC
-  `);
+  return new Promise((resolve, reject) => {
+    database.transaction(tx => {
+      tx.executeSql(
+        `SELECT DISTINCT type FROM dhikr ORDER BY type ASC`,
+        [],
+        (_, result) => {
+          const types: string[] = [];
+          for (let i = 0; i < result.rows.length; i++) {
+            types.push(result.rows.item(i).type);
+          }
+          resolve(types);
+        },
+        (_, error) => {
+          reject(error);
+          return false;
+        }
+      );
+    });
+  });
+};
 
-  const rawRows = res[0].rows.raw();
+/* ============================
+   GET DHIKR BY TYPE
+   (Detail Screen)
+============================ */
+export const getDhikrByType = async (
+  type: string
+): Promise<DhikrRow[]> => {
+  const database = await getDatabase();
 
-  return rawRows.map((r: any) => ({
-    id: r.id,
-    isBox: r.isBox === 1,
-    text: r.arabic ?? "",
-    malayalam: r.malayalam ?? "",
-    english: r.english ?? "",
-    start: r.start,
-    end: r.end,
-  }));
+  return new Promise((resolve, reject) => {
+    database.transaction(tx => {
+      tx.executeSql(
+        `
+        SELECT id, type, arabic, malayalam, english, start, end
+        FROM dhikr
+        WHERE type = ?
+        ORDER BY id ASC
+        `,
+        [type],
+        (_, result) => {
+          const rows: DhikrRow[] = [];
+          for (let i = 0; i < result.rows.length; i++) {
+            rows.push(result.rows.item(i));
+          }
+          resolve(rows);
+        },
+        (_, error) => {
+          reject(error);
+          return false;
+        }
+      );
+    });
+  });
+};
+
+/* ============================
+   GET SINGLE DHIKR ITEM
+   (Audio / timing use)
+============================ */
+export const getDhikrById = async (
+  id: number
+): Promise<DhikrRow | null> => {
+  const database = await getDatabase();
+
+  return new Promise((resolve, reject) => {
+    database.transaction(tx => {
+      tx.executeSql(
+        `
+        SELECT id, type, arabic, malayalam, english, start, end
+        FROM dhikr
+        WHERE id = ?
+        LIMIT 1
+        `,
+        [id],
+        (_, result) => {
+          if (result.rows.length > 0) {
+            resolve(result.rows.item(0));
+          } else {
+            resolve(null);
+          }
+        },
+        (_, error) => {
+          reject(error);
+          return false;
+        }
+      );
+    });
+  });
+};
+
+/* ============================
+   DELETE ALL DHIKR
+   (DEV / RESET only)
+============================ */
+export const clearDhikrTable = async (): Promise<void> => {
+  const database = await getDatabase();
+
+  return new Promise((resolve, reject) => {
+    database.transaction(tx => {
+      tx.executeSql(
+        `DELETE FROM dhikr`,
+        [],
+        () => resolve(),
+        (_, error) => {
+          reject(error);
+          return false;
+        }
+      );
+    });
+  });
 };

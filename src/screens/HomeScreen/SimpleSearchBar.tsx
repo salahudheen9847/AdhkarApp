@@ -1,21 +1,29 @@
 import React from "react";
 import { View, TextInput, StyleSheet, ViewStyle } from "react-native";
+import type { AppLanguage } from "../../data/labels";
 
 type Props = {
   value: string;
   onChange: (text: string) => void;
-  placeholder: string;
-  containerStyle?: ViewStyle; // ✅ allow parent control
-  isArabic?: boolean;
+  language: AppLanguage;        // ✅ FIX: HomeScreen-ൽ നിന്ന് വരുന്നത്
+  containerStyle?: ViewStyle;
 };
 
 export function SimpleSearchBar({
   value,
   onChange,
-  placeholder,
+  language,
   containerStyle,
-  isArabic = false,
 }: Props) {
+  const placeholder =
+    language === "malayalam"
+      ? "തിരയൂ..."
+      : language === "arabic"
+      ? "ابحث..."
+      : "Search...";
+
+  const isArabic = language === "arabic";
+
   return (
     <View style={[styles.box, containerStyle]}>
       <TextInput
@@ -23,12 +31,9 @@ export function SimpleSearchBar({
         onChangeText={onChange}
         placeholder={placeholder}
         placeholderTextColor="#9ca3af"
-        style={[
-          styles.input,
-          isArabic && styles.inputArabic,
-        ]}
+        style={[styles.input, isArabic && styles.inputArabic]}
         returnKeyType="search"
-        clearButtonMode="while-editing" // iOS
+        clearButtonMode="while-editing"
       />
     </View>
   );
@@ -36,7 +41,7 @@ export function SimpleSearchBar({
 
 const styles = StyleSheet.create({
   box: {
-    width: "92%",              // ✅ important
+    width: "92%",
     backgroundColor: "#ffffff",
     borderRadius: 14,
     borderWidth: 2,

@@ -1,232 +1,116 @@
-import { StyleSheet, Platform, StatusBar } from "react-native";
+import { StyleSheet } from "react-native";
 
 export const homeStyles = StyleSheet.create({
   /* ---------- LAYOUT ---------- */
 
-  flexContainer: { flex: 1 },
-
-  backButton: {
-    backgroundColor: "#f8fafc",
-    borderRadius: 20,
-    padding: 8,
-    shadowColor: "#000000",
-    shadowOpacity: 0.15,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 6,
-    elevation: 3,
-    borderWidth: 1,
-    borderColor: "#e2e8f0",
-  },
-
-  headerContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingHorizontal: 20,
-    paddingTop: Platform.OS === "android" ? (StatusBar.currentHeight || 40) + 8 : 20,
-    paddingBottom: 12,
+  flexContainer: {
+    flex: 1,
     backgroundColor: "#ffffff",
-    borderBottomWidth: 1,
-    borderBottomColor: "#e5e7eb",
-    shadowColor: "#000000",
-    shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
-    elevation: 4,
-  },
-
-  appTitle: {
-    fontSize: 22,
-    fontWeight: "700",
-    color: "#111827",
-    textAlign: "center",
-    flex: 1,
-    letterSpacing: -0.5,
-    textShadowColor: "rgba(0, 0, 0, 0.1)",
-    textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 2,
-  },
-
-  placeholder: {
-    width: 40,
-  },
-
-  container: {
-    flex: 1,
-    backgroundColor: "#fafaf9",
-    alignItems: "center",
-    paddingTop:
-      Platform.OS === "android"
-        ? StatusBar.currentHeight || 40
-        : 20,
   },
 
   scrollContent: {
     alignItems: "center",
-    paddingBottom: 40,
+    paddingBottom: 60,
+    paddingTop: 24,
   },
 
-  /* ---------- HEADER ---------- */
-
-  header: {
-    width: "100%",
-    paddingHorizontal: 16,
-    paddingBottom: 12,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-
-  headerOptions: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-  },
-
-  optionButton: {
-    padding: 8,
-    borderRadius: 8,
-    backgroundColor: "#f3f4f6",
-  },
-
-  /* ---------- LANGUAGE SWITCH ---------- */
-
-  languageSwitch: {
-    flexDirection: "row",
-    width: "85%",          // 🔽 slightly smaller
-    marginBottom: 14,
-    backgroundColor: "#f5f5f5",
-    borderRadius: 16,
-    padding: 4,
-    gap: 4,
-  },
-
-  langButton: {
-    flex: 1,
-    paddingVertical: 10,
-    borderRadius: 12,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  langActive: {
-    backgroundColor: "#16a34a",
-  },
-
-  langText: {
-    fontSize: 14,
-    fontWeight: "600",
-    color: "#525252",
-  },
-
-  langTextActive: {
-    color: "#ffffff",
-    fontWeight: "700",
-  },
-
-  /* ---------- SEARCH (COMPACT) ---------- */
-
-searchContainer: {
-  flexDirection: "row",
-  alignItems: "center",
-  backgroundColor: "#ffffff",
-  borderRadius: 14,
-  paddingHorizontal: 16,
-  paddingVertical: 12,
-  width: "60%",          // ✅ wider
-  marginBottom: 18,
-},
-
-
-  searchInput: {
-    flex: 1,
-    fontSize: 15,
-    color: "#262626",
-  },
-
-  searchInputArabic: {
-    textAlign: "right",
-  },
-
-  /* ---------- GRID (3 PER ROW) ---------- */
+  /* ---------- GRID ---------- */
 
   innerGrid: {
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-between", // 🔑 important
-    paddingHorizontal: 16,
+    justifyContent: "space-between",
     width: "100%",
+    paddingHorizontal: 12,
+    margin: 0,
+    padding: 0,
   },
 
-  /* ---------- CARD (3 COLUMN) ---------- */
+  /* ---------- CARD ---------- */
 
-  card: {
-    width: "31%",          // ✅ 3 cards per row
-    aspectRatio: 1,       // square card
-    borderRadius: 18,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#ffffff",
-    elevation: 5,
-    marginBottom: 14,
-  },
+card: {
+  width: "100%",
+  minHeight: 100,               // increased for professional look
+  borderRadius: 20,
 
-  emoji: {
-    fontSize: 26,          // 🔽 slightly smaller
-    marginBottom: 6,
-  },
+  alignItems: "center",
+  justifyContent: "center",
 
-  cardText: {
-    fontSize: 13,
-    fontWeight: "600",
-    color: "#000000",  // ✅ Black text for better visibility
-    textAlign: "center",
-    paddingHorizontal: 6,
-    lineHeight: 16,
-  },
+  paddingVertical: 16,
+  paddingHorizontal: 12,
 
-  cardSectionHeading: {
-    fontSize: 18,
-    fontWeight: "600",
-    color: "#1f2937",
-    marginBottom: 12,
-  },
+  marginBottom: 12,
+
+  shadowColor: "#000",
+  shadowOpacity: 0.12,
+  shadowRadius: 16,
+  shadowOffset: { width: 0, height: 8 },
+  elevation: 8,
+
+  borderWidth: 1,
+  borderColor: "rgba(255,255,255,0.8)",
+  backgroundColor: "rgba(255,255,255,0.1)",
+},
+
+  /* ---------- CARD TEXT ---------- */
+
+cardText: {
+  marginTop: 10,
+  fontSize: 14,
+  fontWeight: "700",
+  textAlign: "center",
+  lineHeight: 18,
+  letterSpacing: 0.3,
+  color: "#000000",
+  textShadowColor: "rgba(255,255,255,0.8)",
+  textShadowOffset: { width: 0, height: 1 },
+  textShadowRadius: 4,
+},
+cardTextMalayalam: {
+  fontSize: 12,
+  lineHeight: 16,
+  fontWeight: "800",
+  textAlign: "center",
+  color: "#000000",
+  textShadowColor: "rgba(255,255,255,0.8)",
+  textShadowOffset: { width: 0, height: 1 },
+  textShadowRadius: 4,
+  letterSpacing: 0.1,
+},
+
+  /* ---------- SECTION ---------- */
 
   sectionTitle: {
-    fontSize: 16,
-    fontWeight: "500",
-    color: "#374151",
-    marginBottom: 8,
+    fontSize: 22,
+    fontWeight: "700",
+    color: "#111827",
+    marginBottom: 24,
+    paddingHorizontal: 16,
+    letterSpacing: 0.2,
+    textShadowColor: "rgba(0,0,0,0.05)",
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 1,
   },
 
-  icon: {
-    width: 24,
-    height: 24,
-    resizeMode: "contain",
+  sectionContainer: {
+    width: "100%",
+    marginBottom: 32,
   },
 
-  /* ---------- EMPTY ---------- */
-
-  noResultText: {
-    fontSize: 16,
-    color: "#a3a3a3",
-    marginTop: 40,
-    fontWeight: "500",
+  sectionDivider: {
+    width: "85%",
+    height: 1,
+    backgroundColor: "#f3f4f6",
+    marginVertical: 20,
+    alignSelf: "center",
   },
+
+  /* ---------- FAV ICON ---------- */
+
   favIcon: {
-  position: "absolute",
-  top: 8,
-  right: 8,
-  zIndex: 10,
-},
-
-sectionHeading: {
-  width: "100%",
-  marginVertical: 10,
-  paddingHorizontal: 16,
-  fontSize: 18,
-  fontWeight: "700",
-  color: "#16a34a",
-},
-
+    position: "absolute",
+    top: 8,
+    right: 8,
+    zIndex: 10,
+  },
 });

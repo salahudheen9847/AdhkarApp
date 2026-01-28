@@ -1,18 +1,14 @@
-import { db } from "./db";
-
-export const createTables = async () => {
-  const database = await db;
-
-  await database.executeSql(`
+export const SCHEMA = {
+  dhikr: `
     CREATE TABLE IF NOT EXISTS dhikr (
-      id INTEGER,
-      type TEXT,
-      arabic TEXT,
+      id INTEGER NOT NULL,
+      type TEXT NOT NULL,
+      arabic TEXT NOT NULL,
       malayalam TEXT,
       english TEXT,
-      start REAL,
-      end REAL,
+      start INTEGER,
+      end INTEGER,
       PRIMARY KEY (id, type)
     );
-  `);
+  `,
 };

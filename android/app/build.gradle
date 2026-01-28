@@ -1,7 +1,10 @@
 apply plugin: "com.android.application"
-apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
+apply plugin: "org.jetbrains.kotlin.android"
+
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+
+/* ---------------- REACT ---------------- */
 
 project.ext.react = [
     enableHermes: true,
@@ -10,6 +13,8 @@ project.ext.react = [
 react {
     autolinkLibrariesWithApp()
 }
+
+/* ---------------- ANDROID ---------------- */
 
 def jscFlavor = 'io.github.react-native-community:jsc-android:2026004.+'
 
@@ -43,10 +48,9 @@ android {
         }
     }
 
-    // ✅ CORRECT PLACE
     packagingOptions {
-        pickFirst '**/libc++_shared.so'
-        pickFirst '**/libhermes.so'
+        pickFirst "**/libc++_shared.so"
+        pickFirst "**/libhermes.so"
     }
 
     buildTypes {
@@ -60,6 +64,8 @@ android {
         }
     }
 }
+
+/* ---------------- DEPENDENCIES ---------------- */
 
 dependencies {
     implementation("com.facebook.react:react-android")

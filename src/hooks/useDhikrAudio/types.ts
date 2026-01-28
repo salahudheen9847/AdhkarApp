@@ -1,13 +1,15 @@
+import type { HomeLabelKey } from "../../data/labels";
+
+/* 🔊 Dhikr Audio Hook Params */
 export type UseDhikrAudioParams = {
-  mode: "dhikr" | "manqus" | "bader" | "qaseeda";
-  type?: string;
+  mode: "dhikr";        // ✅ only dhikr
+  type?: HomeLabelKey;
 };
 
+/* 📿 Dhikr / Dua Item */
 export type DuaItem = {
   id: number;
-  isBox?: boolean;
-  isHeading?: boolean;
-  text: string;
+  arabic?: string;
   malayalam?: string;
   english?: string;
   start?: number;

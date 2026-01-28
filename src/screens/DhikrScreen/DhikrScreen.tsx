@@ -1,65 +1,39 @@
-import React, { useState } from "react";
-import { StatusBar, View, StyleSheet } from "react-native";
+import React, { useState, useRef } from "react";
+import {
+  StatusBar,
+  View,
+  Animated,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
 import { useThemeContext } from "../../context/theme";
 import { useDhikrAudio } from "../../hooks/useDhikrAudio";
 
-import HeaderSection, {
-  LanguageMode,
-} from "./HeaderSection";
-import { DuaListSection } from "./DuaListSection";
+import HeaderSection from "./components/HeaderSection";
+import { DuaListSection } from "./components/DuaListSection";
 import { PlayerControls } from "../../component/PlayerControls";
 import { FontControl } from "../../component/FontControl";
 import { styles as screenStyles } from "../../styles/dhikrscreenstyle";
+
+import { useDhikrScreenLogic } from "./hooks/useDhikrScreenLogic";
+import { localStyles } from "./styles/DhikrScreen.styles";
 
 export default function DhikrScreen() {
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
 
-  const { isDark, toggleTheme, colors } =
-    useThemeContext();
+  const { isDark, toggleTheme, colors } = useThemeContext();
 
-  const [languageMode, setLanguageMode] =
-    useState<LanguageMode>("arabic");
-  const [showFontControl, setShowFontControl] =
-    useState(false);
+  const [languageMode, setLanguageMode] = useState<
+    "arabic" | "arabic_english" | "arabic_malayalam"
+  >("arabic");
+  const [showFontControl, setShowFontControl] = useState(false);
 
-  /* 🔒 SAFE MODE */
-  const mode:
-    | "dhikr"
-    | "manqus"
-    | "bader"
-    | "qaseeda" =
-    route.params?.mode ?? "dhikr";
+  /* 🟢 SCROLL ANIMATION SOURCE */
+  const scrollY = useRef(new Animated.Value(0)).current;
 
-  const type =
-    route.params?.type ?? "duaMarichavark";
-
-  /* 🎧 AUDIO HOOK */
-  const {
-    currentIndex,
-    currentTime,
-    duration,
-    fontSize,
-    isPlaying,
-    playbackRate,
-    showPlayer,
-    currentDuaList,
-    scrollY,
-    title,
-    setShowPlayer,
-    setFontSize,
-    playAudio,
-    onSeek,
-    onChangeRate,
-  } = useDhikrAudio({
-    mode,
-      type: mode === "dhikr" ? type : undefined, // 🔥 IMPORTANT
-  });
-
-  /* 🌀 Header Animation */
+  /* 🟢 HEADER ANIMATION STYLE */
   const headerAnimatedStyle = {
     transform: [
       {
@@ -77,6 +51,28 @@ export default function DhikrScreen() {
     }),
   };
 
+  const { mode, audioType, headerType, headerTitle } =
+    useDhikrScreenLogic(route, languageMode);
+
+  const {
+    currentIndex,
+    currentTime,
+    duration,
+    fontSize,
+    isPlaying,
+    playbackRate,
+    showPlayer,
+    currentDuaList,
+    setShowPlayer,
+    setFontSize,
+    playAudio,
+    onSeek,
+    onChangeRate,
+  } = useDhikrAudio({
+    mode,
+    type: audioType,
+  });
+
   return (
     <SafeAreaView
       style={[
@@ -88,9 +84,7 @@ export default function DhikrScreen() {
     >
       <StatusBar
         backgroundColor={isDark ? "#000" : "#fff"}
-        barStyle={
-          isDark ? "light-content" : "dark-content"
-        }
+        barStyle={isDark ? "light-content" : "dark-content"}
       />
 
       {/* 🕌 HEADER */}
@@ -101,14 +95,12 @@ export default function DhikrScreen() {
         isPlaying={isPlaying}
         setShowPlayer={setShowPlayer}
         playAudio={playAudio}
-        type={type}
-        title={title}
+        type={headerType}
+        title={headerTitle}
         languageMode={languageMode}
         setLanguageMode={setLanguageMode}
         headerAnimatedStyle={headerAnimatedStyle}
-        onFontPress={() =>
-          setShowFontControl(!showFontControl)
-        }
+        onFontPress={() => setShowFontControl(!showFontControl)}
         onBack={() => navigation.goBack()}
       />
 
@@ -118,9 +110,7 @@ export default function DhikrScreen() {
           <FontControl
             fontSize={fontSize}
             onFontSizeChange={setFontSize}
-            onClose={() =>
-              setShowFontControl(false)
-            }
+            onClose={() => setShowFontControl(false)}
             textColor={colors.text}
             backgroundColor={colors.background}
           />
@@ -154,18 +144,3 @@ export default function DhikrScreen() {
     </SafeAreaView>
   );
 }
-
-/* 🎨 Local Styles */
-const localStyles = StyleSheet.create({
-  screen: {
-    position: "relative",
-  },
-  fontControlWrapper: {
-    position: "absolute",
-    top: 170,
-    left: 0,
-    right: 0,
-    zIndex: 9999,
-    elevation: 20,
-  },
-});

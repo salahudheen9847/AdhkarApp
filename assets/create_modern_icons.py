@@ -13,7 +13,7 @@ modern_icons = {
     "qaseeda.png": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+CszakAAABhklEQVR4nGNgYGBgYGJgZGBiYQBQgYGhAAYGBgYAAAABJRU5ErkJggg==",  # Gold - Premium theme
     "haddad_icon.png": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+CszakAAABhklEQVR4nGNgYGBgYGJgZGBiYQBQgYGhAAYGBgYAAAABJRU5ErkJggg==",  # Orange - Warm theme
     "nariyathSwalath_icon.png": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+CszakAAABhklEQVR4nGNgYGBgYGJgZGBiYQBQgYGhAAYGBgYAAAABJRU5ErkJggg==",  # Pink - Soft theme
-    "asmaulhusna_icon.png": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+CszakAAABhklEQVR4nGNgYGBgYGJgZGBiYQBQgYGhAAYGBgYAAAABJRU5ErkJggg==",  # Teal - Ocean theme
+    "asmaulHusna_icon.png": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+CszakAAABhklEQVR4nGNgYGBgYGJgZGBiYQBQgYGhAAYGBgYAAAABJRU5ErkJggg==",  # Teal - Ocean theme
 }
 
 assets_dir = "/Users/apple/AdhkarApp/assets"

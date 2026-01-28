@@ -8,6 +8,7 @@ import {
   Alert,
   Linking,
 } from "react-native";
+
 import {
   NavigationContainer,
   DefaultTheme,
@@ -24,17 +25,12 @@ import { LanguageProvider } from "./src/context/language";
 /* 📱 SCREENS */
 import HomeScreen from "./src/screens/HomeScreen/HomeScreen";
 import DhikrScreen from "./src/screens/DhikrScreen/DhikrScreen";
-import TranslationScreen from "./src/screens/TranslationScreen";
-import ManqusMoulidScreen from "./src/screens/ManqusMoulidScreen/ManqusMoulidScreen";
-import BaderMoulidScreen from "./src/screens/BaderMoulidScreen/BaderMoulidScreen";
 import SettingsScreen from "./src/screens/SettingsScreen";
 import AboutScreen from "./src/screens/AboutScreen";
 
 /* 🗄️ DATABASE */
 import { createTables } from "./src/db/createTables";
-import { seedDhikr } from "./src/db/seedDhikr";
-import { seedManqusMoulid } from "./src/db/seedManqusMoulid";
-import { seedBaderMoulid } from "./src/db/seedBaderMoulid";
+import { seedAll } from "./src/db/seed";
 
 const Stack = createNativeStackNavigator();
 
@@ -59,6 +55,24 @@ const isNewerVersion = (latest: string, current: string) => {
 --------------------------------*/
 function RootNavigator() {
   const { isDark } = useThemeContext();
+  const [loading, setLoading] = useState(true);
+
+  /* 🗄️ SQLITE INIT */
+  useEffect(() => {
+    const initDB = async () => {
+      try {
+        await createTables();
+        await seedAll(); // ✅ ALL SEED HERE
+        console.log("✅ SQLite DB ready");
+      } catch (e) {
+        console.log("❌ DB init error:", e);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    initDB();
+  }, []);
 
   return (
     <NavigationContainer theme={isDark ? DarkTheme : DefaultTheme}>
@@ -76,30 +90,6 @@ function RootNavigator() {
         />
 
         <Stack.Screen
-          name="ManqusMoulid"
-          component={ManqusMoulidScreen}
-          options={{ headerShown: false }}
-        />
-
-        <Stack.Screen
-          name="BaderMoulid"
-          component={BaderMoulidScreen}
-          options={{ headerShown: false }}
-        />
-
-        <Stack.Screen
-          name="Translation"
-          component={TranslationScreen}
-          options={{
-            title: "മലയാളം വിവർത്തനം",
-            headerStyle: {
-              backgroundColor: isDark ? "#1a1a1a" : "#0f172a",
-            },
-            headerTintColor: "#ffffff",
-          }}
-        />
-
-        <Stack.Screen
           name="Settings"
           component={SettingsScreen}
           options={{ headerShown: false }}
@@ -111,6 +101,12 @@ function RootNavigator() {
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
+      
+      {loading && (
+        <View style={styles.loaderOverlay}>
+          <ActivityIndicator size="large" color="#22c55e" />
+        </View>
+      )}
     </NavigationContainer>
   );
 }
@@ -119,8 +115,6 @@ function RootNavigator() {
    🚀 MAIN APP
 --------------------------------*/
 export default function App() {
-  const [loading, setLoading] = useState(true);
-
   /* 🔔 UPDATE CHECK */
   useEffect(() => {
     const checkUpdate = async () => {
@@ -157,31 +151,10 @@ export default function App() {
     checkUpdate();
   }, []);
 
-  /* 🗄️ SQLITE INIT */
-  useEffect(() => {
-    const initDB = async () => {
-      try {
-        await createTables();
-        await seedDhikr();
-        await seedManqusMoulid();
-        await seedBaderMoulid();
-        console.log("✅ SQLite DB ready");
-      } catch (e) {
-        console.log("❌ DB init error:", e);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    initDB();
-  }, []);
-
   return (
     <SafeAreaProvider>
       <LanguageProvider>
         <ThemeProvider>
-
-          {/* ✅ EDGE-TO-EDGE STATUS BAR (IMPORTANT) */}
           <StatusBar
             translucent
             backgroundColor="transparent"
@@ -189,13 +162,6 @@ export default function App() {
           />
 
           <RootNavigator />
-
-          {loading && (
-            <View style={styles.loaderOverlay}>
-              <ActivityIndicator size="large" color="#22c55e" />
-            </View>
-          )}
-
         </ThemeProvider>
       </LanguageProvider>
     </SafeAreaProvider>

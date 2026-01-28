@@ -1,0 +1,1 @@
+export { seedAll } from "./seedAll";

@@ -1,13 +1,13 @@
 import { StyleSheet } from "react-native";
 
 /* ===============================
-   🌍 MAIN STYLES
+   🌍 MAIN STYLES (DHIKR ONLY)
 ================================ */
 export const styles = StyleSheet.create({
   /* 🌿 Screen */
   container: {
     flex: 1,
-    backgroundColor: "#0f172a", // Softer dark blue-gray
+    backgroundColor: "#0f172a",
   },
 
   fullFlex: {
@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     marginBottom: 24,
     padding: 20,
     borderRadius: 18,
-    backgroundColor: "rgba(255, 255, 255, 0.04)", // Subtle glass effect
+    backgroundColor: "rgba(255, 255, 255, 0.04)",
     borderWidth: 1,
     borderColor: "rgba(255, 255, 255, 0.08)",
     shadowColor: "#000000",
@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
     elevation: 2,
   },
 
-  /* ✨ Active ayah border */
+  /* ✨ Active dhikr highlight */
   activeTextContainer: {
     borderWidth: 2,
     borderColor: "#22c55e60",
@@ -77,16 +77,16 @@ export const styles = StyleSheet.create({
   },
 
   /* ===============================
-     📦 MANQUS BOX
+     📦 GENERIC BOX (DHIKR)
      =============================== */
 
-  manqusBoxWrapper: {
+  boxWrapper: {
     paddingVertical: 24,
     marginVertical: 24,
     borderRadius: 18,
   },
 
-  manqusBoxContainer: {
+  boxContainer: {
     borderWidth: 2,
     borderColor: "#334155",
     borderRadius: 18,
@@ -102,13 +102,12 @@ export const styles = StyleSheet.create({
     elevation: 4,
   },
 
-  /* 🔹 Manqus box text */
-  manqusBoxText: {
-    fontFamily: "ScheherazadeNew-Regular",
+  /* 🔹 Box text */
+  boxText: {
+    color: "#e5e7eb",
+    fontSize: 16,
+    lineHeight: 26,
     textAlign: "center",
-    fontSize: 26,
-    lineHeight: 42,
-    writingDirection: "rtl",
   },
 });
 

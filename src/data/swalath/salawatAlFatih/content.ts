@@ -1,0 +1,74 @@
+export const salawatAlFatihDuas = {
+  id: "salawatAlFatih",
+
+  heading: {
+    arabic: "صلاة الفاتح",
+    malayalam: "സ്വലാത്തുൽ ഫാത്തിഹ്",
+    english: "Salawat Al-Fatih",
+  },
+
+  isBox: false,
+
+  content: [
+    {
+      id: 1,
+      arabic: [
+        "اَللَّهُمَّ صَلِّ عَلى سَيِّدِنَا مُحَمَّدٍ",
+      ],
+      malayalam: [
+        "അല്ലാഹുവേ, ഞങ്ങളുടെ നേതാവായ മുഹമ്മദ് നബി ﷺ യിൽ സ്വലാത്ത് ചൊരിയണമേ.",
+      ],
+      english: [
+        "O Allah, send blessings upon our master Muhammad ﷺ.",
+      ],
+    },
+
+    {
+      id: 2,
+      arabic: [
+        "اَلْفَاتِحِ لِمَا أُغْلِقَ",
+        "وَاَلْخَاتِمِ لِمَا سَبَقَ",
+      ],
+      malayalam: [
+        "അടഞ്ഞുപോയതെല്ലാം തുറക്കുന്നവനും,",
+        "മുൻപ് വന്നതെല്ലാം പൂർത്തിയാക്കുന്നവനും.",
+      ],
+      english: [
+        "The opener of what was closed,",
+        "and the seal of what came before.",
+      ],
+    },
+
+    {
+      id: 3,
+      arabic: [
+        "نَاصِرِ الْحَقِّ بِالْحَقِّ",
+        "وَالْهَادِي إِلَى صِرَاطِكَ الْمُسْتَقِيمِ",
+      ],
+      malayalam: [
+        "സത്യത്തെ സത്യത്തിലൂടെ സഹായിക്കുന്നവനും",
+        "നിന്റെ നേരായ മാർഗത്തിലേക്ക് വഴിനടത്തുന്നവനും.",
+      ],
+      english: [
+        "The supporter of truth by the truth",
+        "and the guide to Your straight path.",
+      ],
+    },
+
+    {
+      id: 4,
+      arabic: [
+        "وَعَلَى آلِهِ حَقَّ قَدْرِهِ",
+        "وَمِقْدَارِهِ الْعَظِيمِ",
+      ],
+      malayalam: [
+        "അവന്റെ കുടുംബത്തിലും",
+        "അവന്റെ മഹത്തായ സ്ഥാനത്തിനും അളവിനും യോജിച്ച തരത്തിൽ.",
+      ],
+      english: [
+        "And upon his family,",
+        "according to his true worth and immense rank.",
+      ],
+    },
+  ],
+};

@@ -1,42 +1,78 @@
+// src/screens/HomeScreen/components/LanguageSwitch.tsx
+
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import { homeStyles as styles } from "../HomeStyles";
-import { Language } from "../hooks/useHomeLogic";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
-interface Props {
-  language: Language;
-  setLanguage: (lang: Language) => void;
-}
+import { useLanguage } from "../../../context/language"; // ✅ CORRECT PATH
+import type { AppLanguage } from "../../../context/language";
 
-export const LanguageSwitch: React.FC<Props> = ({
-  language,
-  setLanguage,
-}) => {
+/* ---------------- COMPONENT ---------------- */
+
+export function LanguageSwitch() {
+  const { language, setLanguage } = useLanguage();
+
+  const LANGUAGES: {
+    key: AppLanguage;
+    label: string;
+  }[] = [
+    { key: "malayalam", label: "മ" },
+    { key: "english", label: "EN" },
+    { key: "arabic", label: "ع" },
+  ];
+
   return (
     <View style={styles.languageSwitch}>
-      {(["malayalam", "english", "arabic"] as const).map(lang => {
-        const active = language === lang;
-        return (
-          <TouchableOpacity
-            key={lang}
-            style={[styles.langButton, active && styles.langActive]}
-            onPress={() => setLanguage(lang)}
+      {LANGUAGES.map(item => (
+        <TouchableOpacity
+          key={item.key}
+          onPress={() => setLanguage(item.key)}
+          style={[
+            styles.langButton,
+            language === item.key && styles.langActive,
+          ]}
+          activeOpacity={0.8}
+        >
+          <Text
+            style={[
+              styles.langText,
+              language === item.key && styles.langTextActive,
+            ]}
           >
-            <Text
-              style={[
-                styles.langText,
-                active && styles.langTextActive,
-              ]}
-            >
-              {lang === "malayalam"
-                ? "മല"
-                : lang === "english"
-                ? "En"
-                : "ع"}
-            </Text>
-          </TouchableOpacity>
-        );
-      })}
+            {item.label}
+          </Text>
+        </TouchableOpacity>
+      ))}
     </View>
   );
-};
+}
+
+/* ---------------- STYLES ---------------- */
+
+const styles = StyleSheet.create({
+  languageSwitch: {
+    flexDirection: "row",
+    width: "100%",
+    marginBottom: 12,
+    backgroundColor: "#e5e7eb",
+    borderRadius: 14,
+    padding: 4,
+    gap: 6,
+  },
+  langButton: {
+    flex: 1,
+    paddingVertical: 6,
+    borderRadius: 12,
+    alignItems: "center",
+  },
+  langActive: {
+    backgroundColor: "#1e293b",
+  },
+  langText: {
+    fontSize: 15,
+    fontWeight: "600",
+    color: "#1e293b",
+  },
+  langTextActive: {
+    color: "#ffffff",
+  },
+});

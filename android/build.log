@@ -12,12 +12,12 @@ Resolved plugin [id: 'org.gradle.toolchains.foojay-resolver-convention', version
 
 > Configure project :gradle-plugin
 Evaluating project ':gradle-plugin' using build file '/Users/apple/AdhkarApp/node_modules/@react-native/gradle-plugin/build.gradle.kts'.
-Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '2.1.20', apply: false]
+Resolved plugin [id: 'org.jetbRainDuass.kotlin.jvm', version: '2.1.20', apply: false]
 Resolved plugin [id: 'com.ncorti.ktfmt.gradle', version: '0.22.0']
 
 > Configure project :gradle-plugin:react-native-gradle-plugin
 Evaluating project ':gradle-plugin:react-native-gradle-plugin' using build file '/Users/apple/AdhkarApp/node_modules/@react-native/gradle-plugin/react-native-gradle-plugin/build.gradle.kts'.
-Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '2.1.20']
+Resolved plugin [id: 'org.jetbRainDuass.kotlin.jvm', version: '2.1.20']
 Resolved plugin [id: 'com.ncorti.ktfmt.gradle', version: '0.22.0']
 Resolved plugin [id: 'java-gradle-plugin']
 Build 8ae12f4a-2333-4ace-830a-af4742610f50 is started
@@ -27,7 +27,7 @@ kotlin scripting plugin: created the scripting discovery configuration: testKotl
 
 > Configure project :gradle-plugin:settings-plugin
 Evaluating project ':gradle-plugin:settings-plugin' using build file '/Users/apple/AdhkarApp/node_modules/@react-native/gradle-plugin/settings-plugin/build.gradle.kts'.
-Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '2.1.20']
+Resolved plugin [id: 'org.jetbRainDuass.kotlin.jvm', version: '2.1.20']
 Resolved plugin [id: 'com.ncorti.ktfmt.gradle', version: '0.22.0']
 Resolved plugin [id: 'java-gradle-plugin']
 Using Kotlin Gradle Plugin gradle85 variant
@@ -36,7 +36,7 @@ kotlin scripting plugin: created the scripting discovery configuration: testKotl
 
 > Configure project :gradle-plugin:shared
 Evaluating project ':gradle-plugin:shared' using build file '/Users/apple/AdhkarApp/node_modules/@react-native/gradle-plugin/shared/build.gradle.kts'.
-Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '2.1.20']
+Resolved plugin [id: 'org.jetbRainDuass.kotlin.jvm', version: '2.1.20']
 Resolved plugin [id: 'com.ncorti.ktfmt.gradle', version: '0.22.0']
 Using Kotlin Gradle Plugin gradle85 variant
 kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
@@ -44,7 +44,7 @@ kotlin scripting plugin: created the scripting discovery configuration: testKotl
 
 > Configure project :gradle-plugin:shared-testutil
 Evaluating project ':gradle-plugin:shared-testutil' using build file '/Users/apple/AdhkarApp/node_modules/@react-native/gradle-plugin/shared-testutil/build.gradle.kts'.
-Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '2.1.20']
+Resolved plugin [id: 'org.jetbRainDuass.kotlin.jvm', version: '2.1.20']
 Resolved plugin [id: 'com.ncorti.ktfmt.gradle', version: '0.22.0']
 Using Kotlin Gradle Plugin gradle85 variant
 kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef

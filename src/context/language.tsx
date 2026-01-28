@@ -1,5 +1,13 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
+/* ---------------- TYPES ---------------- */
 
 export type AppLanguage = "malayalam" | "english" | "arabic";
 
@@ -8,21 +16,48 @@ type LanguageContextType = {
   setLanguage: (lang: AppLanguage) => void;
 };
 
-const LanguageContext = createContext<LanguageContextType | null>(null);
+/* ---------------- CONTEXT ---------------- */
 
-export const LanguageProvider = ({ children }: any) => {
+const LanguageContext = createContext<LanguageContextType | undefined>(
+  undefined
+);
+
+/* ---------------- PROVIDER ---------------- */
+
+type Props = {
+  children: ReactNode;
+};
+
+export const LanguageProvider = ({ children }: Props) => {
   const [language, setLanguageState] =
     useState<AppLanguage>("malayalam");
 
+  /* 🔁 Load saved language */
   useEffect(() => {
-    AsyncStorage.getItem("app_language").then(saved => {
-      if (saved) setLanguageState(saved as AppLanguage);
-    });
+    (async () => {
+      try {
+        const saved = await AsyncStorage.getItem("app_language");
+        if (
+          saved === "malayalam" ||
+          saved === "english" ||
+          saved === "arabic"
+        ) {
+          setLanguageState(saved);
+        }
+      } catch (e) {
+        console.warn("❌ Failed to load language", e);
+      }
+    })();
   }, []);
 
-  const setLanguage = (lang: AppLanguage) => {
+  /* 🌐 Change language */
+  const setLanguage = async (lang: AppLanguage) => {
     setLanguageState(lang);
-    AsyncStorage.setItem("app_language", lang);
+    try {
+      await AsyncStorage.setItem("app_language", lang);
+    } catch (e) {
+      console.warn("❌ Failed to save language", e);
+    }
   };
 
   return (
@@ -32,8 +67,20 @@ export const LanguageProvider = ({ children }: any) => {
   );
 };
 
+/* ---------------- HOOK ---------------- */
+
 export const useLanguage = () => {
   const ctx = useContext(LanguageContext);
-  if (!ctx) throw new Error("useLanguage must be used inside provider");
+
+  if (!ctx) {
+    console.warn(
+      "⚠️ useLanguage must be used inside <LanguageProvider>"
+    );
+    return {
+      language: "malayalam" as AppLanguage,
+      setLanguage: () => {},
+    };
+  }
+
   return ctx;
 };

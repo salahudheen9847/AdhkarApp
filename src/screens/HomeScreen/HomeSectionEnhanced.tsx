@@ -1,49 +1,47 @@
-// HomeScreen/HomeSectionEnhanced.tsx
-// FINAL – TypeScript SAFE + ESLint SAFE + PERFORMANCE OPTIMIZED
-
 import React, { memo, useRef, useMemo } from "react";
 import {
   View,
   Text,
   TouchableOpacity,
-  Image,
   Animated,
-  StyleSheet,
 } from "react-native";
+import Ionicons from "react-native-vector-icons/Ionicons";
 import LinearGradient from "react-native-linear-gradient";
 
 import { homeStyles as styles } from "./HomeStyles";
+import { homeSectionStyles as local } from "./HomeSection.styles";
 
-/* ✅ DATA */
-import { HOME_LABELS } from "./data/HomeData";
-
-/* ✅ TYPES */
-import type { AppLanguage, HomeLabelKey } from "./data/types";
+import { getHomeLabelText } from "../../data/labels";
+import type { HomeLabelKey } from "../../data/labels";
+import type { AppLanguage } from "../../data/labels/types";
 
 /* ---------------- TYPES ---------------- */
 
 type HomeItem = {
-  id: HomeLabelKey;
-  image: any;
-  gradient: string[];
+  id: string;
+  originalId: HomeLabelKey;
+  icon: string;
+  gradient?: readonly string[];
 };
 
 type Props = {
   title: string;
   items: HomeItem[];
   language: AppLanguage;
-  colors: {
-    text: string;
-  };
+  colors: { text: string };
   onPress: (id: HomeLabelKey) => void;
 };
 
-/* ---------------- Animated Card ---------------- */
+/* ---------------- CONSTANTS ---------------- */
+
+const SAFE_GRADIENT: readonly string[] = ["#e5e7eb", "#d1d5db"];
+
+/* ---------------- CARD ---------------- */
 
 const AnimatedCard = memo(function AnimatedCard({
   item,
   language,
-  colors,
+  colors: _colors,
   onPress,
 }: {
   item: HomeItem;
@@ -51,51 +49,110 @@ const AnimatedCard = memo(function AnimatedCard({
   colors: { text: string };
   onPress: (id: HomeLabelKey) => void;
 }) {
-  const scaleAnim = useRef(new Animated.Value(1)).current;
+  /* 🔒 Hooks must be first */
+  const scale = useRef(new Animated.Value(1)).current;
+  const opacity = useRef(new Animated.Value(1)).current;
+  const iconScale = useRef(new Animated.Value(1)).current;
 
   const title = useMemo(() => {
-    const label = HOME_LABELS[item.id];
+    return item?.originalId
+      ? getHomeLabelText(item.originalId, language)
+      : "";
+  }, [item?.originalId, language]);
 
-    if (language === "arabic") return label.arabic;
-    if (language === "english") return label.english;
-    return label.malayalam;
-  }, [language, item.id]);
+  /* 🛡️ Guard */
+  if (!item || !item.originalId) return null;
+
+  const gradient =
+    Array.isArray(item.gradient) && item.gradient.length >= 2
+      ? item.gradient
+      : SAFE_GRADIENT;
 
   return (
     <TouchableOpacity
       activeOpacity={0.9}
-      onPress={() => onPress(item.id)}
-      onPressIn={() =>
-        Animated.spring(scaleAnim, {
-          toValue: 0.96,
-          useNativeDriver: true,
-        }).start()
-      }
-      onPressOut={() =>
-        Animated.spring(scaleAnim, {
-          toValue: 1,
-          useNativeDriver: true,
-        }).start()
-      }
+      onPress={() => onPress(item.originalId)}
+      onPressIn={() => {
+        Animated.parallel([
+          Animated.spring(scale, {
+            toValue: 0.95,
+            useNativeDriver: true,
+          }),
+          Animated.timing(opacity, {
+            toValue: 0.8,
+            duration: 150,
+            useNativeDriver: true,
+          }),
+          Animated.spring(iconScale, {
+            toValue: 1.2,
+            useNativeDriver: true,
+          })
+        ]).start();
+      }}
+      onPressOut={() => {
+        Animated.parallel([
+          Animated.spring(scale, {
+            toValue: 1,
+            useNativeDriver: true,
+          }),
+          Animated.timing(opacity, {
+            toValue: 1,
+            duration: 200,
+            useNativeDriver: true,
+          }),
+          Animated.spring(iconScale, {
+            toValue: 1,
+            useNativeDriver: true,
+          })
+        ]).start();
+      }}
+      style={local.touchWrapper}
     >
       <Animated.View
         style={[
-          local.cardWrapper,
-          { transform: [{ scale: scaleAnim }] },
+          local.cardWrapper, 
+          { 
+            transform: [{ scale }],
+            opacity: opacity
+          }
         ]}
       >
-        <LinearGradient colors={item.gradient} style={styles.card}>
-          <Image source={item.image} style={styles.icon} />
+        <LinearGradient
+          colors={[...gradient]}
+          style={[
+            styles.card,
+            local.cardShadow,
+            { shadowColor: gradient[0] },
+          ]}
+        >
+          {/* 🔥 PREMIUM PROFESSIONAL ICON */}
+          <Animated.View
+            style={{
+              transform: [{ scale: iconScale }]
+            }}
+          >
+            <Ionicons
+              name={item.icon}
+              size={28}
+              color="#000000"
+              style={[
+                local.icon,
+                local.iconGlow,
+                { shadowColor: gradient[0] },
+              ]}
+            />
+          </Animated.View>
 
+          {/* 📄 TITLE */}
           <Text
             style={[
               styles.cardText,
-              { color: colors.text },
               language === "malayalam" && local.cardTextMalayalam,
             ]}
-            numberOfLines={3}
+            numberOfLines={2}
             ellipsizeMode="tail"
-            allowFontScaling={false}
+            adjustsFontSizeToFit
+            minimumFontScale={0.8}
           >
             {title}
           </Text>
@@ -105,7 +162,9 @@ const AnimatedCard = memo(function AnimatedCard({
   );
 });
 
-/* ---------------- Section ---------------- */
+AnimatedCard.displayName = "AnimatedCard";
+
+/* ---------------- SECTION ---------------- */
 
 export const HomeSection = memo(function HomeSection({
   title,
@@ -114,7 +173,7 @@ export const HomeSection = memo(function HomeSection({
   colors,
   onPress,
 }: Props) {
-  if (items.length === 0) return null;
+  if (!items || items.length === 0) return null;
 
   return (
     <>
@@ -123,27 +182,20 @@ export const HomeSection = memo(function HomeSection({
       </Text>
 
       <View style={styles.innerGrid}>
-        {items.map(item => (
-          <AnimatedCard
-            key={item.id}
-            item={item}
-            language={language}
-            colors={colors}
-            onPress={onPress}
-          />
-        ))}
+        {items.map(item =>
+          item ? (
+            <AnimatedCard
+              key={item.id}
+              item={item}
+              language={language}
+              colors={colors}
+              onPress={onPress}
+            />
+          ) : null
+        )}
       </View>
     </>
   );
 });
 
-/* ---------------- LOCAL STYLES ---------------- */
-
-const local = StyleSheet.create({
-  cardWrapper: {
-    width: 160, // Malayalam wrapping correct
-  },
-  cardTextMalayalam: {
-    lineHeight: 22,
-  },
-});
+HomeSection.displayName = "HomeSection";

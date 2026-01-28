@@ -83,10 +83,13 @@ const [isDark, setIsDark] = useState(false); // default: light mode
 
 export const useThemeContext = () => {
   const context = useContext(ThemeContext);
+  // ✅ SAFE: Don't throw, return default
   if (!context) {
-    throw new Error(
-      "useThemeContext must be used within a ThemeProvider"
-    );
+    return {
+      isDark: false,
+      colors: lightColors,
+      toggleTheme: () => {},
+    };
   }
   return context;
 };

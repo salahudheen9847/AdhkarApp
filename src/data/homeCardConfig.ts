@@ -1,0 +1,116 @@
+// src/data/homeCardConfig.ts
+
+export const SECTION_CARD_CONFIG = {
+  daily: {
+    id: "dailyLifeDua",
+    icon: "restaurant",
+    gradient: ["#fde68a", "#facc15"],
+  },
+
+  dhikr: {
+    id: "dhikr",
+    icon: "leaf",
+    gradient: ["#bbf7d0", "#4ade80"],
+  },
+
+  family: {
+    id: "familyDua",
+    icon: "people",
+    gradient: ["#fef3c7", "#fde68a"],
+  },
+
+  health: {
+    id: "healthDua",
+    icon: "heart",
+    gradient: ["#fecaca", "#f87171"],
+  },
+
+  /* ===============================
+     KIDS DUA
+  =============================== */
+
+  kids: {
+    id: "kidsDua",
+    icon: "happy",
+    gradient: ["#bfdbfe", "#60a5fa"],
+  },
+
+  /* ===============================
+     MENTAL DUA
+  =============================== */
+
+  mental: {
+    id: "mentalDua",
+    icon: "bulb",
+    gradient: ["#e9d5ff", "#c084fc"],
+  },
+
+  /* ===============================
+     RIZQ DUA
+  =============================== */
+
+  rizq: {
+    id: "rizqDua",
+    icon: "cash",
+    gradient: ["#dcfce7", "#4ade80"],
+  },
+
+  /* ===============================
+     PROTECTION DUA
+  =============================== */
+
+  protection: {
+    id: "protectionDuas",
+    icon: "shield-checkmark",
+    gradient: ["#cffafe", "#22d3ee"],
+  },
+
+  /* ===============================
+     SALAH DUA 🕌 ✅
+  =============================== */
+
+  salah: {
+    id: "salahDuas",
+    icon: "time",
+    gradient: ["#e0e7ff", "#6366f1"],
+  },
+  swalath: {
+  id: "swalathDuas",
+  icon: "heart",
+  gradient: ["#fde68a", "#f59e0b"],
+},
+qaseeda: {
+id: "qaseeda",
+icon: "musical-notes",
+gradient: ["#fef3c7", "#f59e0b"],
+},
+/* ✅ ADD THIS */
+ratib: {
+id: "ratib",
+icon: "book",
+gradient: ["#dcfce7", "#22c55e"],
+},
+ramadan: {
+id: "ramadanAdhkar",
+icon: "moon",
+gradient: ["#dcfce7", "#22c55e"],
+},
+mayyit: {
+id: "mayyitDuas",
+icon: "home",
+gradient: ["#e0e7ff", "#6366f1"],
+},
+moulid: {
+id: "moulid",
+icon: "book",
+gradient: ["#fef3c7", "#f59e0b"],
+},
+} as const;
+
+/* ===============================
+   TYPES (AUTO INFERRED ✅)
+=============================== */
+
+export type SectionKey = keyof typeof SECTION_CARD_CONFIG;
+export type SectionCardConfig =
+  (typeof SECTION_CARD_CONFIG)[SectionKey];

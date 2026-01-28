@@ -2,14 +2,14 @@ import { DuaItem } from "./types";
 
 export function mapRows(
   rows: any[],
-  _mode: string, // 👈 FIX HERE
+  _mode: string,
   _type?: string
 ): DuaItem[] {
   return rows
     .map((r, index) => ({
       id: r.id ?? index + 1,
       isBox: r.isBox === 1 || r.isBox === true,
-      isHeading: r.isHeading,
+      isHeading: r.isHeading === true,
       text:
         r.text ??
         r.arabic ??
@@ -21,5 +21,6 @@ export function mapRows(
       start: r.start,
       end: r.end,
     }))
-    .filter(item => item.text !== "");
+    // 🔥 IMPORTANT FIX
+    .filter(item => item.isHeading || item.text !== "");
 }
