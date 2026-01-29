@@ -1,4 +1,4 @@
-import { HomeLabel } from "../../labels/types";
+import { HomeLabel } from "../../types";
 
 export const FEAR_PANIC_DUA_LABEL = {
   fearPanicDuas: {

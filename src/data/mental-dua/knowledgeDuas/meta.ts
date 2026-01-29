@@ -1,5 +1,6 @@
 export const KNOWLEDGE_DUA_META = {
   id: "knowledgeDuas",
+  section: "mental",
   icon: "book",
   title: {
     arabic: "أدعية العلم",

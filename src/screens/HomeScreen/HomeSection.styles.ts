@@ -4,36 +4,35 @@ export const homeSectionStyles = StyleSheet.create({
   /* ---------------- GRID ITEM ---------------- */
 
   touchWrapper: {
-    width: "33%",          // ✅ increased width for better text fit
-    marginBottom: 12,
+    width: "33.33%",          // ✅ pixel rounding fix
+    marginBottom: 16,
   },
 
   cardWrapper: {
     width: "100%",
-    margin: 0,
-    padding: 0,
   },
 
   /* ---------------- ICON ---------------- */
 
-icon: {
-  marginBottom: 10,
-  backgroundColor: "rgba(0,0,0,0.15)",
-  padding: 10,
-  borderRadius: 999,
-  shadowOpacity: 0.4,
-  shadowRadius: 10,
-  shadowOffset: { width: 0, height: 4 },
-},
+  icon: {
+    marginBottom: 10,
+    backgroundColor: "rgba(0,0,0,0.15)",
+    padding: 10,
+    borderRadius: 999,
+    shadowOpacity: 0.4,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 4 },
+  },
 
-  /* ---------------- TEXT ---------------- */
+  /* ---------------- TEXT (MALAYALAM – SINGLE SOURCE) ---------------- */
 
   cardTextMalayalam: {
-    lineHeight: 17,
-    fontSize: 13,
+    fontSize: 13,          // ✅ SAME everywhere
+    lineHeight: 18,        // ✅ fixed
+    fontWeight: "500",
     textAlign: "center",
-    fontWeight: "800",
     letterSpacing: 0.1,
+    color: "#000000",
   },
 
   /* ---------------- SHADOWS ---------------- */

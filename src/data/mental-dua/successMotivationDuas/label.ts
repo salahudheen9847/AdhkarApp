@@ -1,4 +1,4 @@
-import { HomeLabel } from "../../labels/types";
+import { HomeLabel } from "../../types";
 
 export const SUCCESS_MOTIVATION_DUA_LABEL = {
   successMotivationDuas: {

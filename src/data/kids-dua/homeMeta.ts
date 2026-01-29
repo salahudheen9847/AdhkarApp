@@ -9,7 +9,7 @@ import { KIDS_DAILY_DUA_META } from "./kidsDailyDuas/meta";
 import { KIDS_ISLAMIC_DUA_META } from "./kidsIslamicDuas/meta";
 import { KIDS_LEARNING_DUA_META } from "./kidsLearningDuas/meta";
 import { NEWBORN_DUA_META } from "./newbornDuas/meta";
-import { SHORT_SURAHS_FOR_KIDS_META } from "./shortSurahsForKids/meta";
+import { SHORT_SURAH_FOR_KIDS_META } from "./shortSurahsForKids/meta";
 
 /* ===============================
    KIDS DUA HOME META
@@ -21,5 +21,5 @@ export const KIDS_DUA_HOME_META: HomeMeta[] = [
   { ...KIDS_ISLAMIC_DUA_META, section: "kids" },
   { ...KIDS_LEARNING_DUA_META, section:"kids" },
   { ...NEWBORN_DUA_META, section: "kids" },
-  { ...SHORT_SURAHS_FOR_KIDS_META, section: "kids" },
+  { ...SHORT_SURAH_FOR_KIDS_META, section: "kids" },
 ];

@@ -1,5 +1,6 @@
 export const SUCCESS_MOTIVATION_DUA_META = {
   id: "successMotivationDuas",
+  section: "mental",
   icon: "trophy",
   title: {
     arabic: "أدعية النجاح",

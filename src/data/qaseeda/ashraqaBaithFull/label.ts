@@ -1,4 +1,4 @@
-import { HomeLabel } from "../../labels/types";
+import { HomeLabel } from "../../types";
 
 export const ASHRAQA_BAITH_FULL_LABEL = {
   ashraqaBaithFull: {

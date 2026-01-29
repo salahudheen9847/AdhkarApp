@@ -1,4 +1,4 @@
-import { HomeLabel } from "../../labels/types";
+import { HomeLabel } from "../../types";
 
 export const DUA_MARICHAVERK_LABEL = {
   duaMarichavark: {

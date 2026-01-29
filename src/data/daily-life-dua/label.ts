@@ -1,4 +1,4 @@
-import type { HomeLabel } from "../labels/types";
+import type { HomeLabel } from "../types";
 
 export const DAILY_LIFE_DUA_LABEL = {
   dailyLifeDua: {

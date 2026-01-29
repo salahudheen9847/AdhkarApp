@@ -1,4 +1,4 @@
-import type { HomeLabel } from "../labels/types";
+import type { HomeLabel } from "../types";
 
 import { DHIKR_LABEL } from "./label";
 import { morningAdhkar_DHIKR_LABEL } from "./morningAdhkar/label";

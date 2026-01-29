@@ -4,13 +4,10 @@ export const localStyles = StyleSheet.create({
   screen: {
     position: "relative",
   },
-  fontControlWrapper: {
-    position: "absolute",
-    top: 170,
-    left: 0,
-    right: 0,
-    zIndex: 9999,
-    elevation: 20,
-  },
+fontControlWrapper: {
+  position: "absolute",
+  top: 170,
+  zIndex: 9999,
+}
   
 });

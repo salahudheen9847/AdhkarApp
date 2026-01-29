@@ -13,132 +13,126 @@ try {
 export const useAudioControls = ({
   audioFileName,
 }: AudioControlsParams) => {
-  /* 🎧 core */
+  /* 🎧 refs */
   const soundRef = useRef<Sound | null>(null);
-  const intervalRef =
-    useRef<ReturnType<typeof setInterval> | null>(
-      null
-    );
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  /* ⏱ */
-  const [currentTime, setCurrentTime] =
-    useState(0);
+  /* ⏱ time */
+  const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
 
   /* ▶️ state */
-  const [isPlaying, setIsPlaying] =
-    useState(false);
-  const [playbackRate, setPlaybackRate] =
-    useState(1);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [playbackRate, setPlaybackRate] = useState(1);
 
   /* 🖍 highlight */
-  const [currentIndex, setCurrentIndex] =
-    useState<number | null>(null);
+  const [currentIndex, setCurrentIndex] = useState<number | null>(null);
 
   /* 🔠 font */
-  const [fontSize, setFontSize] =
-    useState(27);
+  const [fontSize, setFontSize] = useState(27);
 
   /* 🎛 player UI */
-  const [showPlayer, setShowPlayer] =
-    useState(false);
+  const [showPlayer, setShowPlayer] = useState(false);
 
-  /* 🧹 cleanup */
+  /* 🧹 cleanup (STABLE) */
   const cleanupPlayback = () => {
-    intervalRef.current &&
+    if (intervalRef.current) {
       clearInterval(intervalRef.current);
-    intervalRef.current = null;
+      intervalRef.current = null;
+    }
 
-    soundRef.current?.stop(() => {
-      soundRef.current?.release();
-      soundRef.current = null;
-    });
+    if (soundRef.current) {
+      soundRef.current.stop(() => {
+        soundRef.current?.release();
+        soundRef.current = null;
+      });
+    }
 
     setIsPlaying(false);
     setCurrentTime(0);
+    setDuration(0);
     setCurrentIndex(null);
   };
 
-  /* ▶️ play / pause */
-  const playAudio = () => {
+  /* 🔁 PRELOAD audio when filename changes (🔥 IMPORTANT FIX) */
+  useEffect(() => {
     if (!audioFileName) return;
 
-    if (soundRef.current && isPlaying) {
-      soundRef.current.pause();
-      setIsPlaying(false);
-      intervalRef.current &&
-        clearInterval(intervalRef.current);
+    // reset previous sound
+    cleanupPlayback();
+
+    const sound = new Sound(
+      audioFileName,
+      Platform.OS === "ios" ? Sound.MAIN_BUNDLE : undefined,
+      error => {
+        if (error) {
+          console.log("❌ AUDIO LOAD ERROR:", error);
+          return;
+        }
+
+        soundRef.current = sound;
+        const dur = sound.getDuration();
+        setDuration(dur);
+
+        console.log("✅ AUDIO LOADED:", audioFileName, "duration:", dur);
+      }
+    );
+
+    return () => {
+      sound.release();
+      soundRef.current = null;
+    };
+  }, [audioFileName]);
+
+  /* ▶️ play / pause */
+  const playAudio = () => {
+    if (!soundRef.current) {
+      console.log("⏳ Audio not ready yet");
       return;
     }
 
-    if (!soundRef.current) {
-      const sound = new Sound(
-        audioFileName,
-        Platform.OS === "ios"
-          ? Sound.MAIN_BUNDLE
-          : undefined,
-        error => {
-          if (error) {
-            console.log(
-              "❌ AUDIO LOAD ERROR",
-              error
-            );
-            return;
-          }
-
-          soundRef.current = sound;
-          setDuration(sound.getDuration());
-          sound.setSpeed(playbackRate);
-          setIsPlaying(true);
-
-          sound.play(cleanupPlayback);
-
-          intervalRef.current = setInterval(
-            () => {
-              sound.getCurrentTime(sec =>
-                setCurrentTime(sec)
-              );
-            },
-            500
-          );
-        }
-      );
-    } else {
-      soundRef.current.setSpeed(
-        playbackRate
-      );
-      setIsPlaying(true);
-      soundRef.current.play();
-
-      intervalRef.current = setInterval(
-        () => {
-          soundRef.current?.getCurrentTime(
-            sec => setCurrentTime(sec)
-          );
-        },
-        500
-      );
+    // pause
+    if (isPlaying) {
+      soundRef.current.pause();
+      setIsPlaying(false);
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+      return;
     }
+
+    // play
+    soundRef.current.setSpeed(playbackRate);
+    soundRef.current.play(cleanupPlayback);
+    setIsPlaying(true);
+
+    intervalRef.current = setInterval(() => {
+      soundRef.current?.getCurrentTime(sec =>
+        setCurrentTime(sec)
+      );
+    }, 500);
   };
 
-  /* 🎚 controls */
+  /* 🎚 seek */
   const onSeek = (value: number) => {
-    soundRef.current?.setCurrentTime(
-      value
-    );
+    if (!soundRef.current) return;
+    soundRef.current.setCurrentTime(value);
     setCurrentTime(value);
   };
 
+  /* ⏩ speed */
   const onChangeRate = (rate: number) => {
     setPlaybackRate(rate);
     soundRef.current?.setSpeed(rate);
   };
 
+  /* 🧽 unmount cleanup */
   useEffect(() => {
     return () => cleanupPlayback();
   }, []);
 
-  /* ✅ RETURN (IMPORTANT) */
+  /* ✅ RETURN */
   return {
     currentIndex,
     setCurrentIndex,

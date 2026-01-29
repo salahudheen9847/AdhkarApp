@@ -1,4 +1,4 @@
-import type { HomeLabel } from "../labels/types";
+import type { HomeLabel } from "../types";
 import { SWALATH_DUA_LABEL } from "./label";
 
 import { NARIYATH_SWALATH_LABEL } from "./nariyathSwalath/label";

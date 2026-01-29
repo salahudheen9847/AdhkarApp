@@ -1,6 +1,7 @@
 export const KIDS_DAILY_DUA_META = {
   id: "kidsDailyDuas",
   icon: "sunny",
+  section: "kids",
   title: {
     arabic: "أدعية الأطفال اليومية",
     malayalam: "കുട്ടികളുടെ ദൈനംദിന ദുആകൾ",

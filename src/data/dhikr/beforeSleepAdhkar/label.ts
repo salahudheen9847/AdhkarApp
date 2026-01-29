@@ -1,4 +1,4 @@
-import { HomeLabel } from "../../labels/types";
+import { HomeLabel } from "../../types";
 
 export const BEFORE_SLEEP_DHIKR_LABEL = {
   beforeSleepAdhkar: {

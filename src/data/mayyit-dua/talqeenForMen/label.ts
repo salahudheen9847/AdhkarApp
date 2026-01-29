@@ -1,4 +1,4 @@
-import { HomeLabel } from "../../labels/types";
+import { HomeLabel } from "../../types";
 
 export const TALQEEN_FOR_MEN_LABEL = {
   talqeenForMen: {

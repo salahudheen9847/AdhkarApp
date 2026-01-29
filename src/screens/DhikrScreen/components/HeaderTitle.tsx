@@ -3,15 +3,25 @@ import { View, Text } from "react-native";
 import { styles, localStyles } from "../../../styles/dhikrscreenstyle";
 
 type Props = {
-  text: string;
+  title: string;
+  textColor: string;
 };
 
-export const HeaderTitle: React.FC<Props> = ({ text }) => {
-  if (!text) return null;
+export const HeaderTitle: React.FC<Props> = ({
+  title,
+  textColor,
+}) => {
+  if (!title) return null;
 
   return (
     <View style={localStyles.headerTitleContainer}>
-      <Text style={styles.title}>{text}</Text>
+      <Text 
+        style={[styles.title, { color: textColor }]}
+        numberOfLines={1}
+        adjustsFontSizeToFit
+      >
+        {title}
+      </Text>
     </View>
   );
 };

@@ -1,4 +1,4 @@
-import type { HomeLabel } from "../labels/types";
+import type { HomeLabel } from "../types";
 
 import { HEALTH_DUA_LABEL } from "./label";
 import { BREASTFEEDING_DUAS_LABEL } from "./breastfeedingDuas/label";

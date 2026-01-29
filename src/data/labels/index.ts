@@ -1,4 +1,4 @@
-import type { HomeLabel, AppLanguage } from "./types";
+import type { HomeLabel, AppLanguage } from "../types";
 
 /* ===============================
    HOME LABEL IMPORTS
@@ -8,6 +8,7 @@ import { DAILY_HOME_LABELS } from "../daily-life-dua/homeLabels";
 import { DHIKR_HOME_LABELS } from "../dhikr/homeLabels";
 import { FAMILY_HOME_LABELS } from "../family-dua/homeLabels";
 import { HEALTH_HOME_LABELS } from "../health-dua/homeLabels";
+import { JUSTICE_HOME_LABELS } from "../justice-dua/homeLabels";
 import { KIDS_HOME_LABELS } from "../kids-dua/homeLabels";
 
 /* 🧠 MENTAL & 🛡️ PROTECTION */
@@ -43,7 +44,7 @@ import { MOULID_HOME_LABELS } from "../moulid/homeLabels";
    RE-EXPORT TYPES
 =============================== */
 
-export type { AppLanguage, HomeLabel } from "./types";
+export type { AppLanguage, HomeLabel } from "../types";
 
 /* ===============================
    FINAL MERGED HOME LABELS
@@ -55,37 +56,38 @@ export const HOME_LABELS = {
   ...DHIKR_HOME_LABELS,
   ...FAMILY_HOME_LABELS,
   ...HEALTH_HOME_LABELS,
+  ...JUSTICE_HOME_LABELS,
   ...KIDS_HOME_LABELS,
 
-  /* 🧠 MENTAL */
+  /* MENTAL */
   ...MENTAL_HOME_LABELS,
 
-  /* 🛡️ PROTECTION + OTHERS */
+  /* PROTECTION + OTHERS */
   ...PROTECTION_HOME_LABELS,
   ...RIZQ_HOME_LABELS,
   ...SALAH_HOME_LABELS,
   ...SWALATH_HOME_LABELS,
 
-  /* 🎵 QASEEDA */
+  /* QASEEDA */
   ...QASEEDA_LABEL,
   ...QASEEDA_HOME_LABELS,
 
-  /* 📿 RATIB */
+  /* RATIB */
   ...RATIB_LABEL,
   ...RATIB_HOME_LABELS,
 
-  /* 🌙 RAMADAN */
+  /* RAMADAN */
   ...RAMADAN_LABEL,
   ...RAMADAN_HOME_LABELS,
 
-  /* ⚰️ MAYYIT */
+  /* MAYYIT */
   ...MAYYIT_DUA_LABEL,
   ...MAYYIT_DUA_HOME_LABELS,
   ...TALQEEN_FOR_MEN_LABEL,
   ...DUA_QABAR_LABEL,
   ...DUA_MARICHAVERK_LABEL,
 
-  /* 🕌 MOULID */
+  /* MOULID */
   ...MOULID_LABEL,        // section title → “മൗലിദുകൾ”
   ...MOULID_HOME_LABELS,  // cards → baderMoulid, manqusMoulid
 } satisfies Record<string, HomeLabel>;

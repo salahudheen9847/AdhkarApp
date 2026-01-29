@@ -1,6 +1,7 @@
 export const TAUBAH_DUA_META = {
   id: "taubahDuas",
   icon: "moon",
+  section: "mental",
   title: {
     arabic: "أدعية التوبة",
     malayalam: "തൗബ (പശ്ചാത്താപ) ദുആകൾ",

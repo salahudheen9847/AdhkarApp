@@ -1,5 +1,6 @@
 export const FEAR_PANIC_DUA_META = {
   id: "fearPanicDuas",
+  section: "mental",
   icon: "warning",
   title: {
     arabic: "أدعية الخوف",

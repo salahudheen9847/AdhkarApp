@@ -1,9 +1,10 @@
-export const SHORT_SURAHS_FOR_KIDS_META = {
+export const SHORT_SURAH_FOR_KIDS_META = {
   id: "shortSurahsForKids",
-  icon: "star",
+  icon: "book-open",
+  section: "kids",
   title: {
     arabic: "سور قصيرة للأطفال",
-    malayalam: "കുട്ടികൾക്കായുള്ള ചെറു സൂറത്തുകൾ",
+    malayalam: "കുട്ടികൾക്കായുള്ള ചെറിയ സൂറക്കൾ",
     english: "Short Surahs for Kids",
   },
 } as const;

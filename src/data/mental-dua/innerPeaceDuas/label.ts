@@ -1,4 +1,4 @@
-import { HomeLabel } from "../../labels/types";
+import { HomeLabel } from "../../types";
 
 export const INNER_PEACE_DUA_LABEL = {
   innerPeaceDuas: {

@@ -1,8 +1,8 @@
-import { BUSINESS_LOSS_RECOVERY_DUA_META } from "./businessLossRecoveryDuas/meta";
-import { DEBT_RELIEF_DUA_META } from "./debtReliefDuas/meta";
-import { HOUSE_LAND_DUA_META } from "./houseLandDuas/meta";
-import { WORK_RIZQ_DUA_META } from "./workRizqDuas/meta";
-import { ZAKAT_DUA_META } from "./zakatDuas/meta";
+import { BUSINESS_LOSS_RECOVERY_DUA_META } from "./business-loss-recovery-duas/meta";
+import { DEBT_RELIEF_DUA_META } from "./debt-relief-duas/meta";
+import { HOUSE_LAND_DUA_META } from "./house-land-duas/meta";
+import { WORK_RIZQ_DUA_META } from "./work-rizq-duas/meta";
+import { ZAKAT_DUA_META } from "./zakat-duas/meta";
 
 export const RIZQ_DUA_HOME_META = [
   BUSINESS_LOSS_RECOVERY_DUA_META,

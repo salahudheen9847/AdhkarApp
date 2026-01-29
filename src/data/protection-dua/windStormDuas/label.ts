@@ -1,4 +1,4 @@
-import { HomeLabel } from "../../labels/types";
+import { HomeLabel } from "../../types";
 
 export const WIND_STORM_DUA_LABEL = {
   windStormDuas: {

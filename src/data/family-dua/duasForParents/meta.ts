@@ -1,6 +1,7 @@
 export const DUAS_FOR_PARENTS_META = {
   id: "duasForParents",
   icon: "people-outline",
+  section: "family",
   title: {
     arabic: "أدعية للوالدين",
     malayalam: "മാതാപിതാക്കൾക്കുള്ള ദുആകൾ",

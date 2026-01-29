@@ -1,4 +1,4 @@
-import { HomeLabel } from "../../labels/types";
+import { HomeLabel } from "../../types";
 
 export const AT_TAHIYYAT_LABEL = {
   atTahiyyat: {

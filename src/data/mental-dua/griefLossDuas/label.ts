@@ -1,4 +1,4 @@
-import { HomeLabel } from "../../labels/types";
+import { HomeLabel } from "../../types";
 
 export const GRIEF_LOSS_DUA_LABEL = {
   griefLossDuas: {

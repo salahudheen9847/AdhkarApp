@@ -9,6 +9,7 @@ import { DAILY_HOME_META } from "./daily-life-dua/homeMeta";
 import { DHIKR_HOME_META } from "./dhikr/homeMeta";
 import { FAMILY_HOME_META } from "./family-dua/homeMeta";
 import { HEALTH_HOME_META } from "./health-dua/homeMeta";
+import { JUSTICE_DUA_HOME_META } from "./justice-dua/homeMeta";
 import { KIDS_DUA_HOME_META } from "./kids-dua/homeMeta";
 
 /* ===============================
@@ -40,6 +41,9 @@ export const HOME_META_LIST: HomeMeta[] = [
 
   /* ❤️ HEALTH */
   ...HEALTH_HOME_META,
+
+  /* ⚖️ JUSTICE */
+  ...JUSTICE_DUA_HOME_META,
 
   /* 👶 KIDS */
   ...KIDS_DUA_HOME_META,

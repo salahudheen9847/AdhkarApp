@@ -2,6 +2,7 @@
 export const jumuaAdhkar_DHIKR_META = {
   id: "jumuaAdhkar",
   icon: "calendar",
+  section: "dhikr",
   title: {
     arabic: "أذكار الجمعة",
     malayalam: "ജുമുഅ",

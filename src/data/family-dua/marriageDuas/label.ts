@@ -1,5 +1,5 @@
 // src/data/family-dua/marriageDuas/label.ts
-import type { HomeLabel } from "../../labels/types";
+import type { HomeLabel } from "../../types";
 
 export const MARRIAGE_DUAS_LABEL = {
   marriageDuas: {

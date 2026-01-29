@@ -2,6 +2,7 @@
 export const eveningAdhkar_DHIKR_META = {
   id: "eveningAdhkar",
   icon: "moon-outline",
+  section: "dhikr",
   title: {
     arabic: "أذكار المساء",
     malayalam: "വൈകുന്നേരം",

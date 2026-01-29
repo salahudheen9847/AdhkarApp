@@ -1,5 +1,6 @@
 export const INNER_PEACE_DUA_META = {
   id: "innerPeaceDuas",
+  section: "mental",
   icon: "leaf",
   title: {
     arabic: "أدعية السكينة",

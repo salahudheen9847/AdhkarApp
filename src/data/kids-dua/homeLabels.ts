@@ -1,4 +1,4 @@
-import type { HomeLabel } from "../labels/types";
+import type { HomeLabel } from "../types";
 
 /* ===============================
    IMPORT KIDS DUA LABELS

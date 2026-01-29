@@ -1,12 +1,11 @@
 import type { HomeLabelKey } from "../../data/labels";
 
-/* 🔊 Dhikr Audio Hook Params */
-export type UseDhikrAudioParams = {
-  mode: "dhikr";        // ✅ only dhikr
+/* 🔊 Generic Dua Audio Hook Params */
+export type UseDuaAudioParams = {
   type?: HomeLabelKey;
 };
 
-/* 📿 Dhikr / Dua Item */
+/* 📿 Dua Item */
 export type DuaItem = {
   id: number;
   arabic?: string;

@@ -1,22 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+
 import { styles as baseStyles } from "../../../styles/dhikrscreenstyle";
-
-/* 🌍 Language Mode */
-export type LanguageMode =
-  | "arabic"
-  | "arabic_malayalam"
-  | "arabic_english";
-
-/* 🔹 Generic Dua Item */
-export type DuaItem = {
-  id: number;
-  isBox?: boolean;
-  isHeading?: boolean;
-  text?: string | string[];
-  malayalam?: string | string[];
-  english?: string | string[];
-};
+import type { DuaItem, LanguageMode } from "../types";
 
 /* 🔧 Normalize helper */
 const normalizeText = (value?: string | string[]) => {
@@ -36,29 +22,34 @@ export const renderDuaItem = (
   const isActive = item.id === currentIndex;
   const isBox = item.isBox === true;
   const isHeading = item.isHeading === true;
+
   const safeFontSize = Math.max(12, fontSize);
+  const isArabicOnly = languageMode === "arabic";
+
+  const arabicText = normalizeText(item.arabic);
+  const malayalamText = normalizeText(item.malayalam);
+  const englishText = normalizeText(item.english);
 
   let content = "";
 
   switch (languageMode) {
     case "arabic":
-      content = normalizeText(item.text);
+      content = arabicText;
       break;
 
     case "arabic_malayalam":
-      content = item.malayalam
-        ? `${normalizeText(item.text)}\n\n${normalizeText(item.malayalam)}`
-        : normalizeText(item.text);
+      content = malayalamText
+        ? `${arabicText}\n\n${malayalamText}`
+        : arabicText;
       break;
 
     case "arabic_english":
-      content = item.english
-        ? `${normalizeText(item.text)}\n\n${normalizeText(item.english)}`
-        : normalizeText(item.text);
+      content = englishText
+        ? `${arabicText}\n\n${englishText}`
+        : arabicText;
       break;
   }
 
-  // ✅ Heading empty ആയാലും render ചെയ്യണം
   if (!content && !isHeading) return null;
 
   return (
@@ -71,25 +62,40 @@ export const renderDuaItem = (
         isActive && { backgroundColor: highlightColor },
       ]}
     >
-      <Text
-        style={[
-          isHeading
-            ? localStyles.headingText
-            : isBox
-            ? baseStyles.boxText  
-            : baseStyles.text,
-          isActive ? localStyles.activeText : { color: textColor },
-          {
-            fontSize: isHeading
-              ? safeFontSize * 1.1
-              : isBox
-              ? safeFontSize * 0.9
-              : safeFontSize,
-          },
-        ]}
-      >
-        {content}
-      </Text>
+      {/* 🔹 HEADING */}
+      {isHeading ? (
+        <Text
+          numberOfLines={1}            // ✅ SINGLE LINE ONLY
+          adjustsFontSizeToFit         // ✅ auto shrink
+          minimumFontScale={0.65}      // ✅ Arabic safe
+          ellipsizeMode="clip"
+          style={[
+            localStyles.headingText,
+            localStyles.textCenter,
+            localStyles.rtlText,
+          ]}
+        >
+          {content}
+        </Text>
+      ) : (
+        /* 🔹 NORMAL / BOX TEXT */
+        <Text
+          style={[
+            isBox ? baseStyles.boxText : baseStyles.text,
+            localStyles.textCenter,
+            isArabicOnly ? localStyles.rtlText : localStyles.ltrText,
+            isActive ? localStyles.activeText : { color: textColor },
+            {
+              fontSize: isBox
+                ? safeFontSize * 0.9
+                : safeFontSize,
+              lineHeight: safeFontSize * 1.9,
+            },
+          ]}
+        >
+          {content}
+        </Text>
+      )}
 
       {!isHeading && (
         <View
@@ -103,7 +109,6 @@ export const renderDuaItem = (
   );
 };
 
-/* 🎨 LOCAL STYLES */
 const localStyles = StyleSheet.create({
   container: {
     width: "100%",
@@ -111,52 +116,45 @@ const localStyles = StyleSheet.create({
     paddingHorizontal: 4,
   },
 
+  textCenter: {
+    textAlign: "center",
+  },
+
+  /* 🌍 Direction safety */
+  rtlText: {
+    writingDirection: "rtl",
+  },
+
+  ltrText: {
+    writingDirection: "ltr",
+  },
+
+  /* 🏷️ Heading */
   headingContainer: {
     backgroundColor: "#1e40af",
     borderRadius: 16,
-    paddingHorizontal: 20,
-    paddingVertical: 16,
+    padding: 16,
     marginVertical: 12,
-    shadowColor: "#1e40af",
-    shadowOpacity: 0.3,
-    shadowOffset: { width: 0, height: 4 },
-    shadowRadius: 12,
-    elevation: 6,
   },
 
   headingText: {
-    fontWeight: "bold",
-    textAlign: "center",
+    fontWeight: "700",
     color: "#ffffff",
-    fontSize: 18,
-    letterSpacing: 0.5,
+    includeFontPadding: false, // ✅ Android Arabic fix
   },
 
+  /* 📦 Box */
   boxContainer: {
     backgroundColor: "#1e293b",
     borderRadius: 16,
-    paddingHorizontal: 16,
-    paddingVertical: 20,
+    padding: 16,
     marginVertical: 8,
-    borderWidth: 1,
-    borderColor: "#334155",
-    shadowColor: "#000000",
-    shadowOpacity: 0.2,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
-    elevation: 3,
   },
 
+  /* ✨ Active */
   activeContainer: {
-    borderRadius: 16,
     borderWidth: 2,
     borderColor: "#22c55e40",
-    backgroundColor: "rgba(34, 197, 94, 0.08)",
-    shadowColor: "#22c55e",
-    shadowOpacity: 0.4,
-    shadowOffset: { width: 0, height: 6 },
-    shadowRadius: 16,
-    elevation: 8,
   },
 
   activeText: {
@@ -170,6 +168,5 @@ const localStyles = StyleSheet.create({
     width: "85%",
     alignSelf: "center",
     opacity: 0.3,
-    backgroundColor: "#475569",
   },
 });

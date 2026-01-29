@@ -1,34 +1,34 @@
 import { DAILY_LIFE_DUA_LABEL } from "./label";
 
 // 👉 clothing-duas
-import { clothingDuas } from "./clothingDuas/content";
-import { CLOTHING_DUA_META } from "./clothingDuas/meta";
-import { CLOTHING_DUA_LABEL } from "./clothingDuas/label";
+import { clothingDuas } from "./clothing-duas/content";
+import { CLOTHING_DUA_META } from "./clothing-duas/meta";
+import { CLOTHING_DUA_LABEL } from "./clothing-duas/label";
 
 // 👉 food-duas
-import { foodDuas } from "./foodDuas/content";
-import { FOOD_DUA_META } from "./foodDuas/meta";
-import { FOOD_DUA_LABEL } from "./foodDuas/label";
+import { foodDuas } from "./food-duas/content";
+import { FOOD_DUA_META } from "./food-duas/meta";
+import { FOOD_DUA_LABEL } from "./food-duas/label";
 
 // 👉 home-duas
-import { homeDuas } from "./homeDuas/content";
-import { HOME_DUA_META } from "./homeDuas/meta";
-import { HOME_DUA_LABEL } from "./homeDuas/label";
+import { homeDuas } from "./home-duas/content";
+import { HOME_DUA_META } from "./home-duas/meta";
+import { HOME_DUA_LABEL } from "./home-duas/label";
 
-// 👉 RainDuas
-import { RainDuas } from "./RainDuas/content";
-import { RainDuas_DUA_META } from "./RainDuas/meta";
-import { RainDuas_DUA_LABEL } from "./RainDuas/label";
+// 👉 rain-duas
+import { RainDuas } from "./rain-duas/content";
+import { RainDuas_DUA_META } from "./rain-duas/meta";
+import { RainDuas_DUA_LABEL } from "./rain-duas/label";
 
-// 👉 TravelDuas
-import { TravelDuas } from "./TravelDuas/content";
-import { TRAVEL_DUA_META } from "./TravelDuas/meta";
-import { TRAVEL_DUA_LABEL } from "./TravelDuas/label";
+// 👉 travel-duas
+import { TravelDuas } from "./travel-duas/content";
+import { TRAVEL_DUA_META } from "./travel-duas/meta";
+import { TRAVEL_DUA_LABEL } from "./travel-duas/label";
 
 // 👉 masjid-duas
-import { MasjidDuas } from "./MasjidDuas/content";
-import { MASJID_DUA_META } from "./MasjidDuas/meta";
-import { MASJID_DUA_LABEL } from "./MasjidDuas/label";
+import { MasjidDuas } from "./masjid-duas/content";
+import { MASJID_DUA_META } from "./masjid-duas/meta";
+import { MASJID_DUA_LABEL } from "./masjid-duas/label";
 
 /* ---------------- CONTENT ---------------- */
 

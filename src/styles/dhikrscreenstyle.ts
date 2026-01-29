@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
 
   flatListContent: {
     padding: 24,
+    paddingTop: 260, // ✅ FURTHER INCREASED to push content below header
     paddingBottom: 160,
   },
 
@@ -60,11 +61,15 @@ export const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 24,
+    fontSize: 26,
     color: "#f8fafc",
-    fontWeight: "700",
+    fontWeight: "800",
     textAlign: "center",
-    letterSpacing: -0.5,
+    letterSpacing: -0.3,
+    lineHeight: 32,
+    textShadowColor: "rgba(0, 0, 0, 0.3)",
+    textShadowOffset: { width: 0, height: 2 },
+    textShadowRadius: 4,
   },
 
   bottomControls: {
@@ -126,7 +131,13 @@ export const localStyles = StyleSheet.create({
 
   headerTitleContainer: {
     alignItems: "center",
-    marginVertical: 16,
+    marginVertical: 0,
+    paddingHorizontal: 20,
+    backgroundColor: "rgba(255, 255, 255, 0.03)",
+    borderRadius: 16,
+    paddingVertical: 12,
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.08)",
   },
 
   playButton: {

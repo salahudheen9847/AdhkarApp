@@ -1,5 +1,5 @@
 // src/data/family-dua/label.ts
-import type { HomeLabel } from "../labels/types";
+import type { HomeLabel } from "../types";
 
 export const FAMILY_DUA_LABEL = {
   familyDua: {

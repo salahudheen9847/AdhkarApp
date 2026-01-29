@@ -1,5 +1,5 @@
 // src/data/health-dua/label.ts
-import type { HomeLabel } from "../labels/types";
+import type { HomeLabel } from "../types";
 
 export const HEALTH_DUA_LABEL = {
   healthDua: {

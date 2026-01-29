@@ -1,5 +1,5 @@
 import type { AppLanguage } from "../../../data/labels";
-import type { LanguageMode } from "../components/HeaderSection";
+import type { LanguageMode } from "../types";
 
 export const mapLanguageModeToAppLanguage = (
   mode: LanguageMode

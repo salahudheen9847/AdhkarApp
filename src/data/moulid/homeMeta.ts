@@ -1,4 +1,3 @@
-// data/moulid/homeMeta.ts
 import { BADER_MOULID_META } from "./baderMoulid/meta";
 import { MANQUS_MOULID_META } from "./manqusMoulid/meta";
 

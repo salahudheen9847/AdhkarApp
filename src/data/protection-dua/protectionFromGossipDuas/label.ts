@@ -1,4 +1,4 @@
-import { HomeLabel } from "../../labels/types";
+import { HomeLabel } from "../../types";
 
 export const PROTECTION_FROM_GOSSIP_DUA_LABEL = {
   protectionFromGossipDuas: {

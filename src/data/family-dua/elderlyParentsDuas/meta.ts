@@ -1,9 +1,10 @@
 export const ELDERLY_PARENTS_DUA_META = {
   id: "elderlyParentsDuas",
-  icon: "heart",
+  icon: "people",
+  section: "family",
   title: {
-    arabic: "أدعية للوالدين الكبار",
-    malayalam: "വൃദ്ധ മാതാപിതാക്കൾക്കുള്ള ദുആകൾ",
-    english: "Duas for Elderly Parents",
+    arabic: "أدعية لكبار السن",
+    malayalam: "വയോജനങ്ങൾക്ക് വേണ്ടിയുള്ള ദുആകൾ",
+    english: "Elderly Parents Duas",
   },
 } as const;

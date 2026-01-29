@@ -1,4 +1,4 @@
-import { HomeLabel } from "../../labels/types";
+import { HomeLabel } from "../../types";
 
 export const KIDS_DAILY_DUAS_LABEL = {
   kidsDailyDuas: {

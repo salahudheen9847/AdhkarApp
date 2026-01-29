@@ -10,8 +10,8 @@ export const homeStyles = StyleSheet.create({
 
   scrollContent: {
     alignItems: "center",
-    paddingBottom: 60,
     paddingTop: 24,
+    paddingBottom: 60,
   },
 
   /* ---------- GRID ---------- */
@@ -22,61 +22,54 @@ export const homeStyles = StyleSheet.create({
     justifyContent: "space-between",
     width: "100%",
     paddingHorizontal: 12,
-    margin: 0,
-    padding: 0,
   },
 
   /* ---------- CARD ---------- */
 
-card: {
-  width: "100%",
-  minHeight: 100,               // increased for professional look
-  borderRadius: 20,
+  card: {
+    width: "100%",
+    minHeight: 110,          // 🔥 SAME height → no jumping
+    borderRadius: 20,
 
-  alignItems: "center",
-  justifyContent: "center",
+    alignItems: "center",
+    justifyContent: "center",
 
-  paddingVertical: 16,
-  paddingHorizontal: 12,
+    paddingVertical: 16,
+    paddingHorizontal: 12,
+    marginBottom: 12,
 
-  marginBottom: 12,
+    shadowColor: "#000",
+    shadowOpacity: 0.12,
+    shadowRadius: 16,
+    shadowOffset: { width: 0, height: 8 },
+    elevation: 8,
 
-  shadowColor: "#000",
-  shadowOpacity: 0.12,
-  shadowRadius: 16,
-  shadowOffset: { width: 0, height: 8 },
-  elevation: 8,
-
-  borderWidth: 1,
-  borderColor: "rgba(255,255,255,0.8)",
-  backgroundColor: "rgba(255,255,255,0.1)",
-},
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.8)",
+    backgroundColor: "rgba(255,255,255,0.1)",
+  },
 
   /* ---------- CARD TEXT ---------- */
 
-cardText: {
-  marginTop: 10,
-  fontSize: 14,
-  fontWeight: "700",
-  textAlign: "center",
-  lineHeight: 18,
-  letterSpacing: 0.3,
-  color: "#000000",
-  textShadowColor: "rgba(255,255,255,0.8)",
-  textShadowOffset: { width: 0, height: 1 },
-  textShadowRadius: 4,
-},
-cardTextMalayalam: {
-  fontSize: 12,
-  lineHeight: 16,
-  fontWeight: "800",
-  textAlign: "center",
-  color: "#000000",
-  textShadowColor: "rgba(255,255,255,0.8)",
-  textShadowOffset: { width: 0, height: 1 },
-  textShadowRadius: 4,
-  letterSpacing: 0.1,
-},
+  cardText: {
+    marginTop: 10,
+    fontSize: 14,
+    fontWeight: "400",
+    textAlign: "center",
+    lineHeight: 18,
+    letterSpacing: 0.3,
+    color: "#000000",
+  },
+
+  // ✅ Malayalam text SAME as section style
+  cardTextMalayalam: {
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: "500",
+    textAlign: "center",
+    letterSpacing: 0.1,
+    color: "#000000",
+  },
 
   /* ---------- SECTION ---------- */
 
@@ -87,9 +80,6 @@ cardTextMalayalam: {
     marginBottom: 24,
     paddingHorizontal: 16,
     letterSpacing: 0.2,
-    textShadowColor: "rgba(0,0,0,0.05)",
-    textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 1,
   },
 
   sectionContainer: {

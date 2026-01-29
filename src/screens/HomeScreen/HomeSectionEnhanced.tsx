@@ -13,7 +13,7 @@ import { homeSectionStyles as local } from "./HomeSection.styles";
 
 import { getHomeLabelText } from "../../data/labels";
 import type { HomeLabelKey } from "../../data/labels";
-import type { AppLanguage } from "../../data/labels/types";
+import type { AppLanguage } from "../../data/labels";
 
 /* ---------------- TYPES ---------------- */
 
@@ -149,10 +149,10 @@ const AnimatedCard = memo(function AnimatedCard({
               styles.cardText,
               language === "malayalam" && local.cardTextMalayalam,
             ]}
-            numberOfLines={2}
+            numberOfLines={language === "malayalam" ? 2 : 2}
             ellipsizeMode="tail"
             adjustsFontSizeToFit
-            minimumFontScale={0.8}
+            minimumFontScale={0.85}
           >
             {title}
           </Text>

@@ -58,6 +58,7 @@ export default function HomeScreen() {
         {renderSection("dhikr", "dhikr")}
         {renderSection("familyDua", "family")}
         {renderSection("healthDua", "health")}
+        {renderSection("justiceDuas", "justice")}
         {renderSection("kidsDua", "kids")}
         {renderSection("mentalDua", "mental")}
         {renderSection("protectionDuas", "protection")}

@@ -18,7 +18,7 @@ import { KIDS_LEARNING_DUA_META } from "./kidsLearningDuas/meta";
 
 // 👉 short surahs for kids
 import { shortSurahsForKids } from "./shortSurahsForKids/content";
-import { SHORT_SURAHS_FOR_KIDS_META } from "./shortSurahsForKids/meta";  
+import { SHORT_SURAH_FOR_KIDS_META } from "./shortSurahsForKids/meta";  
 
 import { newbornDuas } from "./newbornDuas/content";
 import { NEWBORN_DUA_META } from "./newbornDuas/meta";
@@ -37,7 +37,7 @@ export const KIDS_DUA_META = [
   KIDS_DAILY_DUA_META,
   KIDS_ISLAMIC_DUA_META,
   KIDS_LEARNING_DUA_META,
-  SHORT_SURAHS_FOR_KIDS_META,
+  SHORT_SURAH_FOR_KIDS_META,
   NEWBORN_DUA_META
 ];
 

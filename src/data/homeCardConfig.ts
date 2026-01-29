@@ -26,6 +26,16 @@ export const SECTION_CARD_CONFIG = {
   },
 
   /* ===============================
+     JUSTICE DUA ⚖️
+  =============================== */
+
+  justice: {
+    id: "justiceDuas",
+    icon: "scale",
+    gradient: ["#e0e7ff", "#6366f1"],
+  },
+
+  /* ===============================
      KIDS DUA
   =============================== */
 

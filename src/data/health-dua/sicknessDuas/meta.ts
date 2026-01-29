@@ -1,6 +1,7 @@
 export const SICKNESS_DUA_META = {
   id: "sicknessDuas",
   icon: "bandage",
+  section: "health",
   title: {
     arabic: "أدعية المرض",
     malayalam: "രോഗാവസ്ഥയിലെ ദുആകൾ",

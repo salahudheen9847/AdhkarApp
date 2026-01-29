@@ -1,5 +1,6 @@
 export const GRIEF_LOSS_DUA_META = {
   id: "griefLossDuas",
+  section: "mental",
   icon: "sad",
   title: {
     arabic: "أدعية الحزن",

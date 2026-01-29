@@ -5,22 +5,34 @@ export type TitleAudio = {
   title: string;
 };
 
-/* ✅ Only DHIKR mode */
-type Mode = "dhikr";
-
-/* 🔹 DHIKR TITLE + AUDIO MAP */
-const DHIKR_TITLE_AUDIO: Partial<Record<HomeLabelKey, TitleAudio>> = {
+const TITLE_AUDIO_MAP: Partial<
+  Record<HomeLabelKey, TitleAudio>
+> = {
   // example:
   // morningAdhkar: { audio: "morning.mp3", title: "🌅 Morning Adhkar" },
+  
+  // 🧪 TESTING - using existing working key
+  protectionDuas: { 
+    audio: "clothing_duas_full.mp3", 
+    title: "Clothing Duas" 
+  },
+};
+
+// 👕 CLOTHING DUAS - Add dynamically
+const CLOTHING_AUDIO: TitleAudio = {
+  audio: "clothing_duas_full.mp3", 
+  title: "Clothing Duas"
 };
 
 export function resolveTitleAndAudio(
-  mode: Mode,
   type?: HomeLabelKey
 ): TitleAudio {
-  if (mode === "dhikr" && type) {
-    return DHIKR_TITLE_AUDIO[type] ?? { audio: "", title: "" };
+  if (!type) return { audio: "", title: "" };
+  
+  // 👕 CLOTHING DUAS - Special case (string comparison)
+  if (type === "clothingDuas" as any) {
+    return CLOTHING_AUDIO;
   }
-
-  return { audio: "", title: "" };
+  
+  return TITLE_AUDIO_MAP[type] ?? { audio: "", title: "" };
 }

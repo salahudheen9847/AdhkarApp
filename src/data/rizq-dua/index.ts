@@ -1,24 +1,24 @@
 import { RIZQ_DUA_LABEL } from "./label";
 
 // 👉 business loss recovery
-import { businessLossRecoveryDuas } from "./businessLossRecoveryDuas/content";
-import { BUSINESS_LOSS_RECOVERY_DUA_META } from "./businessLossRecoveryDuas/meta";
+import { businessLossRecoveryDuas } from "./business-loss-recovery-duas/content";
+import { BUSINESS_LOSS_RECOVERY_DUA_META } from "./business-loss-recovery-duas/meta";
 
 // 👉 debt relief
-import { debtReliefDuas } from "./debtReliefDuas/content";
-import { DEBT_RELIEF_DUA_META } from "./debtReliefDuas/meta";
+import { debtReliefDuas } from "./debt-relief-duas/content";
+import { DEBT_RELIEF_DUA_META } from "./debt-relief-duas/meta";
 
 // 👉 house & land
-import { houseLandDuas } from "./houseLandDuas/content";
-import { HOUSE_LAND_DUA_META } from "./houseLandDuas/meta";
+import { houseLandDuas } from "./house-land-duas/content";
+import { HOUSE_LAND_DUA_META } from "./house-land-duas/meta";
 
 // 👉 work / job rizq
-import { workRizqDuas } from "./workRizqDuas/content";
-import { WORK_RIZQ_DUA_META } from "./workRizqDuas/meta";
+import { workRizqDuas } from "./work-rizq-duas/content";
+import { WORK_RIZQ_DUA_META } from "./work-rizq-duas/meta";
 
 // 👉 zakat
-import { zakatDuas } from "./zakatDuas/content";
-import { ZAKAT_DUA_META } from "./zakatDuas/meta";
+import { zakatDuas } from "./zakat-duas/content";
+import { ZAKAT_DUA_META } from "./zakat-duas/meta";
 
 export const RIZQ_DUA_CONTENT = [
   businessLossRecoveryDuas,

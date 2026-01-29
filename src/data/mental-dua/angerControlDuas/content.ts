@@ -1,5 +1,5 @@
 export const angerControlDuas = {
-  id: "anxietyWorryDuas",
+  id: "angerControlDuas",
 
   heading: {
     arabic: "أَدْعِيَةُ كَظْمِ الْغَيْظِ",

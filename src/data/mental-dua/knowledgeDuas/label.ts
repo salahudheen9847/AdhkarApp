@@ -1,4 +1,4 @@
-import { HomeLabel } from "../../labels/types";
+import { HomeLabel } from "../../types";
 
 export const KNOWLEDGE_DUA_LABEL = {
   knowledgeDuas: {

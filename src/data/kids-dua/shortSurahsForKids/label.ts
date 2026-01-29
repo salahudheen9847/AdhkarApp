@@ -1,4 +1,4 @@
-import { HomeLabel } from "../../labels/types";
+import { HomeLabel } from "../../types";
 
 export const SHORT_SURAHS_FOR_KIDS_LABEL = {
   shortSurahsForKids: {

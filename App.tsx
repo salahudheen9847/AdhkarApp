@@ -25,8 +25,7 @@ import { LanguageProvider } from "./src/context/language";
 /* 📱 SCREENS */
 import HomeScreen from "./src/screens/HomeScreen/HomeScreen";
 import DhikrScreen from "./src/screens/DhikrScreen/DhikrScreen";
-import SettingsScreen from "./src/screens/SettingsScreen";
-import AboutScreen from "./src/screens/AboutScreen";
+
 
 /* 🗄️ DATABASE */
 import { createTables } from "./src/db/createTables";
@@ -86,18 +85,6 @@ function RootNavigator() {
         <Stack.Screen
           name="Dhikr"
           component={DhikrScreen}
-          options={{ headerShown: false }}
-        />
-
-        <Stack.Screen
-          name="Settings"
-          component={SettingsScreen}
-          options={{ headerShown: false }}
-        />
-
-        <Stack.Screen
-          name="About"
-          component={AboutScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

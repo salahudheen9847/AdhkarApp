@@ -1,4 +1,4 @@
-import type { HomeLabel } from "../labels/types";
+import type { HomeLabel } from "../types";
 
 import { FAMILY_DUA_LABEL } from "./label";
 import { DUAS_FOR_PARENTS_LABEL } from "./duasForParents/label";

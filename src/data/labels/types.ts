@@ -1,64 +1,25 @@
-export interface DhikrItem {
-  id: number;
-  text?: string;
-  arabic?: string;
-  malayalam?: string;
-  english?: string;
-  start?: number;
-  end?: number;
-  isHeading?: boolean;
-  isBox?: boolean;
-}
+// src/data/labels/types.ts
 
-export interface DhikrContent {
-  id: string;
-  heading: {
-    arabic: string;
-    malayalam: string;
-    english: string;
-  };
-  content?: DhikrItem[];
-  isBox?: boolean;
-}
+import type { HomeLabel } from "../types";
 
-export interface HomeLabel {
-  arabic: string;
-  malayalam: string;
-  english: string;
-}
+/* 🔑 All home label keys */
+export type HomeLabelKey =
+  | "dailyLifeDuas"
+  | "dhikr"
+  | "familyDuas"
+  | "healthDuas"
+  | "kidsDuas"
+  | "mentalHealth"
+  | "protectionDuas"
+  | "rizq"
+  | "salah"
+  | "swalath"
+  | "qaseeda"
+  | "ratib"
+  | "ramadan"
+  | "mayyit"
+  | "moulid"
+  | "clothingDuas"; // ✅ ADD CLOTHING DUAS
 
-export type AppLanguage = "arabic" | "malayalam" | "english";
-
-export interface CollectionMeta {
-  id: string;
-  icon: string;
-  title: {
-    arabic: string;
-    malayalam: string;
-    english: string;
-  };
-}
-
-export interface BaseVerse {
-  id: number;
-  arabic: string;
-  malayalam: string;
-  english: string;
-  start?: number;
-  end?: number;
-}
-
-export interface CollectionMetadata {
-  id: string;
-  title: {
-    arabic: string;
-    malayalam: string;
-    english: string;
-  };
-  description?: {
-    arabic?: string;
-    malayalam?: string;
-    english?: string;
-  };
-  category?: string;
-}
+/* 🏷️ Label record */
+export type HomeLabelRecord = Record<HomeLabelKey, HomeLabel>;

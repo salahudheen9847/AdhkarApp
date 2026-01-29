@@ -1,9 +1,10 @@
 export const DUA_FOR_SICK_META = {
   id: "duaForSick",
-  icon: "person",
+  icon: "medical",
+  section: "health",
   title: {
     arabic: "دعاء للمريض",
     malayalam: "രോഗിക്കുള്ള ദുആ",
-    english: "Dua for the Sick",
+    english: "Dua for Sick Person",
   },
 } as const;

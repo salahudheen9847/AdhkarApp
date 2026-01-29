@@ -1,4 +1,4 @@
-import { HomeLabel } from "../../labels/types";
+import { HomeLabel } from "../../types";
 
 export const NAZAR_BLACK_MAGIC_PROTECTION_DUA_LABEL = {
   nazarBlackMagicProtectionDuas: {

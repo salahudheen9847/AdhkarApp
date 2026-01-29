@@ -16,7 +16,7 @@ import { PlayerControls } from "../../component/PlayerControls";
 import { FontControl } from "../../component/FontControl";
 import { styles as screenStyles } from "../../styles/dhikrscreenstyle";
 
-import { useDhikrScreenLogic } from "./hooks/useDhikrScreenLogic";
+import { useDuaScreenLogic } from "./hooks/useDuaScreenLogic";
 import { localStyles } from "./styles/DhikrScreen.styles";
 
 export default function DhikrScreen() {
@@ -28,6 +28,7 @@ export default function DhikrScreen() {
   const [languageMode, setLanguageMode] = useState<
     "arabic" | "arabic_english" | "arabic_malayalam"
   >("arabic");
+
   const [showFontControl, setShowFontControl] = useState(false);
 
   /* 🟢 SCROLL ANIMATION SOURCE */
@@ -51,9 +52,10 @@ export default function DhikrScreen() {
     }),
   };
 
-  const { mode, audioType, headerType, headerTitle } =
-    useDhikrScreenLogic(route, languageMode);
+  /* 🟢 GENERIC SCREEN LOGIC */
+  const { type, title } = useDuaScreenLogic(route, languageMode);
 
+  /* 🟢 AUDIO LOGIC */
   const {
     currentIndex,
     currentTime,
@@ -68,10 +70,8 @@ export default function DhikrScreen() {
     playAudio,
     onSeek,
     onChangeRate,
-  } = useDhikrAudio({
-    mode,
-    type: audioType,
-  });
+    stopAudio, // ✅ IMPORTANT
+  } = useDhikrAudio({ type });
 
   return (
     <SafeAreaView
@@ -87,22 +87,21 @@ export default function DhikrScreen() {
         barStyle={isDark ? "light-content" : "dark-content"}
       />
 
-      {/* 🕌 HEADER */}
-      <HeaderSection
-        textColor={colors.text}
-        isDark={isDark}
-        toggleTheme={toggleTheme}
-        isPlaying={isPlaying}
-        setShowPlayer={setShowPlayer}
-        playAudio={playAudio}
-        type={headerType}
-        title={headerTitle}
-        languageMode={languageMode}
-        setLanguageMode={setLanguageMode}
-        headerAnimatedStyle={headerAnimatedStyle}
-        onFontPress={() => setShowFontControl(!showFontControl)}
-        onBack={() => navigation.goBack()}
-      />
+  {/* 🕌 HEADER */}
+<HeaderSection
+  textColor={colors.text}
+  isDark={isDark}
+  toggleTheme={toggleTheme}
+  isPlaying={isPlaying}
+  setShowPlayer={setShowPlayer}
+  title={title}
+  languageMode={languageMode}
+  setLanguageMode={setLanguageMode}
+  headerAnimatedStyle={headerAnimatedStyle}
+  onFontPress={() => setShowFontControl(!showFontControl)}
+  onBack={() => navigation.goBack()}
+  playAudio={playAudio} // ✅ PASS PLAY AUDIO
+/>
 
       {/* 🔠 FONT CONTROL */}
       {showFontControl && (
@@ -138,7 +137,10 @@ export default function DhikrScreen() {
           onChangeRate={onChangeRate}
           fontSize={fontSize}
           onFontSizeChange={setFontSize}
-          onClose={() => setShowPlayer(false)}
+          onClose={() => {
+            stopAudio();          // ✅ audio stop
+            setShowPlayer(false); // ✅ UI close
+          }}
         />
       )}
     </SafeAreaView>
