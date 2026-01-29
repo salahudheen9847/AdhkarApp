@@ -35,6 +35,15 @@ export const homeSectionStyles = StyleSheet.create({
     color: "#000000",
   },
 
+  /* ---------------- STAR ICON ---------------- */
+
+  starIcon: {
+    position: "absolute",
+    top: 8,
+    right: 8,
+    zIndex: 10,
+  },
+
   /* ---------------- SHADOWS ---------------- */
 
   cardShadow: {

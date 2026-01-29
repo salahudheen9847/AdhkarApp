@@ -22,6 +22,7 @@ type HomeItem = {
   originalId: HomeLabelKey;
   icon: string;
   gradient?: readonly string[];
+  isFavourite?: boolean; // ⭐
 };
 
 type Props = {
@@ -30,6 +31,7 @@ type Props = {
   language: AppLanguage;
   colors: { text: string };
   onPress: (id: HomeLabelKey) => void;
+  toggleFavourite: (id: HomeLabelKey) => void; // ⭐
 };
 
 /* ---------------- CONSTANTS ---------------- */
@@ -43,11 +45,13 @@ const AnimatedCard = memo(function AnimatedCard({
   language,
   colors: _colors,
   onPress,
+  toggleFavourite,
 }: {
   item: HomeItem;
   language: AppLanguage;
   colors: { text: string };
   onPress: (id: HomeLabelKey) => void;
+  toggleFavourite: (id: HomeLabelKey) => void; // ⭐
 }) {
   /* 🔒 Hooks must be first */
   const scale = useRef(new Animated.Value(1)).current;
@@ -156,6 +160,19 @@ const AnimatedCard = memo(function AnimatedCard({
           >
             {title}
           </Text>
+
+          {/* ⭐ STAR ICON */}
+          <TouchableOpacity
+            onPress={() => toggleFavourite(item.originalId)}
+            style={local.starIcon}
+            hitSlop={10}
+          >
+            <Ionicons
+              name={item.isFavourite ? "star" : "star-outline"}
+              size={18}
+              color={item.isFavourite ? "#facc15" : "#475569"}
+            />
+          </TouchableOpacity>
         </LinearGradient>
       </Animated.View>
     </TouchableOpacity>
@@ -172,6 +189,7 @@ export const HomeSection = memo(function HomeSection({
   language,
   colors,
   onPress,
+  toggleFavourite,
 }: Props) {
   if (!items || items.length === 0) return null;
 
@@ -190,6 +208,7 @@ export const HomeSection = memo(function HomeSection({
               language={language}
               colors={colors}
               onPress={onPress}
+              toggleFavourite={toggleFavourite}
             />
           ) : null
         )}

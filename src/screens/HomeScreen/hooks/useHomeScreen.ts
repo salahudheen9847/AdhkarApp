@@ -12,6 +12,7 @@ import {
   type AppLanguage,
 } from "../../../data/labels";
 import { SECTION_CARD_CONFIG } from "../../../data/homeCardConfig";
+import { useFavourites } from "./useFavourites";
 
 export function useHomeScreen() {
   const navigation = useNavigation<any>();
@@ -20,6 +21,12 @@ export function useHomeScreen() {
   };
 
   const [query, setQuery] = useState("");
+
+  const {
+    favourites,        // ✅ NOW USED
+    toggleFavourite,
+    isFavourite,
+  } = useFavourites();
 
   /* 🔙 EXIT APP ON BACK */
   useEffect(() => {
@@ -57,23 +64,40 @@ export function useHomeScreen() {
       return {
         id: `${item.id}-${index}`,
         originalId: item.id as HomeLabelKey,
-
-        // ✅ THIS IS THE FIX (LANGUAGE-AWARE TITLE)
         title: getHomeLabelText(
           item.id as HomeLabelKey,
           language
         ),
-
         icon: config.icon,
         gradient: config.gradient,
+        isFavourite: isFavourite(item.id as HomeLabelKey), // ⭐
       };
     });
 
-  /* 📦 GROUP BY SECTION */
-  const getSectionItems = (section: string) =>
-    mapToHomeItems(
-      filteredMeta.filter(i => i.section === section)
+  /* ⭐ GROUP + FAVOURITES FIRST */
+  const getSectionItems = (section: string) => {
+    const sectionItems = filteredMeta.filter(
+      item => item.section === section
     );
+
+    // ⭐ sort: favourites first
+    const sorted = sectionItems.sort((a, b) => {
+      const fa = favourites.includes(a.id as HomeLabelKey) ? 1 : 0;
+      const fb = favourites.includes(b.id as HomeLabelKey) ? 1 : 0;
+      return fb - fa;
+    });
+
+    return mapToHomeItems(sorted);
+  };
+
+  /* ⭐ FAVOURITE ITEMS API */
+  const getFavouriteItems = () => {
+    const favMeta = HOME_META_LIST.filter(item =>
+      favourites.includes(item.id as HomeLabelKey)
+    );
+
+    return mapToHomeItems(favMeta);
+  };
 
   /* ✅ NAVIGATION */
   const handlePress = (originalId: HomeLabelKey) => {
@@ -88,6 +112,8 @@ export function useHomeScreen() {
     query,
     setQuery,
     getSectionItems,
+    getFavouriteItems, // ⭐ NEW
     handlePress,
+    toggleFavourite, // ⭐ used in UI
   };
 }

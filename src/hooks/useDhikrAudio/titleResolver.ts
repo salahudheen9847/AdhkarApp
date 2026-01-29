@@ -16,6 +16,12 @@ const TITLE_AUDIO_MAP: Partial<
     audio: "clothing_duas_full.mp3", 
     title: "Clothing Duas" 
   },
+  
+  // 🕌 MARICHAVERK DUA - Funeral dua
+  duaMarichavark: {
+    audio: "dua_marichavark.mp3",
+    title: "മരിച്ചവർക്ക് വേണ്ടിയുള്ള ദുആ"
+  },
 };
 
 // 👕 CLOTHING DUAS - Add dynamically

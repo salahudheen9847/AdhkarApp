@@ -3,8 +3,10 @@ export const DUA_MARICHAVERK_META = {
   icon: "home",
   section: "mayyit",
   title: {
-    malayalam: "രോഗിയുടെ ദുആ",
-    english: "Dua for the Sick",
-    arabic: "دعاء المريض",
+    malayalam: "മരിച്ചവർക്ക് വേണ്ടിയുള്ള ദുആ",
+    english: "Dua for the Deceased",
+    arabic: "دعاء للميت",
   },
+  hasAudio: true,
+  audio: "dua_marichavark.mp3",
 } as const;

@@ -20,7 +20,9 @@ export default function HomeScreen() {
     query,
     setQuery,
     getSectionItems,
+    getFavouriteItems,
     handlePress,
+    toggleFavourite,
   } = useHomeScreen();
 
   const renderSection = (
@@ -35,6 +37,7 @@ export default function HomeScreen() {
           language={language}
           colors={{ text: "#0f172a" }}
           onPress={handlePress}
+          toggleFavourite={toggleFavourite}
         />
       </View>
       <View style={styles.sectionDivider} />
@@ -53,6 +56,24 @@ export default function HomeScreen() {
           onChange={setQuery}
           language={language}
         />
+
+        {/* ⭐ TOP MOST – Favourite Section */}
+        {getFavouriteItems().length > 0 && (
+          <>
+            <View style={styles.sectionContainer}>
+              <HomeSection
+                title="⭐ Favourite Duas"
+                items={getFavouriteItems() as any}
+                language={language}
+                colors={{ text: "#f59e0b" }}
+                onPress={handlePress}
+                toggleFavourite={toggleFavourite}
+              />
+            </View>
+
+            <View style={styles.sectionDivider} />
+          </>
+        )}
 
         {renderSection("dailyLifeDua", "daily")}
         {renderSection("dhikr", "dhikr")}
