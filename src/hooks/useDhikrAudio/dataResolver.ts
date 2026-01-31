@@ -1,4 +1,6 @@
 import { getDhikrByType } from "../../db/queries";
+import { DAILY_LIFE_DUA_CONTENT } from "../../data/daily-life-dua";
+import { MAYYIT_CONTENT } from "../../data/mayyit-dua";
 import type { HomeLabelKey } from "../../data/labels";
 
 export async function resolveRows(
@@ -7,6 +9,14 @@ export async function resolveRows(
   if (!type) return [];
 
   try {
+    // ✅ CHECK TYPESCRIPT CONTENT FIRST
+    const tsContent = getTypescriptContent(type);
+    if (tsContent) {
+      console.log("🔍 Found TypeScript content for:", type, tsContent.id);
+      return [...tsContent.content]; // Convert readonly to mutable
+    }
+
+    // ✅ FALLBACK TO DATABASE
     const dbRows = await getDhikrByType(type);
 
     // ✅ DB returns valid rows
@@ -17,7 +27,7 @@ export async function resolveRows(
     console.error("resolveRows error:", error);
   }
 
-  // ✅ Fallback (when no DB data)
+  // ✅ FALLBACK (when no data found)
   return [
     {
       id: 1,
@@ -27,4 +37,30 @@ export async function resolveRows(
       isBox: true,
     },
   ];
+}
+
+/* 🔍 GET TYPESCRIPT CONTENT */
+function getTypescriptContent(type: HomeLabelKey) {
+  console.log("🔍 Looking for TypeScript content:", type);
+  
+  // 🍽️ DAILY LIFE DUAS
+  const dailyLifeContent = DAILY_LIFE_DUA_CONTENT.find(
+    (item: any) => item.id === type
+  );
+  if (dailyLifeContent) {
+    console.log("🍽️ Found daily life content:", dailyLifeContent.id);
+    return dailyLifeContent;
+  }
+
+  // 🕌 MAYYIT DUAS  
+  const mayyitContent = MAYYIT_CONTENT.find(
+    (item: any) => item.id === type
+  );
+  if (mayyitContent) {
+    console.log("🕌 Found mayyit content:", mayyitContent.id);
+    return mayyitContent;
+  }
+
+  console.log("❌ No TypeScript content found for:", type);
+  return null;
 }

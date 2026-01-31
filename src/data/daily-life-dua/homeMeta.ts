@@ -8,6 +8,8 @@ import { HOME_DUA_META } from "./home-duas/meta";
 import { MASJID_DUA_META } from "./masjid-duas/meta";
 import { RainDuas_DUA_META } from "./rain-duas/meta";
 import { TRAVEL_DUA_META } from "./travel-duas/meta";
+import { SLEEP_DUA_META } from "./sleep-duas/meta";
+import { TOILET_DUA_META } from "./toilet-duas/meta";
 
 export const DAILY_HOME_META: HomeMeta[] = [
   { ...CLOTHING_DUA_META, section: "daily" },
@@ -16,4 +18,6 @@ export const DAILY_HOME_META: HomeMeta[] = [
   { ...MASJID_DUA_META, section: "daily" },
   { ...RainDuas_DUA_META, section: "daily" },
   { ...TRAVEL_DUA_META, section: "daily" },
+  { ...SLEEP_DUA_META, section: "daily" },
+  { ...TOILET_DUA_META, section: "daily" },
 ];

@@ -7,4 +7,6 @@ export const FOOD_DUA_META = {
     malayalam: "ഭക്ഷണ ദുആകൾ",
     english: "Food Duas",
   },
+  hasAudio: true,
+  audio: "food_duas.mp3",
 } as const;

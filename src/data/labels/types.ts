@@ -19,7 +19,10 @@ export type HomeLabelKey =
   | "ramadan"
   | "mayyit"
   | "moulid"
-  | "clothingDuas"; // ✅ ADD CLOTHING DUAS
+  | "clothingDuas" // ✅ ADD CLOTHING DUAS
+  | "homeDuas" // ✅ ADD HOME DUAS
+  | "sleepDuas" // ✅ ADD SLEEP DUAS
+  | "toiletDuas"; // ✅ ADD TOILET DUAS
 
 /* 🏷️ Label record */
 export type HomeLabelRecord = Record<HomeLabelKey, HomeLabel>;

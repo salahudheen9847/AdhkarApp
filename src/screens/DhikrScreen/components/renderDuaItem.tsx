@@ -30,6 +30,58 @@ export const renderDuaItem = (
   const malayalamText = normalizeText(item.malayalam);
   const englishText = normalizeText(item.english);
 
+  /* ======================================================
+     🔹 HEADING – language aware (FIXED & CORRECT)
+  ====================================================== */
+  if (isHeading) {
+  let headingText = "";
+
+  switch (languageMode) {
+    case "arabic":
+      headingText = arabicText;
+      break;
+
+    case "arabic_malayalam":
+      headingText = malayalamText || arabicText;
+      break;
+
+    case "arabic_english":
+      headingText = englishText || arabicText;
+      break;
+  }
+
+  if (!headingText) return null;
+
+  return (
+    <View
+      style={[
+        localStyles.container,
+        localStyles.headingContainer,
+      ]}
+    >
+      <Text
+        numberOfLines={1}
+        adjustsFontSizeToFit
+        minimumFontScale={0.65}
+        ellipsizeMode="clip"
+        style={[
+          localStyles.headingText,
+          localStyles.textCenter,
+          languageMode === "arabic"
+            ? localStyles.rtlText
+            : localStyles.ltrText,
+        ]}
+      >
+        {headingText}
+      </Text>
+    </View>
+  );
+}
+
+  /* ======================================================
+     🔹 NORMAL / BOX DUA CONTENT
+  ====================================================== */
+
   let content = "";
 
   switch (languageMode) {
@@ -50,61 +102,38 @@ export const renderDuaItem = (
       break;
   }
 
-  if (!content && !isHeading) return null;
+  if (!content) return null;
 
   return (
     <View
       style={[
         localStyles.container,
-        isHeading && localStyles.headingContainer,
         isBox && localStyles.boxContainer,
         isActive && localStyles.activeContainer,
         isActive && { backgroundColor: highlightColor },
       ]}
     >
-      {/* 🔹 HEADING */}
-      {isHeading ? (
-        <Text
-          numberOfLines={1}            // ✅ SINGLE LINE ONLY
-          adjustsFontSizeToFit         // ✅ auto shrink
-          minimumFontScale={0.65}      // ✅ Arabic safe
-          ellipsizeMode="clip"
-          style={[
-            localStyles.headingText,
-            localStyles.textCenter,
-            localStyles.rtlText,
-          ]}
-        >
-          {content}
-        </Text>
-      ) : (
-        /* 🔹 NORMAL / BOX TEXT */
-        <Text
-          style={[
-            isBox ? baseStyles.boxText : baseStyles.text,
-            localStyles.textCenter,
-            isArabicOnly ? localStyles.rtlText : localStyles.ltrText,
-            isActive ? localStyles.activeText : { color: textColor },
-            {
-              fontSize: isBox
-                ? safeFontSize * 0.9
-                : safeFontSize,
-              lineHeight: safeFontSize * 1.9,
-            },
-          ]}
-        >
-          {content}
-        </Text>
-      )}
+      <Text
+        style={[
+          isBox ? baseStyles.boxText : baseStyles.text,
+          localStyles.textCenter,
+          isArabicOnly ? localStyles.rtlText : localStyles.ltrText,
+          isActive ? localStyles.activeText : { color: textColor },
+          {
+            fontSize: isBox ? safeFontSize * 0.9 : safeFontSize,
+            lineHeight: safeFontSize * 1.9,
+          },
+        ]}
+      >
+        {content}
+      </Text>
 
-      {!isHeading && (
-        <View
-          style={[
-            localStyles.divider,
-            { backgroundColor: dividerColor },
-          ]}
-        />
-      )}
+      <View
+        style={[
+          localStyles.divider,
+          { backgroundColor: dividerColor },
+        ]}
+      />
     </View>
   );
 };
@@ -140,7 +169,7 @@ const localStyles = StyleSheet.create({
   headingText: {
     fontWeight: "700",
     color: "#ffffff",
-    includeFontPadding: false, // ✅ Android Arabic fix
+    includeFontPadding: false,
   },
 
   /* 📦 Box */

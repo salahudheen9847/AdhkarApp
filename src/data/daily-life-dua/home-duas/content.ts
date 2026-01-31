@@ -1,83 +1,113 @@
 export const homeDuas = {
-  id: "home-duas",
+  id: "homeDuas",
 
   heading: {
     arabic: "أَدْعِيَةُ دُخُولِ وَخُرُوجِ الْبَيْتِ",
-    malayalam: "വീട്ടിൽ കയറുമ്പോൾ / ഇറങ്ങുമ്പോൾ ദുആകൾ",
-    english: "Home Entry & Exit Duas",
+    malayalam: "വീട്ടിൽ കയറുമ്പോഴും ഇറങ്ങുമ്പോഴും ചൊല്ലുന്ന ദുആകൾ",
+    english: "Duas for Entering and Leaving the Home",
   },
 
   isBox: true,
 
   content: [
+    /* ===============================
+       ENTERING THE HOME
+    =============================== */
     {
       id: 1,
-      arabic: [
-        "بِسْمِ اللَّهِ وَلَجْنَا",
-        "وَبِسْمِ اللَّهِ خَرَجْنَا"
-      ],
-      malayalam: [
-        "അല്ലാഹുവിന്റെ നാമത്തിൽ ഞങ്ങൾക്ക് വീട്ടിൽ കയറുന്നു.",
-        "അല്ലാഹുവിനാണ് എല്ലാ സ്തുതിയും."
-      ],
-      english: [
-        "In the Name of Allah we enter,",
-        "and in the Name of Allah we leave."
-      ],
+      isHeading: true,
+      arabic: "دُعَاءُ دُخُولِ الْبَيْتِ",
+      malayalam: "വീട്ടിൽ കയറുമ്പോൾ ചൊല്ലുന്ന ദുആ",
+      english: "Dua When Entering the Home",
     },
 
     {
       id: 2,
       arabic: [
-        "بِسْمِ اللَّهِ تَوَكَّلْتُ عَلَى اللَّهِ خَرَجْنَا هَٰذَا",
-        "وَمَا كُنَّا لَهُ مُقْرِنِينَ"
+        "السَّلَامُ عَلَيْكُمْ",
+        "وَرَحْمَةُ اللَّهِ"
       ],
       malayalam: [
-        "അല്ലാഹുവിന്റെ നാമത്തിൽ ഞങ്ങാക്ക് വീട്ടിൽ കയറുന്നു.",
-        "അല്ലാഹുവിനാണ് എല്ലാ സ്തുതിയും."
+        "നിങ്ങൾക്കുമേൽ",
+        "അല്ലാഹുവിന്റെ സമാധാനവും കരുണയും ഉണ്ടാകട്ടെ."
       ],
       english: [
-        "Glory be to Him who has subjected this to us,",
-        "and we could not have controlled it by ourselves."
+        "Peace be upon you,",
+        "and the mercy of Allah."
       ],
+      start: 0,
+      end: 5,
     },
 
     {
       id: 3,
       arabic: [
-        "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَٰذَا",
-        "وَمَا كُنَّا لَهُ مُقْرِنِينَ",
-        "وَإِنَّا إِلَىٰ رَبِّنَا لَمُنْقَلِبُونَ"
+        "بِسْمِ اللَّهِ وَلَجْنَا،",
+        "وَبِسْمِ اللَّهِ خَرَجْنَا،",
+        "وَعَلَىٰ رَبِّنَا تَوَكَّلْنَا"
       ],
       malayalam: [
-        "ഇത് ഞങ്ങാക്ക് ഭക്ഷണവും പാനീയവും നൽകിയ",
-        "അല്ലാഹുവിനാണ് എല്ലാ സ്തുതിയും.",
-        "ഇത് ഞങ്ങാക്ക് ഭക്ഷണവും പാനീയവും നൽകിയ."
+        "അല്ലാഹുവിന്റെ നാമത്തിൽ ഞങ്ങൾ വീട്ടിൽ പ്രവേശിക്കുന്നു,",
+        "അല്ലാഹുവിന്റെ നാമത്തിൽ തന്നെ പുറത്തേക്ക് പോകുന്നു,",
+        "ഞങ്ങളുടെ റബ്ബായ അല്ലാഹുവിലാണ് ഞങ്ങൾ ആശ്രയിക്കുന്നത്."
       ],
       english: [
-        "Glory be to Him who has subjected this to us,",
-        "and we could not have controlled it by ourselves."
+        "In the name of Allah we enter,",
+        "and in the name of Allah we leave,",
+        "and upon our Lord we place our trust."
       ],
+      start: 5,
+      end: 10,
+    },
+
+    /* ===============================
+       LEAVING THE HOME
+    =============================== */
+    {
+      id: 4,
+      isHeading: true,
+      arabic: "دُعَاءُ الْخُرُوجِ مِنَ الْبَيْتِ",
+      malayalam: "വീട്ടിൽ നിന്ന് ഇറങ്ങുമ്പോൾ ചൊല്ലുന്ന ദുആ",
+      english: "Dua When Leaving the Home",
     },
 
     {
-      id: 4,
+      id: 5,
       arabic: [
-        "اللَّهُمَّ هَوِنْ عَلَيْنَا سَفَرَنَا هَٰذَا",
-        "الْبِرُ وَالتَّقْوَى",
-        "وَمِنَ الْعَمَلِ مَا تَرْضَى"
+        "السَّلَامُ عَلَيْكُمْ",
+        "وَرَحْمَةُ اللَّهِ"
       ],
       malayalam: [
-        "അല്ലാഹുമ്മാ, ഈ യാത്രയിൽ ഞങ്ങാക്ക് സുഹിയും",
-        "നന്മയും ഭക്തിയും നിന്നോട്.",
-        "അല്ലാഹുവിനാണ് എല്ലാ സ്തുതിയും."
+        "നിങ്ങൾക്കുമേൽ",
+        "അല്ലാഹുവിന്റെ സമാധാനവും കരുണയും ഉണ്ടാകട്ടെ."
       ],
       english: [
-        "O Allah, make this journey easy for us,",
-        "and shorten its distance for us.",
-        "O Allah, You are the Companion on the journey,",
-        "and the Guardian over the family."
+        "Peace be upon you,",
+        "and the mercy of Allah."
       ],
+      start: 10,
+      end: 15,
+    },
+
+    {
+      id: 6,
+      arabic: [
+        "بِسْمِ اللَّهِ،",
+        "تَوَكَّلْتُ عَلَى اللَّهِ،",
+        "وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ"
+      ],
+      malayalam: [
+        "അല്ലാഹുവിന്റെ നാമത്തിൽ,",
+        "അല്ലാഹുവിൽ ഞാൻ ആശ്രയിക്കുന്നു,",
+        "അല്ലാഹുവില്ലാതെ യാതൊരു ശക്തിയും അധികാരവും ഇല്ല."
+      ],
+      english: [
+        "In the name of Allah,",
+        "I place my trust in Allah,",
+        "there is no power nor strength except with Allah."
+      ],
+      start: 15,
+      end: 20,
     },
   ],
 };

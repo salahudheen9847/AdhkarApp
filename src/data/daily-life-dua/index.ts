@@ -30,6 +30,16 @@ import { MasjidDuas } from "./masjid-duas/content";
 import { MASJID_DUA_META } from "./masjid-duas/meta";
 import { MASJID_DUA_LABEL } from "./masjid-duas/label";
 
+// 👉 sleep-duas
+import { sleepDuas } from "./sleep-duas/content";
+import { SLEEP_DUA_META } from "./sleep-duas/meta";
+import { SLEEP_DUA_LABEL } from "./sleep-duas/label";
+
+// 👉 toilet-duas
+import { toiletDuas } from "./toilet-duas/content";
+import { TOILET_DUA_META } from "./toilet-duas/meta";
+import { TOILET_DUA_LABEL } from "./toilet-duas/label";
+
 /* ---------------- CONTENT ---------------- */
 
 export const DAILY_LIFE_DUA_CONTENT = [
@@ -39,6 +49,8 @@ export const DAILY_LIFE_DUA_CONTENT = [
   RainDuas,
   TravelDuas,
   MasjidDuas,
+  sleepDuas,
+  toiletDuas,
 ] as const;
 
 /* ---------------- META ---------------- */
@@ -50,6 +62,8 @@ export const DAILY_LIFE_DUA_META = [
   RainDuas_DUA_META,
   TRAVEL_DUA_META,
   MASJID_DUA_META,
+  SLEEP_DUA_META,
+  TOILET_DUA_META,
 ] as const;
 
 /* ---------------- LABELS ---------------- */
@@ -62,4 +76,6 @@ export {
   RainDuas_DUA_LABEL,
   TRAVEL_DUA_LABEL,
   MASJID_DUA_LABEL,
+  SLEEP_DUA_LABEL,
+  TOILET_DUA_LABEL,
 };

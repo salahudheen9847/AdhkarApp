@@ -30,6 +30,30 @@ const CLOTHING_AUDIO: TitleAudio = {
   title: "Clothing Duas"
 };
 
+// 🍽️ FOOD DUAS - Add dynamically
+const FOOD_AUDIO: TitleAudio = {
+  audio: "food_duas.mp3",
+  title: "ഭക്ഷണ ദുആകൾ"
+};
+
+// 🏠 HOME DUAS - Add dynamically
+const HOME_AUDIO: TitleAudio = {
+  audio: "homeduas.mp3",
+  title: "വീട്ടിലെ ദുആകൾ"
+};
+
+// 🛌 SLEEP DUAS - Add dynamically
+const SLEEP_AUDIO: TitleAudio = {
+  audio: "sleep_duas.mp3",
+  title: "ഉറക്ക ദുആകൾ"
+};
+
+// 🛁 TOILET DUAS - Add dynamically
+const TOILET_AUDIO: TitleAudio = {
+  audio: "toilet_duas.mp3",
+  title: "ശൗചാലയ ദുആകൾ"
+};
+
 export function resolveTitleAndAudio(
   type?: HomeLabelKey
 ): TitleAudio {
@@ -38,6 +62,26 @@ export function resolveTitleAndAudio(
   // 👕 CLOTHING DUAS - Special case (string comparison)
   if (type === "clothingDuas" as any) {
     return CLOTHING_AUDIO;
+  }
+  
+  // 🍽️ FOOD DUAS - Special case (string comparison)
+  if (type === "foodDuas" as any) {
+    return FOOD_AUDIO;
+  }
+  
+  // 🏠 HOME DUAS - Special case (string comparison)
+  if (type === "homeDuas" as any) {
+    return HOME_AUDIO;
+  }
+  
+  // 🛌 SLEEP DUAS - Special case (string comparison)
+  if (type === "sleepDuas" as any) {
+    return SLEEP_AUDIO;
+  }
+  
+  // 🛁 TOILET DUAS - Special case (string comparison)
+  if (type === "toiletDuas" as any) {
+    return TOILET_AUDIO;
   }
   
   return TITLE_AUDIO_MAP[type] ?? { audio: "", title: "" };
