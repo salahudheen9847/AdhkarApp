@@ -4,7 +4,7 @@ export const homeSectionStyles = StyleSheet.create({
   /* ---------------- GRID ITEM ---------------- */
 
   touchWrapper: {
-    width: "33.33%",          // ✅ pixel rounding fix
+    width: "33.33%",
     marginBottom: 16,
   },
 
@@ -24,14 +24,23 @@ export const homeSectionStyles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
   },
 
-  /* ---------------- TEXT (MALAYALAM – SINGLE SOURCE) ---------------- */
+  /* ---------------- TEXT ---------------- */
 
   cardTextMalayalam: {
-    fontSize: 13,          // ✅ SAME everywhere
-    lineHeight: 18,        // ✅ fixed
+    fontSize: 13,
+    lineHeight: 18,
     fontWeight: "500",
     textAlign: "center",
     letterSpacing: 0.1,
+    color: "#000000",
+  },
+
+  cardTextArabic: {
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: "500",
+    textAlign: "right",
+    writingDirection: "rtl",
     color: "#000000",
   },
 

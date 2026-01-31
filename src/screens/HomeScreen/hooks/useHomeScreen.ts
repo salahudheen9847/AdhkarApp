@@ -21,24 +21,30 @@ export function useHomeScreen() {
   };
 
   const [query, setQuery] = useState("");
+  const [activeSection, setActiveSection] = useState<string | null>(null);
 
   const {
-    favourites,        // ✅ NOW USED
+    favourites,
     toggleFavourite,
     isFavourite,
   } = useFavourites();
 
-  /* 🔙 EXIT APP ON BACK */
+  /* 🔙 BACK HANDLER */
   useEffect(() => {
     const bh = BackHandler.addEventListener(
       "hardwareBackPress",
       () => {
+        if (activeSection) {
+          setActiveSection(null);
+          return true;
+        }
         BackHandler.exitApp();
         return true;
       }
     );
+
     return () => bh.remove();
-  }, []);
+  }, [activeSection]);
 
   /* 🔍 SEARCH FILTER */
   const filteredMeta = useMemo(() => {
@@ -63,25 +69,20 @@ export function useHomeScreen() {
 
       return {
         id: `${item.id}-${index}`,
-        originalId: item.id as HomeLabelKey,
-        title: getHomeLabelText(
-          item.id as HomeLabelKey,
-          language
-        ),
+        originalId: item.id, // ✅ string
         icon: config.icon,
         gradient: config.gradient,
-        isFavourite: isFavourite(item.id as HomeLabelKey), // ⭐
+        isFavourite: isFavourite(item.id as HomeLabelKey),
       };
     });
 
-  /* ⭐ GROUP + FAVOURITES FIRST */
+  /* ⭐ SECTION ITEMS */
   const getSectionItems = (section: string) => {
     const sectionItems = filteredMeta.filter(
       item => item.section === section
     );
 
-    // ⭐ sort: favourites first
-    const sorted = sectionItems.sort((a, b) => {
+    const sorted = [...sectionItems].sort((a, b) => {
       const fa = favourites.includes(a.id as HomeLabelKey) ? 1 : 0;
       const fb = favourites.includes(b.id as HomeLabelKey) ? 1 : 0;
       return fb - fa;
@@ -90,7 +91,7 @@ export function useHomeScreen() {
     return mapToHomeItems(sorted);
   };
 
-  /* ⭐ FAVOURITE ITEMS API */
+  /* ⭐ FAVOURITES */
   const getFavouriteItems = () => {
     const favMeta = HOME_META_LIST.filter(item =>
       favourites.includes(item.id as HomeLabelKey)
@@ -99,11 +100,18 @@ export function useHomeScreen() {
     return mapToHomeItems(favMeta);
   };
 
-  /* ✅ NAVIGATION */
-  const handlePress = (originalId: HomeLabelKey) => {
+  /* ✅ PRESS HANDLER (🔥 FIXED) */
+  const handlePress = (originalId: string) => {
+    // 🟢 CATEGORY CARD
+    if (originalId === "dailyLifeDua") {
+      setActiveSection("daily");
+      return;
+    }
+
+    // 🔵 REAL CONTENT
     navigation.navigate("Dhikr", {
       mode: "section",
-      type: originalId,
+      type: originalId as HomeLabelKey,
     });
   };
 
@@ -112,8 +120,11 @@ export function useHomeScreen() {
     query,
     setQuery,
     getSectionItems,
-    getFavouriteItems, // ⭐ NEW
+    getFavouriteItems,
     handlePress,
-    toggleFavourite, // ⭐ used in UI
+    toggleFavourite,
+    activeSection,
+    setActiveSection, // ✅ ADD THIS
+
   };
 }

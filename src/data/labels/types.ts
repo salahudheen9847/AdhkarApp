@@ -2,27 +2,30 @@
 
 import type { HomeLabel } from "../types";
 
-/* 🔑 All home label keys */
+/* 🟢 CONTENT KEYS (real navigable items) */
 export type HomeLabelKey =
-  | "dailyLifeDuas"
   | "dhikr"
-  | "familyDuas"
-  | "healthDuas"
-  | "kidsDuas"
-  | "mentalHealth"
+  | "familyDua"
+  | "healthDua"
+  | "kidsDua"
+  | "mentalDua"
   | "protectionDuas"
-  | "rizq"
-  | "salah"
-  | "swalath"
+  | "rizqDuas"
+  | "salahDuas"
+  | "swalathDuas"
   | "qaseeda"
   | "ratib"
   | "ramadan"
-  | "mayyit"
+  | "mayyitDuas"
   | "moulid"
-  | "clothingDuas" // ✅ ADD CLOTHING DUAS
-  | "homeDuas" // ✅ ADD HOME DUAS
-  | "sleepDuas" // ✅ ADD SLEEP DUAS
-  | "toiletDuas"; // ✅ ADD TOILET DUAS
+  | "clothingDuas"
+  | "homeDuas"
+  | "sleepDuas"
+  | "toiletDuas";
+
+/* 🟡 CATEGORY KEYS (non-navigable) */
+export type CategoryKey =
+  | "dailyLifeDua";
 
 /* 🏷️ Label record */
-export type HomeLabelRecord = Record<HomeLabelKey, HomeLabel>;
+export type HomeLabelRecord = Record<HomeLabelKey | CategoryKey, HomeLabel>;

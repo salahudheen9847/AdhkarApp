@@ -12,17 +12,16 @@ import { homeStyles as styles } from "./HomeStyles";
 import { homeSectionStyles as local } from "./HomeSection.styles";
 
 import { getHomeLabelText } from "../../data/labels";
-import type { HomeLabelKey } from "../../data/labels";
-import type { AppLanguage } from "../../data/labels";
+import type { HomeLabelKey, AppLanguage } from "../../data/labels";
 
 /* ---------------- TYPES ---------------- */
 
-type HomeItem = {
+export type HomeItem = {
   id: string;
-  originalId: HomeLabelKey;
+  originalId: string; // category + content
   icon: string;
   gradient?: readonly string[];
-  isFavourite?: boolean; // ⭐
+  isFavourite?: boolean;
 };
 
 type Props = {
@@ -30,8 +29,8 @@ type Props = {
   items: HomeItem[];
   language: AppLanguage;
   colors: { text: string };
-  onPress: (id: HomeLabelKey) => void;
-  toggleFavourite: (id: HomeLabelKey) => void; // ⭐
+  onPress: (id: string) => void;
+  toggleFavourite: (id: HomeLabelKey) => void;
 };
 
 /* ---------------- CONSTANTS ---------------- */
@@ -43,136 +42,83 @@ const SAFE_GRADIENT: readonly string[] = ["#e5e7eb", "#d1d5db"];
 const AnimatedCard = memo(function AnimatedCard({
   item,
   language,
-  colors: _colors,
   onPress,
   toggleFavourite,
 }: {
   item: HomeItem;
   language: AppLanguage;
-  colors: { text: string };
-  onPress: (id: HomeLabelKey) => void;
-  toggleFavourite: (id: HomeLabelKey) => void; // ⭐
+  onPress: (id: string) => void;
+  toggleFavourite: (id: HomeLabelKey) => void;
 }) {
-  /* 🔒 Hooks must be first */
   const scale = useRef(new Animated.Value(1)).current;
   const opacity = useRef(new Animated.Value(1)).current;
   const iconScale = useRef(new Animated.Value(1)).current;
 
   const title = useMemo(() => {
-    return item?.originalId
-      ? getHomeLabelText(item.originalId, language)
-      : "";
-  }, [item?.originalId, language]);
+    if (item.originalId === "dailyLifeDua") {
+      return language === "malayalam"
+        ? "ദൈനംദിന ജീവിത ദുആകൾ"
+        : "Daily Life Duas";
+    }
 
-  /* 🛡️ Guard */
-  if (!item || !item.originalId) return null;
+    return getHomeLabelText(item.originalId as HomeLabelKey, language);
+  }, [item.originalId, language]);
 
   const gradient =
     Array.isArray(item.gradient) && item.gradient.length >= 2
       ? item.gradient
       : SAFE_GRADIENT;
 
+  const isCategory = item.originalId === "dailyLifeDua";
+
   return (
     <TouchableOpacity
       activeOpacity={0.9}
       onPress={() => onPress(item.originalId)}
-      onPressIn={() => {
-        Animated.parallel([
-          Animated.spring(scale, {
-            toValue: 0.95,
-            useNativeDriver: true,
-          }),
-          Animated.timing(opacity, {
-            toValue: 0.8,
-            duration: 150,
-            useNativeDriver: true,
-          }),
-          Animated.spring(iconScale, {
-            toValue: 1.2,
-            useNativeDriver: true,
-          })
-        ]).start();
-      }}
-      onPressOut={() => {
-        Animated.parallel([
-          Animated.spring(scale, {
-            toValue: 1,
-            useNativeDriver: true,
-          }),
-          Animated.timing(opacity, {
-            toValue: 1,
-            duration: 200,
-            useNativeDriver: true,
-          }),
-          Animated.spring(iconScale, {
-            toValue: 1,
-            useNativeDriver: true,
-          })
-        ]).start();
-      }}
       style={local.touchWrapper}
     >
       <Animated.View
         style={[
-          local.cardWrapper, 
-          { 
-            transform: [{ scale }],
-            opacity: opacity
-          }
+          local.cardWrapper,
+          { transform: [{ scale }], opacity },
         ]}
       >
         <LinearGradient
           colors={[...gradient]}
-          style={[
-            styles.card,
-            local.cardShadow,
-            { shadowColor: gradient[0] },
-          ]}
+          style={[styles.card, local.cardShadow]}
         >
-          {/* 🔥 PREMIUM PROFESSIONAL ICON */}
-          <Animated.View
-            style={{
-              transform: [{ scale: iconScale }]
-            }}
-          >
-            <Ionicons
-              name={item.icon}
-              size={28}
-              color="#000000"
-              style={[
-                local.icon,
-                local.iconGlow,
-                { shadowColor: gradient[0] },
-              ]}
-            />
+          {/* ICON */}
+          <Animated.View style={{ transform: [{ scale: iconScale }] }}>
+            <Ionicons name={item.icon} size={28} color="#000" />
           </Animated.View>
 
-          {/* 📄 TITLE */}
+          {/* TITLE */}
           <Text
             style={[
               styles.cardText,
               language === "malayalam" && local.cardTextMalayalam,
+              language === "arabic" && local.cardTextArabic,
             ]}
-            numberOfLines={language === "malayalam" ? 2 : 2}
-            ellipsizeMode="tail"
-            adjustsFontSizeToFit
-            minimumFontScale={0.85}
+            numberOfLines={2}
           >
             {title}
           </Text>
 
-          {/* ⭐ STAR ICON */}
-          <TouchableOpacity
-            onPress={() => toggleFavourite(item.originalId)}
-            style={local.starIcon}
-            hitSlop={10}
-          >
-            <Ionicons
-              name={item.isFavourite ? "star" : "star-outline"}
-              size={18}
-              color={item.isFavourite ? "#facc15" : "#475569"}
-            />
-          </TouchableOpacity>
+          {/* ⭐ Favourite only for CONTENT */}
+          {!isCategory && (
+            <TouchableOpacity
+              onPress={() =>
+                toggleFavourite(item.originalId as HomeLabelKey)
+              }
+              style={local.starIcon}
+            >
+              <Ionicons
+                name={item.isFavourite ? "star" : "star-outline"}
+                size={18}
+                color={item.isFavourite ? "#facc15" : "#475569"}
+              />
+            </TouchableOpacity>
+          )}
         </LinearGradient>
       </Animated.View>
     </TouchableOpacity>
@@ -191,27 +137,31 @@ export const HomeSection = memo(function HomeSection({
   onPress,
   toggleFavourite,
 }: Props) {
-  if (!items || items.length === 0) return null;
+  if (!items?.length) return null;
+
+  // hide heading only for Daily Life main card
+  const hideTitle =
+    items.length === 1 &&
+    items[0].originalId === "dailyLifeDua";
 
   return (
     <>
-      <Text style={[styles.sectionTitle, { color: colors.text }]}>
-        {title}
-      </Text>
+      {!hideTitle && (
+        <Text style={[styles.sectionTitle, { color: colors.text }]}>
+          {title}
+        </Text>
+      )}
 
       <View style={styles.innerGrid}>
-        {items.map(item =>
-          item ? (
-            <AnimatedCard
-              key={item.id}
-              item={item}
-              language={language}
-              colors={colors}
-              onPress={onPress}
-              toggleFavourite={toggleFavourite}
-            />
-          ) : null
-        )}
+        {items.map(item => (
+          <AnimatedCard
+            key={item.id}
+            item={item}
+            language={language}
+            onPress={onPress}
+            toggleFavourite={toggleFavourite}
+          />
+        ))}
       </View>
     </>
   );

@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  StatusBar,
-  ScrollView,
-  View,
-} from "react-native";
+import { StatusBar, ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { homeStyles as styles } from "./HomeStyles";
@@ -23,12 +19,11 @@ export default function HomeScreen() {
     getFavouriteItems,
     handlePress,
     toggleFavourite,
+    activeSection,
+    setActiveSection, // 🔑 REQUIRED FOR BACK BUTTON
   } = useHomeScreen();
 
-  const renderSection = (
-    labelKey: any,
-    section: string
-  ) => (
+  const renderSection = (labelKey: any, section: string) => (
     <>
       <View style={styles.sectionContainer}>
         <HomeSection
@@ -49,7 +44,11 @@ export default function HomeScreen() {
       <StatusBar barStyle="dark-content" />
 
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        <LanguageSwitch />
+        {/* 🔙 BACK BUTTON + 🌐 LANGUAGE SWITCH */}
+        <LanguageSwitch
+          activeSection={activeSection}
+          onBack={() => setActiveSection(null)}
+        />
 
         <SimpleSearchBar
           value={query}
@@ -57,8 +56,8 @@ export default function HomeScreen() {
           language={language}
         />
 
-        {/* ⭐ TOP MOST – Favourite Section */}
-        {getFavouriteItems().length > 0 && (
+        {/* ⭐ FAVOURITES */}
+        {!activeSection && getFavouriteItems().length > 0 && (
           <>
             <View style={styles.sectionContainer}>
               <HomeSection
@@ -70,27 +69,72 @@ export default function HomeScreen() {
                 toggleFavourite={toggleFavourite}
               />
             </View>
-
             <View style={styles.sectionDivider} />
           </>
         )}
 
-        {renderSection("dailyLifeDua", "daily")}
-        {renderSection("dhikr", "dhikr")}
-        {renderSection("familyDua", "family")}
-        {renderSection("healthDua", "health")}
-        {renderSection("justiceDuas", "justice")}
-        {renderSection("kidsDua", "kids")}
-        {renderSection("mentalDua", "mental")}
-        {renderSection("protectionDuas", "protection")}
-        {renderSection("rizqDuas", "rizq")}
-        {renderSection("salahDuas", "salah")}
-        {renderSection("swalathDuas", "swalath")}
-        {renderSection("qaseeda", "qaseeda")}
-        {renderSection("ratib", "ratib")}
-        {renderSection("ramadan","ramadan")}
-        {renderSection("mayyitDuas","mayyit")}
-        {renderSection("moulid","moulid")}
+        {/* 🟢 MAIN HOME */}
+        {!activeSection && (
+          <>
+            {/* Daily Life = MAIN CARD */}
+            <View style={styles.sectionContainer}>
+              <HomeSection
+                title={
+                  language === "malayalam"
+                    ? "ദൈനംദിന ജീവിത ദുആകൾ"
+                    : "Daily Life Duas"
+                }
+                items={[
+                  {
+                    id: "dailyLifeDua",
+                    originalId: "dailyLifeDua",
+                    icon: "calendar-outline",
+                    gradient: ["#fde68a", "#facc15"],
+                  },
+                ]}
+                language={language}
+                colors={{ text: "#0f172a" }}
+                onPress={handlePress}
+                toggleFavourite={() => {}}
+              />
+            </View>
+            <View style={styles.sectionDivider} />
+
+            {renderSection("dhikr", "dhikr")}
+            {renderSection("familyDua", "family")}
+            {renderSection("healthDua", "health")}
+            {renderSection("justiceDuas", "justice")}
+            {renderSection("kidsDua", "kids")}
+            {renderSection("mentalDua", "mental")}
+            {renderSection("protectionDuas", "protection")}
+            {renderSection("rizqDuas", "rizq")}
+            {renderSection("salahDuas", "salah")}
+            {renderSection("swalathDuas", "swalath")}
+            {renderSection("qaseeda", "qaseeda")}
+            {renderSection("ratib", "ratib")}
+            {renderSection("ramadan", "ramadan")}
+            {renderSection("mayyitDuas", "mayyit")}
+            {renderSection("moulid", "moulid")}
+          </>
+        )}
+
+        {/* 🔵 DAILY LIFE INNER */}
+        {activeSection === "daily" && (
+          <View style={styles.sectionContainer}>
+            <HomeSection
+              title={
+                language === "malayalam"
+                  ? "ദൈനംദിന ജീവിത ദുആകൾ"
+                  : "Daily Life Duas"
+              }
+              items={getSectionItems("daily") as any}
+              language={language}
+              colors={{ text: "#0f172a" }}
+              onPress={handlePress}
+              toggleFavourite={toggleFavourite}
+            />
+          </View>
+        )}
       </ScrollView>
     </SafeAreaView>
   );
