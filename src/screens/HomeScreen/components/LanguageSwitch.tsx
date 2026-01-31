@@ -5,10 +5,10 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
-import Ionicons from "react-native-vector-icons/Ionicons";
 
 import { useLanguage } from "../../../context/language";
 import type { AppLanguage } from "../../../context/language";
+import { BackPill } from "./BackPill";
 
 /* ---------------- TYPES ---------------- */
 
@@ -36,23 +36,9 @@ export function LanguageSwitch({
 
   return (
     <View style={styles.container}>
-      {/* 🔙 BACK BUTTON – PILL STYLE */}
-      {activeSection === "daily" && onBack && (
-        <TouchableOpacity
-          onPress={onBack}
-          activeOpacity={0.85}
-          style={styles.backPill}
-        >
-          <Ionicons
-            name="arrow-back"
-            size={18}
-            color="#ffffff"
-            style={styles.backIcon}
-          />
-          <Text style={styles.backText}>
-            {language === "malayalam" ? "പിന്നോട്ട്" : "Back"}
-          </Text>
-        </TouchableOpacity>
+      {/* 🔙 BACK BUTTON */}
+      {activeSection && onBack && (
+        <BackPill onPress={onBack} />
       )}
 
       {/* 🌐 LANGUAGE SWITCH */}
@@ -88,33 +74,6 @@ const styles = StyleSheet.create({
   /* wrapper */
   container: {
     marginBottom: 12,
-  },
-
-  /* 🔙 Back pill button */
-  backPill: {
-    flexDirection: "row",
-    alignItems: "center",
-    alignSelf: "flex-start",
-    backgroundColor: "#1e293b",
-    paddingHorizontal: 14,
-    paddingVertical: 8,
-    borderRadius: 18,
-    marginBottom: 12,
-
-    // shadow (Android + iOS)
-    elevation: 4,
-    shadowColor: "#000",
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    shadowOffset: { width: 0, height: 2 },
-  },
-  backIcon: {
-    marginRight: 6,
-  },
-  backText: {
-    color: "#ffffff",
-    fontSize: 14,
-    fontWeight: "600",
   },
 
   /* 🌐 Language switch */

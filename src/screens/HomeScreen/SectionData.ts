@@ -1,0 +1,18 @@
+export const SECTIONS_CONFIG = [
+  { id: "daily", originalId: "dailyLifeDua", icon: "calendar-outline", gradient: ["#fde68a", "#facc15"], en: "Daily Life Duas", ml: "ദൈനംദിന ജീവിത ദുആകൾ" },
+  { id: "dhikr", originalId: "dhikr", icon: "leaf-outline", gradient: ["#86efac", "#22c55e"], en: "Dhikr", ml: "ളിക്റുകൾ" },
+  { id: "family", originalId: "familyDua", icon: "people-outline", gradient: ["#93c5fd", "#3b82f6"], en: "Family Duas", ml: "കുടുംബ ദുആകൾ" },
+  { id: "health", originalId: "healthDua", icon: "heart-outline", gradient: ["#fda4af", "#fb7185"], en: "Health Duas", ml: "ആരോഗ്യ ദുആകൾ" },
+  { id: "justice", originalId: "justiceDuas", icon: "scale-outline", gradient: ["#c084fc", "#9333ea"], en: "Justice Duas", ml: "നീതി ദുആകൾ" },
+  { id: "kids", originalId: "kidsDua", icon: "happy-outline", gradient: ["#fbbf24", "#f59e0b"], en: "Kids Duas", ml: "കുട്ടികൾക്കുള്ള ദുആകൾ" },
+  { id: "mental", originalId: "mentalDua", icon: "heart-circle-outline", gradient: ["#a78bfa", "#8b5cf6"], en: "Mental Duas", ml: "മാനസിക ദുആകൾ" },
+  { id: "protection", originalId: "protectionDuas", icon: "shield-outline", gradient: ["#60a5fa", "#3b82f6"], en: "Protection Duas", ml: "സംരക്ഷണ ദുആകൾ" },
+  { id: "rizq", originalId: "rizqDuas", icon: "cash-outline", gradient: ["#34d399", "#10b981"], en: "Rizq Duas", ml: "ഉപജീവന ദുആകൾ" },
+  { id: "salah", originalId: "salahDuas", icon: "moon-outline", gradient: ["#f472b6", "#ec4899"], en: "Salah Duas", ml: "നമസ്കാരം ദുആകൾ" },
+  { id: "swalath", originalId: "swalathDuas", icon: "flower-outline", gradient: ["#fb923c", "#f97316"], en: "Swalath", ml: "സ്വലാത്തുകൾ" },
+  { id: "qaseeda", originalId: "qaseeda", icon: "musical-notes-outline", gradient: ["#f87171", "#ef4444"], en: "Qaseeda", ml: "ഖസീദകൾ" },
+  { id: "ratib", originalId: "ratib", icon: "book-outline", gradient: ["#c084fc", "#a855f7"], en: "Ratib", ml: "റത്തിബ്" },
+  { id: "ramadan", originalId: "ramadan", icon: "star-outline", gradient: ["#fbbf24", "#f59e0b"], en: "Ramadan", ml: "റമദാൻൻ ദുആകൾ" },
+  { id: "mayyit", originalId: "mayyitDuas", icon: "flower-outline", gradient: ["#9ca3af", "#6b7280"], en: "Mayyit Duas", ml: "മരണം ദുആകൾ" },
+  { id: "moulid", originalId: "moulid", icon: "musical-note-outline", gradient: ["#86efac", "#22c55e"], en: "Moulid", ml: "മൗലിദ്" },
+];

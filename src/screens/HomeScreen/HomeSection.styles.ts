@@ -4,8 +4,9 @@ export const homeSectionStyles = StyleSheet.create({
   /* ---------------- GRID ITEM ---------------- */
 
   touchWrapper: {
-    width: "33.33%",
-    marginBottom: 16,
+    width: "32%", // 3 എണ്ണം വരാൻ 32% ആണ് അനുയോജ്യം
+    marginBottom: 12,
+    paddingHorizontal: 4, // കാർഡുകൾക്കിടയിൽ ഗ്യാപ്പ് വരാൻ
   },
 
   cardWrapper: {
@@ -15,29 +16,25 @@ export const homeSectionStyles = StyleSheet.create({
   /* ---------------- ICON ---------------- */
 
   icon: {
-    marginBottom: 10,
+    marginBottom: 8,
     backgroundColor: "rgba(0,0,0,0.15)",
-    padding: 10,
+    padding: 8,
     borderRadius: 999,
-    shadowOpacity: 0.4,
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: 4 },
   },
 
   /* ---------------- TEXT ---------------- */
 
   cardTextMalayalam: {
-    fontSize: 13,
-    lineHeight: 18,
-    fontWeight: "500",
+    fontSize: 11, // സ്ഥലം കുറവായതിനാൽ സൈസ് കുറച്ചു
+    lineHeight: 15,
+    fontWeight: "600",
     textAlign: "center",
-    letterSpacing: 0.1,
     color: "#000000",
   },
 
   cardTextArabic: {
-    fontSize: 13,
-    lineHeight: 18,
+    fontSize: 12,
+    lineHeight: 16,
     fontWeight: "500",
     textAlign: "right",
     writingDirection: "rtl",
@@ -48,8 +45,8 @@ export const homeSectionStyles = StyleSheet.create({
 
   starIcon: {
     position: "absolute",
-    top: 8,
-    right: 8,
+    top: 6,
+    right: 6,
     zIndex: 10,
   },
 
@@ -59,6 +56,7 @@ export const homeSectionStyles = StyleSheet.create({
     shadowOpacity: 0.15,
     shadowOffset: { width: 0, height: 4 },
     shadowRadius: 12,
+    elevation: 4,
   },
 
   iconGlow: {

@@ -6,9 +6,9 @@ import { homeStyles as styles } from "./HomeStyles";
 import { SimpleSearchBar } from "./SimpleSearchBar";
 import { LanguageSwitch } from "./components/LanguageSwitch";
 import { HomeSection } from "./HomeSectionEnhanced";
-
-import { getHomeLabelText } from "../../data/labels";
 import { useHomeScreen } from "./hooks/useHomeScreen";
+import { SECTIONS_CONFIG } from "./SectionData";
+import { RenderMainSections } from "./RenderSections";
 
 export default function HomeScreen() {
   const {
@@ -20,120 +20,91 @@ export default function HomeScreen() {
     handlePress,
     toggleFavourite,
     activeSection,
-    setActiveSection, // 🔑 REQUIRED FOR BACK BUTTON
+    setActiveSection,
+    filteredMeta,
+    mapToHomeItems,
   } = useHomeScreen();
 
-  const renderSection = (labelKey: any, section: string) => (
-    <>
-      <View style={styles.sectionContainer}>
-        <HomeSection
-          title={getHomeLabelText(labelKey, language)}
-          items={getSectionItems(section) as any}
-          language={language}
-          colors={{ text: "#0f172a" }}
-          onPress={handlePress}
-          toggleFavourite={toggleFavourite}
-        />
-      </View>
-      <View style={styles.sectionDivider} />
-    </>
-  );
+  const activeSectionData = SECTIONS_CONFIG.find((s) => s.id === activeSection);
+  const isSearching = query.trim().length > 0;
 
   return (
     <SafeAreaView style={styles.flexContainer}>
       <StatusBar barStyle="dark-content" />
 
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        {/* 🔙 BACK BUTTON + 🌐 LANGUAGE SWITCH */}
+        {/* Navigation & Search */}
         <LanguageSwitch
           activeSection={activeSection}
           onBack={() => setActiveSection(null)}
         />
 
-        <SimpleSearchBar
-          value={query}
-          onChange={setQuery}
-          language={language}
-        />
-
-        {/* ⭐ FAVOURITES */}
-        {!activeSection && getFavouriteItems().length > 0 && (
-          <>
-            <View style={styles.sectionContainer}>
-              <HomeSection
-                title="⭐ Favourite Duas"
-                items={getFavouriteItems() as any}
-                language={language}
-                colors={{ text: "#f59e0b" }}
-                onPress={handlePress}
-                toggleFavourite={toggleFavourite}
-              />
-            </View>
-            <View style={styles.sectionDivider} />
-          </>
-        )}
-
-        {/* 🟢 MAIN HOME */}
+        {/* Show search bar only on home screen */}
         {!activeSection && (
-          <>
-            {/* Daily Life = MAIN CARD */}
-            <View style={styles.sectionContainer}>
-              <HomeSection
-                title={
-                  language === "malayalam"
-                    ? "ദൈനംദിന ജീവിത ദുആകൾ"
-                    : "Daily Life Duas"
-                }
-                items={[
-                  {
-                    id: "dailyLifeDua",
-                    originalId: "dailyLifeDua",
-                    icon: "calendar-outline",
-                    gradient: ["#fde68a", "#facc15"],
-                  },
-                ]}
-                language={language}
-                colors={{ text: "#0f172a" }}
-                onPress={handlePress}
-                toggleFavourite={() => {}}
-              />
-            </View>
-            <View style={styles.sectionDivider} />
-
-            {renderSection("dhikr", "dhikr")}
-            {renderSection("familyDua", "family")}
-            {renderSection("healthDua", "health")}
-            {renderSection("justiceDuas", "justice")}
-            {renderSection("kidsDua", "kids")}
-            {renderSection("mentalDua", "mental")}
-            {renderSection("protectionDuas", "protection")}
-            {renderSection("rizqDuas", "rizq")}
-            {renderSection("salahDuas", "salah")}
-            {renderSection("swalathDuas", "swalath")}
-            {renderSection("qaseeda", "qaseeda")}
-            {renderSection("ratib", "ratib")}
-            {renderSection("ramadan", "ramadan")}
-            {renderSection("mayyitDuas", "mayyit")}
-            {renderSection("moulid", "moulid")}
-          </>
+          <SimpleSearchBar
+            value={query}
+            onChange={setQuery}
+            language={language}
+          />
         )}
 
-        {/* 🔵 DAILY LIFE INNER */}
-        {activeSection === "daily" && (
+        {/* 🔍 SEARCH RESULTS - ടൈപ്പ് ചെയ്യുമ്പോൾ എല്ലാ ഐറ്റവും ഒരുമിച്ച് കാണിക്കും */}
+        {isSearching ? (
           <View style={styles.sectionContainer}>
             <HomeSection
-              title={
-                language === "malayalam"
-                  ? "ദൈനംദിന ജീവിത ദുആകൾ"
-                  : "Daily Life Duas"
-              }
-              items={getSectionItems("daily") as any}
+              title={language === "malayalam" ? "തിരയൽ ഫലങ്ങൾ" : "Search Results"}
+              items={mapToHomeItems(filteredMeta) as any}
               language={language}
-              colors={{ text: "#0f172a" }}
+              colors={{ text: "#22c55e" }}
               onPress={handlePress}
               toggleFavourite={toggleFavourite}
             />
           </View>
+        ) : (
+          <>
+            {/* 1. ⭐ FAVOURITES */}
+            {!activeSection && getFavouriteItems().length > 0 && (
+              <>
+                <View style={styles.sectionContainer}>
+                  <HomeSection
+                    title={language === "malayalam" ? "⭐ പ്രിയപ്പെട്ട ദുആകൾ" : language === "arabic" ? "⭐ الأدعية المفضلة" : "⭐ Favourite Duas"}
+                    items={getFavouriteItems() as any}
+                    language={language}
+                    colors={{ text: "#f59e0b" }}
+                    onPress={handlePress}
+                    toggleFavourite={toggleFavourite}
+                  />
+                </View>
+                <View style={styles.sectionDivider} />
+              </>
+            )}
+
+            {/* 2. 🟢 MAIN LIST (Categories) */}
+            {!activeSection && (
+              <RenderMainSections 
+                language={language as any} 
+                handlePress={handlePress} 
+              />
+            )}
+
+            {/* 3. 🔵 INNER LIST (Category Items) */}
+            {activeSection && (
+              <View style={styles.sectionContainer}>
+                <HomeSection
+                  title={
+                    language === "malayalam"
+                      ? activeSectionData?.ml || ""
+                      : activeSectionData?.en || ""
+                  }
+                  items={getSectionItems(activeSection) as any}
+                  language={language}
+                  colors={{ text: "#0f172a" }}
+                  onPress={handlePress}
+                  toggleFavourite={toggleFavourite}
+                />
+              </View>
+            )}
+          </>
         )}
       </ScrollView>
     </SafeAreaView>
