@@ -28,7 +28,6 @@ export const SECTION_CARD_CONFIG = {
   /* ===============================
      JUSTICE DUA ⚖️
   =============================== */
-
   justice: {
     id: "justiceDuas",
     icon: "scale",
@@ -38,7 +37,6 @@ export const SECTION_CARD_CONFIG = {
   /* ===============================
      KIDS DUA
   =============================== */
-
   kids: {
     id: "kidsDua",
     icon: "happy",
@@ -48,7 +46,6 @@ export const SECTION_CARD_CONFIG = {
   /* ===============================
      MENTAL DUA
   =============================== */
-
   mental: {
     id: "mentalDua",
     icon: "bulb",
@@ -58,7 +55,6 @@ export const SECTION_CARD_CONFIG = {
   /* ===============================
      RIZQ DUA
   =============================== */
-
   rizq: {
     id: "rizqDua",
     icon: "cash",
@@ -68,7 +64,6 @@ export const SECTION_CARD_CONFIG = {
   /* ===============================
      PROTECTION DUA
   =============================== */
-
   protection: {
     id: "protectionDuas",
     icon: "shield-checkmark",
@@ -76,45 +71,58 @@ export const SECTION_CARD_CONFIG = {
   },
 
   /* ===============================
-     SALAH DUA 🕌 ✅
+     SALAH DUA 🕌
   =============================== */
-
   salah: {
     id: "salahDuas",
     icon: "time",
     gradient: ["#e0e7ff", "#6366f1"],
   },
+
   swalath: {
-  id: "swalathDuas",
-  icon: "heart",
-  gradient: ["#fde68a", "#f59e0b"],
-},
-qaseeda: {
-id: "qaseeda",
-icon: "musical-notes",
-gradient: ["#fef3c7", "#f59e0b"],
-},
-/* ✅ ADD THIS */
-ratib: {
-id: "ratib",
-icon: "book",
-gradient: ["#dcfce7", "#22c55e"],
-},
-ramadan: {
-id: "ramadanAdhkar",
-icon: "moon",
-gradient: ["#dcfce7", "#22c55e"],
-},
-mayyit: {
-id: "mayyitDuas",
-icon: "home",
-gradient: ["#e0e7ff", "#6366f1"],
-},
-moulid: {
-id: "moulid",
-icon: "book",
-gradient: ["#fef3c7", "#f59e0b"],
-},
+    id: "swalathDuas",
+    icon: "heart",
+    gradient: ["#fde68a", "#f59e0b"],
+  },
+
+  qaseeda: {
+    id: "qaseeda",
+    icon: "musical-notes",
+    gradient: ["#fef3c7", "#f59e0b"],
+  },
+
+  ratib: {
+    id: "ratib",
+    icon: "book",
+    gradient: ["#dcfce7", "#22c55e"],
+  },
+
+  ramadan: {
+    id: "ramadanAdhkar",
+    icon: "moon",
+    gradient: ["#dcfce7", "#22c55e"],
+  },
+
+  mayyit: {
+    id: "mayyitDuas",
+    icon: "home",
+    gradient: ["#e0e7ff", "#6366f1"],
+  },
+
+  moulid: {
+    id: "moulid",
+    icon: "book",
+    gradient: ["#fef3c7", "#f59e0b"],
+  },
+
+  /* ===============================
+     ISLAMIC COURSES (PAID) 📚 ✅
+  =============================== */
+  courses: {
+    id: "vaastuCourse", // Label-ൽ നൽകിയ അതേ ID
+    icon: "school",
+    gradient: ["#ddd6fe", "#8b5cf6"], // ഒരു Premium ലുക്കിന് വേണ്ടി Purple Gradient
+  },
 } as const;
 
 /* ===============================

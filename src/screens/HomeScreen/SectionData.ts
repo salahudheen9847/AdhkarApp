@@ -6,7 +6,7 @@ export const SECTIONS_CONFIG = [
   { id: "justice", originalId: "justiceDuas", icon: "scale-outline", gradient: ["#c084fc", "#9333ea"], en: "Justice Duas", ml: "നീതി ദുആകൾ" },
   { id: "kids", originalId: "kidsDua", icon: "happy-outline", gradient: ["#fbbf24", "#f59e0b"], en: "Kids Duas", ml: "കുട്ടികൾക്കുള്ള ദുആകൾ" },
   { id: "mental", originalId: "mentalDua", icon: "heart-circle-outline", gradient: ["#a78bfa", "#8b5cf6"], en: "Mental Duas", ml: "മാനസിക ദുആകൾ" },
-  { id: "protection", originalId: "protectionDuas", icon: "shield-outline", gradient: ["#60a5fa", "#3b82f6"], en: "Protection Duas", ml: "സംരക്ഷണ ദുആകൾ" },
+  { id: "protection", originalId: "protectionCategory", icon: "shield-outline", gradient: ["#60a5fa", "#3b82f6"], en: "Protection Duas", ml: "സംരക്ഷണ ദുആകൾ" },
   { id: "rizq", originalId: "rizqDuas", icon: "cash-outline", gradient: ["#34d399", "#10b981"], en: "Rizq Duas", ml: "ഉപജീവന ദുആകൾ" },
   { id: "salah", originalId: "salahDuas", icon: "moon-outline", gradient: ["#f472b6", "#ec4899"], en: "Salah Duas", ml: "നമസ്കാരം ദുആകൾ" },
   { id: "swalath", originalId: "swalathDuas", icon: "flower-outline", gradient: ["#fb923c", "#f97316"], en: "Swalath", ml: "സ്വലാത്തുകൾ" },

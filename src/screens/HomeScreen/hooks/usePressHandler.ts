@@ -14,7 +14,7 @@ export function usePressHandler(setActiveSection: (section: string | null) => vo
       justiceDuas: "justice",
       kidsDua: "kids",
       mentalDua: "mental",
-      protectionDuas: "protection",
+      protectionCategory: "protection",
       rizqDuas: "rizq",
       salahDuas: "salah",
       swalathDuas: "swalath",

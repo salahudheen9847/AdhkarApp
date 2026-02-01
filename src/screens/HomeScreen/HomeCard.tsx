@@ -40,7 +40,7 @@ export const HomeCard = memo(({ item, language, onPress, toggleFavourite }: {
   // Hide favorite star for home screen main category cards
   const isCategory = 
     ["dailyLifeDua", "dhikr", "familyDua", "healthDua", "justiceDuas", "kidsDua", 
-     "mentalDua", "protectionDuas", "rizqDuas", "salahDuas", "swalathDuas", 
+     "mentalDua", "protectionCategory", "rizqDuas", "salahDuas", "swalathDuas", 
      "qaseeda", "ratib", "ramadan", "mayyitDuas", "moulid"].includes(item.originalId);
 
   return (

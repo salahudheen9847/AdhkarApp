@@ -27,6 +27,11 @@ import { MAYYIT_DUA_HOME_META } from "./mayyit-dua/homeMeta";
 import { MOULID_HOME_META } from "./moulid/homeMeta";
 
 /* ===============================
+   PAID COURSES 📚
+=============================== */
+import { VAASTU_COURSE_META } from "./islamic-courses/vaastu/meta";
+
+/* ===============================
    HOME META LIST
 =============================== */
 export const HOME_META_LIST: HomeMeta[] = [
@@ -69,5 +74,9 @@ export const HOME_META_LIST: HomeMeta[] = [
   ...RATIB_HOME_META,
   ...RAMADAN_HOME_META,
   ...MAYYIT_DUA_HOME_META,
-  ...MOULID_HOME_META
+  ...MOULID_HOME_META,
+
+  /* 📚 PAID COURSES */
+  VAASTU_COURSE_META, // 👈 ഇത് സ്പ്രെഡ് (...) ചെയ്യേണ്ടതില്ല, കാരണം ഇതൊരു സിംഗിൾ ഒബ്ജക്റ്റ് ആണ്.
+  
 ];

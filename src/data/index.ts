@@ -4,7 +4,6 @@
 
 // 🔹 LABELS & TYPES
 export * from "./labels";
-export * from "./labels/types";
 export * from "./types";
 
 /* ===============================

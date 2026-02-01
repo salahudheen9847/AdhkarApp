@@ -2,6 +2,7 @@ apply plugin: "com.android.application"
 apply plugin: "com.facebook.react"
 apply plugin: "org.jetbrains.kotlin.android"
 
+// ✅ Icon fonts support
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
 /* ---------------- REACT ---------------- */
@@ -31,6 +32,9 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 20
         versionName "1.1.9"
+
+        // ✅ IMPORTANT: Fix for react-native-iap variant ambiguity
+        missingDimensionStrategy 'store', 'play'
     }
 
     signingConfigs {
